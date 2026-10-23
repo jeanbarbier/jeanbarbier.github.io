@@ -1,6 +1,6 @@
 ---
 layout: default
-title: Research
+title: Research and publications
 heading: Research
 permalink: /research/
 intro: "We use the statistical physics of disordered systems, random matrix theory and information theory to sharply describe inference and learning in high dimension."
@@ -49,4 +49,16 @@ intro: "We use the statistical physics of disordered systems, random matrix theo
     <li><a href="https://arxiv.org/abs/2010.14863">High-dimensional inference: a statistical mechanics perspective</a>, a short perspective article.</li>
     <li><a href="https://www.ictp.it/news/2026/7/how-ai-learns">How AI learns</a>, ICTP news on our Physical Review X paper.</li>
   </ul>
+</section>
+
+<section class="theme" id="publications">
+  <h2>Publications</h2>
+  <p class="section-intro">Papers since 2023 and a selection of earlier ones. The full list is on <a href="https://scholar.google.com/citations?user=yeE5qqIAAAAJ&hl=en">Google Scholar</a>. Group members are highlighted.</p>
+  {%- assign by_year = site.data.publications | group_by: "year" %}
+  {%- for y in by_year %}
+  <div class="year-block">
+    <h3 class="year">{{ y.name }}</h3>
+    <ul class="pubs">{% for pub in y.items %}{% include pub.html pub=pub %}{% endfor %}</ul>
+  </div>
+  {%- endfor %}
 </section>

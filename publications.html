@@ -1,14 +1,10 @@
 ---
-layout: default
-title: Publications
-heading: Publications
 permalink: /publications/
+sitemap: false
 ---
-<p class="page-intro">Papers since 2023 and a selection of earlier ones. The full list is on <a href="https://scholar.google.com/citations?user=yeE5qqIAAAAJ&hl=en">Google Scholar</a>. Group members are highlighted.</p>
-{%- assign by_year = site.data.publications | group_by: "year" %}
-{%- for y in by_year %}
-<section class="year-block">
-  <h2 class="year">{{ y.name }}</h2>
-  <ul class="pubs">{% for pub in y.items %}{% include pub.html pub=pub %}{% endfor %}</ul>
-</section>
-{%- endfor %}
+<!doctype html>
+<html lang="en"><head><meta charset="utf-8"><title>Moved</title>
+<link rel="canonical" href="{{ '/research/#publications' | absolute_url }}">
+<meta http-equiv="refresh" content="0; url={{ '/research/#publications' | relative_url }}">
+<meta name="robots" content="noindex"></head>
+<body><p>Publications are now on the <a href="{{ '/research/#publications' | relative_url }}">Research page</a>.</p></body></html>

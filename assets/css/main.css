@@ -203,7 +203,8 @@ main .grant p { margin: 0; max-width: none; font-size: 0.97rem; }
 .pub-authors .member { color: var(--text); font-weight: 560; }
 .pub-meta { display: flex; flex-wrap: wrap; gap: 0.2rem 1rem; font-size: var(--step--1); margin-top: 0.3rem !important; }
 .pub-venue { color: var(--muted); font-style: italic; }
-.year-block { margin-top: 2.5rem; }
+.year-block { margin-top: 2rem; }
+.section-intro { color: var(--muted); }
 .year-block:first-of-type { margin-top: 0; }
 .year { font-size: var(--step-1); color: var(--muted); font-variant-numeric: lining-nums; margin-bottom: 0.4rem; }
 .pubs.compact .pub { padding-block: 0.6rem; }

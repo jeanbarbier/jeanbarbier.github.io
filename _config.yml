@@ -18,9 +18,8 @@ erc:
   grant_number: "101039794"
 
 nav:
-  - { title: Research, url: /research/ }
   - { title: Group, url: /group/ }
-  - { title: Publications, url: /publications/ }
+  - { title: Research, url: /research/ }
   - { title: Highlights, url: /highlights/ }
   - { title: Teaching, url: /teaching/ }
   - { title: Events, url: /events/ }
