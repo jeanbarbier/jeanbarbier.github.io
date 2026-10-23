@@ -112,16 +112,6 @@
   doi: "10.1103/PhysRevResearch.7.013081"
   themes: [matrix]
 
-- title: "Fundamental limits of overparametrized shallow neural networks for supervised learning"
-  authors: [Francesco Camilli, Daria Tieplova, Jean Barbier]
-  venue: "Bollettino dell'Unione Matematica Italiana"
-  year: 2025
-  arxiv: "2307.05635"
-  doi: "10.1007/s40574-025-00506-2"
-  extra:
-    - { label: "Talk by F. Camilli", url: "https://www.youtube.com/watch?v=swzvIPapNhQ" }
-  themes: [deep]
-
 - title: "Matrix inference in growing rank regimes"
   authors: [Farzad Pourkamali, Jean Barbier, Nicolas Macris]
   venue: "IEEE Transactions on Information Theory"
