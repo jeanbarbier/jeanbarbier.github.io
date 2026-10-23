@@ -1,7 +1,7 @@
 # Publications, newest first. Group members are bolded automatically (from _data/people.yml).
 # Fields: title, authors (list), venue, year, arxiv (id), doi, url (journal/proceedings page),
 #         extra (list of {label, url}), highlight (URL of a highlight article on this site),
-#         themes (deep | matrix | dynamics | foundations | coding | optimisation), selected (shown on home page)
+#         themes (deep | matrix | dynamics | foundations | coding | optimization), selected (shown on home page)
 
 - title: "Mesoscopic learning dynamics of extensive-width neural networks"
   authors: [Shu Zhou, Jean Barbier, Sebastian Goldt]
@@ -24,7 +24,7 @@
   venue: "Preprint"
   year: 2026
   arxiv: "2608.18910"
-  themes: [optimisation]
+  themes: [optimization]
 
 - title: "Sharp feature-learning transitions and Bayes-optimal neural scaling laws in extensive-width networks"
   authors: [Minh-Toan Nguyen, Jean Barbier]
@@ -251,4 +251,4 @@
   year: 2013
   arxiv: "1306.4121"
   doi: "10.1088/1742-6596/473/1/012021"
-  themes: [optimisation]
+  themes: [optimization]

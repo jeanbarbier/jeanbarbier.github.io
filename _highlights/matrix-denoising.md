@@ -1,9 +1,9 @@
 ---
 title: Matrix denoising beyond rotational invariance
 date: 2025-05-01
-summary: When the factorised structure of a large extensive-rank matrix starts to matter, and a multiscale mean-field theory for the hard phase.
+summary: When the factorized structure of a large extensive-rank matrix starts to matter, and a multiscale mean-field theory for the hard phase.
 ---
-Denoising a large matrix modelled as the product of two factors is hard, both algorithmically and for theoretical analysis, especially when its rank is proportional to its dimension. Applications range from signal processing to representation learning, sparse coding, community detection, video processing and recommender systems.
+Denoising a large matrix modeled as the product of two factors is hard, both algorithmically and for theoretical analysis, especially when its rank is proportional to its dimension. Applications range from signal processing to representation learning, sparse coding, community detection, video processing and recommender systems.
 
 ## The problem
 
@@ -13,15 +13,15 @@ This mutual information was known only in two cases: when *X* has a rotationally
 
 ## What we found
 
-We study a fully factorised prior on the entries of *X*. Extensive Monte Carlo simulations reveal a region of parameters (α = *M*/*N*, λ) where the mutual information is universal: insensitive to the details of the prior, as if *X* were Gaussian.
+We study a fully factorized prior on the entries of *X*. Extensive Monte Carlo simulations reveal a region of parameters (α = *M*/*N*, λ) where the mutual information is universal: insensitive to the details of the prior, as if *X* were Gaussian.
 
 We also prove that this universality must break down at large enough signal-to-noise ratio λ. This defines two phases:
 
-- a **denoising phase** (universal), where taking the factorised structure of *XX*ᵀ into account brings no improvement;
-- a **factorisation phase**, where that structure matters and the minimum mean-square error drops markedly.
+- a **denoising phase** (universal), where taking the factorized structure of *XX*ᵀ into account brings no improvement;
+- a **factorization phase**, where that structure matters and the minimum mean-square error drops markedly.
 
-![Qualitative phase diagram with the denoising and factorisation phases in the plane of signal-to-noise ratio and aspect ratio]({{ '/assets/img/highlights/matrix-denoising-phase-diagram.png' | relative_url }}){: width="1200" height="773" loading="lazy"}
+![Qualitative phase diagram with the denoising and factorization phases in the plane of signal-to-noise ratio and aspect ratio]({{ '/assets/img/highlights/matrix-denoising-phase-diagram.png' | relative_url }}){: width="1200" height="773" loading="lazy"}
 
-We then build a multiscale mean-field theory that combines the cavity and replica methods. It relies on decoupling assumptions typical of mean-field regimes, and it approximates the true minimum mean-square error very well in the factorisation phase, where the model indeed behaves in a mean-field way.
+We then build a multiscale mean-field theory that combines the cavity and replica methods. It relies on decoupling assumptions typical of mean-field regimes, and it approximates the true minimum mean-square error very well in the factorization phase, where the model indeed behaves in a mean-field way.
 
-The paper contains much more on the nature of this denoising–factorisation transition. Write to us if you are curious.
+The paper contains much more on the nature of this denoising–factorization transition. Write to us if you are curious.

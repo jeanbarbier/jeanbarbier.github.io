@@ -3,12 +3,11 @@ layout: default
 title: Research
 heading: Research
 permalink: /research/
-intro: "We use the statistical physics of disordered systems, random matrix theory and information theory to sharply describe inference and learning in high dimension."
+intro: "We use the statistical physics of disordered systems, random matrix theory and information theory to sharply describe inference and learning in high dimension. The full list of papers is on <a href=\"https://scholar.google.com/citations?user=yeE5qqIAAAAJ&hl=en\">Google Scholar</a>. Group members are highlighted."
 ---
-<p class="page-intro">Topical selection of papers. The full list is on <a href="https://scholar.google.com/citations?user=yeE5qqIAAAAJ&hl=en">Google Scholar</a>. Group members are highlighted.</p>
 <section class="theme" id="deep">
   <h2>Deep networks beyond the linear regime</h2>
-  <p>Most exact theories of neural networks either linearise them or take a width so large that features barely move. We go beyond by studying networks trained in the practical regime where the number of samples is comparable to their number of parameters. There we characterise when and how they learn features through sharp specialisation transitions.</p>
+  <p>Most exact theories of neural networks either linearize them or take a width so large that features barely move. We go beyond by studying networks trained in the practical regime where the number of samples is comparable to their number of parameters. There we characterize when and how they learn features through sharp specialization transitions.</p>
   <ul class="pubs compact">{% for pub in site.data.publications %}{% if pub.themes contains "deep" %}{% include pub.html pub=pub %}{% endif %}{% endfor %}</ul>
 </section>
 
@@ -26,7 +25,7 @@ intro: "We use the statistical physics of disordered systems, random matrix theo
 
 <section class="theme" id="foundations">
   <h2>Rigorous foundations of high-dimensional inference</h2>
-  <p>Much of the statistical physics we use rests on non-rigorous methods. A long-standing line of our work turns replica predictions into theorems: adaptive interpolation methods, concentration, and rigorous analyses of approximate message passing algorithms, for estimation, generalised linear models and time series.</p>
+  <p>Much of the statistical physics we use rests on non-rigorous methods. A long-standing line of our work turns replica predictions into theorems: adaptive interpolation methods, concentration, and rigorous analyses of approximate message passing algorithms, for estimation, generalized linear models and time series.</p>
   <ul class="pubs compact">{% for pub in site.data.publications %}{% if pub.themes contains "foundations" %}{% include pub.html pub=pub %}{% endif %}{% endfor %}</ul>
 </section>
 
@@ -36,10 +35,10 @@ intro: "We use the statistical physics of disordered systems, random matrix theo
   <ul class="pubs compact">{% for pub in site.data.publications %}{% if pub.themes contains "coding" %}{% include pub.html pub=pub %}{% endif %}{% endfor %}</ul>
 </section>
 
-<section class="theme" id="optimisation">
-  <h2>Combinatorial optimisation</h2>
-  <p>Statistical physics also describes hard combinatorial optimisation problems on random instances, such as finding a maximum independent set in a random graph. Combining rigorous large-graph asymptotics with numerics, we find that algorithms do reach the limits predicted by asymptotic theory, but can converge to them very slowly: at the sizes met in practice, local algorithms do much better than these limits suggest.</p>
-  <ul class="pubs compact">{% for pub in site.data.publications %}{% if pub.themes contains "optimisation" %}{% include pub.html pub=pub %}{% endif %}{% endfor %}</ul>
+<section class="theme" id="optimization">
+  <h2>Combinatorial optimization</h2>
+  <p>Statistical physics also describes hard combinatorial optimization problems on random instances, such as finding a maximum independent set in a random graph. Combining rigorous large-graph asymptotics with numerics, we find that algorithms do reach the limits predicted by asymptotic theory, but can converge to them very slowly: at the sizes met in practice, local algorithms do much better than these limits suggest.</p>
+  <ul class="pubs compact">{% for pub in site.data.publications %}{% if pub.themes contains "optimization" %}{% include pub.html pub=pub %}{% endif %}{% endfor %}</ul>
 </section>
 
 <section class="theme" id="wide-audience">

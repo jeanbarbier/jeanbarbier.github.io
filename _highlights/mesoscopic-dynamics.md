@@ -11,21 +11,21 @@ Since the work of Saad and Solla in the 1990s, the standard way to describe SGD 
 
 ## A mesoscopic description
 
-Instead of tracking every overlap, we track their *distribution*. Expanding the activation function in Hermite polynomials organises the order parameters into a hierarchy, one level per Hermite mode of the target. Learning then goes through four stages.
+Instead of tracking every overlap, we track their *distribution*. Expanding the activation function in Hermite polynomials organizes the order parameters into a hierarchy, one level per Hermite mode of the target. Learning then goes through four stages.
 
-![Schematic of the four stages of learning: initialisation, Gaussian closure, specialisation and refinement, with the generalisation error decreasing over training]({{ '/assets/img/highlights/mesoscopic-dynamics-stages.png' | relative_url }}){: width="1800" height="512" loading="lazy"}
+![Schematic of the four stages of learning: initialization, Gaussian closure, specialization and refinement, with the generalization error decreasing over training]({{ '/assets/img/highlights/mesoscopic-dynamics-stages.png' | relative_url }}){: width="1800" height="512" loading="lazy"}
 
 - **Gaussian closure.** Early on, the student learns only the linear and quadratic components of the target: it recovers the teacher's weights up to a rotation, while every individual teacher–student overlap stays small, of order *d*<sup>−1/2</sup>. Treating these overlaps as jointly Gaussian closes the dynamics on a few collective variables, whose equations predict the test loss over this whole stage.
-- **Specialisation.** Gaussian closure then breaks down: a finite fraction of student neurons become strongly correlated with individual teacher neurons, and the overlap distribution splits into a Gaussian bulk and outliers. We estimate when this happens: the time scales as *k*<sup>*r*</sup>/(log *k*)<sup>*r*−2</sup>, where *r* is the lowest Hermite degree above two present in the activation. Specialisation is sped up, by a constant factor that depends on the activation, through *quadratic shielding*: having learned the linear and quadratic components of the target filters out gradient fluctuations.
+- **Specialization.** Gaussian closure then breaks down: a finite fraction of student neurons become strongly correlated with individual teacher neurons, and the overlap distribution splits into a Gaussian bulk and outliers. We estimate when this happens: the time scales as *k*<sup>*r*</sup>/(log *k*)<sup>*r*−2</sup>, where *r* is the lowest Hermite degree above two present in the activation. Specialization is sped up, by a constant factor that depends on the activation, through *quadratic shielding*: having learned the linear and quadratic components of the target filters out gradient fluctuations.
 - **Refinement.** Once each student neuron is matched to a teacher neuron, we derive the dynamics of the matched overlaps and their fixed points.
 
-The activation function shapes how specialisation looks. With ReLU, some student neurons align with a teacher neuron and others anti-align with it; with ELU or tanh all matches are positive.
+The activation function shapes how specialization looks. With ReLU, some student neurons align with a teacher neuron and others anti-align with it; with ELU or tanh all matches are positive.
 
 <figure class="figure">
   <img src="{{ '/assets/img/highlights/mesoscopic-dynamics-overlaps.png' | relative_url }}" alt="Histograms of teacher–student overlaps at four training times for ReLU, ELU and tanh: a Gaussian bulk early on, then outliers near plus or minus one" width="752" height="552" loading="lazy">
-  <figcaption>Teacher–student overlaps during training. The bulk (blue) stays Gaussian; specialised neurons (red) appear as outliers.</figcaption>
+  <figcaption>Teacher–student overlaps during training. The bulk (blue) stays Gaussian; specialized neurons (red) appear as outliers.</figcaption>
 </figure>
 
 ## Why it matters
 
-Collective learning comes first and gives way to the discovery of individual features, and the paper says when a simple statistical description of learning holds. It complements our [Bayes-optimal theory of feature learning]({{ '/highlights/feature-learning/' | relative_url }}), which describes the same specialisation from the point of view of the best achievable performance rather than of training.
+Collective learning comes first and gives way to the discovery of individual features, and the paper says when a simple statistical description of learning holds. It complements our [Bayes-optimal theory of feature learning]({{ '/highlights/feature-learning/' | relative_url }}), which describes the same specialization from the point of view of the best achievable performance rather than of training.

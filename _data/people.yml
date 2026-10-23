@@ -25,7 +25,7 @@ postdocs:
 
   - name: Mauro Pastore
     photo: people/mauro-pastore.jpg
-    summary: Feature learning in overparametrised networks, its relation to kernel methods, and the role of data structure.
+    summary: Feature learning in overparametrized networks, its relation to kernel methods, and the role of data structure.
     bio: >-
       PhD in theoretical physics at the University of Milan with Sergio Caracciolo.
       Postdocs in Paris at LPTMS with Silvio Franz (Simons collaboration on the glass
@@ -47,7 +47,7 @@ postdocs:
 phd:
   - name: Rudy Skerk
     photo: people/rudy-skerk.jpg
-    summary: Statistical mechanics, information theory and random matrices for optimisation, inference and learning.
+    summary: Statistical mechanics, information theory and random matrices for optimization, inference and learning.
     bio: >-
       Bachelor's in physics at the University of Trieste, then the International Master
       in Physics of Complex Systems (Trieste, Turin, Paris). PhD student in Theoretical
