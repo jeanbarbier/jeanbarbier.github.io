@@ -78,18 +78,20 @@
   doi: "10.1109/TIT.2026.3665948"
   themes: [foundations]
 
-- title: "Generalization performance of narrow one-hidden layer networks in the teacher-student setting"
+- title: "Generalization performance of narrow shallow neural networks in the teacher–student setting"
   authors: [Rodrigo Pérez Ortiz, Gibbs Nwemadji, Jean Barbier, Federica Gerace, Alessandro Ingrosso, Clarissa Lauditi, Enrico M. Malatesta]
-  venue: "Journal of Statistical Mechanics: Theory and Experiment"
-  year: 2025
+  venue: "J. Stat. Mech. (2026) 043405"
+  year: 2026
   arxiv: "2507.00629"
+  doi: "10.1088/1742-5468/ae5a23"
   themes: [deep]
 
 - title: "Information-theoretic reduction of deep neural networks to linear models in the overparametrized proportional regime"
   authors: [Francesco Camilli, Daria Tieplova, Eleonora Bergamin, Jean Barbier]
-  venue: "COLT 2025"
+  venue: "COLT 2025, PMLR 291"
   year: 2025
   arxiv: "2505.03577"
+  url: "https://proceedings.mlr.press/v291/camilli25a.html"
   themes: [deep]
 
 - title: "Phase diagram of extensive-rank symmetric matrix denoising beyond rotational invariance"
@@ -227,6 +229,7 @@
   venue: "NeurIPS 2016"
   year: 2016
   arxiv: "1606.04142"
+  url: "https://proceedings.neurips.cc/paper/2016/hash/621bf66ddb7c962aa0d22ac97d69b793-Abstract.html"
   themes: [matrix]
 
 - title: "Proof of threshold saturation for spatially coupled sparse superposition codes"
