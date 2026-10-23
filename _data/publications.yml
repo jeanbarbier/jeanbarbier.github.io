@@ -12,6 +12,13 @@
   themes: [dynamics]
   selected: true
 
+- title: "Information-theoretic limits for rectangular spiked matrix models with rotationally invariant noise"
+  authors: [Qun Chen, Rudy Skerk, Jean Barbier, Francesco Camilli, Junjie Ma, Haochuan Zhang]
+  venue: "Preprint"
+  year: 2026
+  arxiv: "2610.16797"
+  themes: [matrix]
+
 - title: "On the slow convergence to trivial solutions of algorithms for hard optimization problems"
   authors: [Ali Hussaini Umar, Jean Barbier, Matthieu Jonckheere, Manuel Sáenz]
   venue: "Preprint"
