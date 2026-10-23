@@ -182,11 +182,9 @@ main .intro p { max-width: none; }
 .link-row .email { color: var(--muted); }
 
 .grant {
-  display: grid; grid-template-columns: auto 1fr; gap: 1.25rem; align-items: center;
   margin-top: 2.5rem; padding: 1rem 1.25rem;
   background: var(--surface); border-radius: 6px;
 }
-.grant img { width: 132px; background: #fff; padding: 5px; border-radius: 4px; }
 main .grant p { margin: 0; max-width: none; font-size: 0.97rem; }
 
 .news li { display: grid; grid-template-columns: 6.5rem 1fr; gap: 1rem; padding-block: 0.55rem; border-top: 1px solid var(--rule); }
@@ -299,7 +297,6 @@ cite { font-style: normal; }
   .intro { grid-template-columns: 1fr; }
   .portrait { width: 9rem; }
   .news li { grid-template-columns: 1fr; gap: 0.1rem; }
-  .grant { grid-template-columns: 1fr; gap: 0.75rem; }
   .join dl { grid-template-columns: 1fr; gap: 0.2rem; }
   .join dd { margin-bottom: 0.8rem; }
   .footer-grid { grid-template-columns: 1fr; }

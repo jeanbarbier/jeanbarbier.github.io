@@ -23,7 +23,7 @@
   {%- endunless %}
   <p class="pub-meta">
     <span class="pub-venue">{{ pub.venue }}{% unless pub.venue contains pub.year %}, {{ pub.year }}{% endunless %}</span>
-    {%- if pub.highlight %}<a href="{{ pub.highlight | relative_url }}">Highlight</a>{% endif %}
+    {%- if pub.highlight and include.hide_highlight != true %}<a href="{{ pub.highlight | relative_url }}">Highlight</a>{% endif %}
     {%- if pub.arxiv %}<a href="https://arxiv.org/abs/{{ pub.arxiv }}">arXiv</a>{% endif %}
     {%- if pub.doi %}<a href="https://doi.org/{{ pub.doi }}">Journal</a>{% elsif pub.url %}<a href="{{ pub.url }}">Journal</a>{% endif %}
     {%- unless include.compact %}{% for x in pub.extra %}<a href="{{ x.url }}">{{ x.label }}</a>{% endfor %}{% endunless %}
