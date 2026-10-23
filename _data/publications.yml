@@ -127,6 +127,14 @@
 
 # ---- Earlier landmark papers ----
 
+- title: "Strong replica symmetry in high-dimensional optimal Bayesian inference"
+  authors: [Jean Barbier, Dmitry Panchenko]
+  venue: "Communications in Mathematical Physics 393, 1199–1239"
+  year: 2022
+  arxiv: "2005.03115"
+  doi: "10.1007/s00220-022-04387-w"
+  themes: [foundations]
+
 - title: "Statistical limits of dictionary learning: random matrix theory and the spectral replica method"
   authors: [Jean Barbier, Nicolas Macris]
   venue: "Physical Review E 106, 024136"

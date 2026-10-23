@@ -3,7 +3,7 @@ layout: default
 title: Research
 heading: Research
 permalink: /research/
-intro: "We use the statistical physics of disordered systems (replica and cavity methods), random matrix theory and information theory to describe learning in high dimension. Results are exact in a high-dimensional limit, and whenever possible proven rigorously."
+intro: "We use the statistical physics of disordered systems, random matrix theory and information theory to describe inference and learning in high dimension. Results are exact in a high-dimensional limit, and whenever possible proven rigorously."
 ---
 <section class="theme" id="deep">
   <h2>Deep networks beyond the linear regime</h2>
@@ -11,16 +11,16 @@ intro: "We use the statistical physics of disordered systems (replica and cavity
   <ul class="pubs compact">{% for pub in site.data.publications %}{% if pub.themes contains "deep" %}{% include pub.html pub=pub compact=true %}{% endif %}{% endfor %}</ul>
 </section>
 
-<section class="theme" id="matrix">
-  <h2>Matrix inference and random matrices</h2>
-  <p>Many learning problems reduce to recovering a large matrix from noisy observations: denoising, factorisation, PCA with structured noise, estimation in time series. We compute their information-theoretic limits, including the hard regimes where the rank grows with the dimension or rotational invariance is lost, and design message-passing algorithms that reach them.</p>
-  <ul class="pubs compact">{% for pub in site.data.publications %}{% if pub.themes contains "matrix" %}{% include pub.html pub=pub compact=true %}{% endif %}{% endfor %}</ul>
-</section>
-
 <section class="theme" id="dynamics">
   <h2>Training, fine-tuning and representations</h2>
   <p>Optimal-performance results say what is possible, not what training finds. We also study what gradient-based training does: when pre-training helps or hurts low-rank fine-tuning, and how noise in the labels shapes the information stored in learned representations.</p>
   <ul class="pubs compact">{% for pub in site.data.publications %}{% if pub.themes contains "dynamics" %}{% include pub.html pub=pub compact=true %}{% endif %}{% endfor %}</ul>
+</section>
+
+<section class="theme" id="matrix">
+  <h2>Matrix inference and random matrices</h2>
+  <p>Many learning problems reduce to recovering a large matrix from noisy observations: denoising, factorisation, PCA with structured noise, estimation in time series. We compute their information-theoretic limits, including the hard regimes where the rank grows with the dimension or rotational invariance is lost, and design message-passing algorithms that reach them.</p>
+  <ul class="pubs compact">{% for pub in site.data.publications %}{% if pub.themes contains "matrix" %}{% include pub.html pub=pub compact=true %}{% endif %}{% endfor %}</ul>
 </section>
 
 <section class="theme" id="foundations">
