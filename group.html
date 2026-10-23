@@ -11,17 +11,17 @@ intro: "We are based at ICTP and SISSA in Trieste. Current funding: <a href=\"ht
 
 <section class="block">
   <h2>Principal investigator</h2>
-  <ul class="people">{% include person.html person=site.data.people.pi role="Research Scientist, ICTP" %}</ul>
+  <ul class="people">{% include person.html person=site.data.people.pi %}</ul>
 </section>
 
 <section class="block">
   <h2>Postdocs</h2>
-  <ul class="people">{% for p in site.data.people.postdocs %}{% include person.html person=p role="Postdoc" %}{% endfor %}</ul>
+  <ul class="people">{% for p in site.data.people.postdocs %}{% include person.html person=p %}{% endfor %}</ul>
 </section>
 
 <section class="block">
   <h2>PhD students</h2>
-  <ul class="people">{% for p in site.data.people.phd %}{% include person.html person=p role="PhD student, SISSA" %}{% endfor %}</ul>
+  <ul class="people">{% for p in site.data.people.phd %}{% include person.html person=p %}{% endfor %}</ul>
 </section>
 
 <section class="block">
