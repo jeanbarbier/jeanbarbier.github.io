@@ -288,7 +288,7 @@ figcaption { color: var(--muted); font-size: var(--step--1); }
 main h2 { margin-top: 2.75rem; }
 main section h2, main .block h2, main .theme h2 { margin-top: 0; }
 .wide-img { border-radius: 6px; margin: 1.75rem 0; }
-.block .wide-img { max-width: var(--measure); margin-top: 1rem; }
+.block .wide-img { width: 100%; max-width: 100%; margin-top: 1rem; }
 blockquote { margin: 1.5rem 0; padding: 0 0 0 1.25rem; border-left: 2px solid var(--rule); }
 blockquote p { font-family: var(--serif); font-size: 1.15rem; line-height: 1.5; margin: 0 0 0.4rem; }
 blockquote p:last-child { font-family: var(--sans); font-size: var(--step--1); color: var(--muted); }
