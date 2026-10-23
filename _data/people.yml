@@ -84,10 +84,10 @@ alumni:
   - { name: Daria Tieplova, role: Postdoc, now: "Postdoc, Aarhus University" }
   - { name: Anas Rahman, aliases: [Anas A. Rahman], role: Postdoc, now: "Postdoc, HKUST" }
   - { name: Manuel Sáenz, role: Postdoc, now: "Professor, University of San Andrés" }
-  - { name: Eleonora Bergamin, role: Master's student, now: "PhD student, SISSA" }
-  - { name: Shu Zhou, role: Student, now: "Postdoc, SISSA" }
-  - { name: Yizhou Xu, role: Visitor, now: "PhD student, EPFL" }
-  - { name: Rodrigo Pérez Ortiz, aliases: [Rodrigo Perez Ortiz], role: Visitor, now: "PhD student, University of Bologna" }
-  - { name: Koki Okajima, role: Visiting PhD student, now: "Professor, Kyoto University" }
-  - { name: Sébastien Pierre, role: Visitor, now: "Student, École Polytechnique" }
-  - { name: Tianqi Hou, aliases: [TianQi Hou], role: Visiting PhD student, now: "Huawei" }
+  - { name: Eleonora Bergamin, role: Visiting student, now: "PhD student, SISSA" }
+  - { name: Shu Zhou, role: Visiting student, now: "Postdoc, SISSA" }
+  - { name: Yizhou Xu, role: Visiting student, now: "PhD student, EPFL" }
+  - { name: Rodrigo Pérez Ortiz, aliases: [Rodrigo Perez Ortiz], role: Visiting student, now: "PhD student, University of Bologna" }
+  - { name: Koki Okajima, role: Visiting student, now: "Professor, Kyoto University" }
+  - { name: Sébastien Pierre, role: Visiting student, now: "Student, École Polytechnique" }
+  - { name: Tianqi Hou, aliases: [TianQi Hou], role: Visiting student, now: "Huawei" }
