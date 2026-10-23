@@ -1,7 +1,7 @@
 # Publications, newest first. Group members are bolded automatically (from _data/people.yml).
 # Fields: title, authors (list), venue, year, arxiv (id), doi, url (journal/proceedings page),
 #         extra (list of {label, url}), highlight (URL of a highlight article on this site),
-#         themes (deep | matrix | dynamics | foundations | coding), selected (shown on home page)
+#         themes (deep | matrix | dynamics | foundations | coding | optimisation), selected (shown on home page)
 
 - title: "Mesoscopic learning dynamics of extensive-width neural networks"
   authors: [Shu Zhou, Jean Barbier, Sebastian Goldt]
@@ -11,6 +11,13 @@
   highlight: /highlights/mesoscopic-dynamics/
   themes: [dynamics]
   selected: true
+
+- title: "On the slow convergence to trivial solutions of algorithms for hard optimization problems"
+  authors: [Ali Hussaini Umar, Jean Barbier, Matthieu Jonckheere, Manuel Sáenz]
+  venue: "Preprint"
+  year: 2026
+  arxiv: "2608.18910"
+  themes: [optimisation]
 
 - title: "Sharp feature-learning transitions and Bayes-optimal neural scaling laws in extensive-width networks"
   authors: [Minh-Toan Nguyen, Jean Barbier]
@@ -213,7 +220,7 @@
   venue: "NeurIPS 2016"
   year: 2016
   arxiv: "1606.04142"
-  themes: [foundations]
+  themes: [matrix]
 
 - title: "Proof of threshold saturation for spatially coupled sparse superposition codes"
   authors: [Jean Barbier, Mohamad Dia, Nicolas Macris]
@@ -230,3 +237,11 @@
   arxiv: "1312.1740"
   doi: "10.1088/1742-5468/2015/05/P05013"
   themes: [coding]
+
+- title: "The hard-core model on random graphs revisited"
+  authors: [Jean Barbier, Florent Krzakala, Lenka Zdeborová, Pan Zhang]
+  venue: "J. Phys.: Conf. Ser. 473, 012021"
+  year: 2013
+  arxiv: "1306.4121"
+  doi: "10.1088/1742-6596/473/1/012021"
+  themes: [optimisation]
