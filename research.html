@@ -6,7 +6,7 @@ permalink: /research/
 intro: "We use the statistical physics of disordered systems, random matrix theory and information theory to sharply describe inference and learning in high dimension. The full list of papers is on <a href=\"https://scholar.google.com/citations?user=yeE5qqIAAAAJ&hl=en\">Google Scholar</a>. Group members are highlighted."
 ---
 <section class="theme" id="deep">
-  <h2>Deep networks beyond the linear regime</h2>
+  <h2>Deep neural networks beyond the linear regime</h2>
   <p>Most exact theories of neural networks either linearize them or take a width so large that features barely move. We go beyond by studying networks trained in the practical regime where the number of samples is comparable to their number of parameters. There we characterize when and how they learn features through sharp specialization transitions.</p>
   <ul class="pubs compact">{% for pub in site.data.publications %}{% if pub.themes contains "deep" %}{% include pub.html pub=pub %}{% endif %}{% endfor %}</ul>
 </section>
