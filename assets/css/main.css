@@ -207,7 +207,7 @@ main .grant p { margin: 0; max-width: none; font-size: 0.97rem; }
 .section-intro { color: var(--muted); }
 .year-block:first-of-type { margin-top: 0; }
 .year { font-size: var(--step-1); color: var(--muted); font-variant-numeric: lining-nums; margin-bottom: 0.4rem; }
-.pubs.compact .pub { padding-block: 0.6rem; }
+.pubs.compact .pub { padding-block: 0.5rem; }
 .pubs.compact .pub-title { font-size: 1.02rem; }
 .theme .pubs { margin-top: 1.25rem; }
 

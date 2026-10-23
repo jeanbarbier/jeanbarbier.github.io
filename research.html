@@ -8,37 +8,37 @@ intro: "We use the statistical physics of disordered systems, random matrix theo
 <section class="theme" id="deep">
   <h2>Deep networks beyond the linear regime</h2>
   <p>Most exact theories of neural networks either linearise them or take a width so large that features barely move. We go beyond by studying networks trained in the practical regime where the number of samples is comparable to their number of parameters. There we characterise when and how they learn features through sharp specialisation transitions.</p>
-  <ul class="pubs compact">{% for pub in site.data.publications %}{% if pub.themes contains "deep" %}{% include pub.html pub=pub %}{% endif %}{% endfor %}</ul>
+  <ul class="pubs compact">{% for pub in site.data.publications %}{% if pub.themes contains "deep" %}{% include pub.html pub=pub title_only=true %}{% endif %}{% endfor %}</ul>
 </section>
 
 <section class="theme" id="dynamics">
   <h2>Training, fine-tuning and representations</h2>
   <p>Optimal-performance results say what is possible, not what training finds. We also study what gradient-based training does, when pre-training helps or hurts, or how noise shapes the information stored in learned representations.</p>
-  <ul class="pubs compact">{% for pub in site.data.publications %}{% if pub.themes contains "dynamics" %}{% include pub.html pub=pub %}{% endif %}{% endfor %}</ul>
+  <ul class="pubs compact">{% for pub in site.data.publications %}{% if pub.themes contains "dynamics" %}{% include pub.html pub=pub title_only=true %}{% endif %}{% endfor %}</ul>
 </section>
 
 <section class="theme" id="matrix">
   <h2>Matrix inference and random matrices</h2>
   <p>Many inference and learning problems reduce to recovering a large matrix from noisy observations. We compute their information-theoretic limits, including in the hard regime where the rank grows with the dimension or rotational invariance is lost, and design algorithms that reach them.</p>
-  <ul class="pubs compact">{% for pub in site.data.publications %}{% if pub.themes contains "matrix" %}{% include pub.html pub=pub %}{% endif %}{% endfor %}</ul>
+  <ul class="pubs compact">{% for pub in site.data.publications %}{% if pub.themes contains "matrix" %}{% include pub.html pub=pub title_only=true %}{% endif %}{% endfor %}</ul>
 </section>
 
 <section class="theme" id="foundations">
   <h2>Rigorous foundations of high-dimensional inference</h2>
   <p>Much of the statistical physics we use rests on non-rigorous methods. A long-standing line of our work turns replica predictions into theorems: adaptive interpolation methods, concentration, and rigorous analyses of approximate message passing algorithms, for estimation, generalised linear models and time series.</p>
-  <ul class="pubs compact">{% for pub in site.data.publications %}{% if pub.themes contains "foundations" %}{% include pub.html pub=pub %}{% endif %}{% endfor %}</ul>
+  <ul class="pubs compact">{% for pub in site.data.publications %}{% if pub.themes contains "foundations" %}{% include pub.html pub=pub title_only=true %}{% endif %}{% endfor %}</ul>
 </section>
 
 <section class="theme" id="coding">
   <h2>Coding and communication</h2>
   <p>Part of our earlier work is on error-correcting codes, and in particular sparse superposition codes for communication over noisy channels. Using statistical physics and then proofs of threshold saturation, we showed that these codes, with spatial coupling and approximate message-passing decoding, achieve capacity on any memoryless channel. More recently we studied structured coding matrices beyond the i.i.d. Gaussian ensemble.</p>
-  <ul class="pubs compact">{% for pub in site.data.publications %}{% if pub.themes contains "coding" %}{% include pub.html pub=pub %}{% endif %}{% endfor %}</ul>
+  <ul class="pubs compact">{% for pub in site.data.publications %}{% if pub.themes contains "coding" %}{% include pub.html pub=pub title_only=true %}{% endif %}{% endfor %}</ul>
 </section>
 
 <section class="theme" id="optimisation">
   <h2>Combinatorial optimisation</h2>
   <p>Statistical physics also describes hard combinatorial optimisation problems on random instances, such as finding a maximum independent set in a random graph. Combining rigorous large-graph asymptotics with numerics, we find that algorithms do reach the limits predicted by asymptotic theory, but can converge to them very slowly: at the sizes met in practice, local algorithms do much better than these limits suggest.</p>
-  <ul class="pubs compact">{% for pub in site.data.publications %}{% if pub.themes contains "optimisation" %}{% include pub.html pub=pub %}{% endif %}{% endfor %}</ul>
+  <ul class="pubs compact">{% for pub in site.data.publications %}{% if pub.themes contains "optimisation" %}{% include pub.html pub=pub title_only=true %}{% endif %}{% endfor %}</ul>
 </section>
 
 <section class="theme" id="wide-audience">

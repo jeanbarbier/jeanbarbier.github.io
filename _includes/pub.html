@@ -13,7 +13,7 @@
 {%- else -%}{%- assign main = "https://arxiv.org/abs/" | append: pub.arxiv -%}{%- endif -%}
 <li class="pub">
   <p class="pub-title"><a href="{{ main }}">{{ pub.title }}</a></p>
-  {%- unless include.compact %}
+  {%- unless include.compact or include.title_only %}
   <p class="pub-authors">
     {%- for a in pub.authors -%}
       {%- assign key = "|" | append: a | append: "|" -%}
@@ -21,6 +21,7 @@
     {%- endfor -%}
   </p>
   {%- endunless %}
+  {%- unless include.title_only %}
   <p class="pub-meta">
     <span class="pub-venue">{{ pub.venue }}{% unless pub.venue contains pub.year %}, {{ pub.year }}{% endunless %}</span>
     {%- if pub.highlight and include.hide_highlight != true %}<a href="{{ pub.highlight | relative_url }}">Highlight</a>{% endif %}
@@ -28,4 +29,5 @@
     {%- if pub.doi %}<a href="https://doi.org/{{ pub.doi }}">Journal</a>{% elsif pub.url %}<a href="{{ pub.url }}">Journal</a>{% endif %}
     {%- unless include.compact %}{% for x in pub.extra %}<a href="{{ x.url }}">{{ x.label }}</a>{% endfor %}{% endunless %}
   </p>
+  {%- endunless %}
 </li>
