@@ -14,7 +14,7 @@ pi:
 postdocs:
   - name: Minh-Toan Nguyen
     aliases: [Minh Toan Nguyen]
-    photo: ""
+    photo: people/minh-toan-nguyen.jpg
     summary: Information theory, random matrix theory and statistical physics for high-dimensional inference.
     bio: >-
       Engineering degree from École Polytechnique and Master's in "Mathematics of
@@ -24,7 +24,7 @@ postdocs:
       scholar: https://scholar.google.com/citations?user=O2qx968AAAAJ&hl=en
 
   - name: Mauro Pastore
-    photo: ""
+    photo: people/mauro-pastore.jpg
     summary: Feature learning in overparametrised networks, its relation to kernel methods, and the role of data structure.
     bio: >-
       PhD in theoretical physics at the University of Milan with Sergio Caracciolo.
@@ -35,7 +35,7 @@ postdocs:
       orcid: https://orcid.org/0000-0002-2771-7437
 
   - name: Brandon Livio Annesi
-    photo: ""
+    photo: people/brandon-livio-annesi.jpg
     summary: Statistical mechanics of learning, random matrix theory and high-dimensional inference.
     bio: >-
       PhD at Bocconi University (2025) with Carlo Lucibello on statistical physics of
@@ -46,7 +46,7 @@ postdocs:
 
 phd:
   - name: Rudy Skerk
-    photo: ""
+    photo: people/rudy-skerk.jpg
     summary: Statistical mechanics, information theory and random matrices for optimisation, inference and learning.
     bio: >-
       Bachelor's in physics at the University of Trieste, then the International Master
@@ -55,7 +55,7 @@ phd:
 
   - name: Ali Hussaini Umar
     aliases: [Ali Umar Hussaini, Ali Hussaini]
-    photo: ""
+    photo: people/ali-hussaini-umar.jpg
     summary: Understanding deep learning through its representations and weights.
     bio: >-
       Bachelor's in mathematics at Yobe State University, Master's at AIMS Ghana and the
@@ -64,7 +64,7 @@ phd:
 
   - name: Cristofer Erazo
     aliases: [Cristopher Erazo]
-    photo: ""
+    photo: people/cristofer-erazo.jpg
     summary: Learning dynamics and representations in modern networks, in particular in-context learning in transformers.
     bio: >-
       Bachelor's in physics at Escuela Politécnica Nacional (Ecuador) and the ICTP
@@ -72,7 +72,7 @@ phd:
       Shafi Prize (2023–24). PhD student in Theoretical and Scientific Data Science at SISSA.
 
   - name: Luca Camagna
-    photo: ""
+    photo: people/luca-camagna.jpg
     summary: Statistical physics and random matrix theory of AI architectures, with a focus on information-theoretic limits.
     bio: >-
       International Master in Physics of Complex Systems (Trieste, Turin, Paris). PhD
