@@ -222,12 +222,12 @@
   url: "https://proceedings.neurips.cc/paper/2016/hash/621bf66ddb7c962aa0d22ac97d69b793-Abstract.html"
   themes: [matrix]
 
-- title: "Proof of threshold saturation for spatially coupled sparse superposition codes"
+- title: "Threshold saturation of spatially coupled sparse superposition codes for all memoryless channels"
   authors: [Jean Barbier, Mohamad Dia, Nicolas Macris]
-  venue: "ISIT 2016"
+  venue: "ITW 2016, 76–80"
   year: 2016
-  arxiv: "1603.01817"
-  doi: "10.1109/ISIT.2016.7541484"
+  arxiv: "1603.04591"
+  doi: "10.1109/ITW.2016.7606799"
   themes: [coding]
 
 - title: "Approximate message-passing with spatially coupled structured operators, with applications to compressed sensing and sparse superposition codes"
