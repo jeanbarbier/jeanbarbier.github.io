@@ -13,5 +13,8 @@
 </main>
 {% include footer.html %}
 <script src="{{ '/assets/js/theme.js' | relative_url }}" defer></script>
+{% if jekyll.environment == "production" %}
+<script data-goatcounter="https://jeanbarbier.goatcounter.com/count" async src="https://gc.zgo.at/count.js"></script>
+{% endif %}
 </body>
 </html>
