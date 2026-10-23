@@ -171,6 +171,7 @@ main p, main .news, main .pubs, main .plain, main dl, main blockquote, main .not
 main .intro p { max-width: none; }
 .page-title { font-size: var(--step-3); margin-bottom: 0.6rem; }
 .page-intro { color: var(--muted); max-width: 38rem; margin-bottom: 2.25rem; }
+.page-intro:has(+ .page-intro) { margin-bottom: 0.6rem; }
 .block { margin-top: 3rem; }
 .block:first-child { margin-top: 0; }
 
