@@ -1,0 +1,15 @@
+# Gallery photos, in display order. Files in assets/img/gallery/: NN.jpg (large) and NN-small.jpg (grid).
+# caption is optional.
+- { file: "01", alt: "Group members in a living room, Trieste", w: 640, h: 464, caption: "" }
+- { file: "02", alt: "Group members at a poster session", w: 640, h: 289, caption: "" }
+- { file: "03", alt: "Group members at sunset by the sea", w: 640, h: 278, caption: "" }
+- { file: "04", alt: "Group members on a terrace overlooking the sea", w: 480, h: 640, caption: "" }
+- { file: "05", alt: "Three skiers on a snowy mountain", w: 640, h: 463, caption: "" }
+- { file: "06", alt: "Skiing selfie with mountains behind", w: 640, h: 464, caption: "" }
+- { file: "07", alt: "Two group members in front of snowy mountains", w: 640, h: 463, caption: "" }
+- { file: "08", alt: "A table of shared dishes on a terrace above the city", w: 640, h: 295, caption: "" }
+- { file: "09", alt: "Shadows of the group on a sunlit wall", w: 640, h: 480, caption: "" }
+- { file: "10", alt: "Blackboards full of equations", w: 640, h: 436, caption: "" }
+- { file: "11", alt: "View over the Gulf of Trieste", w: 640, h: 436, caption: "" }
+- { file: "12", alt: "Sunset over the sea", w: 640, h: 464, caption: "" }
+- { file: "13", alt: "Snow-covered mountain range under a blue sky", w: 640, h: 463, caption: "" }

@@ -1,16 +1,14 @@
 ---
 layout: default
-title: About
-heading: About
-permalink: /about/
+title: Miscellaneous
+heading: Miscellaneous
+permalink: /misc/
 ---
-ICTP is a [UNESCO](https://www.unesco.org/en) institute whose mission combines research with teaching and scientific capacity building for the developing world. It is a special place to do research and have an impact beyond it.
+Outside science I like rock climbing, skiing and freediving. Some photos of the group are in the [gallery]({{ '/gallery/' | relative_url }}).
 
-ICTP and SISSA are in Trieste, a city on the Adriatic with a long scientific tradition. ICTP sits by the sea, below Miramare castle: going for a swim at lunchtime is easy.
+## Entropie music
 
-![Aerial view of the ICTP campus and Miramare on the Gulf of Trieste]({{ '/assets/img/ictp-miramare.jpg' | relative_url }}){: .wide-img width="1024" height="682" loading="lazy"}
-
-Outside science I make electronic music (mine and my friends' is on [Entropie Collectif](https://soundcloud.com/entropiecollectif)), and I like rock climbing, skiing and freediving.
+I make electronic music with friends in [Entropie Collectif](https://soundcloud.com/entropiecollectif). My latest mix: [Entropie 10: RSB + FicusTabasco](https://soundcloud.com/entropiecollectif/entropie-10-rsb-ficustabasco-1).
 
 ## Albums I've been listening to
 
