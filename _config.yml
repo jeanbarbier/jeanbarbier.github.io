@@ -15,7 +15,7 @@ email_display: jbarbier(at)ictp(dot)it
 # number (it appears on the grant agreement / ERC portal).
 erc:
   acronym: CHORAL
-  grant_number: ""   # TODO: e.g. "101039794"
+  grant_number: "101039794"
 
 nav:
   - { title: Research, url: /research/ }
