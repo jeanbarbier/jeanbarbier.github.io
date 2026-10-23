@@ -3,6 +3,14 @@
 #         extra (list of {label, url}), highlight (URL of a highlight article on this site),
 #         themes (deep | matrix | dynamics | foundations), selected (shown on home page)
 
+- title: "Mesoscopic learning dynamics of extensive-width neural networks"
+  authors: [Shu Zhou, Jean Barbier, Sebastian Goldt]
+  venue: "Preprint"
+  year: 2026
+  arxiv: "2610.23779"
+  themes: [dynamics]
+  selected: true
+
 - title: "Sharp feature-learning transitions and Bayes-optimal neural scaling laws in extensive-width networks"
   authors: [Minh-Toan Nguyen, Jean Barbier]
   venue: "NeurIPS 2026"
