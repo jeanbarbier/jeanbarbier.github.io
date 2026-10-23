@@ -295,7 +295,7 @@ cite { font-style: normal; }
   .header-row { flex-direction: column; align-items: flex-start; }
   .site-nav { width: 100%; justify-content: space-between; }
   .intro { grid-template-columns: 1fr; }
-  .portrait { width: 9rem; }
+  .portrait { width: 11rem; margin-inline: auto; }
   .news li { grid-template-columns: 1fr; gap: 0.1rem; }
   .join dl { grid-template-columns: 1fr; gap: 0.2rem; }
   .join dd { margin-bottom: 0.8rem; }
