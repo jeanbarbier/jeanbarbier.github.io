@@ -285,7 +285,7 @@ cite { font-style: normal; }
 .site-footer { border-top: 1px solid var(--rule); padding-block: 2.25rem 3rem; font-size: var(--step--1); color: var(--muted); }
 .site-footer .wrap { max-width: var(--wide); }
 .footer-grid { display: grid; grid-template-columns: 1.4fr 1fr; gap: 2rem; }
-.funding img { width: 168px; margin-bottom: 0.75rem; background: #fff; padding: 6px; border-radius: 4px; }
+.funding img { width: 252px; margin-bottom: 0.75rem; background: #fff; padding: 6px; border-radius: 4px; }
 .site-footer p { margin: 0 0 0.6rem; }
 .updated { margin-top: 1rem !important; }
 
