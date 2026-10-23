@@ -12,6 +12,14 @@ ICTP and SISSA are in Trieste, a city on the Adriatic with a long scientific tra
 
 Outside science I make electronic music (mine and my friends' is on [Entropie Collectif](https://soundcloud.com/entropiecollectif)), and I like rock climbing, skiing and freediving.
 
+## Albums I've been listening to
+
+<ul class="albums">
+{%- for al in site.data.albums %}
+  <li><span class="album-month">{{ al.month | append: "-01" | date: "%B %Y" }}</span><span class="album-name"><a href="{{ al.url }}">{{ al.title }}</a> by {{ al.artist }}{% if al.note and al.note != "" %}. {{ al.note }}{% endif %}</span></li>
+{%- endfor %}
+</ul>
+
 ## Quotes I like
 
 > An expert is a person who has found out by his own painful experience all the mistakes that one can make in a very narrow field.

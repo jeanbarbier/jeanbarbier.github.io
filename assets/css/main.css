@@ -273,6 +273,10 @@ main .grant p { margin: 0; max-width: none; font-size: 0.97rem; }
 figcaption { color: var(--muted); font-size: var(--step--1); }
 
 /* ---------- About ---------- */
+.albums li { display: grid; grid-template-columns: 8.5rem 1fr; gap: 1rem; padding-block: 0.5rem; border-top: 1px solid var(--rule); }
+.albums li:last-child { border-bottom: 1px solid var(--rule); }
+.album-month { color: var(--muted); font-size: var(--step--1); padding-top: 0.15rem; }
+@media (max-width: 40rem) { .albums li { grid-template-columns: 1fr; gap: 0.1rem; } }
 main h2 { margin-top: 2.75rem; }
 main section h2, main .block h2, main .theme h2 { margin-top: 0; }
 .wide-img { border-radius: 6px; margin: 1.75rem 0; }
