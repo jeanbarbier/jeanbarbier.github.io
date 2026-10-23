@@ -1,7 +1,7 @@
 # Publications, newest first. Group members are bolded automatically (from _data/people.yml).
 # Fields: title, authors (list), venue, year, arxiv (id), doi, url (journal/proceedings page),
 #         extra (list of {label, url}), highlight (URL of a highlight article on this site),
-#         themes (deep | matrix | dynamics | foundations), selected (shown on home page)
+#         themes (deep | matrix | dynamics | foundations | coding), selected (shown on home page)
 
 - title: "Mesoscopic learning dynamics of extensive-width neural networks"
   authors: [Shu Zhou, Jean Barbier, Sebastian Goldt]
@@ -62,7 +62,7 @@
   year: 2026
   arxiv: "2501.13625"
   doi: "10.1109/TIT.2026.3665948"
-  themes: [matrix]
+  themes: [foundations]
 
 - title: "Generalization performance of narrow one-hidden layer networks in the teacher-student setting"
   authors: [Rodrigo Pérez Ortiz, Gibbs Nwemadji, Jean Barbier, Federica Gerace, Alessandro Ingrosso, Clarissa Lauditi, Enrico M. Malatesta]
@@ -135,6 +135,14 @@
   doi: "10.1103/PhysRevE.106.024136"
   themes: [matrix]
 
+- title: "Sparse superposition codes under VAMP decoding with generic rotational invariant coding matrices"
+  authors: [TianQi Hou, YuHao Liu, Teng Fu, Jean Barbier]
+  venue: "ISIT 2022"
+  year: 2022
+  arxiv: "2202.04541"
+  doi: "10.1109/ISIT50566.2022.9834843"
+  themes: [coding]
+
 - title: "Overlap matrix concentration in optimal Bayesian inference"
   authors: [Jean Barbier]
   venue: "Information and Inference: A Journal of the IMA 10"
@@ -168,6 +176,14 @@
   doi: "10.1007/s00440-018-0879-0"
   themes: [foundations]
 
+- title: "Universal sparse superposition codes with spatial coupling and GAMP decoding"
+  authors: [Jean Barbier, Mohamad Dia, Nicolas Macris]
+  venue: "IEEE Transactions on Information Theory 65 (9), 5618–5642"
+  year: 2019
+  arxiv: "1707.04203"
+  doi: "10.1109/TIT.2019.2919519"
+  themes: [coding]
+
 - title: "The committee machine: computational to statistical gaps in learning a two-layers neural network"
   authors: [Benjamin Aubin, Antoine Maillard, Jean Barbier, Florent Krzakala, Nicolas Macris, Lenka Zdeborová]
   venue: "NeurIPS 2018; J. Stat. Mech. (2019) 124023"
@@ -182,7 +198,7 @@
   year: 2017
   arxiv: "1503.08040"
   doi: "10.1109/TIT.2017.2713833"
-  themes: [foundations]
+  themes: [coding]
 
 - title: "Mutual information for symmetric rank-one matrix estimation: a proof of the replica formula"
   authors: [Jean Barbier, Mohamad Dia, Nicolas Macris, Florent Krzakala, Thibault Lesieur, Lenka Zdeborová]
@@ -190,3 +206,19 @@
   year: 2016
   arxiv: "1606.04142"
   themes: [foundations]
+
+- title: "Proof of threshold saturation for spatially coupled sparse superposition codes"
+  authors: [Jean Barbier, Mohamad Dia, Nicolas Macris]
+  venue: "ISIT 2016"
+  year: 2016
+  arxiv: "1603.01817"
+  doi: "10.1109/ISIT.2016.7541484"
+  themes: [coding]
+
+- title: "Approximate message-passing with spatially coupled structured operators, with applications to compressed sensing and sparse superposition codes"
+  authors: [Jean Barbier, Christophe Schülke, Florent Krzakala]
+  venue: "J. Stat. Mech. (2015) P05013"
+  year: 2015
+  arxiv: "1312.1740"
+  doi: "10.1088/1742-5468/2015/05/P05013"
+  themes: [coding]

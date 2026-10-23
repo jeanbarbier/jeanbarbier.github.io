@@ -90,4 +90,4 @@ alumni:
   - { name: Rodrigo Pérez Ortiz, aliases: [Rodrigo Perez Ortiz], role: Visitor, now: "PhD student, University of Bologna" }
   - { name: Koki Okajima, role: Visiting PhD student, now: "Professor, Kyoto University" }
   - { name: Sébastien Pierre, role: Visitor, now: "Student, École Polytechnique" }
-  - { name: Tianqi Hou, role: Visiting PhD student, now: "Huawei" }
+  - { name: Tianqi Hou, aliases: [TianQi Hou], role: Visiting PhD student, now: "Huawei" }

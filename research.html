@@ -25,8 +25,14 @@ intro: "We use the statistical physics of disordered systems (replica and cavity
 
 <section class="theme" id="foundations">
   <h2>Rigorous foundations</h2>
-  <p>Much of the statistical physics we use rests on non-rigorous methods. A long-standing line of our work turns replica predictions into theorems: interpolation and adaptive interpolation methods, concentration of overlaps, and the optimality of approximate message passing, for estimation, generalised linear models and coding.</p>
+  <p>Much of the statistical physics we use rests on non-rigorous methods. A long-standing line of our work turns replica predictions into theorems: interpolation and adaptive interpolation methods, concentration of overlaps, and the optimality of approximate message passing, for estimation, generalised linear models and time series.</p>
   <ul class="pubs compact">{% for pub in site.data.publications %}{% if pub.themes contains "foundations" %}{% include pub.html pub=pub compact=true %}{% endif %}{% endfor %}</ul>
+</section>
+
+<section class="theme" id="coding">
+  <h2>Coding and communication</h2>
+  <p>Part of our earlier work is on error-correcting codes, and in particular sparse superposition codes for communication over noisy channels. Using statistical physics and then proofs of threshold saturation, we showed that these codes, with spatial coupling and approximate message-passing decoding, achieve capacity on the Gaussian channel and, in a universal version, on any memoryless channel. More recently we studied structured coding matrices beyond the i.i.d. Gaussian ensemble.</p>
+  <ul class="pubs compact">{% for pub in site.data.publications %}{% if pub.themes contains "coding" %}{% include pub.html pub=pub compact=true %}{% endif %}{% endfor %}</ul>
 </section>
 
 <section class="theme" id="wide-audience">
