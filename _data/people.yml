@@ -1,0 +1,94 @@
+# Group members. Each person edits their own entry.
+# photo: path inside assets/img/, e.g. people/rudy-skerk.jpg (square, >= 300 px). Leave empty for initials.
+# aliases: other spellings used as author names in papers (used to bold group members).
+# Lines marked CHECK are uncertain: the old personal site and the old group site disagreed.
+
+pi:
+  name: Jean Barbier
+  role: Principal investigator
+  photo: jean.jpg
+  links:
+    scholar: https://scholar.google.com/citations?user=yeE5qqIAAAAJ&hl=en
+    orcid: https://orcid.org/0000-0002-2652-6727
+    cv: /docs/cv.pdf
+
+postdocs:
+  - name: Minh-Toan Nguyen
+    aliases: [Minh Toan Nguyen]
+    photo: ""
+    summary: Information theory, random matrix theory and statistical physics for high-dimensional inference.
+    bio: >-
+      Engineering degree from École Polytechnique and Master's in "Mathematics of
+      Randomness" at Paris-Saclay (2020). PhD at Université Grenoble Alpes with
+      Romain Couillet, with a thesis on the replica method and asymptotic equivalence.
+    links:
+      scholar: https://scholar.google.com/citations?user=O2qx968AAAAJ&hl=en
+
+  - name: Mauro Pastore
+    photo: ""
+    summary: Feature learning in overparametrised networks, its relation to kernel methods, and the role of data structure.
+    bio: >-
+      PhD in theoretical physics at the University of Milan with Sergio Caracciolo.
+      Postdocs in Paris at LPTMS with Silvio Franz (Simons collaboration on the glass
+      problem) and at LPENS with Simona Cocco and Rémi Monasson, on inference in biology.
+    links:
+      scholar: https://scholar.google.com/citations?user=cNCsqysAAAAJ
+      orcid: https://orcid.org/0000-0002-2771-7437
+
+  - name: Brandon Livio Annesi
+    photo: ""
+    summary: Statistical mechanics of learning, random matrix theory and high-dimensional inference.
+    bio: >-
+      PhD at Bocconi University (2025) with Carlo Lucibello on statistical physics of
+      non-convex neural network models, then a year at Sapienza University of Rome with
+      Chiara Cammarota on random-matrix approaches to learning.
+    links:
+      scholar: https://scholar.google.com/citations?user=VZ4LVTAAAAAJ&hl=en
+
+phd:
+  - name: Rudy Skerk
+    photo: ""
+    summary: Statistical mechanics, information theory and random matrices for optimisation, inference and learning.
+    bio: >-
+      Bachelor's in physics at the University of Trieste, then the International Master
+      in Physics of Complex Systems (Trieste, Turin, Paris). PhD student in Theoretical
+      and Scientific Data Science at SISSA.
+
+  - name: Ali Hussaini Umar        # CHECK spelling: "Ali Umar Hussaini" on the old group site
+    aliases: [Ali Umar Hussaini, Ali Hussaini]
+    photo: ""
+    summary: Understanding deep learning through its representations and weights.
+    bio: >-
+      Bachelor's in mathematics at Yobe State University, Master's at AIMS Ghana and the
+      ICTP diploma in Quantitative Life Sciences. PhD student in Theoretical and
+      Scientific Data Science at SISSA.
+
+  - name: Cristopher Erazo         # CHECK spelling: "Cristofer" on the old personal site
+    aliases: [Cristofer Erazo]
+    photo: ""
+    summary: Learning dynamics and representations in modern networks, in particular in-context learning in transformers.
+    bio: >-
+      Bachelor's in physics at Escuela Politécnica Nacional (Ecuador) and the ICTP
+      diploma in Quantitative Life Sciences, where he received the Qaisar and Monika
+      Shafi Prize (2023–24). PhD student in Theoretical and Scientific Data Science at SISSA.
+
+  - name: Luca Camagna
+    photo: ""
+    summary: Statistical physics and random matrix theory of AI architectures, with a focus on information-theoretic limits.
+    bio: >-
+      International Master in Physics of Complex Systems (Trieste, Turin, Paris). PhD
+      student in Theoretical and Scientific Data Science at SISSA.
+
+alumni:
+  - { name: Gibbs Nwemadji, role: PhD student, now: "Postdoc, Yale University" }   # CHECK: still listed as current PhD student on the group site
+  - { name: Francesco Camilli, role: Postdoc, now: "Professor, University of Bologna" }
+  - { name: Daria Tieplova, role: Postdoc, now: "Postdoc, Aarhus University" }
+  - { name: Anas Rahman, aliases: [Anas A. Rahman], role: Postdoc, now: "Postdoc, HKUST" }
+  - { name: Manuel Sáenz, role: Postdoc, now: "Professor, University of San Andrés" }   # CHECK: "University of Nottingham" on the group site
+  - { name: Eleonora Bergamin, role: Master's student, now: "PhD student, SISSA" }
+  - { name: Yizhou Xu, role: Master's student, now: "PhD student, EPFL" }   # CHECK: "visitor" on the group site
+  - { name: Rodrigo Pérez Ortiz, aliases: [Rodrigo Perez Ortiz], role: Master's student, now: "PhD student, University of Bologna" }   # CHECK: "visitor" on the group site
+  - { name: Shu Zhou, role: Student, now: "Postdoc, SISSA" }   # CHECK: only on the group site
+  - { name: Koki Okajima, role: Visiting PhD student, now: "Professor, Kyoto University" }   # CHECK: "student, University of Tokyo" on the group site
+  - { name: Sébastien Pierre, role: Visitor, now: "Student, École Polytechnique" }   # CHECK: only on the group site
+  - { name: Tianqi Hou, role: Visiting PhD student, now: "Huawei" }

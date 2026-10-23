@@ -1,0 +1,25 @@
+{%- assign p = include.person -%}
+{%- assign parts = p.name | split: " " -%}
+<li class="person">
+  {%- if p.photo and p.photo != "" %}
+  <img class="avatar" src="{{ '/assets/img/' | append: p.photo | relative_url }}" alt="{{ p.name }}" width="88" height="88" loading="lazy">
+  {%- else %}
+  <span class="avatar avatar-initials" aria-hidden="true">{{ parts.first | slice: 0 }}{{ parts.last | slice: 0 }}</span>
+  {%- endif %}
+  <div class="person-body">
+    <h3 class="person-name">{{ p.name }}</h3>
+    {%- if include.role %}<p class="person-role">{{ include.role }}</p>{% endif %}
+    {%- if p.summary %}<p class="person-summary">{{ p.summary }}</p>{% endif %}
+    {%- if p.bio %}
+    <details class="person-bio"><summary>Background</summary><p>{{ p.bio }}</p></details>
+    {%- endif %}
+    {%- if p.links %}
+    <p class="person-links">
+      {%- if p.links.scholar %}<a href="{{ p.links.scholar }}">Google Scholar</a>{% endif %}
+      {%- if p.links.orcid %}<a href="{{ p.links.orcid }}">ORCID</a>{% endif %}
+      {%- if p.links.web %}<a href="{{ p.links.web }}">Website</a>{% endif %}
+      {%- if p.links.cv %}<a href="{{ p.links.cv | relative_url }}">CV</a>{% endif %}
+    </p>
+    {%- endif %}
+  </div>
+</li>

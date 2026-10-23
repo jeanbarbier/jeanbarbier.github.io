@@ -1,0 +1,111 @@
+# Publications, newest first. Group members are bolded automatically (from _data/people.yml).
+# Fields: title, authors (list), venue, year, arxiv (id), doi, url (journal/proceedings page),
+#         extra (list of {label, url}), themes (deep | matrix | dynamics), selected (shown on home page)
+
+- title: "Sharp feature-learning transitions and Bayes-optimal neural scaling laws in extensive-width networks"
+  authors: [Minh-Toan Nguyen, Jean Barbier]
+  venue: "NeurIPS 2026"
+  year: 2026
+  arxiv: "2605.10395"
+  themes: [deep]
+  selected: true
+
+- title: "When pre-training hurts LoRA fine-tuning: a dynamical analysis via single-index models"
+  authors: [Gibbs Nwemadji, Bruno Loureiro, Jean Barbier]
+  venue: "Preprint"
+  year: 2026
+  arxiv: "2602.02855"
+  themes: [dynamics]
+
+- title: "Statistical physics of deep learning: optimal learning of a multi-layer perceptron near interpolation"
+  authors: [Jean Barbier, Francesco Camilli, Minh-Toan Nguyen, Mauro Pastore, Rudy Skerk]
+  venue: "Physical Review X 16"
+  year: 2026
+  arxiv: "2510.24616"
+  doi: "10.1103/56sb-pdh6"
+  extra:
+    - { label: "ICTP news", url: "https://www.ictp.it/news/2026/7/how-ai-learns" }
+    - { label: "ANSA (in Italian)", url: "https://www.ansa.it/sito/notizie/cronaca/2026/09/02/ansasvelato-come-lintelligenza-artificiale-impari-dai-dati_2a99f5a4-da6e-41c7-a414-f6c6431711ee.html" }
+  themes: [deep]
+  selected: true
+
+- title: "The effect of label noise on the information content of neural representations"
+  authors: [Ali Hussaini Umar, Franky Kevin Nando Tezoh, Jean Barbier, Santiago Acevedo, Alessandro Laio]
+  venue: "Frontiers in Physics"
+  year: 2026
+  arxiv: "2510.06401"
+  doi: "10.3389/fphy.2026.1717253"
+  themes: [dynamics]
+
+- title: "A multiscale cavity method for sublinear-rank symmetric matrix factorization"
+  authors: [Jean Barbier, Justin Ko, Anas A. Rahman]
+  venue: "Mathematical Statistics and Learning"
+  year: 2026
+  arxiv: "2403.07189"
+  doi: "10.4171/msl/57"
+  themes: [matrix]
+
+- title: "Information-theoretic limits and approximate message-passing for high-dimensional time series"
+  authors: [Daria Tieplova, Samriddha Lahiry, Jean Barbier]
+  venue: "IEEE Transactions on Information Theory; ISIT 2025"
+  year: 2026
+  arxiv: "2501.13625"
+  doi: "10.1109/TIT.2026.3665948"
+  themes: [matrix]
+
+- title: "Generalization performance of narrow one-hidden layer networks in the teacher-student setting"
+  authors: [Rodrigo Pérez Ortiz, Gibbs Nwemadji, Jean Barbier, Federica Gerace, Alessandro Ingrosso, Clarissa Lauditi, Enrico M. Malatesta]
+  venue: "Journal of Statistical Mechanics: Theory and Experiment"
+  year: 2025
+  arxiv: "2507.00629"
+  themes: [deep]
+
+- title: "Information-theoretic reduction of deep neural networks to linear models in the overparametrized proportional regime"
+  authors: [Francesco Camilli, Daria Tieplova, Eleonora Bergamin, Jean Barbier]
+  venue: "COLT 2025"
+  year: 2025
+  arxiv: "2505.03577"
+  themes: [deep]
+
+- title: "Phase diagram of extensive-rank symmetric matrix denoising beyond rotational invariance"
+  authors: [Jean Barbier, Francesco Camilli, Justin Ko, Koki Okajima]
+  venue: "Physical Review X 15, 021085"
+  year: 2025
+  doi: "10.1103/PhysRevX.15.021085"
+  themes: [matrix]
+  selected: true
+
+- title: "Information limits and Thouless-Anderson-Palmer equations for spiked matrix models with structured noise"
+  authors: [Jean Barbier, Francesco Camilli, Marco Mondelli, Yizhou Xu]
+  venue: "Physical Review Research 7, 013081"
+  year: 2025
+  doi: "10.1103/PhysRevResearch.7.013081"
+  themes: [matrix]
+
+- title: "Fundamental limits of overparametrized shallow neural networks for supervised learning"
+  authors: [Francesco Camilli, Daria Tieplova, Jean Barbier]
+  venue: "Bollettino dell'Unione Matematica Italiana"
+  year: 2025
+  arxiv: "2307.05635"
+  doi: "10.1007/s40574-025-00506-2"
+  extra:
+    - { label: "Talk by F. Camilli", url: "https://www.youtube.com/watch?v=swzvIPapNhQ" }
+  themes: [deep]
+
+- title: "Matrix inference in growing rank regimes"
+  authors: [Farzad Pourkamali, Jean Barbier, Nicolas Macris]
+  venue: "IEEE Transactions on Information Theory"
+  year: 2024
+  arxiv: "2306.01412"
+  url: "https://ieeexplore.ieee.org/document/10588959"
+  themes: [matrix]
+
+- title: "Fundamental limits in structured principal component analysis and how to reach them"
+  authors: [Jean Barbier, Francesco Camilli, Marco Mondelli, Manuel Sáenz]
+  venue: "PNAS 120 (30), e2302028120"
+  year: 2023
+  doi: "10.1073/pnas.2302028120"
+  extra:
+    - { label: "Talk", url: "https://www.birs.ca/events/2024/5-day-workshops/24w5280/videos/watch/202403150909-Barbier.html" }
+  themes: [matrix]
+  selected: true

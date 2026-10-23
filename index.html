@@ -1,0 +1,41 @@
+---
+layout: default
+title: Jean Barbier
+---
+<section class="intro">
+  <img class="portrait" src="{{ '/assets/img/jean.jpg' | relative_url }}" alt="Jean Barbier in front of a blackboard" width="240" height="270">
+  <div class="intro-text">
+    <p>I am a Research Scientist (tenured Associate Professor) at the <a href="https://www.ictp.it/">Abdus Salam International Centre for Theoretical Physics</a> (ICTP) in Trieste, in the <a href="https://www.ictp.it/qls">Quantitative Life Sciences</a> and <a href="https://www.ictp.it/math">Mathematics</a> sections, and a member of the <a href="https://datascience.sissa.it/">Theoretical and Scientific Data Science group</a> at SISSA.</p>
+    <p>With <a href="{{ '/group/' | relative_url }}">my group</a> I study learning in neural networks using the statistical physics of disordered systems, random matrix theory and information theory. We look for sharp answers: how much data a model needs, which phase transitions it goes through as it learns, and how close efficient algorithms come to optimal performance.</p>
+    <p>Before ICTP I did my PhD at ENS Paris with <a href="https://florentkrzakala.com">Florent Krzakala</a> and a postdoc at EPFL with <a href="https://people.epfl.ch/nicolas.macris">Nicolas Macris</a>.</p>
+    <ul class="link-row">
+      <li><span class="email">{{ site.email_display }}</span></li>
+      <li><a href="{{ '/docs/cv.pdf' | relative_url }}">CV</a></li>
+      <li><a href="https://scholar.google.com/citations?user=yeE5qqIAAAAJ&hl=en">Google Scholar</a></li>
+      <li><a href="https://orcid.org/0000-0002-2652-6727">ORCID</a></li>
+      <li><a href="https://github.com/jeanbarbier">GitHub</a></li>
+    </ul>
+  </div>
+</section>
+
+<section class="block">
+  <h2>News</h2>
+  <ul class="news">
+    {%- for item in site.data.news limit: 5 %}
+    <li><span class="news-date">{{ item.date | append: "-01" | date: "%b %Y" }}</span><span class="news-text">{{ item.text | markdownify | remove: "<p>" | remove: "</p>" | strip }}</span></li>
+    {%- endfor %}
+  </ul>
+</section>
+
+<section class="block">
+  <h2>Selected papers</h2>
+  <ul class="pubs">
+    {%- for pub in site.data.publications %}{% if pub.selected %}{% include pub.html pub=pub %}{% endif %}{% endfor %}
+  </ul>
+  <p class="more"><a href="{{ '/publications/' | relative_url }}">All publications</a></p>
+</section>
+
+<section class="block">
+  <h2>Editorial work</h2>
+  <p>I serve on the editorial boards of <a href="https://academic.oup.com/imaiai/pages/editorial_board">Information and Inference: a Journal of the IMA</a>, <a href="https://jmlr.org/tmlr/">Transactions on Machine Learning Research</a> and <a href="https://www.intlpress.com/site/pub/pages/journals/items/atmp/_home/_main/index.php">Advances in Theoretical and Mathematical Physics</a>.</p>
+</section>

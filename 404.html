@@ -1,0 +1,17 @@
+---
+layout: default
+title: Page not found
+permalink: /404.html
+sitemap: false
+---
+<script>
+  // The site used to live under /jeanbarbier/. Send old links (pages and PDFs) to their new address.
+  (function () {
+    var p = window.location.pathname;
+    if (p.indexOf('/jeanbarbier/') === 0) {
+      window.location.replace(p.slice('/jeanbarbier'.length) + window.location.search + window.location.hash);
+    }
+  })();
+</script>
+<h1 class="page-title">Page not found</h1>
+<p>This page does not exist. Go to the <a href="{{ '/' | relative_url }}">home page</a> or check the <a href="{{ '/publications/' | relative_url }}">publications</a>.</p>

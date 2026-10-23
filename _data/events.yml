@@ -1,0 +1,37 @@
+# Events the group organises. Newest first. "end" decides whether an event is upcoming or past.
+# CHECK: add the 2027 ICTP AI year activities here once they are publicly announced.
+- name: "ROC(K)IN' AI: Roccella Conference on Inference and AI (3rd edition)"
+  dates: "31 August – 4 September 2026"
+  end: 2026-09-04
+  place: "Roccella Jonica, Calabria, Italy"
+  url: https://sites.google.com/view/rockinai3/
+- name: "Youth in High Dimensions (7th edition)"
+  dates: "20–23 July 2026"
+  end: 2026-07-23
+  place: "ICTP, Trieste"
+  url: https://indico.ictp.it/event/11153
+- name: "ROC(K)IN' AI (2nd edition)"
+  dates: "1–5 September 2025"
+  end: 2025-09-05
+  place: "Roccella Jonica, Calabria, Italy"
+  url: https://sites.google.com/view/rockinai2025/
+- name: "Youth in High Dimensions (6th edition)"
+  dates: "3–10 July 2025"
+  end: 2025-07-10
+  place: "ICTP, Trieste"
+  url: https://indico.ictp.it/event/10849
+- name: "ROC(K)IN' AI (1st edition)"
+  dates: "2–7 September 2024"
+  end: 2024-09-07
+  place: "Roccella Jonica, Calabria, Italy"
+  url: https://sites.google.com/view/rockin-ai
+- name: "Youth in High Dimensions (5th edition)"
+  dates: "21–24 May 2024"
+  end: 2024-05-24
+  place: "ICTP, Trieste"
+  url: https://indico.ictp.it/event/10478
+- name: "Youth in High Dimensions (4th edition)"
+  dates: "29 May – 2 June 2023"
+  end: 2023-06-02
+  place: "ICTP, Trieste"
+  url: https://indico.ictp.it/event/10175

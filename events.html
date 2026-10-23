@@ -1,0 +1,23 @@
+---
+layout: default
+title: Events
+heading: Events
+permalink: /events/
+intro: "Meetings we organise. Youth in High Dimensions showcases young researchers working on high-dimensional statistics, inference and machine learning; ROC(K)IN' AI gathers people working on inference and AI in Calabria."
+---
+{%- assign now = site.time | date: "%Y-%m-%d" -%}
+{%- assign upcoming = "" | split: "" -%}{%- assign past = "" | split: "" -%}
+{%- for e in site.data.events -%}
+  {%- assign end = e.end | date: "%Y-%m-%d" -%}
+  {%- if end >= now -%}{%- assign upcoming = upcoming | push: e -%}{%- else -%}{%- assign past = past | push: e -%}{%- endif -%}
+{%- endfor -%}
+{%- if upcoming.size > 0 %}
+<section class="block">
+  <h2>Upcoming</h2>
+  <ul class="events">{% for e in upcoming %}<li><p class="event-name"><a href="{{ e.url }}">{{ e.name }}</a></p><p class="event-meta">{{ e.dates }}, {{ e.place }}</p></li>{% endfor %}</ul>
+</section>
+{%- endif %}
+<section class="block">
+  <h2>Past</h2>
+  <ul class="events">{% for e in past %}<li><p class="event-name"><a href="{{ e.url }}">{{ e.name }}</a></p><p class="event-meta">{{ e.dates }}, {{ e.place }}</p></li>{% endfor %}</ul>
+</section>

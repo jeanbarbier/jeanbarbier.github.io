@@ -1,0 +1,23 @@
+<header class="site-header">
+  <div class="wrap header-row">
+    <div class="brand">
+      <a class="site-name" href="{{ '/' | relative_url }}">{{ site.title }}</a>
+      <p class="site-tagline">{{ site.tagline }}</p>
+    </div>
+    <nav class="site-nav" aria-label="Main">
+      <ul>
+        {%- for item in site.nav %}
+        {%- assign current = false %}
+        {%- if page.url == item.url or page.url contains item.url %}{% assign current = true %}{% endif %}
+        <li><a href="{{ item.url | relative_url }}"{% if current %} aria-current="page"{% endif %}>{{ item.title }}</a></li>
+        {%- endfor %}
+      </ul>
+      <button class="theme-toggle" type="button" aria-label="Switch between light and dark theme" title="Light / dark">
+        <svg viewBox="0 0 20 20" aria-hidden="true" focusable="false"><circle cx="10" cy="10" r="7.25" fill="none" stroke="currentColor" stroke-width="1.5"/><path d="M10 2.75a7.25 7.25 0 0 1 0 14.5z" fill="currentColor"/></svg>
+      </button>
+    </nav>
+  </div>
+  <div class="wrap curve-wrap" title="Spiked Wigner model: squared overlap between the top eigenvector and the hidden signal, zero below the BBP transition and 1 − 1/λ² above it.">
+    {% include phase-curve.html %}
+  </div>
+</header>

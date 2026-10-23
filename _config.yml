@@ -1,5 +1,45 @@
 title: Jean Barbier
-logo: /assets/img/UNADJUSTEDNONRAW_thumb_5747.jpg
-description: Mathematical physics of information processing systems
-theme: jekyll-theme-minimal
-google_analytics: true
+tagline: Statistical physics of learning
+description: >-
+  Jean Barbier and the Barbier group at ICTP Trieste study learning in neural
+  networks with statistical physics, random matrix theory and information theory.
+url: https://jeanbarbier.github.io
+baseurl: ""
+lang: en
+
+author:
+  name: Jean Barbier
+email_display: jbarbier(at)ictp(dot)it
+
+# Funding acknowledgement shown in the footer. Fill in the ERC grant agreement
+# number (it appears on the grant agreement / ERC portal).
+erc:
+  acronym: CHORAL
+  grant_number: ""   # TODO: e.g. "101039794"
+
+nav:
+  - { title: Research, url: /research/ }
+  - { title: Group, url: /group/ }
+  - { title: Publications, url: /publications/ }
+  - { title: Teaching, url: /teaching/ }
+  - { title: Events, url: /events/ }
+  - { title: About, url: /about/ }
+
+image: /assets/img/og-image.jpg
+twitter:
+  card: summary_large_image
+
+plugins:
+  - jekyll-seo-tag
+  - jekyll-sitemap
+
+markdown: kramdown
+kramdown:
+  input: GFM
+
+exclude:
+  - README.md
+  - Gemfile
+  - Gemfile.lock
+  - scripts/
+  - vendor/

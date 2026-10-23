@@ -1,0 +1,30 @@
+{%- comment -%} Renders one publication: include pub.html pub=... {%- endcomment -%}
+{%- unless group_names -%}
+  {%- assign group_names = "|" | append: site.data.people.pi.name | append: "|" -%}
+  {%- assign everyone = site.data.people.postdocs | concat: site.data.people.phd | concat: site.data.people.alumni -%}
+  {%- for p in everyone -%}
+    {%- assign group_names = group_names | append: p.name | append: "|" -%}
+    {%- for a in p.aliases -%}{%- assign group_names = group_names | append: a | append: "|" -%}{%- endfor -%}
+  {%- endfor -%}
+{%- endunless -%}
+{%- assign pub = include.pub -%}
+{%- if pub.doi -%}{%- assign main = "https://doi.org/" | append: pub.doi -%}
+{%- elsif pub.url -%}{%- assign main = pub.url -%}
+{%- else -%}{%- assign main = "https://arxiv.org/abs/" | append: pub.arxiv -%}{%- endif -%}
+<li class="pub">
+  <p class="pub-title"><a href="{{ main }}">{{ pub.title }}</a></p>
+  {%- unless include.compact %}
+  <p class="pub-authors">
+    {%- for a in pub.authors -%}
+      {%- assign key = "|" | append: a | append: "|" -%}
+      {%- if group_names contains key %}<span class="member">{{ a }}</span>{% else %}{{ a }}{% endif %}{% unless forloop.last %}, {% endunless %}
+    {%- endfor -%}
+  </p>
+  {%- endunless %}
+  <p class="pub-meta">
+    <span class="pub-venue">{{ pub.venue }}{% unless pub.venue contains pub.year %}, {{ pub.year }}{% endunless %}</span>
+    {%- if pub.arxiv %}<a href="https://arxiv.org/abs/{{ pub.arxiv }}">arXiv</a>{% endif %}
+    {%- if pub.doi %}<a href="https://doi.org/{{ pub.doi }}">Journal</a>{% elsif pub.url %}<a href="{{ pub.url }}">Journal</a>{% endif %}
+    {%- unless include.compact %}{% for x in pub.extra %}<a href="{{ x.url }}">{{ x.label }}</a>{% endfor %}{% endunless %}
+  </p>
+</li>

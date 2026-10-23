@@ -1,0 +1,33 @@
+---
+layout: default
+title: Research
+heading: Research
+permalink: /research/
+intro: "We use the statistical physics of disordered systems (replica and cavity methods), random matrix theory and information theory to describe learning in high dimension. Results are exact in a high-dimensional limit, and whenever possible proven rigorously."
+---
+<section class="theme" id="deep">
+  <h2>Deep networks beyond the linear regime</h2>
+  <p>Most exact theories of neural networks either linearise them or take a width so large that features barely move. We study networks trained on a number of samples comparable to their number of parameters. There we characterise when a network is information-theoretically equivalent to a linear model, and when it instead learns features through sharp specialisation transitions, with Bayes-optimal error curves and the scaling laws that follow from them.</p>
+  <ul class="pubs compact">{% for pub in site.data.publications %}{% if pub.themes contains "deep" %}{% include pub.html pub=pub compact=true %}{% endif %}{% endfor %}</ul>
+</section>
+
+<section class="theme" id="matrix">
+  <h2>Matrix inference and random matrices</h2>
+  <p>Many learning problems reduce to recovering a large matrix from noisy observations: denoising, factorisation, PCA with structured noise, estimation in time series. We compute their information-theoretic limits, including the hard regimes where the rank grows with the dimension or rotational invariance is lost, and design message-passing algorithms that reach them.</p>
+  <ul class="pubs compact">{% for pub in site.data.publications %}{% if pub.themes contains "matrix" %}{% include pub.html pub=pub compact=true %}{% endif %}{% endfor %}</ul>
+</section>
+
+<section class="theme" id="dynamics">
+  <h2>Training, fine-tuning and representations</h2>
+  <p>Optimal-performance results say what is possible, not what training finds. We also study what gradient-based training does: when pre-training helps or hurts low-rank fine-tuning, and how noise in the labels shapes the information stored in learned representations.</p>
+  <ul class="pubs compact">{% for pub in site.data.publications %}{% if pub.themes contains "dynamics" %}{% include pub.html pub=pub compact=true %}{% endif %}{% endfor %}</ul>
+</section>
+
+<section class="theme" id="wide-audience">
+  <h2>For a wider audience</h2>
+  <ul class="plain">
+    <li><a href="https://www.youtube.com/watch?v=q1VO5dmymFM">A talk on physics and information processing systems</a>, ICTP Mathematics (video).</li>
+    <li><a href="https://arxiv.org/abs/2010.14863">High-dimensional inference: a statistical mechanics perspective</a>, a short perspective article.</li>
+    <li><a href="https://www.ictp.it/news/2026/7/how-ai-learns">How AI learns</a>, ICTP news on our Physical Review X paper.</li>
+  </ul>
+</section>

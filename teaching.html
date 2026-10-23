@@ -1,0 +1,14 @@
+---
+layout: default
+title: Teaching
+heading: Teaching material
+permalink: /teaching/
+---
+<ul class="notes">
+  {%- for t in site.data.teaching %}
+  <li class="note">
+    <h2 class="note-title"><a href="{{ t.file | relative_url }}">{{ t.title }}</a></h2>
+    <p class="note-context"><span class="note-kind">{{ t.kind }}.</span> {{ t.context }}{% if t.url %} <a href="{{ t.url }}">School website</a>.{% endif %}</p>
+  </li>
+  {%- endfor %}
+</ul>

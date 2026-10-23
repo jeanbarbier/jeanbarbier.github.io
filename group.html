@@ -1,0 +1,51 @@
+---
+layout: default
+title: Group
+heading: Barbier group
+permalink: /group/
+intro: "We are based at ICTP and SISSA in Trieste. Current funding: ERC Starting Grant CHORAL (Computational Hardness Of RepresentAtion Learning)."
+---
+<figure class="group-photo">
+  <img src="{{ '/assets/img/group-photo.jpg' | relative_url }}" alt="Members of the group" width="1600" height="1200" loading="lazy">
+</figure>
+
+<section class="block">
+  <h2>Principal investigator</h2>
+  <ul class="people">{% include person.html person=site.data.people.pi role="Research Scientist, ICTP" %}</ul>
+</section>
+
+<section class="block">
+  <h2>Postdocs</h2>
+  <ul class="people">{% for p in site.data.people.postdocs %}{% include person.html person=p role="Postdoc" %}{% endfor %}</ul>
+</section>
+
+<section class="block">
+  <h2>PhD students</h2>
+  <ul class="people">{% for p in site.data.people.phd %}{% include person.html person=p role="PhD student, SISSA" %}{% endfor %}</ul>
+</section>
+
+<section class="block">
+  <h2>Former members</h2>
+  <table class="alumni">
+    <thead><tr><th scope="col">Name</th><th scope="col">In the group as</th><th scope="col">Now</th></tr></thead>
+    <tbody>
+      {%- for a in site.data.people.alumni %}
+      <tr><td>{{ a.name }}</td><td>{{ a.role }}</td><td>{{ a.now }}</td></tr>
+      {%- endfor %}
+    </tbody>
+  </table>
+</section>
+
+<section class="block join" id="join">
+  <h2>Join us</h2>
+  <dl>
+    <dt>PhD</dt>
+    <dd>Apply to the <a href="https://datascience.sissa.it/phd-in-theoretical-and-scientific-data-science">PhD programme in Theoretical and Scientific Data Science</a> at SISSA, which opens a call every year, and mention the group in your application. Write to me beforehand if you want to discuss projects.</dd>
+    <dt>Master's thesis</dt>
+    <dd>Contact me directly with a CV and a few lines on what you would like to work on.</dd>
+    <dt>Postdoc</dt>
+    <dd>Openings are announced on this site and by ICTP. Spontaneous enquiries are welcome.</dd>
+    <dt>Diploma</dt>
+    <dd>Several group members came through ICTP's postgraduate diploma in <a href="https://www.ictp.it/qls">Quantitative Life Sciences</a>, open to students from developing countries.</dd>
+  </dl>
+</section>
