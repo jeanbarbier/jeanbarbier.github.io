@@ -253,6 +253,19 @@ main .intro p { max-width: none; }
 .event-name a:hover { color: var(--accent); }
 .event-meta { margin: 0.15rem 0 0; color: var(--muted); font-size: 0.95rem; }
 
+/* ---------- Highlights ---------- */
+.crumb { font-size: var(--step--1); margin-bottom: 0.4rem; }
+.crumb a { color: var(--muted); }
+.highlight-paper { margin: 1rem 0 2rem; }
+.prose { max-width: var(--measure); }
+.prose h2 { margin: 2.25rem 0 0.75rem; }
+.prose ul { list-style: disc; padding-left: 1.25rem; margin: 0 0 1em; }
+.prose li { margin-bottom: 0.35rem; }
+.prose img, .figure img { margin: 1.75rem 0; border-radius: 4px; background: #fff; }
+.figure { margin: 1.75rem 0; max-width: var(--measure); }
+.figure img { margin: 0 0 0.6rem; }
+figcaption { color: var(--muted); font-size: var(--step--1); }
+
 /* ---------- About ---------- */
 main h2 { margin-top: 2.75rem; }
 main section h2, main .block h2, main .theme h2 { margin-top: 0; }

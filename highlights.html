@@ -1,0 +1,17 @@
+---
+layout: default
+title: Highlights
+heading: Highlights
+permalink: /highlights/
+intro: "Short, informal accounts of some of our papers: the question, the main result, and what it changes."
+---
+<ul class="notes">
+  {%- assign items = site.highlights | sort: "date" | reverse %}
+  {%- for h in items %}
+  {%- assign pub = site.data.publications | where: "highlight", h.url | first %}
+  <li class="note">
+    <h2 class="note-title"><a href="{{ h.url | relative_url }}">{{ h.title }}</a></h2>
+    <p class="note-context">{{ h.summary }}{% if pub %} <span class="note-kind">{{ pub.venue }}{% unless pub.venue contains pub.year %}, {{ pub.year }}{% endunless %}.</span>{% endif %}</p>
+  </li>
+  {%- endfor %}
+</ul>

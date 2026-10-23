@@ -3,7 +3,7 @@ layout: default
 title: Events
 heading: Events
 permalink: /events/
-intro: "Meetings we organise. Youth in High Dimensions showcases young researchers working on high-dimensional statistics, inference and machine learning; ROC(K)IN' AI gathers people working on inference and AI in Calabria."
+intro: "Meetings we organise. From October 2026 to October 2027 ICTP holds an AI year, with a colloquium series, the eighth Youth in High Dimensions and a School on AI for Scientific Discovery. Youth in High Dimensions showcases young researchers working on high-dimensional statistics, inference and machine learning; ROC(K)IN' AI gathers people working on inference and AI in Calabria."
 ---
 {%- assign now = site.time | date: "%Y-%m-%d" -%}
 {%- assign upcoming = "" | split: "" -%}{%- assign past = "" | split: "" -%}
@@ -14,10 +14,10 @@ intro: "Meetings we organise. Youth in High Dimensions showcases young researche
 {%- if upcoming.size > 0 %}
 <section class="block">
   <h2>Upcoming</h2>
-  <ul class="events">{% for e in upcoming %}<li><p class="event-name"><a href="{{ e.url }}">{{ e.name }}</a></p><p class="event-meta">{{ e.dates }}, {{ e.place }}</p></li>{% endfor %}</ul>
+  <ul class="events">{% for e in upcoming %}<li><p class="event-name">{% if e.url %}<a href="{{ e.url }}">{{ e.name }}</a>{% else %}{{ e.name }}{% endif %}</p><p class="event-meta">{{ e.dates }}, {{ e.place }}</p></li>{% endfor %}</ul>
 </section>
 {%- endif %}
 <section class="block">
   <h2>Past</h2>
-  <ul class="events">{% for e in past %}<li><p class="event-name"><a href="{{ e.url }}">{{ e.name }}</a></p><p class="event-meta">{{ e.dates }}, {{ e.place }}</p></li>{% endfor %}</ul>
+  <ul class="events">{% for e in past %}<li><p class="event-name">{% if e.url %}<a href="{{ e.url }}">{{ e.name }}</a>{% else %}{{ e.name }}{% endif %}</p><p class="event-meta">{{ e.dates }}, {{ e.place }}</p></li>{% endfor %}</ul>
 </section>

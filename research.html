@@ -23,9 +23,16 @@ intro: "We use the statistical physics of disordered systems (replica and cavity
   <ul class="pubs compact">{% for pub in site.data.publications %}{% if pub.themes contains "dynamics" %}{% include pub.html pub=pub compact=true %}{% endif %}{% endfor %}</ul>
 </section>
 
+<section class="theme" id="foundations">
+  <h2>Rigorous foundations</h2>
+  <p>Much of the statistical physics we use rests on non-rigorous methods. A long-standing line of our work turns replica predictions into theorems: interpolation and adaptive interpolation methods, concentration of overlaps, and the optimality of approximate message passing, for estimation, generalised linear models and coding.</p>
+  <ul class="pubs compact">{% for pub in site.data.publications %}{% if pub.themes contains "foundations" %}{% include pub.html pub=pub compact=true %}{% endif %}{% endfor %}</ul>
+</section>
+
 <section class="theme" id="wide-audience">
   <h2>For a wider audience</h2>
   <ul class="plain">
+    <li><a href="{{ '/highlights/' | relative_url }}">Highlights</a>: short accounts of some of our papers.</li>
     <li><a href="https://www.youtube.com/watch?v=q1VO5dmymFM">A talk on physics and information processing systems</a>, ICTP Mathematics (video).</li>
     <li><a href="https://arxiv.org/abs/2010.14863">High-dimensional inference: a statistical mechanics perspective</a>, a short perspective article.</li>
     <li><a href="https://www.ictp.it/news/2026/7/how-ai-learns">How AI learns</a>, ICTP news on our Physical Review X paper.</li>

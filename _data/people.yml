@@ -1,7 +1,6 @@
 # Group members. Each person edits their own entry.
 # photo: path inside assets/img/, e.g. people/rudy-skerk.jpg (square, >= 300 px). Leave empty for initials.
 # aliases: other spellings used as author names in papers (used to bold group members).
-# Lines marked CHECK are uncertain: the old personal site and the old group site disagreed.
 
 pi:
   name: Jean Barbier
@@ -54,7 +53,7 @@ phd:
       in Physics of Complex Systems (Trieste, Turin, Paris). PhD student in Theoretical
       and Scientific Data Science at SISSA.
 
-  - name: Ali Hussaini Umar        # CHECK spelling: "Ali Umar Hussaini" on the old group site
+  - name: Ali Hussaini Umar
     aliases: [Ali Umar Hussaini, Ali Hussaini]
     photo: ""
     summary: Understanding deep learning through its representations and weights.
@@ -63,8 +62,8 @@ phd:
       ICTP diploma in Quantitative Life Sciences. PhD student in Theoretical and
       Scientific Data Science at SISSA.
 
-  - name: Cristopher Erazo         # CHECK spelling: "Cristofer" on the old personal site
-    aliases: [Cristofer Erazo]
+  - name: Cristofer Erazo
+    aliases: [Cristopher Erazo]
     photo: ""
     summary: Learning dynamics and representations in modern networks, in particular in-context learning in transformers.
     bio: >-
@@ -80,15 +79,15 @@ phd:
       student in Theoretical and Scientific Data Science at SISSA.
 
 alumni:
-  - { name: Gibbs Nwemadji, role: PhD student, now: "Postdoc, Yale University" }   # CHECK: still listed as current PhD student on the group site
+  - { name: Gibbs Nwemadji, role: PhD student, now: "Postdoc, Yale University" }
   - { name: Francesco Camilli, role: Postdoc, now: "Professor, University of Bologna" }
   - { name: Daria Tieplova, role: Postdoc, now: "Postdoc, Aarhus University" }
   - { name: Anas Rahman, aliases: [Anas A. Rahman], role: Postdoc, now: "Postdoc, HKUST" }
-  - { name: Manuel Sáenz, role: Postdoc, now: "Professor, University of San Andrés" }   # CHECK: "University of Nottingham" on the group site
+  - { name: Manuel Sáenz, role: Postdoc, now: "Professor, University of San Andrés" }
   - { name: Eleonora Bergamin, role: Master's student, now: "PhD student, SISSA" }
-  - { name: Yizhou Xu, role: Master's student, now: "PhD student, EPFL" }   # CHECK: "visitor" on the group site
-  - { name: Rodrigo Pérez Ortiz, aliases: [Rodrigo Perez Ortiz], role: Master's student, now: "PhD student, University of Bologna" }   # CHECK: "visitor" on the group site
-  - { name: Shu Zhou, role: Student, now: "Postdoc, SISSA" }   # CHECK: only on the group site
-  - { name: Koki Okajima, role: Visiting PhD student, now: "Professor, Kyoto University" }   # CHECK: "student, University of Tokyo" on the group site
-  - { name: Sébastien Pierre, role: Visitor, now: "Student, École Polytechnique" }   # CHECK: only on the group site
+  - { name: Shu Zhou, role: Student, now: "Postdoc, SISSA" }
+  - { name: Yizhou Xu, role: Visitor, now: "PhD student, EPFL" }
+  - { name: Rodrigo Pérez Ortiz, aliases: [Rodrigo Perez Ortiz], role: Visitor, now: "PhD student, University of Bologna" }
+  - { name: Koki Okajima, role: Visiting PhD student, now: "Professor, Kyoto University" }
+  - { name: Sébastien Pierre, role: Visitor, now: "Student, École Polytechnique" }
   - { name: Tianqi Hou, role: Visiting PhD student, now: "Huawei" }

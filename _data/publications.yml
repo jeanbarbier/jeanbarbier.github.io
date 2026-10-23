@@ -1,6 +1,7 @@
 # Publications, newest first. Group members are bolded automatically (from _data/people.yml).
 # Fields: title, authors (list), venue, year, arxiv (id), doi, url (journal/proceedings page),
-#         extra (list of {label, url}), themes (deep | matrix | dynamics), selected (shown on home page)
+#         extra (list of {label, url}), highlight (URL of a highlight article on this site),
+#         themes (deep | matrix | dynamics | foundations), selected (shown on home page)
 
 - title: "Sharp feature-learning transitions and Bayes-optimal neural scaling laws in extensive-width networks"
   authors: [Minh-Toan Nguyen, Jean Barbier]
@@ -23,6 +24,7 @@
   year: 2026
   arxiv: "2510.24616"
   doi: "10.1103/56sb-pdh6"
+  highlight: /highlights/feature-learning/
   extra:
     - { label: "ICTP news", url: "https://www.ictp.it/news/2026/7/how-ai-learns" }
     - { label: "ANSA (in Italian)", url: "https://www.ansa.it/sito/notizie/cronaca/2026/09/02/ansasvelato-come-lintelligenza-artificiale-impari-dai-dati_2a99f5a4-da6e-41c7-a414-f6c6431711ee.html" }
@@ -71,7 +73,9 @@
   authors: [Jean Barbier, Francesco Camilli, Justin Ko, Koki Okajima]
   venue: "Physical Review X 15, 021085"
   year: 2025
+  arxiv: "2411.01974"
   doi: "10.1103/PhysRevX.15.021085"
+  highlight: /highlights/matrix-denoising/
   themes: [matrix]
   selected: true
 
@@ -79,6 +83,7 @@
   authors: [Jean Barbier, Francesco Camilli, Marco Mondelli, Yizhou Xu]
   venue: "Physical Review Research 7, 013081"
   year: 2025
+  arxiv: "2405.20993"
   doi: "10.1103/PhysRevResearch.7.013081"
   themes: [matrix]
 
@@ -105,7 +110,74 @@
   venue: "PNAS 120 (30), e2302028120"
   year: 2023
   doi: "10.1073/pnas.2302028120"
+  highlight: /highlights/structured-pca/
   extra:
     - { label: "Talk", url: "https://www.birs.ca/events/2024/5-day-workshops/24w5280/videos/watch/202403150909-Barbier.html" }
   themes: [matrix]
   selected: true
+
+# ---- Earlier landmark papers ----
+
+- title: "Statistical limits of dictionary learning: random matrix theory and the spectral replica method"
+  authors: [Jean Barbier, Nicolas Macris]
+  venue: "Physical Review E 106, 024136"
+  year: 2022
+  arxiv: "2109.06610"
+  doi: "10.1103/PhysRevE.106.024136"
+  themes: [matrix]
+
+- title: "Overlap matrix concentration in optimal Bayesian inference"
+  authors: [Jean Barbier]
+  venue: "Information and Inference: A Journal of the IMA 10"
+  year: 2021
+  arxiv: "1904.02808"
+  doi: "10.1093/imaiai/iaaa008"
+  themes: [foundations]
+
+- title: "Mutual information and optimality of approximate message-passing in random linear estimation"
+  authors: [Jean Barbier, Nicolas Macris, Mohamad Dia, Florent Krzakala]
+  venue: "IEEE Transactions on Information Theory 66 (7)"
+  year: 2020
+  arxiv: "1701.05823"
+  doi: "10.1109/TIT.2020.2990880"
+  themes: [foundations]
+
+- title: "Optimal errors and phase transitions in high-dimensional generalized linear models"
+  authors: [Jean Barbier, Florent Krzakala, Nicolas Macris, Léo Miolane, Lenka Zdeborová]
+  venue: "PNAS 116 (12), 5451–5460"
+  year: 2019
+  arxiv: "1708.03395"
+  doi: "10.1073/pnas.1802705116"
+  themes: [foundations]
+  selected: true
+
+- title: "The adaptive interpolation method: a simple scheme to prove replica formulas in Bayesian inference"
+  authors: [Jean Barbier, Nicolas Macris]
+  venue: "Probability Theory and Related Fields 174, 1133–1185"
+  year: 2019
+  arxiv: "1705.02780"
+  doi: "10.1007/s00440-018-0879-0"
+  themes: [foundations]
+
+- title: "The committee machine: computational to statistical gaps in learning a two-layers neural network"
+  authors: [Benjamin Aubin, Antoine Maillard, Jean Barbier, Florent Krzakala, Nicolas Macris, Lenka Zdeborová]
+  venue: "NeurIPS 2018; J. Stat. Mech. (2019) 124023"
+  year: 2018
+  arxiv: "1806.05451"
+  doi: "10.1088/1742-5468/ab43d2"
+  themes: [deep]
+
+- title: "Approximate message-passing decoder and capacity-achieving sparse superposition codes"
+  authors: [Jean Barbier, Florent Krzakala]
+  venue: "IEEE Transactions on Information Theory 63 (8)"
+  year: 2017
+  arxiv: "1503.08040"
+  doi: "10.1109/TIT.2017.2713833"
+  themes: [foundations]
+
+- title: "Mutual information for symmetric rank-one matrix estimation: a proof of the replica formula"
+  authors: [Jean Barbier, Mohamad Dia, Nicolas Macris, Florent Krzakala, Thibault Lesieur, Lenka Zdeborová]
+  venue: "NeurIPS 2016"
+  year: 2016
+  arxiv: "1606.04142"
+  themes: [foundations]

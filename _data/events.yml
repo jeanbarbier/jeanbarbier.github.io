@@ -1,5 +1,17 @@
 # Events the group organises. Newest first. "end" decides whether an event is upcoming or past.
-# CHECK: add the 2027 ICTP AI year activities here once they are publicly announced.
+# Events without a website yet: leave url out.
+- name: "AI year at ICTP: colloquium series"
+  dates: "October 2026 – October 2027"
+  end: 2027-10-31
+  place: "ICTP, Trieste"
+- name: "AI year at ICTP: School on AI for Scientific Discovery"
+  dates: "2027, dates to be announced"
+  end: 2027-09-30
+  place: "ICTP, Trieste"
+- name: "AI year at ICTP: Youth in High Dimensions (8th edition)"
+  dates: "2027, dates to be announced"
+  end: 2027-09-30
+  place: "ICTP, Trieste"
 - name: "ROC(K)IN' AI: Roccella Conference on Inference and AI (3rd edition)"
   dates: "31 August – 4 September 2026"
   end: 2026-09-04

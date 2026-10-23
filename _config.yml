@@ -21,6 +21,7 @@ nav:
   - { title: Research, url: /research/ }
   - { title: Group, url: /group/ }
   - { title: Publications, url: /publications/ }
+  - { title: Highlights, url: /highlights/ }
   - { title: Teaching, url: /teaching/ }
   - { title: Events, url: /events/ }
   - { title: About, url: /about/ }
@@ -28,6 +29,15 @@ nav:
 image: /assets/img/og-image.jpg
 twitter:
   card: summary_large_image
+
+collections:
+  highlights:
+    output: true
+    permalink: /highlights/:name/
+
+defaults:
+  - scope: { path: "", type: highlights }
+    values: { layout: highlight }
 
 plugins:
   - jekyll-seo-tag
