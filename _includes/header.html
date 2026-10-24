@@ -22,6 +22,7 @@
   {%- assign cv = site.data.curves[ckey] %}
   <div class="wrap curve-wrap">
     <a class="curve-link" href="{{ page.curve_link | default: cv.link | relative_url }}" title="{{ cv.title }}" aria-label="{{ cv.title }}"><svg class="phase-curve" viewBox="0 0 1000 48" preserveAspectRatio="none" aria-hidden="true" focusable="false"><path d="{{ cv.d }}" fill="none" vector-effect="non-scaling-stroke"/></svg>{% for jp in cv.jumps %}<span class="jump-dot open" style="left: {{ jp[0] | divided_by: 10.0 }}%; top: {{ jp[1] | divided_by: 0.48 }}%"></span><span class="jump-dot" style="left: {{ jp[0] | divided_by: 10.0 }}%; top: {{ jp[2] | divided_by: 0.48 }}%"></span>{% endfor %}</a>
+    <p class="curve-caption">{{ cv.title }}</p>
   </div>
   {%- unless ckey == "flat" %}
   <script>
@@ -46,6 +47,7 @@
       var href = base + cv.link;
       a.href = (cv.paper && location.pathname === href) ? cv.paper : href;
       a.title = cv.title; a.setAttribute('aria-label', cv.title);
+      var cap = a.parentNode.querySelector('.curve-caption'); if (cap) cap.textContent = cv.title;
     })();
   </script>
   {%- endunless %}

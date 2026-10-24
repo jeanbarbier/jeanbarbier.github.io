@@ -25,7 +25,7 @@ sparse:
   jumps: [[375.7, 46.0, 19.24]]
 # ---- Invented transitions, just for fun (not from our papers) ----
 coffee:
-  title: "Theorems proved vs. espressos drunk: nothing below the critical dose, then a power law. The exponent is still debated, over more espresso."
+  title: "Theorems proved vs. espressos drunk: nothing below the critical dose, then a power law. The exponent is still being debated, over more espresso."
   link: /misc/
   invented: true
   d: "M0.0 46.0 L299.3 46.0 L301.7 40.6 L304.2 38.63 L306.7 37.34 L316.7 34.1 L329.2 31.53 L346.6 28.95 L374.1 25.95 L409.0 23.05 L441.4 20.86 L541.1 15.7 L663.3 11.02 L825.4 6.2 L1000.0 2.0"
