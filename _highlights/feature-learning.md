@@ -2,6 +2,8 @@
 title: A theory of feature learning in deep neural networks
 date: 2026-07-01
 summary: Bayes-optimal learning curves for deep networks whose width and data grow with the input dimension, and the layer-by-layer way they learn features.
+curve: specialization
+curve_link: https://doi.org/10.1103/56sb-pdh6
 ---
 We provide an analytic theory of feature learning in deep neural networks of linear width: the width scales like the input dimension, and the model size and the number of training samples grow proportionally. In this regime the network is highly expressive, yet it is constrained parameter-wise with respect to the amount of data it is trained on. It is therefore forced to be "smart" to solve the task, that is, to learn task-relevant features, which is the crux of deep learning.
 

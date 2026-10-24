@@ -18,7 +18,9 @@
       </button>
     </nav>
   </div>
-  <div class="wrap curve-wrap" title="Spiked Wigner model: squared overlap between the top eigenvector and the hidden signal, zero below the BBP transition and 1 − 1/λ² above it.">
-    {% include phase-curve.html %}
+  {%- assign ckey = page.curve | default: "bbp" -%}
+  {%- assign cv = site.data.curves[ckey] %}
+  <div class="wrap curve-wrap">
+    <a class="curve-link" href="{{ page.curve_link | default: cv.link | relative_url }}" title="{{ cv.title }}" aria-label="{{ cv.title }}"><svg class="phase-curve" viewBox="0 0 1000 48" preserveAspectRatio="none" aria-hidden="true" focusable="false"><path d="{{ cv.d }}" fill="none" vector-effect="non-scaling-stroke"/></svg></a>
   </div>
 </header>

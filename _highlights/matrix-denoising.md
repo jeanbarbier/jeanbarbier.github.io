@@ -2,6 +2,8 @@
 title: Matrix denoising beyond rotational invariance
 date: 2025-05-01
 summary: When the factorized structure of a large extensive-rank matrix starts to matter, and a multiscale mean-field theory for the hard phase.
+curve: factorization
+curve_link: https://doi.org/10.1103/PhysRevX.15.021085
 ---
 Denoising a large matrix modeled as the product of two factors is hard, both algorithmically and for theoretical analysis, especially when its rank is proportional to its dimension. Applications range from signal processing to representation learning, sparse coding, community detection, video processing and recommender systems.
 
