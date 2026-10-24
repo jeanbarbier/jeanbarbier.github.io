@@ -53,7 +53,7 @@ Outside science I like rock climbing, skiing and freediving. With friends we mak
 
 ## Submit your phase transition
 
-Spotted a phase transition in the wild or your imagination? Describe it below and it comes straight to my inbox. Best ones will be added to the site :)
+Spotted a phase transition in the wild or your imagination? Describe it below and it comes straight to my inbox. The best ones will be added to the site :)
 
 <form class="transition-form" id="submit" action="https://api.web3forms.com/submit" method="POST">
   <input type="hidden" name="access_key" value="{{ site.web3forms_key }}">
