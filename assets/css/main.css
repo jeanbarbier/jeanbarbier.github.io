@@ -169,10 +169,10 @@ ul { margin: 0; padding: 0; list-style: none; }
 
 main.wrap { max-width: var(--wide); padding-top: 2.75rem; padding-bottom: 4rem; }
 /* One left edge for header, content and footer; prose keeps a readable measure */
-main p, main .news, main .pubs, main .plain, main dl, main blockquote, main .notes, main .people, main .alumni { max-width: var(--measure); }
+main p, main .news, main .pubs, main .plain, main dl, main blockquote, main .notes, main .people, main .alumni, main .albums { max-width: var(--measure); }
 main .intro p { max-width: none; }
 .page-title { font-size: var(--step-3); margin-bottom: 0.6rem; }
-.page-intro { color: var(--muted); max-width: 38rem; margin-bottom: 2.25rem; }
+.page-intro { color: var(--muted); max-width: var(--measure); margin-bottom: 2.25rem; }
 .page-intro:has(+ .page-intro) { margin-bottom: 0.6rem; }
 .block { margin-top: 3rem; }
 .block:first-child { margin-top: 0; }
@@ -218,10 +218,10 @@ main .grant p { margin: 0; max-width: none; font-size: 0.97rem; }
 /* ---------- Research ---------- */
 .theme { margin-top: 3.25rem; }
 .theme:first-of-type { margin-top: 0; }
-.theme > p { max-width: 40rem; }
+.theme > p { max-width: var(--measure); }
 .subtheme { margin-top: 2.5rem; }
 .subtheme h3 { font-size: var(--step-1); margin-bottom: 0.6rem; }
-.subtheme > p { max-width: 40rem; }
+.subtheme > p { max-width: var(--measure); }
 .subtheme .pubs { margin-top: 1rem; }
 /* Items of one group hang off a vertical rule, like the quotes on Misc */
 .grouped { border-left: 2px solid var(--rule); padding-left: 1.25rem; }
@@ -263,7 +263,7 @@ main .grant p { margin: 0; max-width: none; font-size: 0.97rem; }
 .alumni td { padding: 0.5rem 0.75rem 0.5rem 0; border-bottom: 1px solid var(--rule); vertical-align: top; }
 .alumni td:first-child { font-weight: 560; }
 .join dl { display: grid; grid-template-columns: 8.5rem 1fr; gap: 0.6rem 1.25rem; margin: 0; }
-.join dt { font-family: var(--serif); font-weight: 560; font-size: 1.08rem; }
+.join dt { font-family: var(--serif); font-weight: 520; font-size: 1.02rem; line-height: 1.35; padding-top: 0.15rem; }
 .join dd { margin: 0; }
 
 /* ---------- Teaching & events ---------- */
@@ -276,12 +276,12 @@ main .grant p { margin: 0; max-width: none; font-size: 0.97rem; }
 .note-title a:hover { color: var(--accent); }
 .note-context { margin: 0; color: var(--muted); }
 /* Research page: highlights styled like the compact paper lists below them */
-#highlights .note { padding-block: 0.5rem; }
-#highlights .note:first-child { padding-top: 0.1rem; }
-#highlights .note:last-child { padding-bottom: 0.1rem; }
-#highlights .note-title { font-size: 1.02rem; font-weight: 520; line-height: 1.35; margin: 0 0 0.25rem; }
-#highlights .note-title a:hover { text-decoration: underline; text-decoration-color: currentColor; }
-#highlights .note-context { font-size: 0.95rem; }
+.notes.compact .note { padding-block: 0.5rem; }
+.notes.compact .note:first-child { padding-top: 0.1rem; }
+.notes.compact .note:last-child { padding-bottom: 0.1rem; }
+.notes.compact .note-title { font-size: 1.02rem; font-weight: 520; line-height: 1.35; margin: 0 0 0.25rem; }
+.notes.compact .note-title a:hover { text-decoration: underline; text-decoration-color: currentColor; }
+.notes.compact .note-context { font-size: 0.95rem; }
 
 /* ---------- Highlights ---------- */
 .crumb { font-size: var(--step--1); margin-bottom: 0.4rem; }
@@ -316,9 +316,9 @@ figcaption { color: var(--muted); font-size: var(--step--1); }
 @media (prefers-reduced-motion: reduce) { .lightbox[open] { animation: none; } }
 
 /* ---------- About ---------- */
-.albums li { display: grid; grid-template-columns: 8.5rem 1fr; gap: 1rem; padding-block: 0.5rem; border-top: 1px solid var(--rule); }
+.albums li { display: grid; grid-template-columns: 6.5rem 1fr; gap: 1rem; padding-block: 0.55rem; border-top: 1px solid var(--rule); }
 .albums li:last-child { border-bottom: 1px solid var(--rule); }
-.album-month { color: var(--muted); font-size: var(--step--1); padding-top: 0.15rem; }
+.album-month { color: var(--muted); font-size: var(--step--1); font-variant-numeric: tabular-nums; padding-top: 0.15rem; }
 @media (max-width: 40rem) { .albums li { grid-template-columns: 1fr; gap: 0.1rem; } }
 .albums a.is-playing { color: var(--text); font-weight: 600; text-decoration-color: var(--accent); }
 .player { margin-top: 1.25rem; max-width: var(--measure); }

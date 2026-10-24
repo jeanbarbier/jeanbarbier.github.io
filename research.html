@@ -8,7 +8,7 @@ intro: "We use the statistical physics of disordered systems, random matrix theo
 <section class="theme" id="highlights">
   <h2>Highlights</h2>
   <p>Short, informal accounts of some of our papers: the question, the main result, and what it changes.</p>
-  <ul class="notes grouped">
+  <ul class="notes compact grouped">
     {%- assign items = site.highlights | sort: "date" | reverse %}
     {%- for h in items %}
     {%- assign hp = site.data.publications | where: "highlight", h.url | first %}
