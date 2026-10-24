@@ -54,6 +54,10 @@ changing anything. A push to `master` is live after about a minute; check the li
   the slugified names, alumni included).
 
 ## Small details
+- Header curve: one phase transition per page (front matter `curve:`, data in
+  `_data/curves.yml`, default BBP). First-order jumps are real breaks with an open dot
+  (limit) and a filled dot (value); small jumps may be enlarged, but the hover text stays
+  exact and the click opens the paper or notes.
 - Home email is a click-to-copy button; the real address only exists in `assets/js/site.js`.
 - `site.js` also prints a short note for the curious in the browser console (PhD openings).
 - The 404 page speaks the field's language ("Signal-to-noise ratio below threshold") and
