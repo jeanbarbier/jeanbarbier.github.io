@@ -24,7 +24,7 @@
   // Email: the address is assembled here, never written in the page.
   document.querySelectorAll('button.email[data-u]').forEach(function (b) {
     b.addEventListener('click', function () {
-      copy(b.getAttribute('data-u') + '@' + b.getAttribute('data-d'), function () { flash(b, 'Copied to clipboard'); });
+      copy(b.getAttribute('data-u') + '@' + b.getAttribute('data-d'), function () { flash(b, 'Address copied'); });
     });
   });
 

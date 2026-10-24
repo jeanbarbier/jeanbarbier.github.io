@@ -202,9 +202,13 @@ main .intro p { max-width: none; }
 .portrait { float: left; width: 11.5rem; aspect-ratio: 8 / 9; object-fit: cover; border-radius: 6px; margin: 0.3rem 2rem 0.75rem 0; }
 .intro-text p:last-of-type { margin-bottom: 1.2rem; }
 .link-row { display: flex; flex-wrap: wrap; gap: 0.35rem 1.25rem; font-size: 0.97rem; }
-.link-row .email { color: var(--muted); }
-button.email { font: inherit; background: none; border: 0; padding: 0; cursor: pointer; }
-button.email:hover { color: var(--text); text-decoration: underline; text-underline-offset: 0.18em; }
+/* "Mail" looks like the other links but copies the address (never written in the page) */
+button.email {
+  font: inherit; background: none; border: 0; padding: 0; cursor: pointer; color: var(--accent);
+  text-decoration: underline; text-decoration-thickness: 1px; text-underline-offset: 0.18em;
+  text-decoration-color: color-mix(in srgb, var(--accent) 40%, transparent);
+}
+button.email:hover { color: var(--accent-strong); text-decoration-color: currentColor; }
 
 .grant {
   margin-top: 2.5rem; padding: 1rem 1.25rem;

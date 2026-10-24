@@ -63,7 +63,8 @@ changing anything. A push to `master` is live after about a minute; check the li
   or to the Trieste section of the home page. Each curve also has a short `label`
   written at its left, small and light red-orange (`--curve-note`), placed as close to the
   vertical middle as the curve allows; the longer `title` stays on hover.
-- Home email is a click-to-copy button; the real address only exists in `assets/js/site.js`.
+- Home: a "Mail" link (styled like the others) copies the address on click; the address is
+  never written in the page, only assembled in `assets/js/site.js`, against scraping.
 - `site.js` also prints a short note for the curious in the browser console (PhD openings).
 - The 404 page speaks the field's language ("Signal-to-noise ratio below threshold") and
   keeps the redirect for old `/jeanbarbier/...` links.
