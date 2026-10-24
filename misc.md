@@ -10,9 +10,14 @@ Outside science I like rock climbing, skiing and freediving. With friends we mak
 
 <ul class="albums">
 {%- for al in site.data.albums %}
-  <li><span class="album-month">{{ al.month | append: "-01" | date: "%B %Y" }}</span><span class="album-name">{% if al.title and al.title != "" %}<a href="{{ al.url }}">{{ al.title }}</a> by {{ al.artist }}{% else %}<a href="{{ al.url }}">{{ al.artist }}</a>{% endif %}{% for x in al.extra %}, <a href="{{ x.url }}">{{ x.label }}</a>{% endfor %}{% if al.note and al.note != "" %}. {{ al.note }}{% endif %}</span></li>
+  <li><span class="album-month">{{ al.month | append: "-01" | date: "%B %Y" }}</span><span class="album-name">{% if al.title and al.title != "" %}<a href="{{ al.url }}" data-play="{{ al.title | append: ' by ' | append: al.artist | escape }}">{{ al.title }}</a> by {{ al.artist }}{% else %}<a href="{{ al.url }}" data-play="{{ al.artist | escape }}">{{ al.artist }}</a>{% endif %}{% for x in al.extra %}, <a href="{{ x.url }}" data-play="{{ x.label | append: ' by ' | append: al.artist | escape }}">{{ x.label }}</a>{% endfor %}{% if al.note and al.note != "" %}. {{ al.note }}{% endif %}</span></li>
 {%- endfor %}
 </ul>
+
+<div class="player" id="player">
+  <p class="player-caption" aria-live="polite">Click an album to play it here.</p>
+</div>
+<script src="{{ '/assets/js/music-player.js' | relative_url }}" defer></script>
 
 ## Gallery
 
