@@ -6,7 +6,7 @@ permalink: /misc/
 ---
 Outside science I like rock climbing, skiing and freediving. With friends we make electronic music: [Entropie Collectif](https://soundcloud.com/entropiecollectif). 
 
-## Albums I've been listening to
+## Music I've been listening to
 
 <ul class="albums">
 {%- for al in site.data.albums %}
