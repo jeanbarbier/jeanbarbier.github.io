@@ -1,7 +1,7 @@
 ---
 layout: default
-title: Misc
-heading: Misc
+title: Miscellaneous
+heading: Miscellaneous
 permalink: /misc/
 ---
 Outside science I like rock climbing, skiing and freediving. With friends we make electronic music: [Entropie Collectif](https://soundcloud.com/entropiecollectif). 
