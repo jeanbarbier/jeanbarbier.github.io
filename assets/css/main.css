@@ -328,7 +328,7 @@ cite { font-style: normal; }
 .site-footer .wrap { max-width: var(--wide); }
 .footer-grid { display: block; }
 .funding { display: flex; align-items: center; gap: 1.5rem; }
-.funding p { max-width: 34rem; margin: 0; }
+.site-footer .funding p { max-width: 34rem; margin: 0; }
 .funding img { flex: 0 0 auto; width: 252px; background: #fff; padding: 6px; border-radius: 4px; }
 @media (max-width: 36rem) {
   .funding { flex-direction: column; align-items: flex-start; gap: 0.75rem; }
