@@ -76,7 +76,7 @@ swim:
   jumps: [[375.0, 44.68, 6.4], [500.0, 6.4, 43.8]]
 bora:
   title: "Hats blown away vs. wind speed in Trieste: a first-order transition at the onset of the Bora, then strong fluctuations."
-  label: "Hats in Trieste vs. Bora"
+  label: "Hats flying in Trieste vs. Bora"
   link: /#trieste
   invented: true
   d: "M0.0 45.12 L520.0 44.5 M520.0 5.83 L523.3 5.64 L526.6 6.42 L536.6 9.85 L539.9 10.16 L543.2 9.53 L549.8 11.33 L559.7 12.15 L563.0 13.14 L569.7 13.5 L573.0 14.52 L579.6 15.2 L629.2 15.2 L635.9 14.74 L642.5 13.46 L655.7 12.24 L662.3 12.25 L665.7 11.7 L669.0 12.16 L672.3 11.9 L678.9 12.27 L685.5 11.81 L688.8 12.44 L705.4 13.82 L712.0 13.94 L721.9 15.17 L768.3 15.2 L778.2 14.54 L781.5 13.79 L798.1 12.23 L808.0 11.82 L814.6 11.05 L827.9 10.56 L841.1 11.1 L854.3 13.11 L861.0 13.13 L867.6 13.99 L890.8 15.2 L937.1 14.83 L970.2 12.47 L990.1 12.52 L1000.0 13.34"
