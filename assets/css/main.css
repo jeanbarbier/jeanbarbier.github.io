@@ -380,6 +380,28 @@ main .player-caption { color: var(--muted); font-size: var(--step--1); margin: 0
 .play-button:hover { color: var(--accent); border-color: var(--accent); }
 .play-button svg { width: 0.75rem; height: 0.75rem; color: var(--accent); }
 .play-button[hidden] { display: none; }
+/* Misc: submit your phase transition */
+.transition-form { max-width: var(--measure); display: grid; gap: 0.5rem; margin-top: 1.25rem; }
+.transition-form label { font-size: var(--step--1); color: var(--muted); }
+.transition-form .opt { color: var(--muted); opacity: 0.8; }
+.transition-form textarea, .transition-form input[type="text"], .transition-form input[type="email"] {
+  width: 100%; font: inherit; font-size: 0.97rem; color: var(--text); background: var(--bg);
+  border: 1px solid var(--rule); border-radius: 6px; padding: 0.55rem 0.7rem; margin-top: 0.25rem;
+}
+.transition-form textarea { resize: vertical; min-height: 8rem; line-height: 1.5; }
+.transition-form textarea:focus, .transition-form input:focus { outline: 2px solid var(--accent); outline-offset: 1px; border-color: transparent; }
+.tf-row { display: grid; grid-template-columns: 1fr 1fr; gap: 0.75rem; }
+.tf-actions { display: flex; align-items: center; gap: 1rem; margin-top: 0.25rem; }
+.form-button {
+  font: inherit; font-size: 0.95rem; cursor: pointer; color: var(--text); background: transparent;
+  border: 1px solid var(--rule); border-radius: 999px; padding: 0.3rem 1.1rem;
+}
+.form-button:hover { color: var(--accent); border-color: var(--accent); }
+.form-button[disabled] { opacity: 0.6; cursor: default; }
+main .tf-status { margin: 0; font-size: var(--step--1); color: var(--muted); }
+main .tf-note { margin: 0.25rem 0 0; font-size: var(--step--1); color: var(--muted); }
+.transition-form .hp { display: none; }
+@media (max-width: 40rem) { .tf-row { grid-template-columns: 1fr; } }
 main h2 { margin-top: 2.75rem; }
 main section h2, main .block h2, main .theme h2 { margin-top: 0; }
 .wide-img { border-radius: 6px; margin: 1.75rem 0; }

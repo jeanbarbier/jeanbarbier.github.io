@@ -50,3 +50,24 @@ Outside science I like rock climbing, skiing and freediving. With friends we mak
 > <cite>Attributed to Albert Einstein; [the long story of this quote](https://quoteinvestigator.com/2011/05/13/einstein-simple/)</cite>
 
 </div>
+
+## Submit your phase transition
+
+Spotted a phase transition in the wild, in physics or in daily life? Describe it below and it comes straight to my inbox, signed or anonymous.
+
+<form class="transition-form" id="submit" action="https://api.web3forms.com/submit" method="POST">
+  <input type="hidden" name="access_key" value="{{ site.web3forms_key }}">
+  <input type="hidden" name="subject" value="New phase transition from jeanbarbier.github.io">
+  <input type="hidden" name="from_name" value="jeanbarbier.github.io">
+  <input type="hidden" name="redirect" value="{{ '/misc/?sent=1#submit' | absolute_url }}">
+  <input type="checkbox" name="botcheck" class="hp" tabindex="-1" autocomplete="off" aria-hidden="true">
+  <label for="tf-message">Your transition</label>
+  <textarea id="tf-message" name="message" rows="6" maxlength="3000" required placeholder="What changes, what drives it, and is it continuous or first order?"></textarea>
+  <div class="tf-row">
+    <div><label for="tf-name">Name <span class="opt">(optional)</span></label><input id="tf-name" name="name" type="text" autocomplete="name"></div>
+    <div><label for="tf-email">Email <span class="opt">(optional, for a reply)</span></label><input id="tf-email" name="email" type="email" autocomplete="email"></div>
+  </div>
+  <div class="tf-actions"><button type="submit" class="form-button">Send</button><p class="tf-status" role="status" aria-live="polite"></p></div>
+  <p class="tf-note">Leave the name and email empty to stay anonymous. Messages are delivered by Web3Forms.</p>
+</form>
+

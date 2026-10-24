@@ -39,4 +39,24 @@
     var cp = box.querySelector('.bib-copy');
     cp.addEventListener('click', function () { copy(box.querySelector('pre').textContent, function () { flash(cp, 'Copied'); }); });
   });
+
+  // Misc: "Submit your phase transition" form, sent without leaving the page.
+  var form = document.querySelector('.transition-form');
+  if (form) {
+    var status = form.querySelector('.tf-status'), btn = form.querySelector('button[type="submit"]');
+    if (/[?&]sent=1/.test(location.search)) status.textContent = 'Sent, thank you!';
+    form.addEventListener('submit', function (e) {
+      if (!window.fetch || !window.FormData) return;
+      e.preventDefault();
+      btn.disabled = true; status.textContent = 'Sending…';
+      fetch(form.action, { method: 'POST', headers: { Accept: 'application/json' }, body: new FormData(form) })
+        .then(function (r) { return r.json(); })
+        .then(function (d) {
+          if (d && d.success) { form.reset(); status.textContent = 'Sent, thank you!'; }
+          else status.textContent = 'Could not send it. Please try again later.';
+        })
+        .catch(function () { status.textContent = 'Could not send it. Please try again later.'; })
+        .then(function () { btn.disabled = false; });
+    });
+  }
 })();
