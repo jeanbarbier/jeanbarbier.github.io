@@ -89,3 +89,5 @@ changing anything. A push to `master` is live after about a minute; check the li
 - Misc ends with "Submit your phase transition": a form sent through Web3Forms (access key
   `web3forms_key` in `_config.yml`, public by design). Anonymous unless the visitor adds a
   name or email; the note under the form names the service (needed for transparency).
+  Layout: a 3-line text box that grows with the text, then Name, Email and Send on one row
+  (stacked on phones).
