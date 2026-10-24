@@ -4,11 +4,7 @@ title: Miscellaneous
 heading: Miscellaneous
 permalink: /misc/
 ---
-Outside science I like rock climbing, skiing and freediving. Some photos of the group are in the [gallery]({{ '/gallery/' | relative_url }}).
-
-## Entropie music
-
-I make electronic music with friends in [Entropie Collectif](https://soundcloud.com/entropiecollectif). My latest mix: [Entropie 10: RSB + FicusTabasco](https://soundcloud.com/entropiecollectif/entropie-10-rsb-ficustabasco-1).
+Outside science I like rock climbing, skiing and freediving. With friends we make electronic music: [Entropie Collectif](https://soundcloud.com/entropiecollectif). 
 
 ## Albums I've been listening to
 
