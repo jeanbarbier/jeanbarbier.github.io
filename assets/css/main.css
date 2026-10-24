@@ -187,6 +187,8 @@ main .intro p { max-width: none; }
 .intro-text p:last-of-type { margin-bottom: 1.2rem; }
 .link-row { display: flex; flex-wrap: wrap; gap: 0.35rem 1.25rem; font-size: 0.97rem; }
 .link-row .email { color: var(--muted); }
+button.email { font: inherit; background: none; border: 0; padding: 0; cursor: pointer; }
+button.email:hover { color: var(--text); text-decoration: underline; text-underline-offset: 0.18em; }
 
 .grant {
   margin-top: 2.5rem; padding: 1rem 1.25rem;
@@ -210,6 +212,21 @@ main .grant p { margin: 0; max-width: none; font-size: 0.97rem; }
 .pub-authors { color: var(--muted); font-size: 0.95rem; margin-top: 0.25rem !important; }
 .pub-authors .member { color: var(--text); font-weight: 560; }
 .pub-authors .author { white-space: nowrap; }   /* never split a name across lines */
+.pub-authors a.member { text-decoration: none; }   /* group members link to their Group entry, same look */
+.pub-authors a.member:hover { text-decoration: underline; text-decoration-color: currentColor; }
+.cite-btn, .bib-copy {
+  font: inherit; background: none; border: 0; padding: 0; cursor: pointer; color: var(--accent);
+  text-decoration: underline; text-decoration-thickness: 1px; text-underline-offset: 0.18em;
+  text-decoration-color: color-mix(in srgb, var(--accent) 40%, transparent);
+}
+.cite-btn:hover, .bib-copy:hover { color: var(--accent-strong); text-decoration-color: currentColor; }
+.bibtex { margin: 0.5rem 0 0.15rem; }
+.bibtex pre {
+  margin: 0 0 0.3rem; padding: 0.6rem 0.75rem; overflow-x: auto; white-space: pre;
+  font: 0.78rem/1.45 ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
+  background: var(--surface); border-radius: 4px;
+}
+.bib-copy { font-size: var(--step--1); }
 .pub-meta { display: flex; flex-wrap: wrap; gap: 0.2rem 1rem; font-size: var(--step--1); margin-top: 0.3rem !important; }
 .pub-venue { color: var(--muted); font-style: italic; }
 .year-block { margin-top: 2rem; }
@@ -238,6 +255,8 @@ main .grant p { margin: 0; max-width: none; font-size: 0.97rem; }
 .group-photo { margin: 0 0 2.5rem; }
 .group-photo img { border-radius: 6px; width: 100%; aspect-ratio: 16 / 9; object-fit: cover; }
 .people { display: grid; gap: 1.6rem; }
+.person, .alumni tr { scroll-margin-top: 1.5rem; }
+.person:target .person-name, .alumni tr:target td:first-child { color: var(--accent); }
 .person { display: grid; grid-template-columns: 5.5rem 1fr; gap: 1.25rem; align-items: start; }
 .avatar { width: 5.5rem; height: 5.5rem; border-radius: 50%; object-fit: cover; }
 .avatar-initials {

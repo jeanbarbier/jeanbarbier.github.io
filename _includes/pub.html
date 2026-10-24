@@ -17,7 +17,13 @@
   <p class="pub-authors">
     {%- for a in pub.authors -%}
       {%- assign key = "|" | append: a | append: "|" -%}
-      <span class="author{% if group_names contains key %} member{% endif %}">{{ a }}</span>{% unless forloop.last %}, {% endunless %}
+      {%- if group_names contains key -%}
+        {%- assign slug = "" -%}
+        {%- if a == site.data.people.pi.name -%}{%- assign slug = a | slugify -%}{%- endif -%}
+        {%- for p in everyone -%}{%- if p.name == a or p.aliases contains a -%}{%- assign slug = p.name | slugify -%}{%- endif -%}{%- endfor -%}
+        <a class="author member" href="{{ '/group/' | relative_url }}#{{ slug }}">{{ a }}</a>
+      {%- else -%}<span class="author">{{ a }}</span>{%- endif -%}
+      {%- unless forloop.last %}, {% endunless %}
     {%- endfor -%}
   </p>
   {%- endunless %}
@@ -28,6 +34,10 @@
     {%- if pub.arxiv %}<a href="https://arxiv.org/abs/{{ pub.arxiv }}">arXiv</a>{% endif %}
     {%- if pub.doi %}<a href="https://doi.org/{{ pub.doi }}">Journal</a>{% elsif pub.url %}<a href="{{ pub.url }}">Journal</a>{% endif %}
     {%- unless include.compact %}{% for x in pub.extra %}<a href="{{ x.url }}">{{ x.label }}</a>{% endfor %}{% endunless %}
+    {%- if pub.bibtex %}<button type="button" class="cite-btn" aria-expanded="false" hidden>Cite</button>{% endif %}
   </p>
+  {%- if pub.bibtex %}
+  <div class="bibtex" hidden><pre>{{ pub.bibtex | strip | escape }}</pre><button type="button" class="bib-copy">Copy</button></div>
+  {%- endif %}
   {%- endunless %}
 </li>

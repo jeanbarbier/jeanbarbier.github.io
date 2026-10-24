@@ -11,6 +11,16 @@
   highlight: /highlights/mesoscopic-dynamics/
   themes: [dynamics]
   selected: true
+  bibtex: |
+    @misc{zhou2026mesoscopic,
+      author        = {Zhou, Shu and Barbier, Jean and Goldt, Sebastian},
+      title         = {Mesoscopic learning dynamics of extensive-width neural networks},
+      year          = {2026},
+      eprint        = {2610.23779},
+      archivePrefix = {arXiv},
+      primaryClass  = {stat.ML}
+    }
+
 
 - title: "Information-theoretic limits for rectangular spiked matrix models with rotationally invariant noise"
   authors: [Qun Chen, Rudy Skerk, Jean Barbier, Francesco Camilli, Junjie Ma, Haochuan Zhang]
@@ -18,6 +28,16 @@
   year: 2026
   arxiv: "2610.16797"
   themes: [matrix]
+  bibtex: |
+    @misc{chen2026information,
+      author        = {Chen, Qun and Skerk, Rudy and Barbier, Jean and Camilli, Francesco and Ma, Junjie and Zhang, Haochuan},
+      title         = {Information-theoretic limits for rectangular spiked matrix models with rotationally invariant noise},
+      year          = {2026},
+      eprint        = {2610.16797},
+      archivePrefix = {arXiv},
+      primaryClass  = {cs.IT}
+    }
+
 
 - title: "On the slow convergence to trivial solutions of algorithms for hard optimization problems"
   authors: [Ali Hussaini Umar, Jean Barbier, Matthieu Jonckheere, Manuel Sáenz]
@@ -25,6 +45,16 @@
   year: 2026
   arxiv: "2608.18910"
   themes: [optimization]
+  bibtex: |
+    @misc{umar2026slow,
+      author        = {Umar, Ali Hussaini and Barbier, Jean and Jonckheere, Matthieu and Sáenz, Manuel},
+      title         = {On the slow convergence to trivial solutions of algorithms for hard optimization problems},
+      year          = {2026},
+      eprint        = {2608.18910},
+      archivePrefix = {arXiv},
+      primaryClass  = {cs.LG}
+    }
+
 
 - title: "Sharp feature-learning transitions and Bayes-optimal neural scaling laws in extensive-width networks"
   authors: [Minh-Toan Nguyen, Jean Barbier]
@@ -33,6 +63,16 @@
   arxiv: "2605.10395"
   themes: [deep]
   selected: true
+  bibtex: |
+    @inproceedings{nguyen2026sharp,
+      author        = {Nguyen, Minh-Toan and Barbier, Jean},
+      title         = {Sharp feature-learning transitions and Bayes-optimal neural scaling laws in extensive-width networks},
+      booktitle     = {Advances in Neural Information Processing Systems},
+      year          = {2026},
+      eprint        = {2605.10395},
+      archivePrefix = {arXiv}
+    }
+
 
 - title: "When pre-training hurts LoRA fine-tuning: a dynamical analysis via single-index models"
   authors: [Gibbs Nwemadji, Bruno Loureiro, Jean Barbier]
@@ -40,6 +80,16 @@
   year: 2026
   arxiv: "2602.02855"
   themes: [dynamics]
+  bibtex: |
+    @misc{nwemadji2026pre,
+      author        = {Nwemadji, Gibbs and Loureiro, Bruno and Barbier, Jean},
+      title         = {When pre-training hurts LoRA fine-tuning: a dynamical analysis via single-index models},
+      year          = {2026},
+      eprint        = {2602.02855},
+      archivePrefix = {arXiv},
+      primaryClass  = {cs.LG}
+    }
+
 
 - title: "Statistical physics of deep learning: optimal learning of a multi-layer perceptron near interpolation"
   authors: [Jean Barbier, Francesco Camilli, Minh-Toan Nguyen, Mauro Pastore, Rudy Skerk]
@@ -53,6 +103,20 @@
     - { label: "ANSA (in Italian)", url: "https://www.ansa.it/sito/notizie/cronaca/2026/09/02/ansasvelato-come-lintelligenza-artificiale-impari-dai-dati_2a99f5a4-da6e-41c7-a414-f6c6431711ee.html" }
   themes: [deep]
   selected: true
+  bibtex: |
+    @article{barbier2026statistical,
+      author        = {Barbier, Jean and Camilli, Francesco and Nguyen, Minh-Toan and Pastore, Mauro and Skerk, Rudy},
+      title         = {Statistical Physics of Deep Learning: Optimal Learning of a Multilayer Perceptron near Interpolation},
+      journal       = {Physical Review X},
+      volume        = {16},
+      number        = {3},
+      pages         = {031014},
+      year          = {2026},
+      doi           = {10.1103/56sb-pdh6},
+      eprint        = {2510.24616},
+      archivePrefix = {arXiv}
+    }
+
 
 - title: "The effect of label noise on the information content of neural representations"
   authors: [Ali Hussaini Umar, Franky Kevin Nando Tezoh, Jean Barbier, Santiago Acevedo, Alessandro Laio]
@@ -61,6 +125,19 @@
   arxiv: "2510.06401"
   doi: "10.3389/fphy.2026.1717253"
   themes: [dynamics]
+  bibtex: |
+    @article{umar2026effect,
+      author        = {Umar, Ali Hussaini and Nando Tezoh, Franky Kevin and Barbier, Jean and Acevedo, Santiago and Laio, Alessandro},
+      title         = {The effect of label noise on the information content of neural representations},
+      journal       = {Frontiers in Physics},
+      volume        = {14},
+      pages         = {1717253},
+      year          = {2026},
+      doi           = {10.3389/fphy.2026.1717253},
+      eprint        = {2510.06401},
+      archivePrefix = {arXiv}
+    }
+
 
 - title: "A multiscale cavity method for sublinear-rank symmetric matrix factorization"
   authors: [Jean Barbier, Justin Ko, Anas A. Rahman]
@@ -69,6 +146,20 @@
   arxiv: "2403.07189"
   doi: "10.4171/msl/57"
   themes: [matrix]
+  bibtex: |
+    @article{barbier2026multiscale,
+      author        = {Barbier, Jean and Ko, Justin and Rahman, Anas A.},
+      title         = {A multiscale cavity method for sublinear-rank symmetric matrix factorization},
+      journal       = {Mathematical Statistics and Learning},
+      volume        = {9},
+      number        = {1},
+      pages         = {1--68},
+      year          = {2026},
+      doi           = {10.4171/msl/57},
+      eprint        = {2403.07189},
+      archivePrefix = {arXiv}
+    }
+
 
 - title: "Information-theoretic limits and approximate message-passing for high-dimensional time series"
   authors: [Daria Tieplova, Samriddha Lahiry, Jean Barbier]
@@ -77,6 +168,20 @@
   arxiv: "2501.13625"
   doi: "10.1109/TIT.2026.3665948"
   themes: [foundations]
+  bibtex: |
+    @article{tieplova2026information,
+      author        = {Tieplova, Daria and Lahiry, Samriddha and Barbier, Jean},
+      title         = {Information-Theoretic Limits and Vector Approximate Message-Passing for High-Dimensional Time Series},
+      journal       = {IEEE Transactions on Information Theory},
+      volume        = {72},
+      number        = {5},
+      pages         = {3460--3485},
+      year          = {2026},
+      doi           = {10.1109/TIT.2026.3665948},
+      eprint        = {2501.13625},
+      archivePrefix = {arXiv}
+    }
+
 
 - title: "Generalization performance of narrow shallow neural networks in the teacher–student setting"
   authors: [Rodrigo Pérez Ortiz, Gibbs Nwemadji, Jean Barbier, Federica Gerace, Alessandro Ingrosso, Clarissa Lauditi, Enrico M. Malatesta]
@@ -85,6 +190,20 @@
   arxiv: "2507.00629"
   doi: "10.1088/1742-5468/ae5a23"
   themes: [deep]
+  bibtex: |
+    @article{perezortiz2026generalization,
+      author        = {Pérez Ortiz, Rodrigo and Nwemadji, Gibbs and Barbier, Jean and Gerace, Federica and Ingrosso, Alessandro and Lauditi, Clarissa and Malatesta, Enrico M},
+      title         = {Generalization performance of narrow shallow neural networks in the teacher–student setting},
+      journal       = {Journal of Statistical Mechanics: Theory and Experiment},
+      volume        = {2026},
+      number        = {4},
+      pages         = {043405},
+      year          = {2026},
+      doi           = {10.1088/1742-5468/ae5a23},
+      eprint        = {2507.00629},
+      archivePrefix = {arXiv}
+    }
+
 
 - title: "Information-theoretic reduction of deep neural networks to linear models in the overparametrized proportional regime"
   authors: [Francesco Camilli, Daria Tieplova, Eleonora Bergamin, Jean Barbier]
@@ -93,6 +212,18 @@
   arxiv: "2505.03577"
   url: "https://proceedings.mlr.press/v291/camilli25a.html"
   themes: [deep]
+  bibtex: |
+    @inproceedings{camilli2025information,
+      author        = {Camilli, Francesco and Tieplova, Daria and Bergamin, Eleonora and Barbier, Jean},
+      title         = {Information-theoretic reduction of deep neural networks to linear models in the overparametrized proportional regime},
+      booktitle     = {Proceedings of the Thirty Eighth Conference on Learning Theory},
+      series        = {Proceedings of Machine Learning Research},
+      volume        = {291},
+      year          = {2025},
+      eprint        = {2505.03577},
+      archivePrefix = {arXiv}
+    }
+
 
 - title: "Phase diagram of extensive-rank symmetric matrix denoising beyond rotational invariance"
   authors: [Jean Barbier, Francesco Camilli, Justin Ko, Koki Okajima]
@@ -103,6 +234,20 @@
   highlight: /highlights/matrix-denoising/
   themes: [matrix]
   selected: true
+  bibtex: |
+    @article{barbier2025phase,
+      author        = {Barbier, Jean and Camilli, Francesco and Ko, Justin and Okajima, Koki},
+      title         = {Phase Diagram of Extensive-Rank Symmetric Matrix Denoising beyond Rotational Invariance},
+      journal       = {Physical Review X},
+      volume        = {15},
+      number        = {2},
+      pages         = {021085},
+      year          = {2025},
+      doi           = {10.1103/PhysRevX.15.021085},
+      eprint        = {2411.01974},
+      archivePrefix = {arXiv}
+    }
+
 
 - title: "Information limits and Thouless-Anderson-Palmer equations for spiked matrix models with structured noise"
   authors: [Jean Barbier, Francesco Camilli, Marco Mondelli, Yizhou Xu]
@@ -111,14 +256,43 @@
   arxiv: "2405.20993"
   doi: "10.1103/PhysRevResearch.7.013081"
   themes: [matrix]
+  bibtex: |
+    @article{barbier2025information,
+      author        = {Barbier, Jean and Camilli, Francesco and Xu, Yizhou and Mondelli, Marco},
+      title         = {Information limits and Thouless-Anderson-Palmer equations for spiked matrix models with structured noise},
+      journal       = {Physical Review Research},
+      volume        = {7},
+      number        = {1},
+      pages         = {013081},
+      year          = {2025},
+      doi           = {10.1103/PhysRevResearch.7.013081},
+      eprint        = {2405.20993},
+      archivePrefix = {arXiv}
+    }
+
 
 - title: "Matrix inference in growing rank regimes"
   authors: [Farzad Pourkamali, Jean Barbier, Nicolas Macris]
   venue: "IEEE Transactions on Information Theory"
   year: 2024
   arxiv: "2306.01412"
+  doi: "10.1109/TIT.2024.3422263"
   url: "https://ieeexplore.ieee.org/document/10588959"
   themes: [matrix]
+  bibtex: |
+    @article{pourkamali2024matrix,
+      author        = {Pourkamali, Farzad and Barbier, Jean and Macris, Nicolas},
+      title         = {Matrix Inference in Growing Rank Regimes},
+      journal       = {IEEE Transactions on Information Theory},
+      volume        = {70},
+      number        = {11},
+      pages         = {8133--8163},
+      year          = {2024},
+      doi           = {10.1109/TIT.2024.3422263},
+      eprint        = {2306.01412},
+      archivePrefix = {arXiv}
+    }
+
 
 - title: "Fundamental limits in structured principal component analysis and how to reach them"
   authors: [Jean Barbier, Francesco Camilli, Marco Mondelli, Manuel Sáenz]
@@ -132,6 +306,18 @@
   selected: true
 
 # ---- Earlier landmark papers ----
+  bibtex: |
+    @article{barbier2023fundamental,
+      author  = {Barbier, Jean and Camilli, Francesco and Mondelli, Marco and Sáenz, Manuel},
+      title   = {Fundamental limits in structured principal component analysis and how to reach them},
+      journal = {Proceedings of the National Academy of Sciences},
+      volume  = {120},
+      number  = {30},
+      pages   = {e2302028120},
+      year    = {2023},
+      doi     = {10.1073/pnas.2302028120}
+    }
+
 
 - title: "Strong replica symmetry in high-dimensional optimal Bayesian inference"
   authors: [Jean Barbier, Dmitry Panchenko]
@@ -140,6 +326,20 @@
   arxiv: "2005.03115"
   doi: "10.1007/s00220-022-04387-w"
   themes: [foundations]
+  bibtex: |
+    @article{barbier2022strong,
+      author        = {Barbier, Jean and Panchenko, Dmitry},
+      title         = {Strong Replica Symmetry in High-Dimensional Optimal Bayesian Inference},
+      journal       = {Communications in Mathematical Physics},
+      volume        = {393},
+      number        = {3},
+      pages         = {1199--1239},
+      year          = {2022},
+      doi           = {10.1007/s00220-022-04387-w},
+      eprint        = {2005.03115},
+      archivePrefix = {arXiv}
+    }
+
 
 - title: "Statistical limits of dictionary learning: random matrix theory and the spectral replica method"
   authors: [Jean Barbier, Nicolas Macris]
@@ -148,6 +348,20 @@
   arxiv: "2109.06610"
   doi: "10.1103/PhysRevE.106.024136"
   themes: [matrix]
+  bibtex: |
+    @article{barbier2022statistical,
+      author        = {Barbier, Jean and Macris, Nicolas},
+      title         = {Statistical limits of dictionary learning: Random matrix theory and the spectral replica method},
+      journal       = {Physical Review E},
+      volume        = {106},
+      number        = {2},
+      pages         = {024136},
+      year          = {2022},
+      doi           = {10.1103/PhysRevE.106.024136},
+      eprint        = {2109.06610},
+      archivePrefix = {arXiv}
+    }
+
 
 - title: "Sparse superposition codes under VAMP decoding with generic rotational invariant coding matrices"
   authors: [TianQi Hou, YuHao Liu, Teng Fu, Jean Barbier]
@@ -156,6 +370,18 @@
   arxiv: "2202.04541"
   doi: "10.1109/ISIT50566.2022.9834843"
   themes: [coding]
+  bibtex: |
+    @inproceedings{hou2022sparse,
+      author        = {Hou, TianQi and Liu, YuHao and Fu, Teng and Barbier, Jean},
+      title         = {Sparse superposition codes under VAMP decoding with generic rotational invariant coding matrices},
+      booktitle     = {2022 IEEE International Symposium on Information Theory (ISIT)},
+      pages         = {1372--1377},
+      year          = {2022},
+      doi           = {10.1109/ISIT50566.2022.9834843},
+      eprint        = {2202.04541},
+      archivePrefix = {arXiv}
+    }
+
 
 - title: "Overlap matrix concentration in optimal Bayesian inference"
   authors: [Jean Barbier]
@@ -164,6 +390,20 @@
   arxiv: "1904.02808"
   doi: "10.1093/imaiai/iaaa008"
   themes: [foundations]
+  bibtex: |
+    @article{barbier2020overlap,
+      author        = {Barbier, Jean},
+      title         = {Overlap matrix concentration in optimal Bayesian inference},
+      journal       = {Information and Inference: A Journal of the IMA},
+      volume        = {10},
+      number        = {2},
+      pages         = {597--623},
+      year          = {2020},
+      doi           = {10.1093/imaiai/iaaa008},
+      eprint        = {1904.02808},
+      archivePrefix = {arXiv}
+    }
+
 
 - title: "Mutual information and optimality of approximate message-passing in random linear estimation"
   authors: [Jean Barbier, Nicolas Macris, Mohamad Dia, Florent Krzakala]
@@ -172,6 +412,20 @@
   arxiv: "1701.05823"
   doi: "10.1109/TIT.2020.2990880"
   themes: [foundations]
+  bibtex: |
+    @article{barbier2020mutual,
+      author        = {Barbier, Jean and Macris, Nicolas and Dia, Mohamad and Krzakala, Florent},
+      title         = {Mutual Information and Optimality of Approximate Message-Passing in Random Linear Estimation},
+      journal       = {IEEE Transactions on Information Theory},
+      volume        = {66},
+      number        = {7},
+      pages         = {4270--4303},
+      year          = {2020},
+      doi           = {10.1109/TIT.2020.2990880},
+      eprint        = {1701.05823},
+      archivePrefix = {arXiv}
+    }
+
 
 - title: "Optimal errors and phase transitions in high-dimensional generalized linear models"
   authors: [Jean Barbier, Florent Krzakala, Nicolas Macris, Léo Miolane, Lenka Zdeborová]
@@ -181,6 +435,20 @@
   doi: "10.1073/pnas.1802705116"
   themes: [foundations]
   selected: true
+  bibtex: |
+    @article{barbier2019optimal,
+      author        = {Barbier, Jean and Krzakala, Florent and Macris, Nicolas and Miolane, Léo and Zdeborová, Lenka},
+      title         = {Optimal errors and phase transitions in high-dimensional generalized linear models},
+      journal       = {Proceedings of the National Academy of Sciences},
+      volume        = {116},
+      number        = {12},
+      pages         = {5451--5460},
+      year          = {2019},
+      doi           = {10.1073/pnas.1802705116},
+      eprint        = {1708.03395},
+      archivePrefix = {arXiv}
+    }
+
 
 - title: "The adaptive interpolation method: a simple scheme to prove replica formulas in Bayesian inference"
   authors: [Jean Barbier, Nicolas Macris]
@@ -189,6 +457,20 @@
   arxiv: "1705.02780"
   doi: "10.1007/s00440-018-0879-0"
   themes: [foundations]
+  bibtex: |
+    @article{barbier2018adaptive,
+      author        = {Barbier, Jean and Macris, Nicolas},
+      title         = {The adaptive interpolation method: a simple scheme to prove replica formulas in Bayesian inference},
+      journal       = {Probability Theory and Related Fields},
+      volume        = {174},
+      number        = {3-4},
+      pages         = {1133--1185},
+      year          = {2018},
+      doi           = {10.1007/s00440-018-0879-0},
+      eprint        = {1705.02780},
+      archivePrefix = {arXiv}
+    }
+
 
 - title: "Universal sparse superposition codes with spatial coupling and GAMP decoding"
   authors: [Jean Barbier, Mohamad Dia, Nicolas Macris]
@@ -197,6 +479,20 @@
   arxiv: "1707.04203"
   doi: "10.1109/TIT.2019.2919519"
   themes: [coding]
+  bibtex: |
+    @article{barbier2019universal,
+      author        = {Barbier, Jean and Dia, Mohamad and Macris, Nicolas},
+      title         = {Universal Sparse Superposition Codes With Spatial Coupling and GAMP Decoding},
+      journal       = {IEEE Transactions on Information Theory},
+      volume        = {65},
+      number        = {9},
+      pages         = {5618--5642},
+      year          = {2019},
+      doi           = {10.1109/TIT.2019.2919519},
+      eprint        = {1707.04203},
+      archivePrefix = {arXiv}
+    }
+
 
 - title: "The committee machine: computational to statistical gaps in learning a two-layers neural network"
   authors: [Benjamin Aubin, Antoine Maillard, Jean Barbier, Florent Krzakala, Nicolas Macris, Lenka Zdeborová]
@@ -205,6 +501,20 @@
   arxiv: "1806.05451"
   doi: "10.1088/1742-5468/ab43d2"
   themes: [deep]
+  bibtex: |
+    @article{aubin2019committee,
+      author        = {Aubin, Benjamin and Maillard, Antoine and Barbier, Jean and Krzakala, Florent and Macris, Nicolas and Zdeborová, Lenka},
+      title         = {The committee machine: computational to statistical gaps in learning a two-layers neural network*},
+      journal       = {Journal of Statistical Mechanics: Theory and Experiment},
+      volume        = {2019},
+      number        = {12},
+      pages         = {124023},
+      year          = {2019},
+      doi           = {10.1088/1742-5468/ab43d2},
+      eprint        = {1806.05451},
+      archivePrefix = {arXiv}
+    }
+
 
 - title: "Approximate message-passing decoder and capacity-achieving sparse superposition codes"
   authors: [Jean Barbier, Florent Krzakala]
@@ -213,6 +523,20 @@
   arxiv: "1503.08040"
   doi: "10.1109/TIT.2017.2713833"
   themes: [coding]
+  bibtex: |
+    @article{barbier2017approximate,
+      author        = {Barbier, Jean and Krzakala, Florent},
+      title         = {Approximate Message-Passing Decoder and Capacity Achieving Sparse Superposition Codes},
+      journal       = {IEEE Transactions on Information Theory},
+      volume        = {63},
+      number        = {8},
+      pages         = {4894--4927},
+      year          = {2017},
+      doi           = {10.1109/TIT.2017.2713833},
+      eprint        = {1503.08040},
+      archivePrefix = {arXiv}
+    }
+
 
 - title: "Mutual information for symmetric rank-one matrix estimation: a proof of the replica formula"
   authors: [Jean Barbier, Mohamad Dia, Nicolas Macris, Florent Krzakala, Thibault Lesieur, Lenka Zdeborová]
@@ -221,6 +545,18 @@
   arxiv: "1606.04142"
   url: "https://proceedings.neurips.cc/paper/2016/hash/621bf66ddb7c962aa0d22ac97d69b793-Abstract.html"
   themes: [matrix]
+  bibtex: |
+    @inproceedings{barbier2016mutual,
+      author        = {Barbier, Jean and Dia, Mohamad and Macris, Nicolas and Krzakala, Florent and Lesieur, Thibault and Zdeborová, Lenka},
+      title         = {Mutual information for symmetric rank-one matrix estimation: a proof of the replica formula},
+      booktitle     = {Advances in Neural Information Processing Systems},
+      volume        = {29},
+      pages         = {424--432},
+      year          = {2016},
+      eprint        = {1606.04142},
+      archivePrefix = {arXiv}
+    }
+
 
 - title: "Threshold saturation of spatially coupled sparse superposition codes for all memoryless channels"
   authors: [Jean Barbier, Mohamad Dia, Nicolas Macris]
@@ -229,6 +565,18 @@
   arxiv: "1603.04591"
   doi: "10.1109/ITW.2016.7606799"
   themes: [coding]
+  bibtex: |
+    @inproceedings{barbier2016threshold,
+      author        = {Barbier, Jean and Dia, Mohamad and Macris, Nicolas},
+      title         = {Threshold saturation of spatially coupled sparse superposition codes for all memoryless channels},
+      booktitle     = {2016 IEEE Information Theory Workshop (ITW)},
+      pages         = {76--80},
+      year          = {2016},
+      doi           = {10.1109/ITW.2016.7606799},
+      eprint        = {1603.04591},
+      archivePrefix = {arXiv}
+    }
+
 
 - title: "Approximate message-passing with spatially coupled structured operators, with applications to compressed sensing and sparse superposition codes"
   authors: [Jean Barbier, Christophe Schülke, Florent Krzakala]
@@ -237,6 +585,20 @@
   arxiv: "1312.1740"
   doi: "10.1088/1742-5468/2015/05/P05013"
   themes: [coding]
+  bibtex: |
+    @article{barbier2015approximate,
+      author        = {Barbier, Jean and Schülke, Christophe and Krzakala, Florent},
+      title         = {Approximate message-passing with spatially coupled structured operators, with applications to compressed sensing and sparse superposition codes},
+      journal       = {Journal of Statistical Mechanics: Theory and Experiment},
+      volume        = {2015},
+      number        = {5},
+      pages         = {P05013},
+      year          = {2015},
+      doi           = {10.1088/1742-5468/2015/05/P05013},
+      eprint        = {1312.1740},
+      archivePrefix = {arXiv}
+    }
+
 
 - title: "The hard-core model on random graphs revisited"
   authors: [Jean Barbier, Florent Krzakala, Lenka Zdeborová, Pan Zhang]
@@ -245,3 +607,16 @@
   arxiv: "1306.4121"
   doi: "10.1088/1742-6596/473/1/012021"
   themes: [optimization]
+  bibtex: |
+    @article{barbier2013hard,
+      author        = {Barbier, Jean and Krzakala, Florent and Zdeborová, Lenka and Zhang, Pan},
+      title         = {The hard-core model on random graphs revisited},
+      journal       = {Journal of Physics: Conference Series},
+      volume        = {473},
+      pages         = {012021},
+      year          = {2013},
+      doi           = {10.1088/1742-6596/473/1/012021},
+      eprint        = {1306.4121},
+      archivePrefix = {arXiv}
+    }
+

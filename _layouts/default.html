@@ -13,6 +13,7 @@
 </main>
 {% unless page.funding == false %}{% include footer.html %}{% endunless %}
 <script src="{{ '/assets/js/theme.js' | relative_url }}" defer></script>
+<script src="{{ '/assets/js/site.js' | relative_url }}" defer></script>
 {% if content contains 'class="gallery"' or content contains ' zoom"' %}<script src="{{ '/assets/js/lightbox.js' | relative_url }}" defer></script>{% endif %}
 {% if jekyll.environment == "production" %}
 <script data-goatcounter="https://jeanbarbier.goatcounter.com/count" async src="https://gc.zgo.at/count.js"></script>

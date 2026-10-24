@@ -48,6 +48,16 @@ changing anything. A push to `master` is live after about a minute; check the li
   months ("Oct 2026"; event ranges like "Aug 31 – Sep 4, 2026" in a wider column), text
   on the right, horizontal rules, no vertical rule. On phones the date sits above the text.
 - The quotes on Misc share a single vertical rule.
+- Every paper in `_data/publications.yml` carries a `bibtex` block (from Crossref when it has
+  a DOI, from arXiv otherwise), shown by its "Cite" button. Add one with each new paper.
+- Group members' names in author lists link to their entry on the Group page (anchors are
+  the slugified names, alumni included).
+
+## Small details
+- Home email is a click-to-copy button; the real address only exists in `assets/js/site.js`.
+- `site.js` also prints a short note for the curious in the browser console (PhD openings).
+- The 404 page speaks the field's language ("Signal-to-noise ratio below threshold") and
+  keeps the redirect for old `/jeanbarbier/...` links.
 
 ## Line breaks
 - At desktop width, no paragraph or text block may end with a last line of one or two

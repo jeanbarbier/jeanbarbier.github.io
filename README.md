@@ -15,7 +15,7 @@ Personal and group website of Jean Barbier (ICTP), built with Jekyll and served 
 | Styles | `assets/css/main.css` |
 | Photos | `assets/img/` (group members: `assets/img/people/`, square, about 400 px) |
 
-To add a paper, copy an entry in `_data/publications.yml`. Group members are highlighted automatically if their name (or one of their `aliases`) is in `_data/people.yml`.
+To add a paper, copy an entry in `_data/publications.yml`, including its `bibtex` block. Group members are highlighted automatically if their name (or one of their `aliases`) is in `_data/people.yml`.
 
 ## Preview locally
 

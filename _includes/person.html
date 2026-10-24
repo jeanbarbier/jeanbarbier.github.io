@@ -1,6 +1,6 @@
 {%- assign p = include.person -%}
 {%- assign parts = p.name | split: " " -%}
-<li class="person">
+<li class="person" id="{{ p.name | slugify }}">
   {%- if p.photo and p.photo != "" %}
   <img class="avatar" src="{{ '/assets/img/' | append: p.photo | relative_url }}" alt="{{ p.name }}" width="88" height="88" loading="lazy">
   {%- else %}

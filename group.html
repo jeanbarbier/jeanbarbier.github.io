@@ -30,7 +30,7 @@ intro: "We are based at ICTP and SISSA in Trieste. Current funding: <a href=\"ht
     <thead><tr><th scope="col">Name</th><th scope="col">In the group as</th><th scope="col">Now</th></tr></thead>
     <tbody>
       {%- for a in site.data.people.alumni %}
-      <tr><td>{{ a.name }}</td><td>{{ a.role }}</td><td>{{ a.now }}</td></tr>
+      <tr id="{{ a.name | slugify }}"><td>{{ a.name }}</td><td>{{ a.role }}</td><td>{{ a.now }}</td></tr>
       {%- endfor %}
     </tbody>
   </table>
