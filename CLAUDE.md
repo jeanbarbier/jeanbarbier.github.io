@@ -18,7 +18,7 @@ changing anything. A push to `master` is live after about a minute; check the li
 - Navigation: Group, Research, Teaching, Events, Misc. The name in the header links home.
 - Home: bio without supervisors' names, ICTP/UNESCO mission sentence, text-only CHORAL
   panel linking to CORDIS, News, Selected papers. No GitHub link.
-- Research: Highlights, then Selected papers grouped by theme (full list on Google
+- Research: Highlights, then Selected papers grouped by theme (full list on
   Scholar), then For a wider audience. No separate chronological publication page.
 - The photo gallery is the last section of the Group page.
 - Misc has no ERC funding footer (`funding: false`): music and personal content are not
