@@ -19,7 +19,7 @@ postdocs:
   - name: Minh-Toan Nguyen
     aliases: [Minh Toan Nguyen]
     photo: people/minh-toan-nguyen.jpg
-    summary: Information theory, random matrix theory and statistical physics for high-dimensional inference.
+    summary: Information theory, random matrix theory and statistical physics, with applications to high-dimensional inference.
     bio: >-
       Engineering degree from École Polytechnique and Master's in "Mathematics of
       Randomness" at Paris-Saclay (2020). PhD at Université Grenoble Alpes with
@@ -40,7 +40,7 @@ postdocs:
 
   - name: Brandon Livio Annesi
     photo: people/brandon-livio-annesi.jpg
-    summary: Statistical mechanics of learning, random matrix theory and high-dimensional inference.
+    summary: Statistical mechanics of learning, random matrix theory and high-dimensional inference, with applications to neural networks.
     bio: >-
       PhD at Bocconi University (2025) with Carlo Lucibello on statistical physics of
       non-convex neural network models, then a year at Sapienza University of Rome with

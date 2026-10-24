@@ -1,14 +1,14 @@
 # Events the group organizes. Newest first. "end" decides whether an event is upcoming or past.
 # Events without a website yet: leave url out.
-- name: "AI year at ICTP: colloquium series"
+- name: "AI year: colloquium series"
   dates: "October 2026 – October 2027"
   end: 2027-10-31
   place: "ICTP, Trieste"
-- name: "AI year at ICTP: School on AI for Scientific Discovery"
+- name: "AI year: School on AI for Scientific Discovery"
   dates: "2027, dates TBA"
   end: 2027-09-30
   place: "ICTP, Trieste"
-- name: "AI year at ICTP: Youth in High Dimensions (8th edition)"
+- name: "AI year: Youth in High Dimensions (8th edition)"
   dates: "2027, dates TBA"
   end: 2027-09-30
   place: "ICTP, Trieste"

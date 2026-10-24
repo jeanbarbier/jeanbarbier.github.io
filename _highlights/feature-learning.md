@@ -1,7 +1,7 @@
 ---
 title: A theory of feature learning in deep neural networks
 date: 2026-07-01
-summary: Bayes-optimal learning curves for deep networks whose width and data grow with the input dimension, and the layer-by-layer way in which they learn features.
+summary: Bayes-optimal learning curves for deep networks whose width and data grow with the input dimension, and the layer-by-layer way they learn features.
 ---
 We provide an analytic theory of feature learning in deep neural networks of linear width: the width scales like the input dimension, and the model size and the number of training samples grow proportionally. In this regime the network is highly expressive, yet it is constrained parameter-wise with respect to the amount of data it is trained on. It is therefore forced to be "smart" to solve the task, that is, to learn task-relevant features, which is the crux of deep learning.
 
@@ -11,7 +11,7 @@ We study supervised learning of a multi-layer perceptron (MLP) in the matched te
 
 ![The teacher–student setting with two hidden layers]({{ '/assets/img/highlights/feature-learning-setup.png' | relative_url }}){: width="1400" height="272" loading="lazy"}
 
-Previous theories either focused on very narrow networks (committee machines), which have limited expressive power, or on ultra-wide limits (neural tangent kernel and random features), where features do not move and the network is a kernel machine. Special cases such as quadratic networks also collapse to kernel machines. These simplifications are instructive, but they miss the combined effect of proportional width, depth and nonlinearity that gives rise to strong feature learning and rich learning transitions.
+Previous theories either focused on very narrow networks (committee machines), which have limited expressive power, or on ultra-wide limits (neural tangent kernel and random features), where features do not move and the network is a kernel machine. Special cases such as quadratic networks also collapse to kernel machines. These simplifications are instructive, but they miss the combined effect of proportional width, depth and nonlinearity behind strong feature learning and rich learning transitions.
 
 ## Method and results
 

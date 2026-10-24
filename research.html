@@ -7,7 +7,7 @@ intro: "We use the statistical physics of disordered systems, random matrix theo
 ---
 <section class="theme" id="highlights">
   <h2>Highlights</h2>
-  <p>Short, informal accounts of some of our papers: the question, the main result, and what it changes.</p>
+  <p>Informal accounts of some of our papers: the question, the result, and what it changes.</p>
   <ul class="notes compact grouped">
     {%- assign items = site.highlights | sort: "date" | reverse %}
     {%- for h in items %}
@@ -26,7 +26,7 @@ intro: "We use the statistical physics of disordered systems, random matrix theo
 
   <div class="subtheme" id="deep">
     <h3>Deep neural networks beyond the linear regime</h3>
-    <p>Most exact theories of neural networks either linearize them or take a width so large that features barely move. We go beyond by studying networks trained in the practical regime where the number of samples is comparable to their number of parameters. There we characterize when and how they learn features through sharp specialization transitions.</p>
+    <p>Most exact theories of neural networks either linearize them or take a width so large that features barely move. We go beyond by studying networks trained in the practical regime where the number of samples is comparable to their number of parameters. There we characterize when and how they learn features through sharp specialization transitions, and how this shapes their generalization.</p>
     <ul class="pubs compact grouped">{% for pub in site.data.publications %}{% if pub.themes contains "deep" %}{% include pub.html pub=pub %}{% endif %}{% endfor %}</ul>
   </div>
 
@@ -71,7 +71,7 @@ intro: "We use the statistical physics of disordered systems, random matrix theo
     </li>
     <li class="note">
       <h3 class="note-title"><a href="https://arxiv.org/abs/2010.14863">High-dimensional inference: a statistical mechanics perspective</a></h3>
-      <p class="note-context"><span class="note-kind">Perspective article.</span> The links between statistical physics and inference, without reading a full research paper.</p>
+      <p class="note-context"><span class="note-kind">Perspective article.</span> An introduction to the links between statistical physics and inference.</p>
     </li>
     <li class="note">
       <h3 class="note-title"><a href="https://www.ictp.it/news/2026/7/how-ai-learns">How AI learns</a></h3>

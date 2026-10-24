@@ -28,4 +28,4 @@ The activation function shapes how specialization looks. With ReLU, some student
 
 ## Why it matters
 
-Collective learning comes first and gives way to the discovery of individual features, and the paper says when a simple statistical description of learning holds. It complements our [Bayes-optimal theory of feature learning]({{ '/highlights/feature-learning/' | relative_url }}), which describes the same specialization from the point of view of the best achievable performance rather than of training.
+Collective learning comes first and gives way to the discovery of individual features, and the paper says when a simple statistical description of learning holds. It complements our [Bayes-optimal theory of feature learning]({{ '/highlights/feature-learning/' | relative_url }}), which describes the same specialization from the point of view of optimal performance rather than of training.

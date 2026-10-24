@@ -9,7 +9,7 @@ Denoising a large matrix modeled as the product of two factors is hard, both alg
 
 A statistician observes *Y*, the product *XX*ᵀ of an *N* × *M* matrix *X* with itself, blurred by additive noise. The goal is to estimate *XX*ᵀ from *Y* and to establish how well this can be done. The minimum mean-square error of this task is tied to the mutual information between the data *Y* and the matrix *XX*ᵀ.
 
-This mutual information was known only in two cases: when *X* has a rotationally invariant prior (its law does not change under conjugation by an orthogonal matrix, as when its entries are i.i.d. Gaussian), or when *M* stays finite. Beyond these settings little was known. The model is neither a usual spin glass, because the rank grows with the dimension, nor a matrix model, because rotational symmetry is lost: it is a hybrid of the two.
+This mutual information was known only in two cases: when *X* has a rotationally invariant prior (its law does not change under conjugation by an orthogonal matrix, as when its entries are i.i.d. Gaussian), or when *M* stays finite. Beyond these settings little was known. The model is neither a usual spin glass, as the rank grows with the dimension, nor a matrix model, as rotational symmetry is lost: it is a hybrid of the two.
 
 ## What we found
 
