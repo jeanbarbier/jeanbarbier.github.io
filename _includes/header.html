@@ -9,6 +9,7 @@
         {%- for item in site.nav %}
         {%- assign current = false %}
         {%- if page.url == item.url or page.url contains item.url %}{% assign current = true %}{% endif %}
+        {%- if item.url == "/research/" and page.collection == "highlights" %}{% assign current = true %}{% endif %}
         <li><a href="{{ item.url | relative_url }}"{% if current %} aria-current="page"{% endif %}>{{ item.title }}</a></li>
         {%- endfor %}
       </ul>

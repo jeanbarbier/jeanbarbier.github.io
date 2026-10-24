@@ -5,6 +5,21 @@ heading: Research
 permalink: /research/
 intro: "We use the statistical physics of disordered systems, random matrix theory and information theory to sharply describe inference and learning in high dimension. Below is a selection of papers. The full list is on <a href=\"https://scholar.google.com/citations?user=yeE5qqIAAAAJ&hl=en\">Google Scholar</a>. Group members are highlighted."
 ---
+<section class="theme" id="highlights">
+  <h2>Highlights</h2>
+  <p>Short, informal accounts of some of our papers: the question, the main result, and what it changes.</p>
+  <ul class="notes">
+    {%- assign items = site.highlights | sort: "date" | reverse %}
+    {%- for h in items %}
+    {%- assign hp = site.data.publications | where: "highlight", h.url | first %}
+    <li class="note">
+      <h3 class="note-title"><a href="{{ h.url | relative_url }}">{{ h.title }}</a></h3>
+      <p class="note-context">{{ h.summary }}{% if hp %} <span class="note-kind">{{ hp.venue }}{% unless hp.venue contains hp.year %}, {{ hp.year }}{% endunless %}.</span>{% endif %}</p>
+    </li>
+    {%- endfor %}
+  </ul>
+</section>
+
 <section class="theme" id="deep">
   <h2>Deep neural networks beyond the linear regime</h2>
   <p>Most exact theories of neural networks either linearize them or take a width so large that features barely move. We go beyond by studying networks trained in the practical regime where the number of samples is comparable to their number of parameters. There we characterize when and how they learn features through sharp specialization transitions.</p>
@@ -44,7 +59,6 @@ intro: "We use the statistical physics of disordered systems, random matrix theo
 <section class="theme" id="wide-audience">
   <h2>For a wider audience</h2>
   <ul class="plain">
-    <li><a href="{{ '/highlights/' | relative_url }}">Highlights</a>: short accounts of some of our papers.</li>
     <li><a href="https://www.youtube.com/watch?v=q1VO5dmymFM">A talk on physics and information processing systems</a>, ICTP Mathematics (video).</li>
     <li><a href="https://arxiv.org/abs/2010.14863">High-dimensional inference: a statistical mechanics perspective</a>, a short perspective article.</li>
     <li><a href="https://www.ictp.it/news/2026/7/how-ai-learns">How AI learns</a>, ICTP news on our Physical Review X paper.</li>

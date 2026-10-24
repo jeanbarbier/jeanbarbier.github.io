@@ -20,7 +20,6 @@ erc:
 nav:
   - { title: Group, url: /group/ }
   - { title: Research, url: /research/ }
-  - { title: Highlights, url: /highlights/ }
   - { title: Teaching, url: /teaching/ }
   - { title: Events, url: /events/ }
   - { title: Miscellaneous, url: /misc/ }

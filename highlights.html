@@ -1,17 +1,10 @@
 ---
-layout: default
-title: Highlights
-heading: Highlights
 permalink: /highlights/
-intro: "Short, informal accounts of some of our papers: the question, the main result, and what it changes."
+sitemap: false
 ---
-<ul class="notes">
-  {%- assign items = site.highlights | sort: "date" | reverse %}
-  {%- for h in items %}
-  {%- assign pub = site.data.publications | where: "highlight", h.url | first %}
-  <li class="note">
-    <h2 class="note-title"><a href="{{ h.url | relative_url }}">{{ h.title }}</a></h2>
-    <p class="note-context">{{ h.summary }}{% if pub %} <span class="note-kind">{{ pub.venue }}{% unless pub.venue contains pub.year %}, {{ pub.year }}{% endunless %}.</span>{% endif %}</p>
-  </li>
-  {%- endfor %}
-</ul>
+<!doctype html>
+<html lang="en"><head><meta charset="utf-8"><title>Moved</title>
+<link rel="canonical" href="{{ '/research/#highlights' | absolute_url }}">
+<meta http-equiv="refresh" content="0; url={{ '/research/#highlights' | relative_url }}">
+<meta name="robots" content="noindex"></head>
+<body><p>Highlights are now on the <a href="{{ '/research/#highlights' | relative_url }}">Research page</a>.</p></body></html>
