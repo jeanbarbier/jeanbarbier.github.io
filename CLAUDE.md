@@ -58,7 +58,7 @@ changing anything. A push to `master` is live after about a minute; check the li
   `_data/curves.yml` (never the same twice in a row; the 404 keeps its flat line). Without
   JavaScript the page's own `curve:` front matter shows (default BBP). First-order jumps are real breaks with an open dot
   (limit) and a filled dot (value); small jumps may be enlarged, but the hover text stays
-  exact and the click opens the paper or notes. Ten invented, just-for-fun transitions
+  exact and the click opens the paper or notes. Eleven invented, just-for-fun transitions
   (`invented: true`) are in the same pool, each with a playful hover text; they link to Misc
   or to the Trieste section of the home page. Each curve also has a short `label`
   written at its left, small and light red-orange (`--curve-note`), placed as close to the
