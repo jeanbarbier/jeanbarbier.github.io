@@ -23,7 +23,6 @@ nav:
   - { title: Highlights, url: /highlights/ }
   - { title: Teaching, url: /teaching/ }
   - { title: Events, url: /events/ }
-  - { title: Gallery, url: /gallery/ }
   - { title: Miscellaneous, url: /misc/ }
 
 image: /assets/img/og-image.jpg

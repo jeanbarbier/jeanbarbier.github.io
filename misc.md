@@ -14,6 +14,17 @@ Outside science I like rock climbing, skiing and freediving. With friends we mak
 {%- endfor %}
 </ul>
 
+## Gallery
+
+<div class="gallery">
+  {%- for g in site.data.gallery %}
+  <figure>
+    <a href="{{ '/assets/img/gallery/' | append: g.file | append: '.jpg' | relative_url }}"><img src="{{ '/assets/img/gallery/' | append: g.file | append: '-small.jpg' | relative_url }}" alt="{{ g.alt }}" width="{{ g.w }}" height="{{ g.h }}" loading="lazy"></a>
+    {%- if g.caption != "" %}<figcaption>{{ g.caption }}</figcaption>{% endif %}
+  </figure>
+  {%- endfor %}
+</div>
+
 ## Quotes I like
 
 > An expert is a person who has found out by his own painful experience all the mistakes that one can make in a very narrow field.
