@@ -10,7 +10,7 @@ Outside science I like rock climbing, skiing and freediving. With friends we mak
 
 <ul class="albums">
 {%- for al in site.data.albums %}
-  <li><span class="album-month">{{ al.month | append: "-01" | date: "%B %Y" }}</span><span class="album-name"><a href="{{ al.url }}">{{ al.title }}</a> by {{ al.artist }}{% if al.note and al.note != "" %}. {{ al.note }}{% endif %}</span></li>
+  <li><span class="album-month">{{ al.month | append: "-01" | date: "%B %Y" }}</span><span class="album-name">{% if al.title and al.title != "" %}<a href="{{ al.url }}">{{ al.title }}</a> by {{ al.artist }}{% else %}<a href="{{ al.url }}">{{ al.artist }}</a>{% endif %}{% for x in al.extra %}, <a href="{{ x.url }}">{{ x.label }}</a>{% endfor %}{% if al.note and al.note != "" %}. {{ al.note }}{% endif %}</span></li>
 {%- endfor %}
 </ul>
 
