@@ -49,3 +49,15 @@ intro: "We are based at ICTP and SISSA in Trieste. Current funding: <a href=\"ht
     <dd>Several group members came through ICTP's one-year pre-PhD <a href="https://www.ictp.it/opportunity/ictp-postgraduate-diploma-programme">Postgraduate Diploma Programme</a> in Quantitative Life Sciences; the diploma in Mathematics is another route into the group. Scholarships are available for students from developing countries.</dd>
   </dl>
 </section>
+
+<section class="block" id="gallery">
+  <h2>Gallery</h2>
+  <div class="gallery">
+    {%- for g in site.data.gallery %}
+    <figure>
+      <a href="{{ '/assets/img/gallery/' | append: g.file | append: '.jpg' | relative_url }}"><img src="{{ '/assets/img/gallery/' | append: g.file | append: '-small.jpg' | relative_url }}" alt="{{ g.alt }}" width="{{ g.w }}" height="{{ g.h }}" loading="lazy"></a>
+      {%- if g.caption != "" %}<figcaption>{{ g.caption }}</figcaption>{% endif %}
+    </figure>
+    {%- endfor %}
+  </div>
+</section>

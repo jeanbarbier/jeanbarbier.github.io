@@ -24,17 +24,6 @@ Outside science I like rock climbing, skiing and freediving. With friends we mak
 </div>
 <script src="{{ '/assets/js/music-player.js' | relative_url }}" defer></script>
 
-## Gallery
-
-<div class="gallery">
-  {%- for g in site.data.gallery %}
-  <figure>
-    <a href="{{ '/assets/img/gallery/' | append: g.file | append: '.jpg' | relative_url }}"><img src="{{ '/assets/img/gallery/' | append: g.file | append: '-small.jpg' | relative_url }}" alt="{{ g.alt }}" width="{{ g.w }}" height="{{ g.h }}" loading="lazy"></a>
-    {%- if g.caption != "" %}<figcaption>{{ g.caption }}</figcaption>{% endif %}
-  </figure>
-  {%- endfor %}
-</div>
-
 ## Worth reading
 
 - [A highly relevant viewpoint on science in the age of AI](https://www.linkedin.com/pulse/where-mathematics-headed-age-ai-marc-m%C3%A9zard-vhvce/), by Marc Mézard.
