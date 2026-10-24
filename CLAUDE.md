@@ -86,3 +86,6 @@ changing anything. A push to `master` is live after about a minute; check the li
   SoundCloud player (300px, shows the list of mixes) for "Play Entropie 10". Starting one stops the other.
 - Music list (`_data/albums.yml`): newest first; new entries go at the bottom, one month
   further back.
+- Misc ends with "Submit your phase transition": a form sent through Web3Forms (access key
+  `web3forms_key` in `_config.yml`, public by design). Anonymous unless the visitor adds a
+  name or email; the note under the form names the service (needed for transparency).

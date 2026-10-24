@@ -13,7 +13,7 @@ author:
 # Funding acknowledgement shown in the footer. Fill in the ERC grant agreement
 # number (it appears on the grant agreement / ERC portal).
 # Access key for the Misc page form (Web3Forms; public by design, it only sends to Jean).
-web3forms_key: ""
+web3forms_key: "5a50d335-3bf0-4d10-839c-993e2751ba04"
 
 erc:
   acronym: CHORAL
