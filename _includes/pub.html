@@ -17,7 +17,7 @@
   <p class="pub-authors">
     {%- for a in pub.authors -%}
       {%- assign key = "|" | append: a | append: "|" -%}
-      {%- if group_names contains key %}<span class="member">{{ a }}</span>{% else %}{{ a }}{% endif %}{% unless forloop.last %}, {% endunless %}
+      <span class="author{% if group_names contains key %} member{% endif %}">{{ a }}</span>{% unless forloop.last %}, {% endunless %}
     {%- endfor -%}
   </p>
   {%- endunless %}
