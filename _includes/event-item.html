@@ -1,0 +1,3 @@
+{%- assign e = include.e -%}
+{%- assign d = e.dates | replace: "January", "Jan" | replace: "February", "Feb" | replace: "March", "Mar" | replace: "April", "Apr" | replace: "June", "Jun" | replace: "July", "Jul" | replace: "August", "Aug" | replace: "September", "Sep" | replace: "October", "Oct" | replace: "November", "Nov" | replace: "December", "Dec" -%}
+<li><span class="news-date">{{ d }}</span><span class="news-text">{% if e.url %}<a href="{{ e.url }}">{{ e.name }}</a>{% else %}{{ e.name }}{% endif %}, {{ e.place }}.</span></li>

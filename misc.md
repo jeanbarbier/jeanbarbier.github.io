@@ -30,6 +30,8 @@ Outside science I like rock climbing, skiing and freediving. With friends we mak
 
 ## Quotes I like
 
+<div class="quotes" markdown="1">
+
 > An expert is a person who has found out by his own painful experience all the mistakes that one can make in a very narrow field.
 >
 > <cite>Niels Bohr, quoted by Edward Teller in LIFE magazine (6 September 1954)</cite>
@@ -45,3 +47,5 @@ Outside science I like rock climbing, skiing and freediving. With friends we mak
 > Everything should be made as simple as possible, but not simpler.
 >
 > <cite>Attributed to Albert Einstein; [the long story of this quote](https://quoteinvestigator.com/2011/05/13/einstein-simple/)</cite>
+
+</div>

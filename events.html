@@ -14,10 +14,10 @@ intro: "Meetings we organize. From October 2026 to October 2027 ICTP holds an AI
 {%- if upcoming.size > 0 %}
 <section class="block">
   <h2>Upcoming</h2>
-  <ul class="events">{% for e in upcoming %}<li><p class="event-name">{% if e.url %}<a href="{{ e.url }}">{{ e.name }}</a>{% else %}{{ e.name }}{% endif %}</p><p class="event-meta">{{ e.dates }}, {{ e.place }}</p></li>{% endfor %}</ul>
+  <ul class="news event-list">{% for e in upcoming %}{% include event-item.html e=e %}{% endfor %}</ul>
 </section>
 {%- endif %}
 <section class="block">
   <h2>Past</h2>
-  <ul class="events">{% for e in past %}<li><p class="event-name">{% if e.url %}<a href="{{ e.url }}">{{ e.name }}</a>{% else %}{{ e.name }}{% endif %}</p><p class="event-meta">{{ e.dates }}, {{ e.place }}</p></li>{% endfor %}</ul>
+  <ul class="news event-list">{% for e in past %}{% include event-item.html e=e %}{% endfor %}</ul>
 </section>
