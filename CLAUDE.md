@@ -54,8 +54,9 @@ changing anything. A push to `master` is live after about a minute; check the li
   the slugified names, alumni included).
 
 ## Small details
-- Header curve: one phase transition per page (front matter `curve:`, data in
-  `_data/curves.yml`, default BBP). First-order jumps are real breaks with an open dot
+- Header curve: on every page load one phase transition is drawn at random from
+  `_data/curves.yml` (never the same twice in a row; the 404 keeps its flat line). Without
+  JavaScript the page's own `curve:` front matter shows (default BBP). First-order jumps are real breaks with an open dot
   (limit) and a filled dot (value); small jumps may be enlarged, but the hover text stays
   exact and the click opens the paper or notes.
 - Home email is a click-to-copy button; the real address only exists in `assets/js/site.js`.
