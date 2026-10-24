@@ -178,8 +178,8 @@ main .intro p { max-width: none; }
 .block:first-child { margin-top: 0; }
 
 /* ---------- Home ---------- */
-.intro { display: grid; grid-template-columns: 11.5rem 1fr; gap: 2rem; align-items: start; }
-.portrait { width: 100%; aspect-ratio: 8 / 9; object-fit: cover; border-radius: 6px; }
+.intro { display: flow-root; }  /* text wraps around the floated portrait */
+.portrait { float: left; width: 11.5rem; aspect-ratio: 8 / 9; object-fit: cover; border-radius: 6px; margin: 0.3rem 2rem 0.75rem 0; }
 .intro-text p:last-of-type { margin-bottom: 1.2rem; }
 .link-row { display: flex; flex-wrap: wrap; gap: 0.35rem 1.25rem; font-size: 0.97rem; }
 .link-row .email { color: var(--muted); }
@@ -343,8 +343,7 @@ cite { font-style: normal; }
   .site-nav ul { gap: 0.15rem 0.8rem; }
   .site-nav a { font-size: 0.92rem; }
   .theme-toggle { margin-left: 0.5rem; }
-  .intro { grid-template-columns: 1fr; }
-  .portrait { width: 11rem; margin-inline: auto; }
+  .portrait { float: none; width: 11rem; margin: 0 auto 1.25rem; }
   .news li { grid-template-columns: 1fr; gap: 0.1rem; }
   .join dl { grid-template-columns: 1fr; gap: 0.2rem; }
   .join dd { margin-bottom: 0.8rem; }
