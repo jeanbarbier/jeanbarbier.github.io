@@ -1,7 +1,7 @@
-// Gallery lightbox: click a photo to enlarge it; click anywhere (or press Esc) to go back.
+// Lightbox for the gallery and any link with class "zoom": click a photo to enlarge it; click anywhere (or press Esc) to go back.
 // Without JavaScript the links still open the full-size image.
 (function () {
-  var links = document.querySelectorAll('.gallery a');
+  var links = document.querySelectorAll('.gallery a, a.zoom');
   if (!links.length || typeof HTMLDialogElement !== 'function') return;
 
   var dialog = document.createElement('dialog');

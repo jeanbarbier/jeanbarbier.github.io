@@ -306,7 +306,7 @@ figcaption { color: var(--muted); font-size: var(--step--1); }
 .gallery figure { break-inside: avoid; margin: 0 0 0.75rem; }
 .gallery img { width: 100%; border-radius: 4px; }
 .gallery figcaption { margin-top: 0.3rem; }
-.gallery a { cursor: zoom-in; display: block; }
+.gallery a, a.zoom { cursor: zoom-in; display: block; }
 .lightbox {
   border: 0; padding: 0; margin: 0; max-width: none; max-height: none;
   width: 100vw; height: 100dvh; background: rgba(10, 12, 16, 0.92);
@@ -347,7 +347,8 @@ main section h2, main .block h2, main .theme h2 { margin-top: 0; }
 .block .wide-img { width: 100%; max-width: 100%; margin-top: 1rem; }
 /* Home, Trieste: half-width picture on the left, text beside it (like the portrait) */
 .trieste { display: flow-root; }
-.side-img { float: left; width: 50%; border-radius: 6px; margin: 0.3rem 2rem 0.5rem 0; }
+.side-img { float: left; width: 50%; margin: 0.3rem 2rem 0.5rem 0; }
+.side-img img { width: 100%; border-radius: 6px; }
 main .trieste p { max-width: none; }
 blockquote { margin: 1.5rem 0; padding: 0 0 0 1.25rem; border-left: 2px solid var(--rule); }
 /* Misc: one rule for the whole set of quotes */
