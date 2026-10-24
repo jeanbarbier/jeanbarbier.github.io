@@ -25,6 +25,10 @@ Outside science I like rock climbing, skiing and freediving. With friends we mak
   {%- endfor %}
 </div>
 
+## Worth reading
+
+- [A highly relevant viewpoint on science in the age of AI](https://www.linkedin.com/pulse/where-mathematics-headed-age-ai-marc-m%C3%A9zard-vhvce/), by Marc Mézard.
+
 ## Quotes I like
 
 > An expert is a person who has found out by his own painful experience all the mistakes that one can make in a very narrow field.
