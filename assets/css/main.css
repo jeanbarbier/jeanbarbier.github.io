@@ -168,7 +168,14 @@ p, dd, li, figcaption, .news-text, .album-name { text-wrap: pretty; }
 
 /* The signature: a phase transition as the header rule */
 .curve-wrap { margin-top: 1.1rem; }
-.curve-link { display: block; }   /* hover names the transition; click opens its paper or notes */
+.curve-link { display: block; position: relative; }
+/* First-order transitions: open dot = limit not attained, filled dot = value at the transition */
+.jump-dot {
+  position: absolute; width: 7px; height: 7px; box-sizing: border-box; border-radius: 50%;
+  border: 1.5px solid var(--accent); background: var(--accent);
+  transform: translate(-50%, -50%); pointer-events: none;
+}
+.jump-dot.open { background: var(--bg); }   /* hover names the transition; click opens its paper or notes */
 .phase-curve { display: block; width: 100%; height: 44px; overflow: visible; }
 .phase-curve path { stroke: var(--accent); stroke-width: 1.5px; stroke-linejoin: round; }
 

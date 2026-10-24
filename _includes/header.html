@@ -21,6 +21,6 @@
   {%- assign ckey = page.curve | default: "bbp" -%}
   {%- assign cv = site.data.curves[ckey] %}
   <div class="wrap curve-wrap">
-    <a class="curve-link" href="{{ page.curve_link | default: cv.link | relative_url }}" title="{{ cv.title }}" aria-label="{{ cv.title }}"><svg class="phase-curve" viewBox="0 0 1000 48" preserveAspectRatio="none" aria-hidden="true" focusable="false"><path d="{{ cv.d }}" fill="none" vector-effect="non-scaling-stroke"/></svg></a>
+    <a class="curve-link" href="{{ page.curve_link | default: cv.link | relative_url }}" title="{{ cv.title }}" aria-label="{{ cv.title }}"><svg class="phase-curve" viewBox="0 0 1000 48" preserveAspectRatio="none" aria-hidden="true" focusable="false"><path d="{{ cv.d }}" fill="none" vector-effect="non-scaling-stroke"/></svg>{% for jp in cv.jumps %}<span class="jump-dot open" style="left: {{ jp[0] | divided_by: 10.0 }}%; top: {{ jp[1] | divided_by: 0.48 }}%"></span><span class="jump-dot" style="left: {{ jp[0] | divided_by: 10.0 }}%; top: {{ jp[2] | divided_by: 0.48 }}%"></span>{% endfor %}</a>
   </div>
 </header>
