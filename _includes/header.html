@@ -21,8 +21,7 @@
   {%- assign ckey = page.curve | default: "bbp" -%}
   {%- assign cv = site.data.curves[ckey] %}
   <div class="wrap curve-wrap">
-    <a class="curve-link" href="{{ page.curve_link | default: cv.link | relative_url }}" title="{{ cv.title }}" aria-label="{{ cv.title }}"><svg class="phase-curve" viewBox="0 0 1000 48" preserveAspectRatio="none" aria-hidden="true" focusable="false"><path d="{{ cv.d }}" fill="none" vector-effect="non-scaling-stroke"/></svg>{% for jp in cv.jumps %}<span class="jump-dot open" style="left: {{ jp[0] | divided_by: 10.0 }}%; top: {{ jp[1] | divided_by: 0.48 }}%"></span><span class="jump-dot" style="left: {{ jp[0] | divided_by: 10.0 }}%; top: {{ jp[2] | divided_by: 0.48 }}%"></span>{% endfor %}</a>
-    <p class="curve-caption">{{ cv.title }}</p>
+    <a class="curve-link" href="{{ page.curve_link | default: cv.link | relative_url }}" title="{{ cv.title }}" aria-label="{{ cv.title }}"><svg class="phase-curve" viewBox="0 0 1000 48" preserveAspectRatio="none" aria-hidden="true" focusable="false"><path d="{{ cv.d }}" fill="none" vector-effect="non-scaling-stroke"/></svg>{% for jp in cv.jumps %}<span class="jump-dot open" style="left: {{ jp[0] | divided_by: 10.0 }}%; top: {{ jp[1] | divided_by: 0.48 }}%"></span><span class="jump-dot" style="left: {{ jp[0] | divided_by: 10.0 }}%; top: {{ jp[2] | divided_by: 0.48 }}%"></span>{% endfor %}<span class="curve-label">{{ cv.label }}</span></a>
   </div>
   {%- unless ckey == "flat" %}
   <script>
@@ -47,7 +46,19 @@
       var href = base + cv.link;
       a.href = (cv.paper && location.pathname === href) ? cv.paper : href;
       a.title = cv.title; a.setAttribute('aria-label', cv.title);
-      var cap = a.parentNode.querySelector('.curve-caption'); if (cap) cap.textContent = cv.title;
+      var lab = a.querySelector('.curve-label'); lab.textContent = cv.label;
+      // Short label at the left, vertically as close to the middle as the curve allows.
+      var W = a.clientWidth, H = a.clientHeight, lw = lab.offsetWidth + 6, lh = lab.offsetHeight / 2 + 2, P = [];
+      cv.d.split('M').forEach(function (seg) {
+        var n = (seg.match(/-?\d+\.?\d*/g) || []).map(Number);
+        for (var i = 0; i + 3 < n.length; i += 2) for (var t = 0; t <= 1; t += 0.1)
+          P.push([(n[i] + t * (n[i + 2] - n[i])) / 1000 * W, (n[i + 1] + t * (n[i + 3] - n[i + 1])) / 48 * H]);
+      });
+      var spots = [0.5, 0.33, 0.67, 0.18, 0.82].map(function (f) { return f * H; }), y = null;
+      for (var s = 0; s < spots.length && y === null; s++)
+        if (!P.some(function (p) { return p[0] < lw && Math.abs(p[1] - spots[s]) < lh; })) y = spots[s];
+      lab.classList.toggle('knockout', y === null);
+      lab.style.top = (y === null ? H / 2 : y) + 'px';
     })();
   </script>
   {%- endunless %}

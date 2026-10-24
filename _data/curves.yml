@@ -1,85 +1,101 @@
 # Header curves. On every page load one of the curves below (all but flat) is drawn at random,
 # never the same twice in a row; without JavaScript the page's own `curve:` (default bbp) shows.
-# `paper` replaces `link` when the visitor is already on the linked page.
+# `paper` replaces `link` when the visitor is already on the linked page. `label` is the short
+# description written at the left of the curve; `title` is the longer text shown on hover.
 # d = SVG path in a 1000 x 48 box (y down), from the papers' figure data or exact formulas; small jumps are
 # enlarged for legibility (the hover text stays exact). jumps = [x, y before, y after]: open dot before, filled dot after.
 bbp:
   title: "BBP transition: the top eigenvector of a noisy matrix starts to correlate with the hidden signal once the signal-to-noise ratio exceeds 1 (squared overlap 1 − 1/λ²)."
+  label: "BBP transition"
   link: /teaching/
   d: "M0.0 46.00 L250.0 46.00 L250.4 45.88 L251.1 45.63 L252.1 45.29 L253.2 44.88 L254.6 44.41 L256.2 43.89 L258.0 43.33 L259.8 42.73 L261.9 42.10 L264.1 41.44 L266.4 40.75 L268.8 40.05 L271.4 39.33 L274.1 38.60 L276.9 37.86 L279.9 37.11 L282.9 36.36 L286.0 35.61 L289.3 34.86 L292.7 34.11 L296.1 33.36 L299.7 32.62 L303.4 31.88 L307.1 31.16 L311.0 30.44 L314.9 29.73 L319.0 29.03 L323.1 28.35 L327.3 27.67 L331.6 27.01 L336.0 26.36 L340.5 25.72 L345.1 25.10 L349.7 24.49 L354.4 23.89 L359.3 23.31 L364.2 22.74 L369.1 22.18 L374.2 21.64 L379.3 21.11 L384.5 20.60 L389.8 20.10 L395.2 19.61 L400.6 19.13 L406.1 18.67 L411.7 18.22 L417.4 17.79 L423.1 17.36 L428.9 16.95 L434.8 16.55 L440.8 16.16 L446.8 15.78 L452.9 15.41 L459.0 15.05 L465.3 14.70 L471.6 14.37 L477.9 14.04 L484.3 13.72 L490.8 13.41 L497.4 13.11 L504.0 12.82 L510.7 12.54 L517.5 12.27 L524.3 12.00 L531.2 11.75 L538.2 11.50 L545.2 11.25 L552.3 11.02 L559.4 10.79 L566.6 10.57 L573.9 10.35 L581.2 10.14 L588.6 9.94 L596.1 9.74 L603.6 9.55 L611.1 9.36 L618.8 9.18 L626.5 9.01 L634.2 8.84 L642.0 8.67 L649.9 8.51 L657.8 8.35 L665.8 8.20 L673.9 8.06 L682.0 7.91 L690.1 7.77 L698.3 7.64 L706.6 7.51 L714.9 7.38 L723.3 7.26 L731.8 7.14 L740.3 7.02 L748.8 6.90 L757.4 6.79 L766.1 6.69 L774.8 6.58 L783.6 6.48 L792.4 6.38 L801.3 6.28 L810.2 6.19 L819.2 6.10 L828.3 6.01 L837.4 5.92 L846.5 5.84 L855.7 5.76 L865.0 5.68 L874.3 5.60 L883.6 5.52 L893.1 5.45 L902.5 5.38 L912.0 5.31 L921.6 5.24 L931.2 5.17 L940.9 5.11 L950.6 5.04 L960.4 4.98 L970.2 4.92 L980.1 4.86 L990.0 4.81 L1000.0 4.75"
 specialization:
   title: "Specialization transition in a deep network: as the number of samples grows, the overlap between learned and teacher features jumps. Theory curve from our Physical Review X 2026 paper."
+  label: "Specialization in deep networks"
   link: /highlights/feature-learning/
   paper: https://doi.org/10.1103/56sb-pdh6
   d: "M0.0 45.8 L2.9 45.75 L5.9 45.85 L11.7 45.97 L17.6 46.0 L35.2 45.98 L44.0 45.94 L52.8 45.86 L58.6 45.78 L70.4 45.56 L76.2 45.42 L82.1 45.24 L85.0 45.14 L88.0 45.06 L90.9 44.94 L93.8 44.86 L96.8 44.72 L102.6 44.53 L105.6 44.36 L114.4 44.01 L117.3 43.88 L120.2 43.66 L129.0 43.22 L132.0 43.06 L134.9 43.01 L140.8 42.67 L149.5 42.12 L152.5 41.92 L155.4 41.87 L164.2 41.23 L167.1 41.18 L173.0 40.71 L175.9 40.66 L184.7 39.91 L187.7 39.84 L190.6 39.58 L193.5 39.52 L199.4 38.96 L202.3 38.9 L205.3 38.61 L208.2 38.55 L211.1 38.24 L214.1 38.19 L217.0 37.87 L219.9 37.82 L225.8 37.17 L228.7 37.11 L231.7 36.78 L234.6 36.71 L237.5 36.37 L240.5 36.3 L243.4 35.96 L246.3 35.88 L249.2 35.54 L252.2 35.46 L255.1 35.4 L258.0 35.02 L261.0 34.96 L263.9 34.58 L266.8 34.52 L269.8 34.13 L272.7 34.06 L275.6 33.67 L278.6 33.6 L281.5 33.2 L287.4 33.05 L290.3 32.64 L293.2 32.56 L296.2 32.16 L302.0 32.0 L305.0 31.58 L307.9 31.49 L310.8 31.07 L313.8 30.98 L316.7 30.57 L322.6 30.38 L325.5 29.95 L328.4 29.85 L331.4 29.42 L334.3 29.34 L337.2 29.23 L340.2 28.78 L343.1 28.67 L346.0 28.2 L348.9 28.12 L351.9 27.63 L354.8 27.47 L357.7 27.41 L360.7 26.74 L363.6 26.62 L366.5 25.92 L369.5 25.62 L372.4 24.88 L375.3 24.5 L378.3 23.65 L381.2 23.2 L384.1 22.02 L387.1 21.08 L390.0 19.57 L392.9 16.61 L395.9 9.64 L398.8 8.55 L401.7 7.88 L404.7 7.45 L407.6 7.05 L413.5 6.49 L416.4 6.27 L422.3 5.91 L425.2 5.73 L431.1 5.46 L439.9 5.1 L448.7 4.83 L454.5 4.66 L463.3 4.45 L478.0 4.16 L492.6 3.92 L504.4 3.76 L522.0 3.55 L545.4 3.33 L571.8 3.13 L601.1 2.95 L639.3 2.76 L683.2 2.59 L736.0 2.44 L800.5 2.29 L882.6 2.15 L985.3 2.02 L1000.0 2.0"
 factorization:
   title: "Denoising–factorization transition: the part of a large matrix that can be recovered (1 − MMSE) jumps once the signal-to-noise ratio is high enough. Theory curve from our Physical Review X 2025 paper."
+  label: "Denoising–factorization transition"
   link: /highlights/matrix-denoising/
   paper: https://doi.org/10.1103/PhysRevX.15.021085
   d: "M0.0 46.0 L8.4 44.84 L16.8 43.78 L25.2 41.68 L33.6 40.46 L42.0 39.35 L50.4 38.35 L58.8 37.45 L67.2 36.63 L75.6 35.89 L84.0 35.21 L92.4 34.6 L100.8 34.03 L109.2 33.51 L117.6 33.03 L126.1 32.59 L134.5 32.18 L142.9 31.79 L151.3 31.43 L159.7 31.1 L168.1 30.78 L176.5 30.49 L184.9 30.21 L193.3 29.95 L201.7 29.7 L210.1 29.46 L218.5 29.24 L226.9 29.03 L235.3 28.83 L243.7 28.64 L252.1 28.46 L260.5 28.28 L268.9 28.12 L277.3 27.96 L285.7 27.81 L294.1 27.66 L302.5 27.52 L310.9 27.39 L319.3 27.26 L327.7 27.13 L336.1 27.02 L344.5 26.9 L352.9 26.79 L361.3 26.68 L369.7 26.58 L378.2 26.48 L386.6 26.38 L395.0 26.29 L403.4 26.2 L411.8 26.11 L420.2 26.03 L428.6 25.95 L437.0 25.87 L445.4 25.79 L453.8 25.71 L462.2 25.64 L470.6 25.57 L479.0 25.5 L487.4 25.44 L495.8 25.37 L504.2 25.31 L512.6 25.25 L521.0 25.19 L529.4 25.13 L537.8 25.07 L546.2 25.01 L554.6 24.96 L563.0 24.91 L571.4 24.86 L579.8 24.81 L588.2 24.76 L596.6 24.71 L605.0 24.66 L613.4 24.62 L630.3 24.53 L638.7 24.48 L647.1 24.44 L655.5 24.4 L663.9 24.36 L672.3 24.32 L680.7 24.28 L689.1 24.24 L697.5 24.21 L705.9 24.17 L714.3 24.14 L722.7 24.1 L731.1 24.07 L739.5 24.03 L747.9 24.0 L752.1 24.0 M752.1 6.4 L756.3 6.4 L773.1 5.77 L789.9 5.22 L806.7 4.74 L815.1 4.53 L823.5 4.32 L831.9 4.12 L840.3 3.94 L848.7 3.78 L865.5 3.48 L882.4 3.21 L899.2 2.96 L924.4 2.65 L941.2 2.47 L949.6 2.39 L966.4 2.24 L974.8 2.18 L983.2 2.11 L991.6 2.05 L1000.0 2.0"
   jumps: [[752.1, 24.0, 6.4]]
 sparse:
   title: "Spiked Wigner model with a sparse prior: the Bayes-optimal overlap jumps at the information-theoretic threshold, before efficient algorithms can recover the signal. Computed from the replica formula."
+  label: "Sparse spiked Wigner model"
   link: /docs/main.pdf
   d: "M0 46.0 L10.0 46.0 L15.0 46.0 L19.9 46.0 L24.9 46.0 L29.9 46.0 L34.9 46.0 L39.8 46.0 L44.8 46.0 L49.8 46.0 L54.8 46.0 L59.7 46.0 L64.7 46.0 L69.7 46.0 L74.7 46.0 L79.6 46.0 L84.6 46.0 L89.6 46.0 L94.6 46.0 L99.5 46.0 L104.5 46.0 L109.5 46.0 L114.5 46.0 L119.4 46.0 L124.4 46.0 L129.4 46.0 L134.4 46.0 L139.3 46.0 L144.3 46.0 L149.3 46.0 L154.3 46.0 L159.2 46.0 L164.2 46.0 L169.2 46.0 L174.2 46.0 L179.1 46.0 L184.1 46.0 L189.1 46.0 L194.1 46.0 L199.0 46.0 L204.0 46.0 L209.0 46.0 L214.0 46.0 L218.9 46.0 L223.9 46.0 L228.9 46.0 L233.9 46.0 L238.8 46.0 L243.8 46.0 L248.8 46.0 L253.8 46.0 L258.7 46.0 L263.7 46.0 L268.7 46.0 L273.7 46.0 L278.6 46.0 L283.6 46.0 L288.6 46.0 L293.6 46.0 L298.5 46.0 L303.5 46.0 L308.5 46.0 L313.5 46.0 L318.4 46.0 L323.4 46.0 L328.4 46.0 L333.4 46.0 L338.3 46.0 L343.3 46.0 L348.3 46.0 L353.3 46.0 L358.2 46.0 L363.2 46.0 L368.2 46.0 L373.2 46.0 L375.7 46.0 M375.7 19.24 L378.1 19.24 L383.1 18.19 L388.1 17.27 L393.1 16.45 L398.0 15.71 L403.0 15.04 L408.0 14.42 L413.0 13.85 L417.9 13.32 L422.9 12.82 L427.9 12.36 L432.9 11.92 L437.8 11.51 L442.8 11.13 L447.8 10.76 L452.8 10.42 L457.7 10.09 L462.7 9.78 L467.7 9.48 L472.7 9.2 L477.6 8.94 L482.6 8.68 L487.6 8.44 L492.6 8.21 L497.5 7.99 L502.5 7.78 L507.5 7.57 L512.5 7.38 L517.4 7.19 L522.4 7.02 L527.4 6.85 L532.4 6.68 L537.3 6.53 L542.3 6.37 L547.3 6.23 L552.3 6.09 L557.2 5.96 L562.2 5.83 L567.2 5.7 L572.2 5.58 L577.1 5.47 L582.1 5.36 L587.1 5.25 L592.1 5.15 L597.0 5.05 L602.0 4.95 L607.0 4.86 L612.0 4.77 L616.9 4.69 L621.9 4.6 L626.9 4.52 L631.9 4.45 L636.8 4.37 L641.8 4.3 L646.8 4.23 L651.8 4.16 L656.7 4.1 L661.7 4.04 L666.7 3.97 L671.7 3.92 L676.6 3.86 L681.6 3.8 L686.6 3.75 L691.6 3.7 L696.5 3.65 L701.5 3.6 L706.5 3.55 L711.5 3.51 L716.4 3.46 L721.4 3.42 L726.4 3.38 L731.4 3.34 L736.3 3.3 L741.3 3.27 L746.3 3.23 L751.3 3.19 L756.2 3.16 L761.2 3.13 L766.2 3.09 L771.2 3.06 L776.1 3.03 L781.1 3.0 L786.1 2.98 L791.1 2.95 L796.0 2.92 L801.0 2.9 L806.0 2.87 L811.0 2.85 L815.9 2.82 L820.9 2.8 L825.9 2.78 L830.9 2.76 L835.8 2.73 L840.8 2.71 L845.8 2.69 L850.8 2.68 L855.7 2.66 L860.7 2.64 L865.7 2.62 L870.7 2.6 L875.6 2.59 L880.6 2.57 L885.6 2.56 L890.6 2.54 L895.5 2.53 L900.5 2.51 L905.5 2.5 L910.5 2.48 L915.4 2.47 L920.4 2.46 L925.4 2.45 L930.4 2.43 L935.3 2.42 L940.3 2.41 L945.3 2.4 L950.3 2.39 L955.2 2.38 L960.2 2.37 L965.2 2.36 L970.2 2.35 L975.1 2.34 L980.1 2.33 L985.1 2.32 L990.1 2.31 L995.0 2.3 L1000.0 2.3"
   jumps: [[375.7, 46.0, 19.24]]
 # ---- Invented transitions, just for fun (not from our papers) ----
 coffee:
   title: "Theorems proved vs. espressos drunk: nothing below the critical dose, then a power law. The exponent is still being debated, over more espresso."
+  label: "Theorems vs. espressos"
   link: /misc/
   invented: true
   d: "M0.0 46.0 L299.3 46.0 L301.7 40.6 L304.2 38.63 L306.7 37.34 L316.7 34.1 L329.2 31.53 L346.6 28.95 L374.1 25.95 L409.0 23.05 L441.4 20.86 L541.1 15.7 L663.3 11.02 L825.4 6.2 L1000.0 2.0"
 double:
   title: "Two first-order transitions in a row: the system changed its mind twice, and was sure both times."
+  label: "Double first-order transition"
   link: /misc/
   invented: true
   d: "M0.0 44.24 L360.0 42.97 M360.0 27.52 L680.0 25.83 M680.0 6.4 L1000.0 2.0"
   jumps: [[360.0, 42.97, 27.52], [680.0, 25.83, 6.4]]
 reentrant:
   title: "Re-entrant transition: order appears, vanishes, then comes back for good. Like the Wi-Fi at a conference."
+  label: "Re-entrant transition"
   link: /misc/
   invented: true
   d: "M0.0 46.0 L179.6 46.0 L181.6 43.94 L185.6 41.67 L191.6 39.32 L199.6 36.87 L221.6 31.8 L247.5 27.37 L275.4 23.79 L307.4 20.92 L335.3 19.39 L367.3 18.72 L397.2 19.13 L427.1 20.55 L459.1 23.21 L487.0 26.58 L515.0 31.13 L536.9 35.94 L546.9 38.82 L552.9 41.02 L556.9 42.96 L560.9 46.0 L698.6 46.0 L702.6 40.81 L704.6 39.29 L710.6 36.23 L716.6 34.05 L726.5 31.22 L738.5 28.53 L770.5 23.07 L810.4 17.94 L860.3 12.81 L926.1 7.25 L1000.0 2.0"
 hysteresis:
   title: "Hysteresis: the way up is not the way down. The system remembers where it came from."
+  label: "Hysteresis loop"
   link: /misc/
   invented: true
   d: "M0.0 43.36 L330.0 42.5 L660.0 39.91 M340.0 6.18 L1000.0 2.88"
   jumps: [[660.0, 39.91, 4.37], [340.0, 6.18, 42.44]]
 devil:
   title: "Devil's staircase: continuous, increasing, and flat almost everywhere. Ask a mathematician why this is not a contradiction."
+  label: "Devil's staircase"
   link: /misc/
   invented: true
   d: "M0.0 46.0 L4.1 44.64 L8.2 44.62 L12.3 43.27 L24.7 43.25 L28.8 41.92 L32.9 41.88 L37.0 40.54 L74.0 40.5 L78.1 39.21 L82.2 39.12 L87.0 37.75 L98.7 37.75 L102.8 36.46 L106.9 36.38 L111.7 35.0 L222.1 35.0 L226.9 33.62 L230.3 33.62 L235.1 32.25 L246.7 32.25 L251.5 30.88 L255.0 30.88 L259.8 29.5 L296.1 29.5 L300.9 28.12 L304.3 28.12 L309.1 26.75 L320.8 26.75 L325.6 25.38 L329.0 25.38 L333.8 24.0 L666.2 24.0 L671.0 22.62 L674.4 22.62 L679.2 21.25 L690.9 21.25 L695.7 19.88 L699.1 19.88 L703.9 18.5 L740.2 18.5 L745.0 17.12 L748.5 17.12 L753.3 15.75 L764.9 15.75 L769.7 14.38 L773.1 14.38 L777.9 13.0 L888.3 13.0 L893.1 11.62 L897.2 11.54 L901.3 10.25 L913.0 10.25 L917.8 8.88 L921.9 8.79 L926.0 7.5 L963.0 7.46 L967.1 6.12 L971.2 6.08 L975.3 4.75 L987.7 4.73 L991.8 3.38 L995.9 3.36 L1000.0 2.0"
 infinite:
   title: "Infinite-order transition: every derivative vanishes at the critical point, and yet something happens. The ultimate slow start."
+  label: "Infinite-order transition"
   link: /misc/
   invented: true
   d: "M0.0 46.0 L188.4 45.93 L222.4 45.35 L260.5 43.97 L336.7 39.85 L559.1 25.55 L695.4 17.41 L843.7 9.45 L1000.0 2.0"
 swim:
   title: "Fraction of ICTP in the sea vs. time of day: two sharp transitions around lunchtime, reproducible all summer."
+  label: "ICTP in the sea vs. time of day"
   link: /#trieste
   invented: true
   d: "M0.0 44.68 L375.0 44.68 M375.0 6.4 L406.2 5.16 L437.5 4.64 L468.8 5.16 L500.0 6.4 M500.0 43.8 L1000.0 43.8"
   jumps: [[375.0, 44.68, 6.4], [500.0, 6.4, 43.8]]
 bora:
   title: "Hats blown away vs. wind speed in Trieste: a first-order transition at the onset of the Bora, then strong fluctuations."
+  label: "Hats vs. Bora"
   link: /#trieste
   invented: true
   d: "M0.0 45.12 L520.0 44.5 M520.0 5.83 L523.3 5.64 L526.6 6.42 L536.6 9.85 L539.9 10.16 L543.2 9.53 L549.8 11.33 L559.7 12.15 L563.0 13.14 L569.7 13.5 L573.0 14.52 L579.6 15.2 L629.2 15.2 L635.9 14.74 L642.5 13.46 L655.7 12.24 L662.3 12.25 L665.7 11.7 L669.0 12.16 L672.3 11.9 L678.9 12.27 L685.5 11.81 L688.8 12.44 L705.4 13.82 L712.0 13.94 L721.9 15.17 L768.3 15.2 L778.2 14.54 L781.5 13.79 L798.1 12.23 L808.0 11.82 L814.6 11.05 L827.9 10.56 L841.1 11.1 L854.3 13.11 L861.0 13.13 L867.6 13.99 L890.8 15.2 L937.1 14.83 L970.2 12.47 L990.1 12.52 L1000.0 13.34"
   jumps: [[520.0, 44.5, 5.83]]
 grokking:
   title: "Grokking: nothing, nothing, nothing… then suddenly everything. Training curves and good ideas share this behavior."
+  label: "Grokking"
   link: /misc/
   invented: true
   d: "M0.0 46.0 L700.6 44.3 L746.5 43.72 L756.5 43.09 L764.5 42.1 L772.5 40.33 L778.4 38.2 L782.4 36.3 L788.4 32.62 L794.4 28.04 L808.4 16.27 L816.4 10.91 L820.4 8.88 L826.3 6.58 L836.3 4.32 L850.3 2.98 L870.3 2.43 L1000.0 2.0"
 deadlines:
   title: "Productivity vs. time: a smooth exponential decay, with a discontinuous jump right before each deadline."
+  label: "Productivity vs. time"
   link: /misc/
   invented: true
   d: "M0.0 11.24 L56.8 18.68 L89.2 22.15 L129.7 25.83 L170.3 28.9 L210.8 31.46 L300.0 35.69 M300.0 6.84 L324.7 10.78 L357.6 15.39 L390.6 19.36 L423.5 22.79 L497.6 28.87 L580.0 33.63 M580.0 2.44 L629.7 10.81 L687.6 18.48 L753.8 25.12 L820.0 30.04 M820.0 0.24 L860.9 7.64 L901.8 13.79 L950.9 19.83 L1000.0 24.67"
   jumps: [[300.0, 35.69, 6.84], [580.0, 33.63, 2.44], [820.0, 30.04, 0.24]]
 flat:
   title: "Signal-to-noise ratio below threshold: no overlap."
+  label: "Below threshold"
   link: /
   d: "M0 46 L1000 46"
