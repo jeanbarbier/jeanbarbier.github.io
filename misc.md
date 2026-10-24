@@ -3,6 +3,7 @@ layout: default
 title: Miscellaneous
 heading: Miscellaneous
 permalink: /misc/
+funding: false   # no ERC funding statement on this page: nothing here is ERC-funded
 ---
 Outside science I like rock climbing, skiing and freediving. With friends we make electronic music (I am RSB, my wife is Ficus Tabasco): [Entropie Collectif](https://soundcloud.com/entropiecollectif). 
 
