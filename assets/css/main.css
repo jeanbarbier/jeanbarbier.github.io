@@ -221,10 +221,11 @@ main .grant p { margin: 0; max-width: none; font-size: 0.97rem; }
 .subtheme { margin-top: 2.5rem; }
 .subtheme h3 { font-size: var(--step-1); margin-bottom: 0.6rem; }
 .subtheme > p { max-width: 40rem; }
-/* Papers of one category hang off a vertical rule, like the quotes on Misc */
-.subtheme .pubs { margin-top: 1rem; border-left: 2px solid var(--rule); padding-left: 1.25rem; }
-.subtheme .pubs .pub:first-child { border-top: 0; padding-top: 0.1rem; }
-.subtheme .pubs .pub:last-child { border-bottom: 0; padding-bottom: 0.1rem; }
+.subtheme .pubs { margin-top: 1rem; }
+/* Items of one group hang off a vertical rule, like the quotes on Misc */
+.grouped { border-left: 2px solid var(--rule); padding-left: 1.25rem; }
+.grouped .pub:first-child, .grouped .note:first-child { border-top: 0; padding-top: 0.1rem; }
+.grouped .pub:last-child, .grouped .note:last-child { border-bottom: 0; padding-bottom: 0.1rem; }
 .plain li { padding-block: 0.3rem; }
 
 /* ---------- Group ---------- */
