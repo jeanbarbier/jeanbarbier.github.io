@@ -1,4 +1,5 @@
 # Music of the month, newest first. "note" is optional (one short sentence).
+# New entries are added at the bottom, one month further back each time.
 - month: 2026-10
   artist: Disguised
   title: Nightrun
@@ -8,4 +9,9 @@
   artist: DJ Shadow
   title: In Tune and On Time
   url: https://www.youtube.com/playlist?list=PLwKKIpRYhASbsLwvSpqrktmnVIw2aAZuA
+  note: ""
+- month: 2026-08
+  artist: FANK
+  title: Badlands
+  url: https://www.youtube.com/playlist?list=OLAK5uy_mtU50IgSFyskbHgPWoBUoFuLo3wpFLyxE
   note: ""
