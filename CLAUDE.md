@@ -58,7 +58,9 @@ changing anything. A push to `master` is live after about a minute; check the li
   `_data/curves.yml` (never the same twice in a row; the 404 keeps its flat line). Without
   JavaScript the page's own `curve:` front matter shows (default BBP). First-order jumps are real breaks with an open dot
   (limit) and a filled dot (value); small jumps may be enlarged, but the hover text stays
-  exact and the click opens the paper or notes.
+  exact and the click opens the paper or notes. Ten invented, just-for-fun transitions
+  (`invented: true`) are in the same pool, each with a playful hover text; they link to Misc
+  or to the Trieste section of the home page.
 - Home email is a click-to-copy button; the real address only exists in `assets/js/site.js`.
 - `site.js` also prints a short note for the curious in the browser console (PhD openings).
 - The 404 page speaks the field's language ("Signal-to-noise ratio below threshold") and
