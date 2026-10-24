@@ -63,6 +63,6 @@ changing anything. A push to `master` is live after about a minute; check the li
 - No cookies. Visit statistics with GoatCounter (jeanbarbier.goatcounter.com), on the
   published site only.
 - Embeds load only when clicked: YouTube (youtube-nocookie) player under the music list,
-  SoundCloud compact player (166px) for "Play Entropie 10". Starting one stops the other.
+  SoundCloud player (300px, shows the list of mixes) for "Play Entropie 10". Starting one stops the other.
 - Music list (`_data/albums.yml`): newest first; new entries go at the bottom, one month
   further back.
