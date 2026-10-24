@@ -68,6 +68,6 @@ Spotted a phase transition in the wild, in physics, daily life or your imaginati
     <div><label for="tf-email">Email <span class="opt">(optional, for a reply)</span></label><input id="tf-email" name="email" type="email" autocomplete="email"></div>
   </div>
   <div class="tf-actions"><button type="submit" class="form-button">Send</button><p class="tf-status" role="status" aria-live="polite"></p></div>
-  <p class="tf-note">Leave the name and email empty to stay anonymous. Messages are delivered by Web3Forms.</p>
+  <p class="tf-note">Leave the name and email empty to stay anonymous.</p>
 </form>
 
