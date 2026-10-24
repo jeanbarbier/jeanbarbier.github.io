@@ -10,16 +10,18 @@
     <h3 class="person-name">{{ p.name }}</h3>
     {%- if include.role %}<p class="person-role">{{ include.role }}</p>{% endif %}
     {%- if p.summary %}<p class="person-summary">{{ p.summary }}</p>{% endif %}
-    {%- if p.bio %}
-    <details class="person-bio"><summary>Background</summary><p>{{ p.bio }}</p></details>
-    {%- endif %}
-    {%- if p.links %}
+    {%- assign bio_id = "bio-" | append: p.name | slugify %}
+    {%- if p.bio or p.links %}
     <p class="person-links">
+      {%- if p.bio %}<button type="button" class="bio-toggle" aria-expanded="false" aria-controls="{{ bio_id }}">Background</button>{% endif %}
       {%- if p.links.scholar %}<a href="{{ p.links.scholar }}">Google Scholar</a>{% endif %}
       {%- if p.links.orcid %}<a href="{{ p.links.orcid }}">ORCID</a>{% endif %}
       {%- if p.links.web %}<a href="{{ p.links.web }}">Website</a>{% endif %}
       {%- if p.links.cv %}<a href="{{ p.links.cv | relative_url }}">CV</a>{% endif %}
     </p>
+    {%- endif %}
+    {%- if p.bio %}
+    <p class="person-bio" id="{{ bio_id }}">{{ p.bio }}</p>
     {%- endif %}
   </div>
 </li>

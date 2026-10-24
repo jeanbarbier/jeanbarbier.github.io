@@ -236,10 +236,20 @@ main .grant p { margin: 0; max-width: none; font-size: 0.97rem; }
 .person-name { font-size: var(--step-1); }
 .person-role { color: var(--muted); font-size: var(--step--1); margin: 0.1rem 0 0.4rem; }
 .person-summary { margin: 0.35rem 0 0.4rem; }
-.person-bio { font-size: 0.95rem; color: var(--muted); }
-.person-bio summary { cursor: pointer; color: var(--accent); width: fit-content; font-size: var(--step--1); }
-.person-bio p { margin: 0.4rem 0 0; }
-.person-links { display: flex; flex-wrap: wrap; gap: 0.2rem 1rem; font-size: var(--step--1); margin: 0.4rem 0 0; }
+.person-links { display: flex; flex-wrap: wrap; align-items: baseline; gap: 0.2rem 1rem; font-size: var(--step--1); margin: 0.4rem 0 0; }
+.person-bio { font-size: 0.95rem; color: var(--muted); margin: 0.5rem 0 0; }
+.bio-toggle { display: none; }
+.js .bio-toggle {
+  display: inline-flex; align-items: baseline; gap: 0.3rem;
+  padding: 0; border: 0; background: none; cursor: pointer;
+  font: inherit; color: var(--accent);
+}
+.js .bio-toggle:hover { color: var(--accent-strong); }
+.js .bio-toggle::before { content: "▸"; display: inline-block; transition: transform 0.15s ease; }
+.js .bio-toggle[aria-expanded="true"]::before { transform: rotate(90deg); }
+.js .person-bio { display: none; }
+.js .person-bio.is-open { display: block; }
+@media (prefers-reduced-motion: reduce) { .js .bio-toggle::before { transition: none; } }
 
 .alumni { width: 100%; border-collapse: collapse; font-size: 0.95rem; }
 .alumni th { text-align: left; font-weight: 600; color: var(--muted); font-size: var(--step--1); padding: 0 0.75rem 0.45rem 0; border-bottom: 1px solid var(--rule); }

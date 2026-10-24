@@ -18,3 +18,17 @@
   });
   label();
 })();
+
+// Group page: "Background" buttons show or hide a member's bio below their links.
+(function () {
+  var buttons = document.querySelectorAll('.bio-toggle');
+  Array.prototype.forEach.call(buttons, function (b) {
+    var target = document.getElementById(b.getAttribute('aria-controls'));
+    if (!target) return;
+    b.addEventListener('click', function () {
+      var open = b.getAttribute('aria-expanded') === 'true';
+      b.setAttribute('aria-expanded', open ? 'false' : 'true');
+      target.classList.toggle('is-open', !open);
+    });
+  });
+})();
