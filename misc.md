@@ -26,8 +26,8 @@ Outside science I like rock climbing, skiing and freediving. With friends we mak
 
 ## Worth reading
 
-- [The Future of Research in the Age of AI](https://pierremarion23.github.io/thoughts/2026-10-01.html), by Pierre Marion.
 - [A highly relevant viewpoint on science in the age of AI](https://www.linkedin.com/pulse/where-mathematics-headed-age-ai-marc-m%C3%A9zard-vhvce/), by Marc Mézard.
+- [The Future of Research in the Age of AI](https://pierremarion23.github.io/thoughts/2026-10-01.html), by Pierre Marion.
 
 ## Quotes I like
 

@@ -345,6 +345,10 @@ main h2 { margin-top: 2.75rem; }
 main section h2, main .block h2, main .theme h2 { margin-top: 0; }
 .wide-img { border-radius: 6px; margin: 1.75rem 0; }
 .block .wide-img { width: 100%; max-width: 100%; margin-top: 1rem; }
+/* Home, Trieste: half-width picture on the left, text beside it (like the portrait) */
+.trieste { display: flow-root; }
+.side-img { float: left; width: 50%; border-radius: 6px; margin: 0.3rem 2rem 0.5rem 0; }
+main .trieste p { max-width: none; }
 blockquote { margin: 1.5rem 0; padding: 0 0 0 1.25rem; border-left: 2px solid var(--rule); }
 /* Misc: one rule for the whole set of quotes */
 .quotes { border-left: 2px solid var(--rule); padding-left: 1.25rem; margin: 1.5rem 0; max-width: var(--measure); }
@@ -375,6 +379,7 @@ cite { font-style: normal; }
   .site-nav a { font-size: 0.92rem; }
   .theme-toggle { margin-left: 0.5rem; }
   .portrait { float: none; width: 11rem; margin: 0 auto 1.25rem; }
+  .side-img { float: none; width: 100%; margin: 0 0 1rem; }
   .news li { grid-template-columns: 1fr; gap: 0.1rem; }
   .join dl { grid-template-columns: 1fr; gap: 0.2rem; }
   .join dd { margin-bottom: 0.8rem; }
