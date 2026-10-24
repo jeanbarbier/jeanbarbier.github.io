@@ -28,7 +28,7 @@ title: Jean Barbier
 
 <section class="block">
   <h2>Selected papers</h2>
-  <ul class="pubs grouped">
+  <ul class="pubs compact grouped">
     {%- for pub in site.data.publications %}{% if pub.selected %}{% include pub.html pub=pub %}{% endif %}{% endfor %}
   </ul>
   <p class="more"><a href="{{ '/research/#papers' | relative_url }}">More publications</a></p>
