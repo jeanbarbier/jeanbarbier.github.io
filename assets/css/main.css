@@ -293,6 +293,19 @@ figcaption { color: var(--muted); font-size: var(--step--1); }
 .gallery figure { break-inside: avoid; margin: 0 0 0.75rem; }
 .gallery img { width: 100%; border-radius: 4px; }
 .gallery figcaption { margin-top: 0.3rem; }
+.gallery a { cursor: zoom-in; display: block; }
+.lightbox {
+  border: 0; padding: 0; margin: 0; max-width: none; max-height: none;
+  width: 100vw; height: 100dvh; background: rgba(10, 12, 16, 0.92);
+  display: none; place-items: center; align-content: center; gap: 0.6rem; cursor: zoom-out;
+}
+.lightbox[open] { display: grid; animation: lb-in 160ms ease-out; }
+.lightbox::backdrop { background: transparent; }
+.lightbox img { max-width: 94vw; max-height: 88dvh; width: auto; height: auto; border-radius: 4px; }
+.lightbox p { margin: 0; color: #e4e7ec; font-size: var(--step--1); }
+:root:has(.lightbox[open]) { overflow: hidden; }
+@keyframes lb-in { from { opacity: 0; } to { opacity: 1; } }
+@media (prefers-reduced-motion: reduce) { .lightbox[open] { animation: none; } }
 
 /* ---------- About ---------- */
 .albums li { display: grid; grid-template-columns: 8.5rem 1fr; gap: 1rem; padding-block: 0.5rem; border-top: 1px solid var(--rule); }
