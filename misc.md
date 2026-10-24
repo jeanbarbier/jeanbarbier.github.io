@@ -53,7 +53,7 @@ Outside science I like rock climbing, skiing and freediving. With friends we mak
 
 ## Submit your phase transition
 
-Spotted a phase transition in the wild, in physics, daily life or your imagination? Describe it below and it comes straight to my inbox, signed or anonymous.
+Spotted a phase transition in the wild or your imagination? Describe it below and it comes straight to my inbox, signed or anonymous.
 
 <form class="transition-form" id="submit" action="https://api.web3forms.com/submit" method="POST">
   <input type="hidden" name="access_key" value="{{ site.web3forms_key }}">
@@ -68,6 +68,6 @@ Spotted a phase transition in the wild, in physics, daily life or your imaginati
     <div><label for="tf-email">Email <span class="opt">(optional, for a reply)</span></label><input id="tf-email" name="email" type="email" autocomplete="email"></div>
   </div>
   <div class="tf-actions"><button type="submit" class="form-button">Send</button><p class="tf-status" role="status" aria-live="polite"></p></div>
-  <p class="tf-note">Leave the name and email empty to stay anonymous.</p>
+  <p class="tf-note">Leave the name and email empty to stay anonymous. Messages are delivered by Web3Forms.</p>
 </form>
 
