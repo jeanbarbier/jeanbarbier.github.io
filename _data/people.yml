@@ -6,6 +6,10 @@ pi:
   name: Jean Barbier
   role: Principal investigator
   photo: jean.jpg
+  bio: >-
+    International Master in Physics of Complex Systems, PhD at ENS Paris with
+    <a href="https://florentkrzakala.com">Florent Krzakala</a>, and postdoc at EPFL with
+    <a href="https://people.epfl.ch/nicolas.macris">Nicolas Macris</a>.
   links:
     scholar: https://scholar.google.com/citations?user=yeE5qqIAAAAJ&hl=en
     orcid: https://orcid.org/0000-0002-2652-6727
