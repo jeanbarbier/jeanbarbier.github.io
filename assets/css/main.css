@@ -216,7 +216,7 @@ main .grant p { margin: 0; max-width: none; font-size: 0.97rem; }
 .theme { margin-top: 3.25rem; }
 .theme:first-of-type { margin-top: 0; }
 .theme > p { max-width: 40rem; }
-.subtheme { margin-top: 2.5rem; }
+.subtheme { margin-top: 3.75rem; }
 .subtheme h3 { font-size: var(--step-1); margin-bottom: 0.6rem; }
 .subtheme > p { max-width: 40rem; }
 .subtheme .pubs { margin-top: 1rem; }
