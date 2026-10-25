@@ -7,7 +7,8 @@ changing anything. A push to `master` is live after about a minute; check the li
 ## Working with Jean
 - Ask before design decisions, and before fixing anything that looks inconsistent.
   When he asks for a proposal, propose the wording before pushing.
-- Simple and restrained: no animations, banners or decoration.
+- Simple and restrained: no animations, banners or decoration. One exception, chosen by Jean:
+  the faint Turing-pattern background of the Misc page in dark mode (see Small details).
 - American spelling and US date style ("August 31 – September 4, 2026").
 - Uniformity first: the same kind of element looks the same on every page. After a
   change, check the whole site for consistency.
@@ -71,6 +72,11 @@ changing anything. A push to `master` is live after about a minute; check the li
 - Home: a "Mail" link (styled like the others) copies the address on click; the address is
   never written in the page, only assembled in `assets/js/site.js`, against scraping.
 - `site.js` also prints a short note for the curious in the browser console (PhD openings).
+- Misc background: `background: turing` in the front matter adds a canvas drawn by
+  `assets/js/turing.js`: a Gray-Scott Turing pattern, deep blue-teal and very faint (alpha
+  0.12), slowly evolving. Dark mode only; nothing runs in light mode. Kept cheap: ~7 px cells
+  stretched by the browser, ~20 frames/s, paused when the tab is hidden, one still frame
+  under reduced motion.
 - The 404 page speaks the field's language ("Signal-to-noise ratio below threshold") and
   keeps the redirect for old `/jeanbarbier/...` links.
 

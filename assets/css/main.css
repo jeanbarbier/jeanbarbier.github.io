@@ -458,3 +458,14 @@ cite { font-style: normal; }
   .site-nav, .curve-wrap, .theme-toggle { display: none; }
   a { color: inherit; }
 }
+
+/* ---------- Misc page background (dark mode only) ---------- */
+/* A dim Turing pattern drawn by assets/js/turing.js on a coarse grid that the browser stretches. */
+.bg-turing {
+  display: none; position: fixed; inset: 0; width: 100%; height: 100%;
+  z-index: -1; pointer-events: none; opacity: 0; transition: opacity 4s ease;
+}
+.bg-turing.is-ready { opacity: 1; }
+@media (prefers-color-scheme: dark) { :root:not([data-theme="light"]) .bg-turing { display: block; } }
+:root[data-theme="dark"] .bg-turing { display: block; }
+@media (prefers-reduced-motion: reduce) { .bg-turing { transition: none; } }
