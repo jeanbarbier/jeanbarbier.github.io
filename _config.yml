@@ -26,9 +26,6 @@ nav:
   - { title: Events, url: /events/ }
   - { title: Misc, url: /misc/ }
 
-image: /assets/img/og-image.jpg
-twitter:
-  card: summary_large_image
 
 collections:
   highlights:
@@ -36,6 +33,11 @@ collections:
     permalink: /highlights/:name/
 
 defaults:
+  # Link previews (Slack, email, social media): the site logo, the BBP curve, as a small square card.
+  - scope: { path: "" }
+    values:
+      image: { path: /assets/img/og-image.png, width: 1200, height: 1200, alt: "Logo of the site: the BBP phase transition curve" }
+      twitter: { card: summary }
   - scope: { path: "", type: highlights }
     values: { layout: highlight }
 

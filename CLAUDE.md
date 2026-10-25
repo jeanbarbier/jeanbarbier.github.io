@@ -91,6 +91,9 @@ changing anything. A push to `master` is live after about a minute; check the li
   fallback, ~7 px cells stretched by the browser, paused when the tab is hidden.
   Both round buttons (animation, light/dark) sit at the right edge of the header, level with
   the name, on every screen size, so the page links keep one row.
+- Link previews (Slack, email, social media): every page shares the site logo, the BBP curve
+  of `favicon.svg`, as `assets/img/og-image.png` (1200x1200, square corners) in a small
+  square card (front-matter defaults in `_config.yml`, rendered by jekyll-seo-tag).
 - The 404 page speaks the field's language ("Signal-to-noise ratio below threshold") and
   keeps the redirect for old `/jeanbarbier/...` links.
 
