@@ -1,9 +1,12 @@
+# Teaching material. Each item: a title (not a link) and one line per document (`parts`), which
+# starts with the document's kind, linked to the file, followed by its context.
 - title: "High-dimensional inference and statistical mechanics"
-  kind: Lecture notes
-  context: "Notes on high-dimensional Bayesian inference and its links with the statistical mechanics of disordered systems."
-  file: /docs/main.pdf
+  parts:
+    - kind: Lecture notes
+      context: "on high-dimensional Bayesian inference and its links with the statistical mechanics of disordered systems."
+      file: /docs/main.pdf
 - title: "Random matrix theory and the BBP transition"
-  parts:   # one item, two documents: each line starts with its kind, linked to the file
+  parts:
     - kind: Lecture notes
       context: "on Bayesian inference, written for the GIAN course at Dr B R Ambedkar National Institute of Technology, Jalandhar, India."
       file: /docs/GIAN.pdf
@@ -12,6 +15,7 @@
       url: https://sites.google.com/view/math-high-dimensional-data/home
       file: /docs/part1_rmt_bbp_beamer.pdf
 - title: "The interpolation and adaptive interpolation methods"
-  kind: Crash course
-  context: "A short introduction to interpolation techniques for proving replica formulas."
-  file: /docs/interpolation.pdf
+  parts:
+    - kind: Crash course
+      context: "on interpolation techniques for proving replica formulas."
+      file: /docs/interpolation.pdf

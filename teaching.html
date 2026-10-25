@@ -10,15 +10,10 @@ curve: sparse
 <ul class="notes compact grouped">
   {%- for t in site.data.teaching %}
   <li class="note">
-    {%- if t.parts %}
     <h2 class="note-title">{{ t.title }}</h2>
     {%- for p in t.parts %}
     <p class="note-context note-part"><a class="note-kind" href="{{ p.file | relative_url }}">{{ p.kind }}</a> {{ p.context }}{% if p.url %} <a href="{{ p.url }}">School website</a>.{% endif %}</p>
     {%- endfor %}
-    {%- else %}
-    <h2 class="note-title"><a href="{{ t.file | relative_url }}">{{ t.title }}</a></h2>
-    <p class="note-context"><span class="note-kind">{{ t.kind }}.</span> {{ t.context }}{% if t.url %} <a href="{{ t.url }}">School website</a>.{% endif %}</p>
-    {%- endif %}
   </li>
   {%- endfor %}
 </ul>
