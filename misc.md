@@ -29,7 +29,7 @@ The faint animations in the background of every page are live simulations of thr
 
 ## Worth reading
 
-<ul class="notes compact grouped">
+<ul class="notes compact grouped scroll-list" data-show="3" tabindex="0" aria-label="Worth reading">
   <li class="note">
     <h3 class="note-title"><a href="https://www.linkedin.com/pulse/where-mathematics-headed-age-ai-marc-m%C3%A9zard-vhvce/">A highly relevant viewpoint on science in the age of AI</a></h3>
     <p class="note-context">By Marc Mézard.</p>

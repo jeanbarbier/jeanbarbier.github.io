@@ -34,7 +34,8 @@ changing anything. A push to `master` is live after about a minute; check the li
   button; `link_label: Book` for a book). `funding: false`, like Misc. The text must match
   what the simulations actually do (parameters, rates): update both together.
 - Worth reading is a `notes compact grouped` list like the quotes: the link is the item title
-  (serif), the author or a sentence or two the grey description line; no scrolling. Titles
+  (serif), the author or a sentence or two the grey description line; three shown, then
+  scroll (`scroll-list`, `data-show="3"`). Titles
   are in sentence case (capital on the first
   letter only; acronyms such as AI and proper names keep theirs), even when the original title
   is capitalized.
@@ -75,7 +76,7 @@ changing anything. A push to `master` is live after about a minute; check the li
   months ("Oct 2026"; event ranges like "Aug 31 – Sep 4, 2026" in a wider column), text
   on the right, horizontal rules, no vertical rule. On phones the date sits above the text.
 - Home News, past Events and Music show five items, then scroll; the Selected papers lists
-  (home, and each theme on Research) show three (`data-show="3"`). Class `scroll-list`:
+  (home, and each theme on Research) and Worth reading show three (`data-show="3"`). Class `scroll-list`:
   site.js fits the height to the first items and refits when one changes size (an opened
   citation); the bottom fades while more is below. Highlights and other lists do not scroll.
 - Teaching items (`_data/teaching.yml`): a title without link, then one grey line per document
