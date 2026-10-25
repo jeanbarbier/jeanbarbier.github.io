@@ -13,7 +13,7 @@ Personal and group website of Jean Barbier (ICTP), built with Jekyll and served 
 | Teaching material | `_data/teaching.yml` (PDFs in `docs/`) |
 | Page text | `index.html`, `research.html`, `group.html`, `about.md`, ... |
 | Styles | `assets/css/main.css` |
-| Background animations (header buttons) | `assets/js/turing.js`, `assets/js/neurons.js` |
+| Background animations (header menu) | `assets/js/turing.js`, `neurons.js`, `ising.js`, `bg-menu.js` |
 | Photos | `assets/img/` (group members: `assets/img/people/`, square, about 400 px) |
 
 To add a paper, copy an entry in `_data/publications.yml`, including its `bibtex` block. Group members are highlighted automatically if their name (or one of their `aliases`) is in `_data/people.yml`.

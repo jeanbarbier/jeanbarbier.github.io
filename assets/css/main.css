@@ -165,20 +165,34 @@ p, dd, li, figcaption, .news-text, .album-name { text-wrap: pretty; }
   position: absolute; top: 0; right: 1.25rem; height: var(--step-3);
   display: flex; align-items: center; gap: 0.4rem;
 }
-.theme-toggle, .anim-toggle, .neuron-toggle {
+.theme-toggle, .anim-toggle {
   flex: 0 0 auto;
   width: 2rem; height: 2rem;
   display: inline-grid; place-items: center;
   border: 1px solid var(--rule); border-radius: 50%;
   background: transparent; color: var(--muted); cursor: pointer;
 }
-.theme-toggle:hover, .anim-toggle:hover, .neuron-toggle:hover { color: var(--text); border-color: var(--muted); }
-.theme-toggle svg, .anim-toggle svg, .neuron-toggle svg { width: 1rem; height: 1rem; }
-.anim-toggle[aria-pressed="true"], .neuron-toggle[aria-pressed="true"] { color: var(--accent); border-color: var(--accent); }
-@media (max-width: 23rem) {   /* very small phones: three slightly smaller buttons keep clear of the name */
-  .theme-toggle, .anim-toggle, .neuron-toggle { width: 1.8rem; height: 1.8rem; }
-  .header-buttons { gap: 0.3rem; }
+.theme-toggle:hover, .anim-toggle:hover { color: var(--text); border-color: var(--muted); }
+.theme-toggle svg, .anim-toggle svg { width: 1rem; height: 1rem; }
+.anim-toggle[aria-pressed="true"] { color: var(--accent); border-color: var(--accent); }
+/* Animation menu: a small card under the round button */
+.bg-menu-wrap { position: relative; display: inline-flex; }
+.bg-menu {
+  position: absolute; right: 0; top: calc(100% + 0.45rem); z-index: 30; min-width: 12.5rem;
+  display: grid; gap: 0.1rem; padding: 0.3rem;
+  background: var(--bg); border: 1px solid var(--rule); border-radius: 8px;
+  box-shadow: 0 8px 28px rgba(0, 0, 0, 0.18);
 }
+.bg-menu[hidden] { display: none; }
+.bg-menu button {
+  display: flex; align-items: center; gap: 0.65rem; width: 100%;
+  padding: 0.45rem 0.6rem; border: 0; border-radius: 6px; background: none;
+  font: inherit; font-size: 0.92rem; color: var(--muted); text-align: left; cursor: pointer;
+}
+.bg-menu button svg { width: 1rem; height: 1rem; flex: 0 0 auto; }
+.bg-menu button:hover, .bg-menu button:focus-visible { background: var(--surface); color: var(--text); outline: none; }
+.bg-menu button[aria-checked="true"] { color: var(--accent); }
+.bg-menu button[aria-checked="true"]::after { content: "\2713"; margin-left: auto; }
 
 /* The signature: a phase transition as the header rule */
 .curve-wrap { margin-top: 1.1rem; }
@@ -460,7 +474,7 @@ main .trieste p { max-width: none; }
 }
 @media (prefers-reduced-motion: reduce) { * { scroll-behavior: auto !important; } }
 @media print {
-  .site-nav, .curve-wrap, .theme-toggle, .anim-toggle, .neuron-toggle, .bg-turing, .bg-neurons { display: none; }
+  .site-nav, .curve-wrap, .theme-toggle, .anim-toggle, .bg-menu, .bg-turing, .bg-neurons, .bg-ising { display: none; }
   a { color: inherit; }
 }
 
@@ -481,6 +495,13 @@ main .trieste p { max-width: none; }
 .bg-neurons canvas { position: absolute; inset: 0; width: 100%; height: 100%; }
 .bg-neurons.is-ready { opacity: 1; transition-duration: 2s; }
 .bg-neurons.instant { transition: none; }
+/* Third background: the 2D Ising model near Tc (assets/js/ising.js), one pixel per spin, kept crisp */
+.bg-ising {
+  position: fixed; inset: 0; width: 100%; height: 100%; z-index: -1; pointer-events: none;
+  opacity: 0; transition: opacity 1.2s ease; image-rendering: pixelated;
+}
+.bg-ising.is-ready { opacity: 1; transition-duration: 2.5s; }
+.bg-ising.instant { transition: none; }
 
 /* ---------- Dated lists that show five items, then scroll (home News, past Events, Music) ---------- */
 /* site.js fits the height to the first five items and fades the bottom while more is below. */

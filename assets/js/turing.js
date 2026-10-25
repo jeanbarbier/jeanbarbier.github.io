@@ -271,7 +271,7 @@
   }
 
   // ---- Page ----
-  var canvas = document.querySelector('.bg-turing'), btn = document.querySelector('.anim-toggle');
+  var canvas = document.querySelector('.bg-turing');
   if (!canvas) return;
   var root = document.documentElement;
   var darkMq = window.matchMedia('(prefers-color-scheme: dark)');
@@ -294,15 +294,15 @@
   }
   function gpuHealthy() { try { return alive(engine.read()); } catch (e) { return false; } }
 
-  // The background mode is shared with neurons.js: 'turing' (default, also the old 'on'),
-  // 'neurons' or 'off'. A visitor's own choice (the header buttons) wins; visitors whose system
-  // asks for reduced motion start with 'off' and can still choose an animation.
+  // The background mode is shared with neurons.js, ising.js and bg-menu.js: 'turing' (default,
+  // also the old 'on'), 'neurons', 'ising' or 'off'. A visitor's own choice (the header menu)
+  // wins; visitors whose system asks for reduced motion start with 'off' and can still choose.
   var calmMq = window.matchMedia('(prefers-reduced-motion: reduce)');
   function mode() {
     var v = null;
     try { v = localStorage.getItem(KEY_ON); } catch (e) {}
     if (v === 'on' || v === 'turing') return 'turing';
-    if (v === 'neurons' || v === 'off') return v;
+    if (v === 'neurons' || v === 'ising' || v === 'off') return v;
     return calmMq.matches ? 'off' : 'turing';
   }
   function enabled() { return mode() === 'turing'; }
@@ -390,7 +390,6 @@
 
   function update() {
     var on = enabled();
-    if (btn) btn.setAttribute('aria-pressed', on ? 'true' : 'false');
     var go = on && !document.hidden;
     if (go && !running) {
       if (!engine) { setup(); if (!engine) return; }
@@ -404,10 +403,6 @@
     if (!on) { canvas.classList.remove('is-ready'); try { sessionStorage.removeItem(KEY_STATE); } catch (e) {} }
   }
 
-  if (btn) btn.addEventListener('click', function () {
-    try { localStorage.setItem(KEY_ON, enabled() ? 'off' : 'turing'); } catch (e) {}
-    document.dispatchEvent(new Event('bg-anim-change'));
-  });
   document.addEventListener('bg-anim-change', update);
 
   // Hand the current pattern to the next page (navigation) or to a later return to this tab.

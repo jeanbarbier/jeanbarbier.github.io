@@ -4,12 +4,17 @@
       <div class="name-row">
         <a class="site-name" href="{{ '/' | relative_url }}">{{ site.title }}</a>
         <span class="header-buttons">
-          <button class="anim-toggle" type="button" aria-pressed="false" aria-label="Turing-pattern animation" title="Turing-pattern animation">
-            <svg viewBox="0 0 20 20" aria-hidden="true" focusable="false"><circle cx="10" cy="10" r="7.25" fill="none" stroke="currentColor" stroke-width="1.5"/><circle cx="7.4" cy="7.9" r="1.7" fill="currentColor"/><circle cx="12.6" cy="7.2" r="1.15" fill="currentColor"/><circle cx="11.6" cy="12.4" r="1.9" fill="currentColor"/><circle cx="6.9" cy="12.6" r="1" fill="currentColor"/></svg>
-          </button>
-          <button class="neuron-toggle" type="button" aria-pressed="false" aria-label="Neuron animation" title="Neuron animation">
-            <svg viewBox="0 0 20 20" aria-hidden="true" focusable="false"><circle cx="10" cy="10" r="7.25" fill="none" stroke="currentColor" stroke-width="1.5"/><g fill="none" stroke="currentColor" stroke-width="1.2" stroke-linecap="round"><path d="M10 10 6.4 6.6M10 10l3.7-3.2M10 10l-3.2 3.6M10 10l3.9 3.1M6.4 6.6l-.3 1.9M13.7 6.8l1.6.6"/></g><circle cx="10" cy="10" r="1.9" fill="currentColor"/></svg>
-          </button>
+          <span class="bg-menu-wrap">
+            <button class="anim-toggle" type="button" aria-haspopup="true" aria-expanded="false" aria-controls="bg-menu" aria-pressed="false" aria-label="Background animation" title="Background animation">
+              <svg viewBox="0 0 20 20" aria-hidden="true" focusable="false"><circle cx="10" cy="10" r="7.25" fill="none" stroke="currentColor" stroke-width="1.5"/><circle cx="7.4" cy="7.9" r="1.7" fill="currentColor"/><circle cx="12.6" cy="7.2" r="1.15" fill="currentColor"/><circle cx="11.6" cy="12.4" r="1.9" fill="currentColor"/><circle cx="6.9" cy="12.6" r="1" fill="currentColor"/></svg>
+            </button>
+            <div class="bg-menu" id="bg-menu" role="menu" aria-label="Background animation" hidden>
+              <button type="button" role="menuitemradio" aria-checked="false" data-mode="turing"><svg viewBox="0 0 20 20" aria-hidden="true" focusable="false"><circle cx="10" cy="10" r="7.25" fill="none" stroke="currentColor" stroke-width="1.5"/><circle cx="7.4" cy="7.9" r="1.7" fill="currentColor"/><circle cx="12.6" cy="7.2" r="1.15" fill="currentColor"/><circle cx="11.6" cy="12.4" r="1.9" fill="currentColor"/><circle cx="6.9" cy="12.6" r="1" fill="currentColor"/></svg><span>Turing patterns</span></button>
+              <button type="button" role="menuitemradio" aria-checked="false" data-mode="neurons"><svg viewBox="0 0 20 20" aria-hidden="true" focusable="false"><circle cx="10" cy="10" r="7.25" fill="none" stroke="currentColor" stroke-width="1.5"/><g fill="none" stroke="currentColor" stroke-width="1.2" stroke-linecap="round"><path d="M10 10 6.4 6.6M10 10l3.7-3.2M10 10l-3.2 3.6M10 10l3.9 3.1M6.4 6.6l-.3 1.9M13.7 6.8l1.6.6"/></g><circle cx="10" cy="10" r="1.9" fill="currentColor"/></svg><span>Neurons</span></button>
+              <button type="button" role="menuitemradio" aria-checked="false" data-mode="ising"><svg viewBox="0 0 20 20" aria-hidden="true" focusable="false"><circle cx="10" cy="10" r="7.25" fill="none" stroke="currentColor" stroke-width="1.5"/><g fill="currentColor"><rect x="6" y="6" width="4" height="4"/><rect x="10" y="10" width="4" height="4"/></g></svg><span>2D Ising model</span></button>
+              <button type="button" role="menuitemradio" aria-checked="false" data-mode="off"><svg viewBox="0 0 20 20" aria-hidden="true" focusable="false"><circle cx="10" cy="10" r="7.25" fill="none" stroke="currentColor" stroke-width="1.5"/><path d="M5.2 14.8 14.8 5.2" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg><span>No animation</span></button>
+            </div>
+          </span>
           <button class="theme-toggle" type="button" aria-label="Switch between light and dark theme" title="Light / dark">
             <svg viewBox="0 0 20 20" aria-hidden="true" focusable="false"><circle cx="10" cy="10" r="7.25" fill="none" stroke="currentColor" stroke-width="1.5"/><path d="M10 2.75a7.25 7.25 0 0 1 0 14.5z" fill="currentColor"/></svg>
           </button>

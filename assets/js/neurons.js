@@ -8,7 +8,7 @@
 // spike reaches its targets within a fraction of a second. Each target fires with
 // probability SIGMA x R / out-degree, where R is the neuron's synaptic resources, depleted by
 // firing and slowly recovered (short-term depression): mostly sparse activity and small
-// avalanches, with occasional network bursts that die out as resources run low. Calcium-imaging green (pale green in light mode). Chosen with the neuron button
+// avalanches, with occasional network bursts that die out as resources run low. Calcium-imaging green (pale green in light mode). Chosen from the animation menu
 // in the header; the network and its activity are handed from page to page. Plain 2D canvas:
 // the morphology is drawn once, each neuron's lit image is prepared once, and a frame only
 // blends a few small images; ~30 frames per second, paused when the tab is hidden; nothing
@@ -39,17 +39,17 @@
   var fiberCanvas = wrap.querySelector('.bg-neurons-fibers'), sparkCanvas = wrap.querySelector('.bg-neurons-sparks');
   var fctx = fiberCanvas.getContext('2d'), sctx = sparkCanvas.getContext('2d');
   if (!fctx || !sctx) return;
-  var btn = document.querySelector('.neuron-toggle');
   var root = document.documentElement;
   var darkMq = window.matchMedia('(prefers-color-scheme: dark)');
   var calmMq = window.matchMedia('(prefers-reduced-motion: reduce)');
 
-  // Shared with turing.js: 'turing' (default, also the old 'on'), 'neurons' or 'off'.
+  // Shared with turing.js, ising.js and bg-menu.js: 'turing' (default, also the old 'on'),
+  // 'neurons', 'ising' or 'off'.
   function mode() {
     var v = null;
     try { v = localStorage.getItem(KEY_MODE); } catch (e) {}
     if (v === 'on' || v === 'turing') return 'turing';
-    if (v === 'neurons' || v === 'off') return v;
+    if (v === 'neurons' || v === 'ising' || v === 'off') return v;
     return calmMq.matches ? 'off' : 'turing';
   }
   function theme() { var t = root.getAttribute('data-theme'); return t ? t : (darkMq.matches ? 'dark' : 'light'); }
@@ -325,7 +325,6 @@
 
   function update() {
     var on = mode() === 'neurons';
-    if (btn) btn.setAttribute('aria-pressed', on ? 'true' : 'false');
     var go = on && !document.hidden;
     if (go && !running) {
       if (!built) {
@@ -345,10 +344,6 @@
     if (!on) { wrap.classList.remove('is-ready'); try { sessionStorage.removeItem(KEY_STATE); } catch (e) {} }
   }
 
-  if (btn) btn.addEventListener('click', function () {
-    try { localStorage.setItem(KEY_MODE, mode() === 'neurons' ? 'off' : 'neurons'); } catch (e) {}
-    document.dispatchEvent(new Event('bg-anim-change'));
-  });
   document.addEventListener('bg-anim-change', update);
   window.addEventListener('pagehide', function () { if (built && mode() === 'neurons') saveState(); });
   document.addEventListener('visibilitychange', function () { if (document.hidden && built && mode() === 'neurons') saveState(); update(); });

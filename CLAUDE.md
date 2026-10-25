@@ -8,8 +8,8 @@ changing anything. A push to `master` is live after about a minute; check the li
 - Ask before design decisions, and before fixing anything that looks inconsistent.
   When he asks for a proposal, propose the wording before pushing.
 - Simple and restrained: no animations, banners or decoration. One exception, chosen by Jean:
-  the faint background animations, a Turing pattern (on by default) or a network of firing
-  neurons, chosen or stopped with header buttons (see Small details).
+  the faint background animations, a Turing pattern (on by default), a network of firing
+  neurons or the 2D Ising model, chosen or stopped from a header menu (see Small details).
 - American spelling and US date style ("August 31 – September 4, 2026").
 - Uniformity first: the same kind of element looks the same on every page. After a
   change, check the whole site for consistency.
@@ -87,10 +87,11 @@ changing anything. A push to `master` is live after about a minute; check the li
   an evolving Gray-Scott Turing pattern, very faint: deep blue-teal in dark mode (alpha
   0.12), pale version of the header-label orange in light mode (alpha 0.11); switching theme
   recolours it at once. On by default (off for visitors whose system asks for reduced
-  motion). The background mode, remembered in localStorage (`bg-anim`: `turing`, `neurons`
-  or `off`), is shared by two round buttons left of the light/dark one (accent colour when
-  on): spotted icon for the Turing pattern, neuron icon for the neurons. Choosing one stops
-  the other; tapping the active one turns animation off. The pattern is handed from page to page (sessionStorage `bg-anim-state`,
+  motion). The background mode, remembered in localStorage (`bg-anim`: `turing`, `neurons`,
+  `ising` or `off`), is chosen from the animation menu (`assets/js/bg-menu.js`): one round
+  button left of the light/dark one, showing the current animation's icon (accent colour
+  while one runs), opening a small card with Turing patterns, Neurons, 2D Ising model and
+  No animation (current one ticked; closes on choice, outside click or Escape). The pattern is handed from page to page (sessionStorage `bg-anim-state`,
   ~0.2 MB, saved on pagehide), so moving around the site does not restart it. Random
   perturbations keep it from settling: every 2 to 6 s (uniform) a disc of 8–19 cells somewhere
   is cleared and reseeded with a few nuclei, and the pattern regrows into it. 300 simulation
@@ -116,9 +117,14 @@ changing anything. A push to `master` is live after about a minute; check the li
   from page to page (sessionStorage `bg-neurons-state`). 2D canvas: morphology drawn once,
   each neuron's lit image prepared once at half resolution, a frame only blends a few
   images; ~30 frames/s, paused when hidden.
-- The three round buttons (Turing, neurons, light/dark) sit at the right edge of the header,
-  level with the name, on every screen size (slightly smaller below 23rem), so the page links
-  keep one row.
+- Ising animation (`assets/js/ising.js`, canvas `.bg-ising`): the 2D Ising model at
+  T = 1.02 Tc, one pixel per spin (5 CSS px, kept crisp with `image-rendering: pixelated`),
+  Metropolis dynamics on a checkerboard with periodic edges, ~20 sweeps/s drawn 10 times a
+  second, 600 sweeps of warm-up before fading in. Up spins in the site blue, down spins in
+  the curve-label orange, alpha 0.10 (0.08 light). Spins handed from page to page (one bit
+  each, sessionStorage `bg-ising-state`).
+- The two round buttons (animation menu, light/dark) sit at the right edge of the header,
+  level with the name, on every screen size, so the page links keep one row.
 - Link previews (Slack, email, social media): every page shares the site logo, the BBP curve
   of `favicon.svg`, as `assets/img/og-image.png` (1200x1200, square corners) in a small
   square card (front-matter defaults in `_config.yml`, rendered by jekyll-seo-tag).
