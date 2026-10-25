@@ -8,12 +8,12 @@ Personal and group website of Jean Barbier (ICTP), built with Jekyll and served 
 |---|---|
 | Group members and alumni | `_data/people.yml` |
 | Publications | `_data/publications.yml` |
-| News (home page shows the latest 5) | `_data/news.yml` |
+| News (home page shows five at a time, then scrolls) | `_data/news.yml` |
 | Events | `_data/events.yml` |
 | Teaching material | `_data/teaching.yml` (PDFs in `docs/`) |
 | Page text | `index.html`, `research.html`, `group.html`, `about.md`, ... |
 | Styles | `assets/css/main.css` |
-| Misc page background (dark mode) | `assets/js/turing.js` |
+| Misc page background | `assets/js/turing.js` |
 | Photos | `assets/img/` (group members: `assets/img/people/`, square, about 400 px) |
 
 To add a paper, copy an entry in `_data/publications.yml`, including its `bibtex` block. Group members are highlighted automatically if their name (or one of their `aliases`) is in `_data/people.yml`.

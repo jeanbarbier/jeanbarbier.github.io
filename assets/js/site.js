@@ -63,3 +63,32 @@
     });
   }
 })();
+
+// Dated lists with class "scroll-list" (home News, past Events, Music): show five items, then
+// scroll. The height is fitted to the first five items; the bottom fades while more is below.
+(function () {
+  var lists = document.querySelectorAll('.scroll-list');
+  if (!lists.length) return;
+  function edge(ul) {
+    ul.classList.toggle('has-more', ul.scrollTop + ul.clientHeight < ul.scrollHeight - 2);
+  }
+  function fit() {
+    Array.prototype.forEach.call(lists, function (ul) {
+      var items = ul.children;
+      if (items.length > 5) {
+        var fifth = items[4];
+        ul.style.maxHeight = (fifth.offsetTop + fifth.offsetHeight) + 'px';
+      } else {
+        ul.style.maxHeight = 'none';
+      }
+      edge(ul);
+    });
+  }
+  Array.prototype.forEach.call(lists, function (ul) {
+    ul.addEventListener('scroll', function () { edge(ul); }, { passive: true });
+  });
+  var timer = 0;
+  window.addEventListener('resize', function () { clearTimeout(timer); timer = setTimeout(fit, 150); });
+  fit();
+  if (document.fonts && document.fonts.ready) document.fonts.ready.then(fit);
+})();

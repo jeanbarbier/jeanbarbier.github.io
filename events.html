@@ -19,5 +19,5 @@ intro: "Meetings we organize. From October 2026 to October 2027 ICTP holds an AI
 {%- endif %}
 <section class="block">
   <h2>Past</h2>
-  <ul class="news event-list">{% for e in past %}{% include event-item.html e=e %}{% endfor %}</ul>
+  <ul class="news event-list scroll-list" tabindex="0" aria-label="Past events">{% for e in past %}{% include event-item.html e=e %}{% endfor %}</ul>
 </section>

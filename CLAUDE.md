@@ -8,7 +8,7 @@ changing anything. A push to `master` is live after about a minute; check the li
 - Ask before design decisions, and before fixing anything that looks inconsistent.
   When he asks for a proposal, propose the wording before pushing.
 - Simple and restrained: no animations, banners or decoration. One exception, chosen by Jean:
-  the faint Turing-pattern background of the Misc page in dark mode (see Small details).
+  the faint Turing-pattern background of the Misc page (see Small details).
 - American spelling and US date style ("August 31 – September 4, 2026").
 - Uniformity first: the same kind of element looks the same on every page. After a
   change, check the whole site for consistency.
@@ -53,6 +53,8 @@ changing anything. A push to `master` is live after about a minute; check the li
 - Dated lists (News, Events, Music): small grey date column on the left with short
   months ("Oct 2026"; event ranges like "Aug 31 – Sep 4, 2026" in a wider column), text
   on the right, horizontal rules, no vertical rule. On phones the date sits above the text.
+- Home News, past Events and Music show five items, then scroll (`scroll-list` class:
+  site.js fits the height to the first five items; the bottom fades while more is below).
 - The quotes (end of the home page) share a single vertical rule.
 - Every paper in `_data/publications.yml` carries a `bibtex` block (from Crossref when it has
   a DOI, from arXiv otherwise), shown by its "Cite" button. Add one with each new paper.
@@ -73,10 +75,11 @@ changing anything. A push to `master` is live after about a minute; check the li
   never written in the page, only assembled in `assets/js/site.js`, against scraping.
 - `site.js` also prints a short note for the curious in the browser console (PhD openings).
 - Misc background: `background: turing` in the front matter adds a canvas drawn by
-  `assets/js/turing.js`: a Gray-Scott Turing pattern, deep blue-teal and very faint (alpha
-  0.12), slowly evolving. Dark mode only; nothing runs in light mode. Kept cheap: ~7 px cells
-  stretched by the browser, ~20 frames/s, paused when the tab is hidden, one still frame
-  under reduced motion.
+  `assets/js/turing.js`: an evolving Gray-Scott Turing pattern, very faint: deep blue-teal in
+  dark mode (alpha 0.12), pale version of the header-label orange in light mode (alpha 0.11);
+  switching theme recolours it at once. 300 simulation steps/s (10 per frame at ~30 frames/s).
+  Kept cheap: runs on the GPU (WebGL2 float textures) with a CPU fallback, ~7 px cells
+  stretched by the browser, paused when the tab is hidden, one still frame under reduced motion.
 - The 404 page speaks the field's language ("Signal-to-noise ratio below threshold") and
   keeps the redirect for old `/jeanbarbier/...` links.
 

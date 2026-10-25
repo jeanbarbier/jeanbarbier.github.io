@@ -20,8 +20,8 @@ title: Jean Barbier
 
 <section class="block">
   <h2>News</h2>
-  <ul class="news">
-    {%- for item in site.data.news limit: 5 %}
+  <ul class="news scroll-list" tabindex="0" aria-label="News">
+    {%- for item in site.data.news %}
     <li><span class="news-date">{{ item.date | append: "-01" | date: "%b %Y" }}</span><span class="news-text">{{ item.text | markdownify | remove: "<p>" | remove: "</p>" | strip }}</span></li>
     {%- endfor %}
   </ul>

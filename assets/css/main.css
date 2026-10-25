@@ -459,13 +459,23 @@ cite { font-style: normal; }
   a { color: inherit; }
 }
 
-/* ---------- Misc page background (dark mode only) ---------- */
-/* A dim Turing pattern drawn by assets/js/turing.js on a coarse grid that the browser stretches. */
+/* ---------- Misc page background ---------- */
+/* A faint Turing pattern drawn by assets/js/turing.js on a coarse grid that the browser stretches:
+   deep blue-teal in dark mode, pale orange in light mode. */
 .bg-turing {
-  display: none; position: fixed; inset: 0; width: 100%; height: 100%;
+  position: fixed; inset: 0; width: 100%; height: 100%;
   z-index: -1; pointer-events: none; opacity: 0; transition: opacity 4s ease;
 }
 .bg-turing.is-ready { opacity: 1; }
-@media (prefers-color-scheme: dark) { :root:not([data-theme="light"]) .bg-turing { display: block; } }
-:root[data-theme="dark"] .bg-turing { display: block; }
 @media (prefers-reduced-motion: reduce) { .bg-turing { transition: none; } }
+
+/* ---------- Dated lists that show five items, then scroll (home News, past Events, Music) ---------- */
+/* site.js fits the height to the first five items and fades the bottom while more is below. */
+.scroll-list {
+  position: relative; overflow-y: auto; max-height: 15rem;
+  scrollbar-width: thin; scrollbar-color: var(--rule) transparent;
+}
+.scroll-list.has-more {
+  -webkit-mask-image: linear-gradient(to bottom, #000 calc(100% - 2.25rem), transparent);
+  mask-image: linear-gradient(to bottom, #000 calc(100% - 2.25rem), transparent);
+}
