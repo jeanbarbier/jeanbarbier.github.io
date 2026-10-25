@@ -5,7 +5,14 @@ heading: Miscellaneous
 permalink: /misc/
 funding: false   # no ERC funding statement on this page: nothing here is ERC-funded
 ---
-Outside science I like rock climbing, skiing and freediving. With friends we make electronic music (I am RSB, my wife is Ficus Tabasco): [Entropie Collectif](https://soundcloud.com/entropiecollectif). 
+## Worth reading
+
+- [A highly relevant viewpoint on science in the age of AI](https://www.linkedin.com/pulse/where-mathematics-headed-age-ai-marc-m%C3%A9zard-vhvce/), by Marc Mézard.
+- [The Future of Research in the Age of AI](https://pierremarion23.github.io/thoughts/2026-10-01.html), by Pierre Marion.
+
+## Outside science
+
+I like rock climbing, skiing and freediving. With friends we make electronic music (I am RSB, my wife is Ficus Tabasco): [Entropie Collectif](https://soundcloud.com/entropiecollectif). 
 
 <div class="sc-player" data-label="Entropie 10">
   <a class="play-button" href="https://soundcloud.com/entropiecollectif/sets/entropie-10-2026"><svg viewBox="0 0 16 16" aria-hidden="true" focusable="false"><path d="M4 2.5v11l9-5.5z" fill="currentColor"/></svg>Play Entropie 10</a>
@@ -23,33 +30,6 @@ Outside science I like rock climbing, skiing and freediving. With friends we mak
   <p class="player-caption" aria-live="polite">Click an album to play it here.</p>
 </div>
 <script src="{{ '/assets/js/music-player.js' | relative_url }}" defer></script>
-
-## Worth reading
-
-- [A highly relevant viewpoint on science in the age of AI](https://www.linkedin.com/pulse/where-mathematics-headed-age-ai-marc-m%C3%A9zard-vhvce/), by Marc Mézard.
-- [The Future of Research in the Age of AI](https://pierremarion23.github.io/thoughts/2026-10-01.html), by Pierre Marion.
-
-## Quotes I like
-
-<div class="quotes" markdown="1">
-
-> An expert is a person who has found out by his own painful experience all the mistakes that one can make in a very narrow field.
->
-> <cite>Niels Bohr, quoted by Edward Teller in LIFE magazine (6 September 1954)</cite>
-
-> Physics is like sex: sure, it may give some practical results, but that's not why we do it.
->
-> <cite>Richard Feynman</cite>
-
-> If you can't explain it simply, you don't understand it well enough.
->
-> <cite>Attributed to Albert Einstein, [probably based on a quote by Ernest Rutherford](https://en.wikiquote.org/wiki/Albert_Einstein#Misattributed)</cite>
-
-> Everything should be made as simple as possible, but not simpler.
->
-> <cite>Attributed to Albert Einstein; [the long story of this quote](https://quoteinvestigator.com/2011/05/13/einstein-simple/)</cite>
-
-</div>
 
 ## Submit your phase transition
 
@@ -71,4 +51,3 @@ Spotted a phase transition in the wild or your imagination? Describe it below an
   <p class="tf-status" role="status" aria-live="polite"></p>
   <p class="tf-note">Leave the name and email empty to stay anonymous. Messages are delivered by Web3Forms.</p>
 </form>
-
