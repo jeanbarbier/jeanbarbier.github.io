@@ -16,10 +16,10 @@
     return [0.046 - 0.0045 * b, 0.0615 - 0.0023 * b];
   }
   var SLIDERS = [
-    { id: 'turing-s', key: 'bg-turing-s', event: 'bg-turing-param', def: 0.45, min: 0, max: 1,
+    { id: 'turing-s', key: 'bg-turing-s', event: 'bg-turing-param', def: 0.25, min: 0, max: 1,
       label: function (v) { var fk = pathFk(v); return 'F ' + fk[0].toFixed(3) + ', k ' + fk[1].toFixed(4); },
       spoken: function (v) { return v < 0.25 ? 'spots' : v < 0.4 ? 'spots and stripes' : v < 0.65 ? 'stripes' : v < 0.85 ? 'stripes and holes' : 'holes'; } },
-    { id: 'ising-t', key: 'bg-ising-T', event: 'bg-ising-temp', def: 1.02, min: 0.5, max: 2,
+    { id: 'ising-t', key: 'bg-ising-T', event: 'bg-ising-temp', def: 0.8, min: 0.5, max: 2,
       label: function (v) { return v.toFixed(2) + ' T<sub>c</sub>'; },
       spoken: function (v) { return v.toFixed(2) + ' times the critical temperature'; } }
   ];

@@ -1,5 +1,5 @@
-// Background animation, third choice: the 2D Ising model, by default just above its critical
-// temperature (T = 1.02 Tc, Tc = 2 / ln(1 + sqrt 2) in units J = k_B = 1; visitors can set T
+// Background animation, third choice: the 2D Ising model, by default in its ordered phase
+// (T = 0.8 Tc, Tc = 2 / ln(1 + sqrt 2) in units J = k_B = 1; visitors can set T
 // from 0.5 to 2 Tc with the slider in the animation menu), seen as a faint lattice of up and
 // down spins. Metropolis dynamics on a checkerboard, periodic edges. Close to Tc the
 // correlation length is a few dozen spins, so clusters of all sizes form, merge and break up.
@@ -12,7 +12,7 @@
   'use strict';
 
   var KEY_MODE = 'bg-anim', KEY_STATE = 'bg-ising-state';
-  var KEY_T = 'bg-ising-T', T_DEFAULT = 1.02, T_MIN = 0.5, T_MAX = 2;   // temperature in units of Tc, set from the menu slider
+  var KEY_T = 'bg-ising-T', T_DEFAULT = 0.8, T_MIN = 0.5, T_MAX = 2;   // temperature in units of Tc, set from the menu slider
   var TC = 2 / Math.log(1 + Math.SQRT2), T = T_DEFAULT * TC;
   var CELL = 5, MAX_SPINS = 80000;     // CSS px per spin; cap on the lattice size
   var FRAME_MS = 100, SWEEPS_PER_FRAME = 2, WARMUP = 600;   // ~20 sweeps/s drawn 10 times a second; sweeps before showing

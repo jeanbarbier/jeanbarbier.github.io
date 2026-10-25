@@ -95,7 +95,7 @@ changing anything. A push to `master` is live after about a minute; check the li
   Escape, and on choosing No animation; choosing an animation keeps it open so its slider
   shows). Turing slider "Pattern": s from 0 to 1 along a path in the (F, k) plane checked by
   simulation, spots (F 0.026, k 0.0615) to stripes (F 0.046, k 0.0615) to holes (F 0.0415,
-  k 0.0592); default 0.45; value shown as "F 0.044, k 0.0615", scale spots / stripes / holes;
+  k 0.0592); default 0.25, between spots and stripes; value shown as "F 0.036, k 0.0615", scale spots / stripes / holes;
   remembered (localStorage `bg-turing-s`). A slow drift of ±0.0015 in F and ±0.0002 in k
   around that point, and a small spread across the page, keep it moving. The pattern is handed from page to page (sessionStorage `bg-anim-state`,
   ~0.2 MB, saved on pagehide), so moving around the site does not restart it. Random
@@ -110,7 +110,7 @@ changing anything. A push to `master` is live after about a minute; check the li
   code and restore steps are in `_archive/neurons/` (not published) and the whole site as it
   was is on the branch `archive/neurons-animation`.
 - Ising animation (`assets/js/ising.js`, canvas `.bg-ising`): the 2D Ising model, by default
-  at T = 1.02 Tc; a temperature slider (0.5 to 2 Tc, Tc marked, value shown as "1.02 Tc")
+  at T = 0.8 Tc (ordered phase); a temperature slider (0.5 to 2 Tc, Tc marked, value shown as "0.80 Tc")
   sits under the Ising item of the animation menu while Ising runs, applies at once and is remembered (localStorage `bg-ising-T`).
   One pixel per spin (5 CSS px, kept crisp with `image-rendering: pixelated`),
   Metropolis dynamics on a checkerboard with periodic edges, ~20 sweeps/s drawn 10 times a

@@ -15,8 +15,8 @@
   var KICK_MIN_MS = 2000, KICK_MAX_MS = 6000, KICK_R = 8, KICK_R_EXTRA = 11, KICK_SEED_DENSITY = 0.05;
 
   // The menu slider picks s in [0, 1] on a path through the Gray-Scott (F, k) plane, checked by
-  // simulation: spots (s ~ 0), stripes / labyrinths (s ~ 0.5), holes (s ~ 1). Default 0.45.
-  var PATTERN_DEFAULT = 0.45, pattern = PATTERN_DEFAULT;
+  // simulation: spots (s ~ 0), stripes / labyrinths (s ~ 0.5), holes (s ~ 1). Default 0.25, between spots and stripes.
+  var PATTERN_DEFAULT = 0.25, pattern = PATTERN_DEFAULT;
   function pathFk(s) {
     if (s <= 0.5) return [0.026 + 0.04 * s, 0.0615];
     var b = (s - 0.5) / 0.5;
