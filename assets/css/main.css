@@ -158,16 +158,18 @@ p, dd, li, figcaption, .news-text, .album-name { text-wrap: pretty; }
 .site-nav a { color: var(--muted); text-decoration: none; font-size: 0.97rem; padding-block: 0.2rem; }
 .site-nav a:hover { color: var(--text); }
 .site-nav a[aria-current="page"] { color: var(--text); box-shadow: inset 0 -2px 0 var(--accent); }
-.theme-toggle {
+.theme-toggle, .anim-toggle {
   align-self: center;
-  margin-left: 0.9rem;
+  margin-left: 0.4rem;
   width: 2rem; height: 2rem;
   display: inline-grid; place-items: center;
   border: 1px solid var(--rule); border-radius: 50%;
   background: transparent; color: var(--muted); cursor: pointer;
 }
-.theme-toggle:hover { color: var(--text); border-color: var(--muted); }
-.theme-toggle svg { width: 1rem; height: 1rem; }
+.anim-toggle { margin-left: 0.9rem; }
+.theme-toggle:hover, .anim-toggle:hover { color: var(--text); border-color: var(--muted); }
+.theme-toggle svg, .anim-toggle svg { width: 1rem; height: 1rem; }
+.anim-toggle[aria-pressed="true"] { color: var(--accent); border-color: var(--accent); }
 
 /* The signature: a phase transition as the header rule */
 .curve-wrap { margin-top: 1.1rem; }
@@ -189,7 +191,7 @@ p, dd, li, figcaption, .news-text, .album-name { text-wrap: pretty; }
 
 main.wrap { max-width: var(--wide); padding-top: 2.75rem; padding-bottom: 4rem; }
 /* One left edge for header, content and footer; prose keeps a readable measure */
-main p, main .news, main .pubs, main .plain, main dl, main blockquote, main .notes, main .people, main .alumni, main .albums { max-width: var(--measure); }
+main p, main .news, main .pubs, main .plain, main dl, main .notes, main .people, main .alumni, main .albums { max-width: var(--measure); }
 main .intro p { max-width: none; }
 .page-title { font-size: var(--step-3); margin-bottom: 0.6rem; }
 .page-intro { color: var(--muted); max-width: var(--measure); margin-bottom: 2.25rem; }
@@ -265,7 +267,7 @@ main .grant p { margin: 0; max-width: none; font-size: 0.97rem; }
 .subtheme h3 { font-size: var(--step-1); margin-bottom: 0.6rem; }
 .subtheme > p { max-width: var(--measure); }
 .subtheme .pubs { margin-top: 1rem; }
-/* Items of one group hang off a vertical rule, like the quotes on Misc */
+/* Items of one group hang off a vertical rule */
 .grouped { border-left: 2px solid var(--rule); padding-left: 1.25rem; }
 .grouped .pub:first-child, .grouped .note:first-child { border-top: 0; padding-top: 0.1rem; }
 .grouped .pub:last-child, .grouped .note:last-child { border-bottom: 0; padding-bottom: 0.1rem; }
@@ -412,14 +414,8 @@ main section h2, main .block h2, main .theme h2 { margin-top: 0; }
 .side-img { float: left; width: 50%; margin: 0.3rem 2rem 0.5rem 0; }
 .side-img img { width: 100%; border-radius: 6px; }
 main .trieste p { max-width: none; }
-blockquote { margin: 1.5rem 0; padding: 0 0 0 1.25rem; border-left: 2px solid var(--rule); }
-/* Home: one rule for the whole set of quotes */
-.quotes { border-left: 2px solid var(--rule); padding-left: 1.25rem; margin: 1.5rem 0; max-width: var(--measure); }
-.quotes blockquote { border-left: 0; padding-left: 0; margin: 0 0 1.4rem; }
-.quotes blockquote:last-child { margin-bottom: 0; }
-blockquote p { font-family: var(--serif); font-size: 1.15rem; line-height: 1.5; margin: 0 0 0.4rem; }
-blockquote p:last-child { font-family: var(--sans); font-size: var(--step--1); color: var(--muted); }
-cite { font-style: normal; }
+/* Home: the quotes, a grouped list like the papers; the quote is the item title */
+.quotes .note-title { font-family: var(--serif); margin: 0 0 0.25rem; padding: 0; border: 0; }
 
 /* ---------- Footer ---------- */
 .site-footer { border-top: 1px solid var(--rule); padding-block: 2.25rem 3rem; font-size: var(--step--1); color: var(--muted); }
@@ -440,7 +436,11 @@ cite { font-style: normal; }
   .site-nav { width: 100%; justify-content: space-between; }
   .site-nav ul { gap: 0.15rem 0.8rem; }
   .site-nav a { font-size: 0.92rem; }
-  .theme-toggle { margin-left: 0.5rem; }
+  /* the two round buttons move to the top right, beside the name, so the links keep one row */
+  .site-header { position: relative; }
+  .theme-toggle, .anim-toggle { position: absolute; top: 1.57rem; margin: 0; }
+  .theme-toggle { right: 1.25rem; }
+  .anim-toggle { right: calc(1.25rem + 2rem + 0.4rem); }
   .portrait { float: none; width: 11rem; margin: 0 auto 1.25rem; }
   .side-img { float: none; width: 100%; margin: 0 0 1rem; }
   .news li { grid-template-columns: 1fr; gap: 0.1rem; }
@@ -455,19 +455,20 @@ cite { font-style: normal; }
 }
 @media (prefers-reduced-motion: reduce) { * { scroll-behavior: auto !important; } }
 @media print {
-  .site-nav, .curve-wrap, .theme-toggle { display: none; }
+  .site-nav, .curve-wrap, .theme-toggle, .anim-toggle, .bg-turing { display: none; }
   a { color: inherit; }
 }
 
-/* ---------- Misc page background ---------- */
+/* ---------- Background animation (every page, off until the header button turns it on) ---------- */
 /* A faint Turing pattern drawn by assets/js/turing.js on a coarse grid that the browser stretches:
-   deep blue-teal in dark mode, pale orange in light mode. */
+   deep blue-teal in dark mode, pale orange in light mode. Fades in when started, out when stopped;
+   appears at once when carried over from the previous page. */
 .bg-turing {
   position: fixed; inset: 0; width: 100%; height: 100%;
-  z-index: -1; pointer-events: none; opacity: 0; transition: opacity 4s ease;
+  z-index: -1; pointer-events: none; opacity: 0; transition: opacity 1.2s ease;
 }
-.bg-turing.is-ready { opacity: 1; }
-@media (prefers-reduced-motion: reduce) { .bg-turing { transition: none; } }
+.bg-turing.is-ready { opacity: 1; transition-duration: 4s; }
+.bg-turing.instant { transition: none; }
 
 /* ---------- Dated lists that show five items, then scroll (home News, past Events, Music) ---------- */
 /* site.js fits the height to the first five items and fades the bottom while more is below. */

@@ -5,7 +5,6 @@ heading: Miscellaneous
 permalink: /misc/
 intro: "The rest: what I read, what I listen to, and the phase transitions you send me."
 funding: false   # no ERC funding statement on this page: nothing here is ERC-funded
-background: turing   # dim, slowly evolving Turing pattern behind the page, dark mode only (assets/js/turing.js)
 ---
 ## Worth reading
 

@@ -1,9 +1,10 @@
-// Misc page: a faint Turing pattern (Gray-Scott reaction-diffusion) slowly evolving behind
-// the text: deep blue-teal in dark mode, pale orange in light mode.
-// Runs on the GPU (WebGL2) when it can, where it costs almost nothing; otherwise on the CPU.
-// Either way the grid is coarse (one cell per ~7 CSS px, stretched by the browser), it runs
-// at ~30 frames per second, pauses when the tab is hidden, and visitors who ask for reduced
-// motion get one still frame.
+// Background animation, every page, off until the visitor turns it on with the round button
+// in the header (the choice is remembered). A faint Turing pattern (Gray-Scott
+// reaction-diffusion) evolves behind the text: deep blue-teal in dark mode, pale orange in
+// light mode. Its state is handed from page to page, so moving around the site does not
+// restart it. Runs on the GPU (WebGL2) when it can, where it costs almost nothing; otherwise
+// on the CPU. The grid is coarse (one cell per ~7 CSS px, stretched by the browser), it runs
+// at ~30 frames per second and pauses when the tab is hidden.
 (function () {
   'use strict';
 
@@ -31,13 +32,23 @@
     return { u: u, v: v };
   }
 
+  // Nearest-neighbour resampling of a state onto another grid size.
+  function resample(st, cols, rows, c2, r2) {
+    var nu = new Float32Array(c2 * r2), nv = new Float32Array(c2 * r2);
+    for (var y = 0; y < r2; y++) for (var x = 0; x < c2; x++) {
+      var j = Math.floor((y * rows) / r2) * cols + Math.floor((x * cols) / c2);
+      nu[y * c2 + x] = st.u[j]; nv[y * c2 + x] = st.v[j];
+    }
+    return { u: nu, v: nv };
+  }
+
   // ---- CPU simulation (fallback; also loadable in Node for testing) ----
   // Karl Sims' discretisation: Du = 1, Dv = 0.5, dt = 1, 3x3 Laplacian, periodic edges.
-  function createSim(cols, rows, rand, start) {
+  function createSim(cols, rows, rand, start, t0) {
     rand = rand || Math.random;
     var n = cols * rows, st = start || initialState(cols, rows, rand);
     var u = st.u, v = st.v, u2 = new Float32Array(n), v2 = new Float32Array(n);
-    var fcol = new Float32Array(cols), kcol = new Float32Array(cols), t = 0;
+    var fcol = new Float32Array(cols), kcol = new Float32Array(cols), t = t0 || 0;
 
     function setParams() {
       var p = params(t);
@@ -67,20 +78,15 @@
         var tmp = u; u = u2; u2 = tmp; tmp = v; v = v2; v2 = tmp;
         t++;
       }
+      if (t % 10 === 0) setParams();
     }
-
-    function resized(c2, r2) {
-      var nu = new Float32Array(c2 * r2), nv = new Float32Array(c2 * r2);
-      for (var y = 0; y < r2; y++) for (var x = 0; x < c2; x++) {
-        var j = Math.floor((y * rows) / r2) * cols + Math.floor((x * cols) / c2);
-        nu[y * c2 + x] = u[j]; nv[y * c2 + x] = v[j];
-      }
-      var s = createSim(c2, r2, rand, { u: nu, v: nv }); s.setSteps(t); return s;
-    }
+    setParams();
 
     return {
-      cols: cols, rows: rows, step: step, resized: resized,
-      v: function () { return v; }, steps: function () { return t; }, setSteps: function (s) { t = s; }
+      cols: cols, rows: rows, step: step,
+      resized: function (c2, r2) { return createSim(c2, r2, rand, resample({ u: u, v: v }, cols, rows, c2, r2), t); },
+      read: function () { return { u: u, v: v }; },
+      v: function () { return v; }, steps: function () { return t; }
     };
   }
 
@@ -111,7 +117,7 @@
   var COPY = '#version 300 es\nprecision highp float;uniform sampler2D s;uniform vec2 size;out vec4 o;' +
     'void main(){o=texture(s,gl_FragCoord.xy/size);}';
 
-  function createGpu(canvas, cols, rows) {
+  function createGpu(canvas, cols, rows, start, t0) {
     var gl = canvas.getContext('webgl2', { alpha: true, premultipliedAlpha: true, antialias: false, depth: false,
       stencil: false, preserveDrawingBuffer: false, powerPreference: 'low-power' });
     if (!gl || !gl.getExtension('EXT_color_buffer_float')) return null;
@@ -146,9 +152,9 @@
       return ok ? { tex: tex, fb: fb } : null;
     }
 
-    var st = initialState(cols, rows, Math.random), data = new Float32Array(cols * rows * 4);
+    var st = start || initialState(cols, rows, Math.random), data = new Float32Array(cols * rows * 4);
     for (var i = 0; i < cols * rows; i++) { data[4 * i] = st.u[i]; data[4 * i + 1] = st.v[i]; }
-    var a = target(cols, rows, data), b = target(cols, rows, null), t = 0;
+    var a = target(cols, rows, data), b = target(cols, rows, null), t = t0 || 0;
     if (!a || !b) return null;
     gl.disable(gl.BLEND); gl.disable(gl.DEPTH_TEST);
 
@@ -179,6 +185,14 @@
         gl.uniform1f(show.u.alpha, pal.alpha);
         gl.drawArrays(gl.TRIANGLES, 0, 3);
       },
+      read: function () {               // current state back to the CPU, to hand to the next page
+        var n = api.cols * api.rows, buf = new Float32Array(n * 4), u = new Float32Array(n), v = new Float32Array(n);
+        gl.bindFramebuffer(gl.FRAMEBUFFER, a.fb);
+        gl.readPixels(0, 0, api.cols, api.rows, gl.RGBA, gl.FLOAT, buf);
+        gl.bindFramebuffer(gl.FRAMEBUFFER, null);
+        for (var i = 0; i < n; i++) { u[i] = buf[4 * i]; v[i] = buf[4 * i + 1]; }
+        return { u: u, v: v };
+      },
       resized: function (c2, r2) {      // resample the current pattern onto the new grid
         var na = target(c2, r2, null), nb = target(c2, r2, null);
         if (!na || !nb) return api;
@@ -191,15 +205,47 @@
     return api;
   }
 
+  // ---- Handing the state from page to page (sessionStorage, ~0.2 MB) ----
+  var KEY_ON = 'bg-anim', KEY_STATE = 'bg-anim-state';
+
+  function saveState(eng) {
+    try {
+      var st = eng.read(), n = eng.cols * eng.rows, q = new Uint16Array(2 * n);
+      for (var i = 0; i < n; i++) {
+        q[i] = Math.round(Math.min(1, Math.max(0, st.u[i])) * 65535);
+        q[n + i] = Math.round(Math.min(1, Math.max(0, st.v[i])) * 65535);
+      }
+      var bytes = new Uint8Array(q.buffer), s = '';
+      for (var j = 0; j < bytes.length; j += 0x8000) s += String.fromCharCode.apply(null, bytes.subarray(j, j + 0x8000));
+      sessionStorage.setItem(KEY_STATE, JSON.stringify({ c: eng.cols, r: eng.rows, t: eng.steps(), d: btoa(s) }));
+    } catch (e) {}
+  }
+
+  function loadState(c2, r2) {
+    try {
+      var o = JSON.parse(sessionStorage.getItem(KEY_STATE) || 'null');
+      if (!o) return null;
+      var bin = atob(o.d), bytes = new Uint8Array(bin.length);
+      for (var i = 0; i < bin.length; i++) bytes[i] = bin.charCodeAt(i);
+      var q = new Uint16Array(bytes.buffer), n = o.c * o.r;
+      if (q.length !== 2 * n) return null;
+      var st = { u: new Float32Array(n), v: new Float32Array(n) };
+      for (var j = 0; j < n; j++) { st.u[j] = q[j] / 65535; st.v[j] = q[n + j] / 65535; }
+      if (o.c !== c2 || o.r !== r2) st = resample(st, o.c, o.r, c2, r2);
+      return { st: st, t: o.t };
+    } catch (e) { return null; }
+  }
+
   // ---- Page ----
-  var canvas = document.querySelector('.bg-turing');
+  var canvas = document.querySelector('.bg-turing'), btn = document.querySelector('.anim-toggle');
   if (!canvas) return;
   var root = document.documentElement;
   var darkMq = window.matchMedia('(prefers-color-scheme: dark)');
-  var calmMq = window.matchMedia('(prefers-reduced-motion: reduce)');
   var CELL = 7, MAX_CELLS = 60000;
   var engine = null, gpu = false, ctx = null, img = null, lut = null, lutFor = null;
   var running = false, raf = 0, last = 0, warm = false;
+
+  function enabled() { try { return localStorage.getItem(KEY_ON) === 'on'; } catch (e) { return false; } }
 
   function theme() {
     var t = root.getAttribute('data-theme');
@@ -213,17 +259,25 @@
   }
 
   function setup() {
-    var g = gridSize();
+    var g = gridSize(), saved = loadState(g[0], g[1]);
+    var st = saved ? saved.st : null, t0 = saved ? saved.t : 0;
     canvas.width = g[0]; canvas.height = g[1];
-    engine = createGpu(canvas, g[0], g[1]);
-    if (engine) { gpu = true; return; }
-    // No usable WebGL2: a canvas keeps its first context type, so start from a fresh one.
-    var fresh = canvas.cloneNode(false); canvas.parentNode.replaceChild(fresh, canvas); canvas = fresh;
-    canvas.width = g[0]; canvas.height = g[1];
-    ctx = canvas.getContext('2d');
-    if (!ctx) return;
-    engine = createSim(g[0], g[1]);
-    img = ctx.createImageData(g[0], g[1]);
+    engine = createGpu(canvas, g[0], g[1], st, t0);
+    if (engine) gpu = true;
+    else {
+      // No usable WebGL2: a canvas keeps its first context type, so start from a fresh one.
+      var fresh = canvas.cloneNode(false); canvas.parentNode.replaceChild(fresh, canvas); canvas = fresh;
+      canvas.width = g[0]; canvas.height = g[1];
+      ctx = canvas.getContext('2d');
+      if (!ctx) { engine = null; return; }
+      engine = createSim(g[0], g[1], Math.random, st, t0);
+      img = ctx.createImageData(g[0], g[1]);
+    }
+    if (saved) {                        // coming from another page: show it at once, no fade
+      warm = true; draw();
+      canvas.classList.add('instant', 'is-ready');
+      setTimeout(function () { canvas.classList.remove('instant'); }, 100);
+    }
   }
 
   function draw() {
@@ -248,13 +302,10 @@
   function frame(now) {
     raf = 0;
     if (!running) return;
-    if (!warm) {                         // grow the first pattern off-screen
+    if (!warm) {                         // grow the first pattern off-screen, then fade it in
       var t0 = performance.now();
       while (engine.steps() < WARMUP && performance.now() - t0 < 10) engine.step(gpu ? 250 : 25);
-      if (engine.steps() >= WARMUP) {
-        warm = true; draw(); canvas.classList.add('is-ready');
-        if (calmMq.matches) { running = false; return; }   // reduced motion: one still frame
-      }
+      if (engine.steps() >= WARMUP) { warm = true; draw(); canvas.classList.add('is-ready'); }
     } else if (now - last >= FRAME_MS) {
       last = now; engine.step(STEPS_PER_FRAME); draw();
     }
@@ -262,16 +313,34 @@
   }
 
   function update() {
-    var go = !document.hidden && !(warm && calmMq.matches);
+    var on = enabled();
+    if (btn) btn.setAttribute('aria-pressed', on ? 'true' : 'false');
+    var go = on && !document.hidden;
     if (go && !running) {
       if (!engine) { setup(); if (!engine) return; }
+      if (warm) canvas.classList.add('is-ready');
       running = true;
       if (!raf) raf = requestAnimationFrame(frame);
     } else if (!go && running) {
       running = false;
       if (raf) { cancelAnimationFrame(raf); raf = 0; }
     }
+    if (!on) canvas.classList.remove('is-ready');
   }
+
+  if (btn) btn.addEventListener('click', function () {
+    var on = !enabled();
+    try {
+      localStorage.setItem(KEY_ON, on ? 'on' : 'off');
+      if (!on) sessionStorage.removeItem(KEY_STATE);
+    } catch (e) {}
+    update();
+  });
+
+  // Hand the current pattern to the next page (navigation) or to a later return to this tab.
+  function handOver() { if (engine && warm && enabled()) saveState(engine); }
+  window.addEventListener('pagehide', handOver);
+  document.addEventListener('visibilitychange', function () { if (document.hidden) handOver(); update(); });
 
   var resizeTimer = 0;
   window.addEventListener('resize', function () {
@@ -287,10 +356,9 @@
       }
     }, 300);
   });
-  // Switching light/dark recolours the pattern at once, even while paused.
+  // Switching light/dark recolours the pattern at once.
   function recolour() { if (engine && warm) draw(); }
   new MutationObserver(recolour).observe(root, { attributes: true, attributeFilter: ['data-theme'] });
   if (darkMq.addEventListener) darkMq.addEventListener('change', recolour);
-  document.addEventListener('visibilitychange', update);
   update();
 })();
