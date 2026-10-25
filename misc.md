@@ -3,12 +3,13 @@ layout: default
 title: Miscellaneous
 heading: Miscellaneous
 permalink: /misc/
+intro: "The rest: what I read, what I listen to, and the phase transitions you send me."
 funding: false   # no ERC funding statement on this page: nothing here is ERC-funded
 ---
 ## Worth reading
 
 - [A highly relevant viewpoint on science in the age of AI](https://www.linkedin.com/pulse/where-mathematics-headed-age-ai-marc-m%C3%A9zard-vhvce/), by Marc Mézard.
-- [The Future of Research in the Age of AI](https://pierremarion23.github.io/thoughts/2026-10-01.html), by Pierre Marion.
+- [The future of research in the age of AI](https://pierremarion23.github.io/thoughts/2026-10-01.html), by Pierre Marion.
 
 ## Outside science
 

@@ -18,8 +18,11 @@ changing anything. A push to `master` is live after about a minute; check the li
 - Navigation: Group, Research, Teaching, Events, Misc. The name in the header links home.
 - Home: bio without supervisors' names, ICTP/UNESCO mission sentence, text-only CHORAL
   panel linking to CORDIS, News, Selected papers, Trieste, then Quotes I like. No GitHub link.
-- Misc, in order: Worth reading, Outside science (hobbies, Entropie Collectif player),
+- Misc: intro "The rest: what I read, what I listen to, and the phase transitions you send
+  me.", then in order: Worth reading, Outside science (hobbies, Entropie Collectif player),
   Music I've been listening to, Submit your phase transition.
+- Worth reading links are in sentence case (capital on the first letter only; acronyms such
+  as AI and proper names keep theirs), even when the original title is capitalized.
 - Research: Highlights, then Selected papers grouped by theme (full list on
   Scholar), then For a wider audience. No separate chronological publication page.
 - The photo gallery is the last section of the Group page.
