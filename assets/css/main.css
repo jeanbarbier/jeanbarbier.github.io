@@ -459,7 +459,7 @@ main .trieste p { max-width: none; }
   a { color: inherit; }
 }
 
-/* ---------- Background animation (every page, off until the header button turns it on) ---------- */
+/* ---------- Background animation (every page, on by default, header button to stop it) ---------- */
 /* A faint Turing pattern drawn by assets/js/turing.js on a coarse grid that the browser stretches:
    deep blue-teal in dark mode, pale orange in light mode. Fades in when started, out when stopped;
    appears at once when carried over from the previous page. */

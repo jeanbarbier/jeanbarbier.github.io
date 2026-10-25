@@ -1,5 +1,5 @@
-// Background animation, every page, off until the visitor turns it on with the round button
-// in the header (the choice is remembered). A faint Turing pattern (Gray-Scott
+// Background animation, every page, on by default (off for visitors whose system asks for
+// reduced motion); the round button in the header stops or restarts it (the choice is remembered). A faint Turing pattern (Gray-Scott
 // reaction-diffusion) evolves behind the text: deep blue-teal in dark mode, pale orange in
 // light mode. Its state is handed from page to page, so moving around the site does not
 // restart it. Runs on the GPU (WebGL2) when it can, where it costs almost nothing; otherwise
@@ -245,7 +245,16 @@
   var engine = null, gpu = false, ctx = null, img = null, lut = null, lutFor = null;
   var running = false, raf = 0, last = 0, warm = false;
 
-  function enabled() { try { return localStorage.getItem(KEY_ON) === 'on'; } catch (e) { return false; } }
+  // On by default; a visitor's own choice (the header button) wins. Visitors whose system asks
+  // for reduced motion start with it off and can still turn it on.
+  var calmMq = window.matchMedia('(prefers-reduced-motion: reduce)');
+  function enabled() {
+    var v = null;
+    try { v = localStorage.getItem(KEY_ON); } catch (e) {}
+    if (v === 'on') return true;
+    if (v === 'off') return false;
+    return !calmMq.matches;
+  }
 
   function theme() {
     var t = root.getAttribute('data-theme');

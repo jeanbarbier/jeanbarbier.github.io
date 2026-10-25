@@ -8,8 +8,8 @@ changing anything. A push to `master` is live after about a minute; check the li
 - Ask before design decisions, and before fixing anything that looks inconsistent.
   When he asks for a proposal, propose the wording before pushing.
 - Simple and restrained: no animations, banners or decoration. One exception, chosen by Jean:
-  the faint Turing-pattern background animation, off by default and started by the visitor
-  with a header button (see Small details).
+  the faint Turing-pattern background animation, on by default, with a header button to
+  stop it (see Small details).
 - American spelling and US date style ("August 31 – September 4, 2026").
 - Uniformity first: the same kind of element looks the same on every page. After a
   change, check the whole site for consistency.
@@ -83,9 +83,9 @@ changing anything. A push to `master` is live after about a minute; check the li
 - Background animation (`assets/js/turing.js`, canvas in the default layout, every page):
   an evolving Gray-Scott Turing pattern, very faint: deep blue-teal in dark mode (alpha
   0.12), pale version of the header-label orange in light mode (alpha 0.11); switching theme
-  recolours it at once. Off by default; the round button left of the light/dark one (spotted
-  icon, accent colour when on) starts or stops it everywhere, remembered in localStorage
-  (`bg-anim`). The pattern is handed from page to page (sessionStorage `bg-anim-state`,
+  recolours it at once. On by default (off for visitors whose system asks for reduced
+  motion); the round button left of the light/dark one (spotted icon, accent colour when on)
+  stops or restarts it everywhere, remembered in localStorage (`bg-anim`). The pattern is handed from page to page (sessionStorage `bg-anim-state`,
   ~0.2 MB, saved on pagehide), so moving around the site does not restart it. 300 simulation
   steps/s (10 per frame at ~30 frames/s); runs on the GPU (WebGL2 float textures) with a CPU
   fallback, ~7 px cells stretched by the browser, paused when the tab is hidden.
