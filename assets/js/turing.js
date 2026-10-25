@@ -122,14 +122,17 @@
   var VERT = '#version 300 es\nvoid main(){vec2 p=vec2((gl_VertexID<<1)&2,gl_VertexID&2);gl_Position=vec4(p*2.0-1.0,0.0,1.0);}';
   var SIM = '#version 300 es\nprecision highp float;uniform sampler2D s;uniform vec2 size;uniform float f0,k0,ph;uniform vec4 kick;out vec4 o;' +
     'vec2 at(vec2 d){return texture(s,(gl_FragCoord.xy+d)/size).xy;}' +
+    'float hash(vec2 p){vec3 q=fract(vec3(p.xyx)*0.1031);q+=dot(q,q.yzx+33.33);return fract((q.x+q.y)*q.z);}' +
     'void main(){vec2 c=at(vec2(0.0));' +
     'vec2 l=0.2*(at(vec2(1,0))+at(vec2(-1,0))+at(vec2(0,1))+at(vec2(0,-1)))+0.05*(at(vec2(1,1))+at(vec2(1,-1))+at(vec2(-1,1))+at(vec2(-1,-1)))-c;' +
     'float q=sin(6.2831853*(gl_FragCoord.x-0.5)/size.x+ph);float f=f0+0.0035*q,k=k0-0.0006*q;float uvv=c.x*c.y*c.y;' +
     'o=vec4(c.x+l.x-uvv+f*(1.0-c.x),c.y+0.5*l.y+uvv-(k+f)*c.y,0.0,1.0);' +
     // random perturbation (kick.z > 0): clear a disc, with a few new nuclei in it
     'if(kick.z>0.0){vec2 d=abs(gl_FragCoord.xy-0.5-kick.xy);d=min(d,size-d);' +
-    'if(dot(d,d)<=kick.z*kick.z){float h=fract(sin(dot(gl_FragCoord.xy,vec2(12.9898,78.233))+kick.w)*43758.5453);' +
-    'o=h<' + KICK_SEED_DENSITY.toFixed(3) + '?vec4(0.5,0.25,0.0,1.0):vec4(1.0,0.0,0.0,1.0);}}}';
+    'if(dot(d,d)<=kick.z*kick.z){float h=hash(gl_FragCoord.xy+vec2(kick.w,0.0));' +
+    'o=h<' + KICK_SEED_DENSITY.toFixed(3) + '?vec4(0.5,0.25,0.0,1.0):vec4(1.0,0.0,0.0,1.0);}}' +
+    // safety net: a cell that is not a number or out of range is reset (stops it spreading)
+    'if(!(abs(o.x-0.5)<1.0&&abs(o.y-0.5)<1.0))o=vec4(1.0,0.0,0.0,1.0);}';
   var SHOW = '#version 300 es\nprecision highp float;uniform sampler2D s;uniform vec2 size;uniform vec3 lo,hi;uniform float alpha;out vec4 o;' +
     'void main(){float v=texture(s,gl_FragCoord.xy/size).y;float t=smoothstep(0.07,0.33,v);float a=alpha*t;' +
     'o=vec4(mix(lo,hi,t)*a,a);}';
@@ -244,6 +247,13 @@
     } catch (e) {}
   }
 
+  // A state is alive if it is all numbers and holds a pattern somewhere.
+  function alive(st) {
+    var m = 0;
+    for (var i = 0; i < st.v.length; i++) { var x = st.v[i]; if (x !== x) return false; if (x > m) m = x; }
+    return m > 0.05;
+  }
+
   function loadState(c2, r2) {
     try {
       var o = JSON.parse(sessionStorage.getItem(KEY_STATE) || 'null');
@@ -254,6 +264,7 @@
       if (q.length !== 2 * n) return null;
       var st = { u: new Float32Array(n), v: new Float32Array(n) };
       for (var j = 0; j < n; j++) { st.u[j] = q[j] / 65535; st.v[j] = q[n + j] / 65535; }
+      if (!alive(st)) return null;          // empty or broken hand-over: start a fresh pattern
       if (o.c !== c2 || o.r !== r2) st = resample(st, o.c, o.r, c2, r2);
       return { st: st, t: o.t };
     } catch (e) { return null; }
@@ -267,7 +278,21 @@
   var CELL = 7, MAX_CELLS = 60000;
   var engine = null, gpu = false, ctx = null, img = null, lut = null, lutFor = null;
   var running = false, raf = 0, last = 0, warm = false;
-  var nextKickAt = 0;
+  var nextKickAt = 0, nextCheckAt = 0;
+
+  // If the graphics card produces no pattern (some phone GPUs differ), continue on the CPU.
+  function switchToCpu() {
+    var c = engine.cols, r = engine.rows, fresh = canvas.cloneNode(false);
+    fresh.classList.remove('is-ready', 'instant');
+    canvas.parentNode.replaceChild(fresh, canvas); canvas = fresh;
+    canvas.width = c; canvas.height = r;
+    ctx = canvas.getContext('2d');
+    gpu = false; warm = false; lutFor = null;
+    try { sessionStorage.setItem('bg-anim-cpu', '1'); } catch (e) {}   // later pages go straight to the CPU
+    engine = ctx ? createSim(c, r) : null;
+    if (engine) img = ctx.createImageData(c, r); else running = false;
+  }
+  function gpuHealthy() { try { return alive(engine.read()); } catch (e) { return false; } }
 
   // On by default; a visitor's own choice (the header button) wins. Visitors whose system asks
   // for reduced motion start with it off and can still turn it on.
@@ -295,7 +320,9 @@
     var g = gridSize(), saved = loadState(g[0], g[1]);
     var st = saved ? saved.st : null, t0 = saved ? saved.t : 0;
     canvas.width = g[0]; canvas.height = g[1];
-    engine = createGpu(canvas, g[0], g[1], st, t0);
+    var cpuOnly = false;
+    try { cpuOnly = sessionStorage.getItem('bg-anim-cpu') === '1'; } catch (e) {}
+    engine = cpuOnly ? null : createGpu(canvas, g[0], g[1], st, t0);
     if (engine) gpu = true;
     else {
       // No usable WebGL2: a canvas keeps its first context type, so start from a fresh one.
@@ -338,9 +365,16 @@
     if (!warm) {                         // grow the first pattern off-screen, then fade it in
       var t0 = performance.now();
       while (engine.steps() < WARMUP && performance.now() - t0 < 10) engine.step(gpu ? 250 : 25);
-      if (engine.steps() >= WARMUP) { warm = true; draw(); canvas.classList.add('is-ready'); }
+      if (engine.steps() >= WARMUP) {
+        if (gpu && !gpuHealthy()) { switchToCpu(); if (running) raf = requestAnimationFrame(frame); return; }
+        warm = true; draw(); canvas.classList.add('is-ready'); nextCheckAt = now + 10000;
+      }
     } else if (now - last >= FRAME_MS) {
       last = now;
+      if (gpu && now >= nextCheckAt) {      // cheap check every 10 s (one small read-back)
+        nextCheckAt = now + 10000;
+        if (!gpuHealthy()) { switchToCpu(); if (running) raf = requestAnimationFrame(frame); return; }
+      }
       if (!nextKickAt) nextKickAt = now + KICK_MIN_MS + Math.random() * (KICK_MAX_MS - KICK_MIN_MS);
       if (now >= nextKickAt) {               // random perturbation, so the pattern never settles
         engine.kick(Math.floor(Math.random() * engine.cols), Math.floor(Math.random() * engine.rows),

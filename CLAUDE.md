@@ -93,7 +93,10 @@ changing anything. A push to `master` is live after about a minute; check the li
   perturbations keep it from settling: every 2 to 6 s (uniform) a disc of 8–19 cells somewhere
   is cleared and reseeded with a few nuclei, and the pattern regrows into it. 300 simulation
   steps/s (10 per frame at ~30 frames/s); runs on the GPU (WebGL2 float textures) with a CPU
-  fallback, ~7 px cells stretched by the browser, paused when the tab is hidden.
+  fallback, ~7 px cells stretched by the browser, paused when the tab is hidden. Safety
+  nets: the GPU result is checked after warm-up and every 10 s (one small read-back); if it
+  holds no pattern the visit continues on the CPU (sessionStorage `bg-anim-cpu`). The shader
+  resets any non-number cell, and a handed-over state without a pattern is ignored.
   Both round buttons (animation, light/dark) sit at the right edge of the header, level with
   the name, on every screen size, so the page links keep one row.
 - Link previews (Slack, email, social media): every page shares the site logo, the BBP curve
