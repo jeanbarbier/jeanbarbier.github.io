@@ -294,16 +294,18 @@
   }
   function gpuHealthy() { try { return alive(engine.read()); } catch (e) { return false; } }
 
-  // On by default; a visitor's own choice (the header button) wins. Visitors whose system asks
-  // for reduced motion start with it off and can still turn it on.
+  // The background mode is shared with neurons.js: 'turing' (default, also the old 'on'),
+  // 'neurons' or 'off'. A visitor's own choice (the header buttons) wins; visitors whose system
+  // asks for reduced motion start with 'off' and can still choose an animation.
   var calmMq = window.matchMedia('(prefers-reduced-motion: reduce)');
-  function enabled() {
+  function mode() {
     var v = null;
     try { v = localStorage.getItem(KEY_ON); } catch (e) {}
-    if (v === 'on') return true;
-    if (v === 'off') return false;
-    return !calmMq.matches;
+    if (v === 'on' || v === 'turing') return 'turing';
+    if (v === 'neurons' || v === 'off') return v;
+    return calmMq.matches ? 'off' : 'turing';
   }
+  function enabled() { return mode() === 'turing'; }
 
   function theme() {
     var t = root.getAttribute('data-theme');
@@ -399,17 +401,14 @@
       running = false;
       if (raf) { cancelAnimationFrame(raf); raf = 0; }
     }
-    if (!on) canvas.classList.remove('is-ready');
+    if (!on) { canvas.classList.remove('is-ready'); try { sessionStorage.removeItem(KEY_STATE); } catch (e) {} }
   }
 
   if (btn) btn.addEventListener('click', function () {
-    var on = !enabled();
-    try {
-      localStorage.setItem(KEY_ON, on ? 'on' : 'off');
-      if (!on) sessionStorage.removeItem(KEY_STATE);
-    } catch (e) {}
-    update();
+    try { localStorage.setItem(KEY_ON, enabled() ? 'off' : 'turing'); } catch (e) {}
+    document.dispatchEvent(new Event('bg-anim-change'));
   });
+  document.addEventListener('bg-anim-change', update);
 
   // Hand the current pattern to the next page (navigation) or to a later return to this tab.
   function handOver() { if (engine && warm && enabled()) saveState(engine); }

@@ -165,16 +165,20 @@ p, dd, li, figcaption, .news-text, .album-name { text-wrap: pretty; }
   position: absolute; top: 0; right: 1.25rem; height: var(--step-3);
   display: flex; align-items: center; gap: 0.4rem;
 }
-.theme-toggle, .anim-toggle {
+.theme-toggle, .anim-toggle, .neuron-toggle {
   flex: 0 0 auto;
   width: 2rem; height: 2rem;
   display: inline-grid; place-items: center;
   border: 1px solid var(--rule); border-radius: 50%;
   background: transparent; color: var(--muted); cursor: pointer;
 }
-.theme-toggle:hover, .anim-toggle:hover { color: var(--text); border-color: var(--muted); }
-.theme-toggle svg, .anim-toggle svg { width: 1rem; height: 1rem; }
-.anim-toggle[aria-pressed="true"] { color: var(--accent); border-color: var(--accent); }
+.theme-toggle:hover, .anim-toggle:hover, .neuron-toggle:hover { color: var(--text); border-color: var(--muted); }
+.theme-toggle svg, .anim-toggle svg, .neuron-toggle svg { width: 1rem; height: 1rem; }
+.anim-toggle[aria-pressed="true"], .neuron-toggle[aria-pressed="true"] { color: var(--accent); border-color: var(--accent); }
+@media (max-width: 23rem) {   /* very small phones: three slightly smaller buttons keep clear of the name */
+  .theme-toggle, .anim-toggle, .neuron-toggle { width: 1.8rem; height: 1.8rem; }
+  .header-buttons { gap: 0.3rem; }
+}
 
 /* The signature: a phase transition as the header rule */
 .curve-wrap { margin-top: 1.1rem; }
@@ -456,7 +460,7 @@ main .trieste p { max-width: none; }
 }
 @media (prefers-reduced-motion: reduce) { * { scroll-behavior: auto !important; } }
 @media print {
-  .site-nav, .curve-wrap, .theme-toggle, .anim-toggle, .bg-turing { display: none; }
+  .site-nav, .curve-wrap, .theme-toggle, .anim-toggle, .neuron-toggle, .bg-turing, .bg-neurons { display: none; }
   a { color: inherit; }
 }
 
@@ -470,6 +474,13 @@ main .trieste p { max-width: none; }
 }
 .bg-turing.is-ready { opacity: 1; transition-duration: 4s; }
 .bg-turing.instant { transition: none; }
+/* Alternative background: a faint network of firing neurons (assets/js/neurons.js), same behaviour */
+.bg-neurons {
+  position: fixed; inset: 0; z-index: -1; pointer-events: none; opacity: 0; transition: opacity 1.2s ease;
+}
+.bg-neurons canvas { position: absolute; inset: 0; width: 100%; height: 100%; }
+.bg-neurons.is-ready { opacity: 1; transition-duration: 2s; }
+.bg-neurons.instant { transition: none; }
 
 /* ---------- Dated lists that show five items, then scroll (home News, past Events, Music) ---------- */
 /* site.js fits the height to the first five items and fades the bottom while more is below. */

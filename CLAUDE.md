@@ -8,8 +8,8 @@ changing anything. A push to `master` is live after about a minute; check the li
 - Ask before design decisions, and before fixing anything that looks inconsistent.
   When he asks for a proposal, propose the wording before pushing.
 - Simple and restrained: no animations, banners or decoration. One exception, chosen by Jean:
-  the faint Turing-pattern background animation, on by default, with a header button to
-  stop it (see Small details).
+  the faint background animations, a Turing pattern (on by default) or a network of firing
+  neurons, chosen or stopped with header buttons (see Small details).
 - American spelling and US date style ("August 31 – September 4, 2026").
 - Uniformity first: the same kind of element looks the same on every page. After a
   change, check the whole site for consistency.
@@ -87,8 +87,10 @@ changing anything. A push to `master` is live after about a minute; check the li
   an evolving Gray-Scott Turing pattern, very faint: deep blue-teal in dark mode (alpha
   0.12), pale version of the header-label orange in light mode (alpha 0.11); switching theme
   recolours it at once. On by default (off for visitors whose system asks for reduced
-  motion); the round button left of the light/dark one (spotted icon, accent colour when on)
-  stops or restarts it everywhere, remembered in localStorage (`bg-anim`). The pattern is handed from page to page (sessionStorage `bg-anim-state`,
+  motion). The background mode, remembered in localStorage (`bg-anim`: `turing`, `neurons`
+  or `off`), is shared by two round buttons left of the light/dark one (accent colour when
+  on): spotted icon for the Turing pattern, neuron icon for the neurons. Choosing one stops
+  the other; tapping the active one turns animation off. The pattern is handed from page to page (sessionStorage `bg-anim-state`,
   ~0.2 MB, saved on pagehide), so moving around the site does not restart it. Random
   perturbations keep it from settling: every 2 to 6 s (uniform) a disc of 8–19 cells somewhere
   is cleared and reseeded with a few nuclei, and the pattern regrows into it. 300 simulation
@@ -97,8 +99,16 @@ changing anything. A push to `master` is live after about a minute; check the li
   nets: the GPU result is checked after warm-up and every 10 s (one small read-back); if it
   holds no pattern the visit continues on the CPU (sessionStorage `bg-anim-cpu`). The shader
   resets any non-number cell, and a handed-over state without a pattern is ignored.
-  Both round buttons (animation, light/dark) sit at the right edge of the header, level with
-  the name, on every screen size, so the page links keep one row.
+- Neuron animation (`assets/js/neurons.js`, two canvases in `.bg-neurons`): a faint network of
+  neurons (one per ~72 px, linked to their 3 nearest neighbours by curved fibers) firing at
+  random; a firing neuron flashes and sends pulses along its fibers, each firing setting off
+  0.85 others on average (slightly subcritical branching), hence avalanches of all sizes.
+  Calcium-imaging green (pale green in light mode). The network comes from a per-visit seed
+  and its activity is handed from page to page (sessionStorage `bg-neurons-state`). 2D canvas,
+  fibers drawn once, flashes and pulses at half resolution, ~30 frames/s, paused when hidden.
+- The three round buttons (Turing, neurons, light/dark) sit at the right edge of the header,
+  level with the name, on every screen size (slightly smaller below 23rem), so the page links
+  keep one row.
 - Link previews (Slack, email, social media): every page shares the site logo, the BBP curve
   of `favicon.svg`, as `assets/img/og-image.png` (1200x1200, square corners) in a small
   square card (front-matter defaults in `_config.yml`, rendered by jekyll-seo-tag).
