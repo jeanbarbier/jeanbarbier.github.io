@@ -40,7 +40,8 @@ changing anything. A push to `master` is live after about a minute; check the li
   the gallery and the home intro.
 - Home intro: portrait floated top-left, text wrapping around it; centred above on phones.
 - Page titles carry one emoji right after them (`emoji:` front matter; not in the top bar):
-  Group 👥, Research 🔬, Teaching 🎓, Events 📅, Misc 🎧.
+  Group 🤝, Research 🔬, Teaching 🎓, Events 📅, Misc 🎧. The calendar and headphones are solid
+  shapes, so they are set 10% smaller (`emoji_scale: 0.9`) to look the same size as the others.
 - Page introduction: one grey sentence under the h1 (`intro:` front matter).
   Section introduction: one plain sentence under the h2.
 
