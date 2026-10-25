@@ -64,8 +64,10 @@
   }
 })();
 
-// Dated lists with class "scroll-list" (home News, past Events, Music): show five items, then
-// scroll. The height is fitted to the first five items; the bottom fades while more is below.
+// Lists with class "scroll-list" show a few items, then scroll: five by default (home News,
+// past Events, Music), or the number in data-show (Selected papers: three). The height is
+// fitted to those first items and refitted when an item changes size (e.g. an opened
+// citation); the bottom fades while more is below.
 (function () {
   var lists = document.querySelectorAll('.scroll-list');
   if (!lists.length) return;
@@ -74,21 +76,26 @@
   }
   function fit() {
     Array.prototype.forEach.call(lists, function (ul) {
-      var items = ul.children;
-      if (items.length > 5) {
-        var fifth = items[4];
-        ul.style.maxHeight = (fifth.offsetTop + fifth.offsetHeight) + 'px';
+      var n = parseInt(ul.getAttribute('data-show'), 10) || 5, items = ul.children;
+      if (items.length > n) {
+        var lastShown = items[n - 1];
+        ul.style.maxHeight = (lastShown.offsetTop + lastShown.offsetHeight) + 'px';
       } else {
         ul.style.maxHeight = 'none';
       }
       edge(ul);
     });
   }
+  var queued = false;
+  function refit() { if (!queued) { queued = true; requestAnimationFrame(function () { queued = false; fit(); }); } }
   Array.prototype.forEach.call(lists, function (ul) {
     ul.addEventListener('scroll', function () { edge(ul); }, { passive: true });
   });
-  var timer = 0;
-  window.addEventListener('resize', function () { clearTimeout(timer); timer = setTimeout(fit, 150); });
+  if (window.ResizeObserver) {
+    var ro = new ResizeObserver(refit);
+    Array.prototype.forEach.call(lists, function (ul) { Array.prototype.forEach.call(ul.children, function (li) { ro.observe(li); }); });
+  }
+  window.addEventListener('resize', refit);
   fit();
   if (document.fonts && document.fonts.ready) document.fonts.ready.then(fit);
 })();

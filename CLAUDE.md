@@ -56,8 +56,10 @@ changing anything. A push to `master` is live after about a minute; check the li
 - Dated lists (News, Events, Music): small grey date column on the left with short
   months ("Oct 2026"; event ranges like "Aug 31 – Sep 4, 2026" in a wider column), text
   on the right, horizontal rules, no vertical rule. On phones the date sits above the text.
-- Home News, past Events and Music show five items, then scroll (`scroll-list` class:
-  site.js fits the height to the first five items; the bottom fades while more is below).
+- Home News, past Events and Music show five items, then scroll; the Selected papers lists
+  (home, and each theme on Research) show three (`data-show="3"`). Class `scroll-list`:
+  site.js fits the height to the first items and refits when one changes size (an opened
+  citation); the bottom fades while more is below. Highlights and other lists do not scroll.
 - The quotes (end of the home page) are a `notes compact grouped` list like the others: the
   quote is the item title (serif), the attribution the grey description line.
 - Every paper in `_data/publications.yml` carries a `bibtex` block (from Crossref when it has
