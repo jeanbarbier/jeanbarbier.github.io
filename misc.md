@@ -2,6 +2,7 @@
 layout: default
 title: Miscellaneous
 heading: Miscellaneous
+emoji: "🎧"   # shown right after the page title (not in the top bar)
 permalink: /misc/
 intro: "The rest: what I read, what I listen to, and other random things I like to share."
 funding: false   # no ERC funding statement on this page: nothing here is ERC-funded
