@@ -1,8 +1,8 @@
-// Header menu choosing the background animation: Turing patterns, 2D Ising model, or none.
+// Header menu choosing the background animation: Gray-Scott model, 2D Ising model, or none.
 // The choice is stored in localStorage ('bg-anim') and announced with a 'bg-anim-change'
 // event, to which turing.js and ising.js react. The round button shows the current
 // animation's icon, in the accent colour while one is running. Under the running animation's
-// item, a slider sets its parameter: the Turing pattern (spots - stripes - holes) or the Ising
+// item, a slider sets its parameter: the Gray-Scott pattern (spots - stripes - holes) or the Ising
 // temperature; each value is stored and announced with its own event.
 (function () {
   'use strict';

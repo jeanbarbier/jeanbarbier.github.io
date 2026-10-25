@@ -8,7 +8,7 @@ changing anything. A push to `master` is live after about a minute; check the li
 - Ask before design decisions, and before fixing anything that looks inconsistent.
   When he asks for a proposal, propose the wording before pushing.
 - Simple and restrained: no animations, banners or decoration. One exception, chosen by Jean:
-  the faint background animations, a Turing pattern (on by default) or the 2D Ising model,
+  the faint background animations, the Gray-Scott model (on by default) or the 2D Ising model,
   chosen, tuned or stopped from a header menu (see Small details).
 - American spelling and US date style ("August 31 – September 4, 2026").
 - Uniformity first: the same kind of element looks the same on every page. After a
@@ -90,8 +90,8 @@ changing anything. A push to `master` is live after about a minute; check the li
   motion). The background mode, remembered in localStorage (`bg-anim`: `turing`, `ising` or
   `off`; an old `neurons` value counts as the default), is chosen from the animation menu
   (`assets/js/bg-menu.js`): one round button left of the light/dark one, showing the current
-  animation's icon (accent colour while one runs), opening a small card with Turing
-  patterns, 2D Ising model and No animation (current one ticked; closes on outside click or
+  animation's icon (accent colour while one runs), opening a small card with Gray-Scott
+  model, 2D Ising model and No animation (current one ticked; closes on outside click or
   Escape, and on choosing No animation; choosing an animation keeps it open so its slider
   shows). Turing slider "Pattern": s from 0 to 1 along a path in the (F, k) plane checked by
   simulation, spots (F 0.026, k 0.0615) to stripes (F 0.046, k 0.0615) to holes (F 0.0415,
