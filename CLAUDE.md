@@ -85,8 +85,8 @@ changing anything. A push to `master` is live after about a minute; check the li
   ~0.2 MB, saved on pagehide), so moving around the site does not restart it. 300 simulation
   steps/s (10 per frame at ~30 frames/s); runs on the GPU (WebGL2 float textures) with a CPU
   fallback, ~7 px cells stretched by the browser, paused when the tab is hidden.
-  Both round buttons (animation, light/dark) sit just right of the name on every screen
-  size, so the page links keep one row.
+  Both round buttons (animation, light/dark) sit at the right edge of the header, level with
+  the name, on every screen size, so the page links keep one row.
 - The 404 page speaks the field's language ("Signal-to-noise ratio below threshold") and
   keeps the redirect for old `/jeanbarbier/...` links.
 

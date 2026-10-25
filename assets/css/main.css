@@ -158,9 +158,13 @@ p, dd, li, figcaption, .news-text, .album-name { text-wrap: pretty; }
 .site-nav a { color: var(--muted); text-decoration: none; font-size: 0.97rem; padding-block: 0.2rem; }
 .site-nav a:hover { color: var(--text); }
 .site-nav a[aria-current="page"] { color: var(--text); box-shadow: inset 0 -2px 0 var(--accent); }
-/* The two round buttons sit just right of the name */
-.name-row { display: flex; align-items: center; gap: 0.9rem; }
-.header-buttons { display: flex; gap: 0.4rem; }
+/* The two round buttons sit at the right edge of the header, level with the name */
+.header-row { position: relative; }
+.name-row { display: flex; align-items: center; }
+.header-buttons {
+  position: absolute; top: 0; right: 1.25rem; height: var(--step-3);
+  display: flex; align-items: center; gap: 0.4rem;
+}
 .theme-toggle, .anim-toggle {
   flex: 0 0 auto;
   width: 2rem; height: 2rem;
