@@ -10,9 +10,9 @@
 
   var LOOP = 16000;             // steps for one loop of the slow parameter drift
   var STEPS_PER_FRAME = 10, FRAME_MS = 33, WARMUP = 2500;
-  // Random perturbations: every KICK_EVERY steps on average (~1 s), a disc of radius
+  // Random perturbations: every 2 to 6 seconds (uniformly at random), a disc of radius
   // KICK_R cells (plus up to KICK_R_EXTRA) is cleared and reseeded at a random place.
-  var KICK_EVERY = 300, KICK_R = 8, KICK_R_EXTRA = 11, KICK_SEED_DENSITY = 0.05;
+  var KICK_MIN_MS = 2000, KICK_MAX_MS = 6000, KICK_R = 8, KICK_R_EXTRA = 11, KICK_SEED_DENSITY = 0.05;
 
   // Feed f and kill k drift along a loop through the maze / spots / dividing-spots region,
   // with a gentle spread across the page, so the pattern never freezes.
@@ -267,7 +267,7 @@
   var CELL = 7, MAX_CELLS = 60000;
   var engine = null, gpu = false, ctx = null, img = null, lut = null, lutFor = null;
   var running = false, raf = 0, last = 0, warm = false;
-  var sinceKick = 0, nextKick = KICK_EVERY;
+  var nextKickAt = 0;
 
   // On by default; a visitor's own choice (the header button) wins. Visitors whose system asks
   // for reduced motion start with it off and can still turn it on.
@@ -341,11 +341,11 @@
       if (engine.steps() >= WARMUP) { warm = true; draw(); canvas.classList.add('is-ready'); }
     } else if (now - last >= FRAME_MS) {
       last = now;
-      sinceKick += STEPS_PER_FRAME;
-      if (sinceKick >= nextKick) {           // random perturbation, so the pattern never settles
+      if (!nextKickAt) nextKickAt = now + KICK_MIN_MS + Math.random() * (KICK_MAX_MS - KICK_MIN_MS);
+      if (now >= nextKickAt) {               // random perturbation, so the pattern never settles
         engine.kick(Math.floor(Math.random() * engine.cols), Math.floor(Math.random() * engine.rows),
           KICK_R + Math.floor(Math.random() * (KICK_R_EXTRA + 1)), 1 + Math.floor(Math.random() * 1e9));
-        sinceKick = 0; nextKick = KICK_EVERY * (0.5 + Math.random());
+        nextKickAt = now + KICK_MIN_MS + Math.random() * (KICK_MAX_MS - KICK_MIN_MS);
       }
       engine.step(STEPS_PER_FRAME); draw();
     }

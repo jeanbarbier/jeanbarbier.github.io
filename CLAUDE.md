@@ -40,7 +40,7 @@ changing anything. A push to `master` is live after about a minute; check the li
   the gallery and the home intro.
 - Home intro: portrait floated top-left, text wrapping around it; centred above on phones.
 - Page titles carry one emoji right after them (`emoji:` front matter; not in the top bar):
-  Group 🤝, Research 🔬, Teaching 🎓, Events 📅, Misc 🎧. The calendar and headphones are solid
+  Group 🤝, Research 🔬, Teaching 🎓, Events 📅, Misc 🎲. The calendar and dice are solid
   shapes, so they are set 10% smaller (`emoji_scale: 0.9`) to look the same size as the others.
 - Page introduction: one grey sentence under the h1 (`intro:` front matter).
   Section introduction: one plain sentence under the h2.
@@ -90,7 +90,7 @@ changing anything. A push to `master` is live after about a minute; check the li
   motion); the round button left of the light/dark one (spotted icon, accent colour when on)
   stops or restarts it everywhere, remembered in localStorage (`bg-anim`). The pattern is handed from page to page (sessionStorage `bg-anim-state`,
   ~0.2 MB, saved on pagehide), so moving around the site does not restart it. Random
-  perturbations keep it from settling: about once a second a disc of 8–19 cells somewhere
+  perturbations keep it from settling: every 2 to 6 s (uniform) a disc of 8–19 cells somewhere
   is cleared and reseeded with a few nuclei, and the pattern regrows into it. 300 simulation
   steps/s (10 per frame at ~30 frames/s); runs on the GPU (WebGL2 float textures) with a CPU
   fallback, ~7 px cells stretched by the browser, paused when the tab is hidden.
