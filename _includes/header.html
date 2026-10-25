@@ -1,7 +1,17 @@
 <header class="site-header">
   <div class="wrap header-row">
     <div class="brand">
-      <a class="site-name" href="{{ '/' | relative_url }}">{{ site.title }}</a>
+      <div class="name-row">
+        <a class="site-name" href="{{ '/' | relative_url }}">{{ site.title }}</a>
+        <span class="header-buttons">
+          <button class="anim-toggle" type="button" aria-pressed="false" aria-label="Background animation" title="Background animation">
+            <svg viewBox="0 0 20 20" aria-hidden="true" focusable="false"><circle cx="10" cy="10" r="7.25" fill="none" stroke="currentColor" stroke-width="1.5"/><circle cx="7.4" cy="7.9" r="1.7" fill="currentColor"/><circle cx="12.6" cy="7.2" r="1.15" fill="currentColor"/><circle cx="11.6" cy="12.4" r="1.9" fill="currentColor"/><circle cx="6.9" cy="12.6" r="1" fill="currentColor"/></svg>
+          </button>
+          <button class="theme-toggle" type="button" aria-label="Switch between light and dark theme" title="Light / dark">
+            <svg viewBox="0 0 20 20" aria-hidden="true" focusable="false"><circle cx="10" cy="10" r="7.25" fill="none" stroke="currentColor" stroke-width="1.5"/><path d="M10 2.75a7.25 7.25 0 0 1 0 14.5z" fill="currentColor"/></svg>
+          </button>
+        </span>
+      </div>
       <p class="site-tagline">{{ site.tagline }}</p>
     </div>
     <nav class="site-nav" aria-label="Main">
@@ -13,12 +23,6 @@
         <li><a href="{{ item.url | relative_url }}"{% if current %} aria-current="page"{% endif %}>{{ item.title }}</a></li>
         {%- endfor %}
       </ul>
-      <button class="anim-toggle" type="button" aria-pressed="false" aria-label="Background animation" title="Background animation">
-        <svg viewBox="0 0 20 20" aria-hidden="true" focusable="false"><circle cx="10" cy="10" r="7.25" fill="none" stroke="currentColor" stroke-width="1.5"/><circle cx="7.4" cy="7.9" r="1.7" fill="currentColor"/><circle cx="12.6" cy="7.2" r="1.15" fill="currentColor"/><circle cx="11.6" cy="12.4" r="1.9" fill="currentColor"/><circle cx="6.9" cy="12.6" r="1" fill="currentColor"/></svg>
-      </button>
-      <button class="theme-toggle" type="button" aria-label="Switch between light and dark theme" title="Light / dark">
-        <svg viewBox="0 0 20 20" aria-hidden="true" focusable="false"><circle cx="10" cy="10" r="7.25" fill="none" stroke="currentColor" stroke-width="1.5"/><path d="M10 2.75a7.25 7.25 0 0 1 0 14.5z" fill="currentColor"/></svg>
-      </button>
     </nav>
   </div>
   {%- assign ckey = page.curve | default: "bbp" -%}
