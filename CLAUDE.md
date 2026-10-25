@@ -73,6 +73,9 @@ changing anything. A push to `master` is live after about a minute; check the li
   (home, and each theme on Research) show three (`data-show="3"`). Class `scroll-list`:
   site.js fits the height to the first items and refits when one changes size (an opened
   citation); the bottom fades while more is below. Highlights and other lists do not scroll.
+- Teaching items close in subject are merged into one item with sub-items (`parts:` in
+  `_data/teaching.yml`): a title without link, then one grey line per part starting with its
+  kind as a bold link ("Lecture notes", "Slides").
 - The quotes (end of the home page) are a `notes compact grouped` list like the others: the
   quote is the item title (serif), the attribution the grey description line.
 - Every paper in `_data/publications.yml` carries a `bibtex` block (from Crossref when it has
@@ -120,7 +123,7 @@ changing anything. A push to `master` is live after about a minute; check the li
   code and restore steps are in `_archive/neurons/` (not published) and the whole site as it
   was is on the branch `archive/neurons-animation`.
 - Ising animation (`assets/js/ising.js`, canvas `.bg-ising`): the 2D Ising model, by default
-  at T = 0.8 Tc (ordered phase); a temperature slider (0.5 to 2 Tc, Tc marked, value shown as "0.80 Tc")
+  at T = Tc; a temperature slider (0.5 to 2 Tc, Tc marked, value shown as "1.00 Tc")
   sits under the Ising item of the animation menu while Ising runs, applies at once and is remembered (localStorage `bg-ising-T`).
   One pixel per spin (5 CSS px, kept crisp with `image-rendering: pixelated`),
   Metropolis dynamics on a checkerboard with periodic edges, ~20 sweeps/s drawn 10 times a
