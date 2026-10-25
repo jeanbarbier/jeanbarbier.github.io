@@ -7,6 +7,7 @@
   var btn = document.querySelector('.anim-toggle'), menu = document.getElementById('bg-menu');
   if (!btn || !menu) return;
   var items = Array.prototype.slice.call(menu.querySelectorAll('[data-mode]'));
+  var tempRow = menu.querySelector('.ising-temp'), slider = document.getElementById('ising-t'), out = document.getElementById('ising-t-out');
   var calmMq = window.matchMedia('(prefers-reduced-motion: reduce)');
 
   function mode() {
@@ -23,7 +24,25 @@
     var src = menu.querySelector('[data-mode="' + (m === 'off' ? 'turing' : m) + '"] svg');
     if (src) btn.replaceChild(src.cloneNode(true), btn.querySelector('svg'));
     btn.setAttribute('aria-pressed', m === 'off' ? 'false' : 'true');
+    if (tempRow) {                      // the temperature slider belongs to the Ising animation
+      tempRow.hidden = m !== 'ising';
+      var t = NaN;
+      try { t = parseFloat(localStorage.getItem('bg-ising-T')); } catch (e) {}
+      setTempLabel(t >= 0.5 && t <= 2 ? t : 1.02);
+    }
   }
+
+  function setTempLabel(t) {
+    slider.value = t;
+    out.innerHTML = t.toFixed(2) + ' T<sub>c</sub>';
+    slider.setAttribute('aria-valuetext', t.toFixed(2) + ' times the critical temperature');
+  }
+  if (slider) slider.addEventListener('input', function () {
+    var t = parseFloat(slider.value);
+    try { localStorage.setItem('bg-ising-T', String(t)); } catch (e) {}
+    setTempLabel(t);
+    document.dispatchEvent(new Event('bg-ising-temp'));
+  });
 
   function open(focusFirst) {
     menu.hidden = false; btn.setAttribute('aria-expanded', 'true');
@@ -42,9 +61,10 @@
   });
   items.forEach(function (it, k) {
     it.addEventListener('click', function () {
-      try { localStorage.setItem('bg-anim', it.getAttribute('data-mode')); } catch (e) {}
+      var m = it.getAttribute('data-mode');
+      try { localStorage.setItem('bg-anim', m); } catch (e) {}
       document.dispatchEvent(new Event('bg-anim-change'));
-      close(true);
+      if (m !== 'ising') close(true);   // Ising keeps the menu open: its temperature slider appears
     });
     it.addEventListener('keydown', function (e) {
       if (e.key === 'ArrowDown' || e.key === 'ArrowUp') {

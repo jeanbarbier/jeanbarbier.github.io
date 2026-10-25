@@ -193,6 +193,16 @@ p, dd, li, figcaption, .news-text, .album-name { text-wrap: pretty; }
 .bg-menu button:hover, .bg-menu button:focus-visible { background: var(--surface); color: var(--text); outline: none; }
 .bg-menu button[aria-checked="true"] { color: var(--accent); }
 .bg-menu button[aria-checked="true"]::after { content: "\2713"; margin-left: auto; }
+/* Ising temperature slider, under its menu item while Ising runs; Tc marked at a third of the range */
+.ising-temp { padding: 0.15rem 0.6rem 0.5rem 2.25rem; font-size: 0.82rem; color: var(--muted); }
+.ising-temp[hidden] { display: none; }
+.ising-temp-label { display: flex; justify-content: space-between; margin-bottom: 0.2rem; }
+.ising-temp-label output { color: var(--text); font-variant-numeric: tabular-nums; }
+.ising-slider { position: relative; }
+.ising-slider input { width: 100%; margin: 0; accent-color: var(--accent); }
+.tc-mark { position: absolute; left: calc(8px + (100% - 16px) / 3); top: -2px; bottom: -2px; width: 1px; background: var(--muted); pointer-events: none; }
+.ising-scale { position: relative; display: flex; justify-content: space-between; font-size: 0.75rem; margin-top: 0.1rem; }
+.ising-scale .tc { position: absolute; left: calc(8px + (100% - 16px) / 3); transform: translateX(-50%); }
 
 /* The signature: a phase transition as the header rule */
 .curve-wrap { margin-top: 1.1rem; }

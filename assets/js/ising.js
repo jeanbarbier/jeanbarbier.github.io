@@ -1,5 +1,6 @@
-// Background animation, third choice: the 2D Ising model just above its critical temperature
-// (T = 1.02 Tc, Tc = 2 / ln(1 + sqrt 2) in units J = k_B = 1), seen as a faint lattice of up and
+// Background animation, third choice: the 2D Ising model, by default just above its critical
+// temperature (T = 1.02 Tc, Tc = 2 / ln(1 + sqrt 2) in units J = k_B = 1; visitors can set T
+// from 0.5 to 2 Tc with the slider in the animation menu), seen as a faint lattice of up and
 // down spins. Metropolis dynamics on a checkerboard, periodic edges. Close to Tc the
 // correlation length is a few dozen spins, so clusters of all sizes form, merge and break up.
 // Colours: up spins in the site's blue, down spins in the orange of the curve labels. Chosen
@@ -11,7 +12,8 @@
   'use strict';
 
   var KEY_MODE = 'bg-anim', KEY_STATE = 'bg-ising-state';
-  var TC = 2 / Math.log(1 + Math.SQRT2), T = 1.02 * TC;
+  var KEY_T = 'bg-ising-T', T_DEFAULT = 1.02, T_MIN = 0.5, T_MAX = 2;   // temperature in units of Tc, set from the menu slider
+  var TC = 2 / Math.log(1 + Math.SQRT2), T = T_DEFAULT * TC;
   var CELL = 5, MAX_SPINS = 80000;     // CSS px per spin; cap on the lattice size
   var FRAME_MS = 100, SWEEPS_PER_FRAME = 2, WARMUP = 600;   // ~20 sweeps/s drawn 10 times a second; sweeps before showing
 
@@ -41,7 +43,14 @@
 
   // ---- The lattice ----
   var cols = 0, rows = 0, spin = null, sweeps = 0, img = null, words = null, colourFor = null;
-  var ACC4 = Math.exp(-4 / T), ACC8 = Math.exp(-8 / T);   // Metropolis acceptance for dE = 4, 8
+  var ACC4, ACC8;                       // Metropolis acceptance for dE = 4, 8
+  function storedT() {
+    var v = NaN;
+    try { v = parseFloat(localStorage.getItem(KEY_T)); } catch (e) {}
+    return v >= T_MIN && v <= T_MAX ? v : T_DEFAULT;
+  }
+  function setTemperature() { T = storedT() * TC; ACC4 = Math.exp(-4 / T); ACC8 = Math.exp(-8 / T); }
+  setTemperature();
 
   function gridSize() {
     var w = window.innerWidth, h = window.innerHeight, cell = CELL;
@@ -154,6 +163,7 @@
   }
 
   document.addEventListener('bg-anim-change', update);
+  document.addEventListener('bg-ising-temp', setTemperature);   // the slider applies at once
   window.addEventListener('pagehide', function () { if (spin && warm && mode() === 'ising') saveState(); });
   document.addEventListener('visibilitychange', function () { if (document.hidden && spin && warm && mode() === 'ising') saveState(); update(); });
 

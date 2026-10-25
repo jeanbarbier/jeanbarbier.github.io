@@ -117,8 +117,11 @@ changing anything. A push to `master` is live after about a minute; check the li
   from page to page (sessionStorage `bg-neurons-state`). 2D canvas: morphology drawn once,
   each neuron's lit image prepared once at half resolution, a frame only blends a few
   images; ~30 frames/s, paused when hidden.
-- Ising animation (`assets/js/ising.js`, canvas `.bg-ising`): the 2D Ising model at
-  T = 1.02 Tc, one pixel per spin (5 CSS px, kept crisp with `image-rendering: pixelated`),
+- Ising animation (`assets/js/ising.js`, canvas `.bg-ising`): the 2D Ising model, by default
+  at T = 1.02 Tc; a temperature slider (0.5 to 2 Tc, Tc marked, value shown as "1.02 Tc")
+  sits under the Ising item of the animation menu while Ising runs (choosing Ising keeps the
+  menu open so it shows), applies at once and is remembered (localStorage `bg-ising-T`).
+  One pixel per spin (5 CSS px, kept crisp with `image-rendering: pixelated`),
   Metropolis dynamics on a checkerboard with periodic edges, ~20 sweeps/s drawn 10 times a
   second, 600 sweeps of warm-up before fading in. Up spins in the site blue, down spins in
   the curve-label orange, alpha 0.10 (0.08 light). Spins handed from page to page (one bit
