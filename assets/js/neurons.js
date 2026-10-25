@@ -1,12 +1,14 @@
 // Background animation, alternative to the Turing pattern: a faint culture of neurons, drawn
-// like a fluorescence (calcium-imaging) recording. Each neuron has its own morphology: an
-// irregular soma, tapering dendritic trees that branch as they grow, and one long meandering
-// axon with a few collaterals. A neuron's outgoing synapses are the neurons its axon passes
-// close to. Neurons fire at random; a firing neuron lights up as a whole (fast rise, slow
-// calcium-like decay), an action potential runs down its axon, and each synapse it reaches
-// fires its target with a probability set so that every firing sets off SIGMA others on
-// average (a slightly subcritical branching process): cascades of all sizes, neuronal
-// avalanches. Calcium-imaging green (pale green in light mode). Chosen with the neuron button
+// like a fluorescence (calcium-imaging) recording. Each neuron has its own morphology,
+// pyramidal (one long apical dendrite with a tuft, short basal dendrites) or multipolar,
+// with tapering dendrites that fork as they grow and one long meandering axon with a few
+// collaterals; some lie slightly out of focus. A neuron's outgoing synapses are the neurons
+// whose dendritic field its axon crosses. Neurons fire at random; a firing neuron lights up
+// as a whole (fast rise, slow calcium-like decay, the nucleus staying darker), and its
+// spike reaches its targets within a fraction of a second. Each target fires with
+// probability SIGMA x R / out-degree, where R is the neuron's synaptic resources, depleted by
+// firing and slowly recovered (short-term depression): mostly sparse activity and small
+// avalanches, with occasional network bursts that die out as resources run low. Calcium-imaging green (pale green in light mode). Chosen with the neuron button
 // in the header; the network and its activity are handed from page to page. Plain 2D canvas:
 // the morphology is drawn once, each neuron's lit image is prepared once, and a frame only
 // blends a few small images; ~30 frames per second, paused when the tab is hidden; nothing
@@ -16,19 +18,20 @@
 
   var KEY_MODE = 'bg-anim', KEY_STATE = 'bg-neurons-state', KEY_SEED = 'bg-neurons-seed';
   var SPACING = 120;          // mean distance between neurons, CSS px
-  var SYNAPSE_REACH = 40;     // an axon passing this close to a soma makes a synapse
-  var SIGMA = 0.9;            // mean number of neurons each firing sets off
-  var SPONTANEOUS = 1 / 70;   // spontaneous firings per second, per neuron
-  var SPEED = 260;            // action-potential speed along the axon, CSS px per second (slowed down to be seen)
-  var REFRACTORY = 1.5, RISE = 0.06, DECAY = 0.9, LIT_LIFE = 3.5;   // seconds
+  var SYNAPSE_REACH = 70;     // an axon passing this close to a soma (its dendritic field) makes a synapse
+  var SIGMA = 1.4;            // neurons set off per firing when synaptic resources are full
+  var DEPLETION = 0.5, RECOVERY = 6;   // fraction of resources used per firing; recovery time, s
+  var SPONTANEOUS = 1 / 120;  // spontaneous firings per second, per neuron
+  var SPEED = 1500, SYNAPTIC_DELAY = 0.015;   // spike speed along the axon, CSS px/s; delay at the synapse, s
+  var REFRACTORY = 1.5, RISE = 0.07, DECAY = 0.85, LIT_LIFE = 4.5;   // seconds
   var SPRITE_SCALE = 0.5;     // lit images and the activity layer are drawn at half resolution
   var FRAME_MS = 33;
 
   var PALETTES = {
-    dark: { process: [80, 220, 160], processAlpha: 0.075, halo: 0.025, soma: 0.24,
-            lit: [140, 255, 195], litAlpha: 0.55, spike: [170, 255, 215], spikeAlpha: 0.5 },
-    light: { process: [20, 135, 85], processAlpha: 0.09, halo: 0.03, soma: 0.26,
-             lit: [25, 160, 95], litAlpha: 0.42, spike: [20, 150, 90], spikeAlpha: 0.45 }
+    dark: { process: [80, 220, 160], processAlpha: 0.05, halo: 0.015, soma: 0.16,
+            lit: [140, 255, 195], litAlpha: 0.38 },
+    light: { process: [20, 135, 85], processAlpha: 0.065, halo: 0.02, soma: 0.18,
+             lit: [25, 160, 95], litAlpha: 0.3 }
   };
 
   var wrap = document.querySelector('.bg-neurons');
@@ -91,15 +94,39 @@
       dendrite(rand, ex, ey, seg.ang, w * 0.85, depth + 1, out);
     }
   }
-  function makeNeuron(rand, x, y) {
-    var nrn = { x: x, y: y, r: 2.6 + rand() * 2.2, rot: rand() * Math.PI, elong: 1 + rand() * 0.6,
-                gain: 0.6 + rand() * 0.6, dend: [], axon: null, coll: [] };
-    var nd = 3 + Math.floor(rand() * 4), a0 = rand() * 2 * Math.PI;
-    for (var k = 0; k < nd; k++) {
-      var a = a0 + (k + (rand() - 0.5) * 0.6) * 2 * Math.PI / nd;
-      dendrite(rand, x + Math.cos(a) * nrn.r, y + Math.sin(a) * nrn.r, a, 1.5 + rand() * 0.5, 0, nrn.dend);
+  function apical(rand, x, y, ang, out) {               // long trunk with oblique branches and a tuft
+    var w = 2 + rand() * 0.5, len = 55 + rand() * 55, seg = walk(rand, x, y, ang, len, 3.5, 0.25);
+    out.push({ pts: seg.pts, w: w });
+    var n = seg.pts.length / 2;
+    for (var k = 3; k < n - 3; k += 3 + Math.floor(rand() * 3)) {   // obliques
+      if (rand() < 0.55) dendrite(rand, seg.pts[2 * k], seg.pts[2 * k + 1], seg.ang + (rand() < 0.5 ? -1 : 1) * (0.7 + rand() * 0.6), w * 0.5, 2, out);
     }
-    var aa = a0 + Math.PI / nd + (rand() - 0.5);              // axon leaves between two dendrites
+    var ex = seg.pts[seg.pts.length - 2], ey = seg.pts[seg.pts.length - 1];
+    for (var t = 0; t < 3; t++) dendrite(rand, ex, ey, seg.ang + (t - 1) * (0.5 + rand() * 0.4), w * 0.6, 1, out);
+  }
+  function makeNeuron(rand, x, y) {
+    var pyramidal = rand() < 0.6;
+    var nrn = { x: x, y: y, r: 2.8 + rand() * 2.2, rot: rand() * Math.PI, elong: pyramidal ? 1.4 + rand() * 0.4 : 1 + rand() * 0.4,
+                gain: 0.6 + rand() * 0.6, depth: rand(), decay: DECAY * (0.8 + rand() * 0.5), dend: [], axon: null, coll: [] };
+    var a0 = rand() * 2 * Math.PI, nd;
+    if (pyramidal) {
+      nrn.rot = a0;                                          // soma elongated along the apical trunk
+      apical(rand, x + Math.cos(a0) * nrn.r * nrn.elong, y + Math.sin(a0) * nrn.r * nrn.elong, a0, nrn.dend);
+      nd = 3 + Math.floor(rand() * 3);
+      for (var b = 0; b < nd; b++) {                          // short basal dendrites on the other side
+        var ab = a0 + Math.PI + (b - (nd - 1) / 2) * (1.9 / nd) + (rand() - 0.5) * 0.3;
+        var basal = [];
+        dendrite(rand, x + Math.cos(ab) * nrn.r, y + Math.sin(ab) * nrn.r, ab, 1.2 + rand() * 0.3, 1, basal);
+        nrn.dend = nrn.dend.concat(basal);
+      }
+    } else {
+      nd = 3 + Math.floor(rand() * 4);
+      for (var k = 0; k < nd; k++) {
+        var a = a0 + (k + (rand() - 0.5) * 0.6) * 2 * Math.PI / nd;
+        dendrite(rand, x + Math.cos(a) * nrn.r, y + Math.sin(a) * nrn.r, a, 1.5 + rand() * 0.5, 0, nrn.dend);
+      }
+    }
+    var aa = pyramidal ? a0 + Math.PI + (rand() - 0.5) * 0.8 : a0 + Math.PI / nd + (rand() - 0.5);  // axon leaves from the base
     var ax = walk(rand, x + Math.cos(aa) * nrn.r, y + Math.sin(aa) * nrn.r, aa, 170 + rand() * 230, 4, 0.22);
     nrn.axon = { pts: ax.pts, w: 0.7 };
     var nc = 1 + Math.floor(rand() * 3), m = ax.pts.length / 2;
@@ -123,7 +150,7 @@
 
   // ---- The network ----
   var W = 0, H = 0, dpr = 1, neurons = [], lastFire, refractUntil, spikes = [], clock = 0;
-  var spriteFor = null, spikeSprite = null, sparksDrawn = false;
+  var spriteFor = null, sparksDrawn = false, res;
 
   function build() {
     W = window.innerWidth; H = window.innerHeight; dpr = Math.min(window.devicePixelRatio || 1, 2);
@@ -152,14 +179,15 @@
           }
         }
       });
-      nrn.syn = Object.keys(best).map(function (j) { return { to: +j, delay: best[j] / SPEED }; })
+      nrn.syn = Object.keys(best).map(function (j) { return { to: +j, delay: best[j] / SPEED + SYNAPTIC_DELAY }; })
         .sort(function (a, b) { return a.delay - b.delay; });
-      nrn.p = nrn.syn.length ? SIGMA / nrn.syn.length : 0;
+      nrn.p = nrn.syn.length ? SIGMA / nrn.syn.length : 0;   // scaled by the resources at firing time
       var len = 0, ap = nrn.axon.pts;                         // axon arc length, for the spike
       for (var k = 2; k < ap.length; k += 2) len += Math.hypot(ap[k] - ap[k - 2], ap[k + 1] - ap[k - 1]);
       nrn.axonLen = len;
     });
     lastFire = new Float64Array(neurons.length).fill(-1e9); refractUntil = new Float64Array(neurons.length);
+    res = new Float64Array(neurons.length).fill(1);
     spikes = [];
     fiberCanvas.width = Math.round(W * dpr); fiberCanvas.height = Math.round(H * dpr);
     sparkCanvas.width = Math.round(W * SPRITE_SCALE); sparkCanvas.height = Math.round(H * SPRITE_SCALE);
@@ -173,12 +201,13 @@
     g.setTransform(dpr, 0, 0, dpr, 0, 0); g.clearRect(0, 0, W, H);
     g.lineCap = 'round'; g.lineJoin = 'round';
     neurons.forEach(function (n) {
-      var procs = n.dend.concat([n.axon], n.coll), a = pal.processAlpha * (0.7 + 0.5 * n.gain);
+      var procs = n.dend.concat([n.axon], n.coll), blur = n.depth > 0.65 ? (n.depth - 0.65) / 0.35 : 0;
+      var a = pal.processAlpha * (0.7 + 0.5 * n.gain) * (1 - 0.55 * blur);
       procs.forEach(function (p) {
-        g.strokeStyle = rgba(pal.process, pal.halo); g.lineWidth = p.w * 3.2; strokeProcess(g, p);
-        g.strokeStyle = rgba(pal.process, a); g.lineWidth = p.w; strokeProcess(g, p);
+        g.strokeStyle = rgba(pal.process, pal.halo * (1 + blur)); g.lineWidth = p.w * (3.2 + 4 * blur); strokeProcess(g, p);
+        g.strokeStyle = rgba(pal.process, a); g.lineWidth = p.w * (1 + blur); strokeProcess(g, p);
       });
-      g.fillStyle = rgba(pal.process, pal.soma * (0.7 + 0.5 * n.gain)); fillSoma(g, n);
+      g.fillStyle = rgba(pal.process, pal.soma * (0.7 + 0.5 * n.gain) * (1 - 0.4 * blur)); fillSoma(g, n);
     });
   }
 
@@ -198,49 +227,51 @@
       var g = cv.getContext('2d');
       g.setTransform(s, 0, 0, s, (pad - x0) * s, (pad - y0) * s);
       g.lineCap = 'round'; g.lineJoin = 'round';
-      procs.forEach(function (p) {
-        g.strokeStyle = rgba(pal.lit, 0.35); g.lineWidth = p.w * 3; strokeProcess(g, p);
-        g.strokeStyle = rgba(pal.lit, 1); g.lineWidth = p.w * 1.1; strokeProcess(g, p);
+      var blur = n.depth > 0.65 ? (n.depth - 0.65) / 0.35 : 0;
+      procs.forEach(function (p, idx) {
+        var axonPart = idx === procs.length - 1, k = axonPart ? 0.35 : 0.65;
+        g.strokeStyle = rgba(pal.lit, 0.3 * k); g.lineWidth = p.w * (3 + 3 * blur); strokeProcess(g, p);
+        g.strokeStyle = rgba(pal.lit, k * (1 - 0.4 * blur)); g.lineWidth = p.w * (1.1 + blur); strokeProcess(g, p);
       });
-      var glow = g.createRadialGradient(n.x, n.y, 0, n.x, n.y, 12);
-      glow.addColorStop(0, rgba(pal.lit, 0.9)); glow.addColorStop(1, rgba(pal.lit, 0));
-      g.fillStyle = glow; g.fillRect(n.x - 12, n.y - 12, 24, 24);
+      var gr = 10 + 8 * blur, glow = g.createRadialGradient(n.x, n.y, 0, n.x, n.y, gr);
+      glow.addColorStop(0, rgba(pal.lit, 0.8)); glow.addColorStop(1, rgba(pal.lit, 0));
+      g.fillStyle = glow; g.fillRect(n.x - gr, n.y - gr, 2 * gr, 2 * gr);
       g.fillStyle = rgba(pal.lit, 1); fillSoma(g, n);
+      g.save(); g.globalCompositeOperation = 'destination-out'; g.fillStyle = 'rgba(0,0,0,0.5)';   // the nucleus stays darker
+      g.beginPath(); g.ellipse(n.x, n.y, n.r * n.elong * 0.55, n.r * 0.55, n.rot, 0, 2 * Math.PI); g.fill(); g.restore();
       n.sprite = cv; n.sx = x0 - pad; n.sy = y0 - pad;
     });
-    var sp = document.createElement('canvas'), R = 16; sp.width = sp.height = 2 * R;
-    var sg = sp.getContext('2d'), grad = sg.createRadialGradient(R, R, 0, R, R, R);
-    grad.addColorStop(0, rgba(pal.spike, 1)); grad.addColorStop(0.3, rgba(pal.spike, 0.5)); grad.addColorStop(1, rgba(pal.spike, 0));
-    sg.fillStyle = grad; sg.fillRect(0, 0, 2 * R, 2 * R);
-    spikeSprite = sp; spriteFor = pal;
+    spriteFor = pal;
   }
 
   // ---- Dynamics ----
   function fire(i) {
     if (clock < refractUntil[i]) return;
     lastFire[i] = clock; refractUntil[i] = clock + REFRACTORY;
-    spikes.push({ i: i, t0: clock, next: 0 });
+    spikes.push({ i: i, t0: clock, next: 0, p: Math.min(1, neurons[i].p * res[i]) });
+    res[i] -= DEPLETION * res[i];                            // short-term synaptic depression
   }
-  function calcium(age) { return age < 0 ? 0 : age < RISE ? age / RISE : Math.exp(-(age - RISE) / DECAY); }
+  function calcium(age, decay) { return age < 0 ? 0 : age < RISE ? age / RISE : Math.exp(-(age - RISE) / decay); }
 
   function advance(dt) {
     clock += dt;
-    var n = neurons.length, expected = n * SPONTANEOUS * dt;
+    var n = neurons.length, expected = n * SPONTANEOUS * dt, rec = dt / RECOVERY;
+    for (var r = 0; r < n; r++) res[r] += (1 - res[r]) * rec;
     while (expected > 0) { if (Math.random() < Math.min(1, expected)) fire(Math.floor(Math.random() * n)); expected -= 1; }
     var keep = [];
     for (var k = 0; k < spikes.length; k++) {
       var sp = spikes[k], nrn = neurons[sp.i], age = clock - sp.t0;
       while (sp.next < nrn.syn.length && nrn.syn[sp.next].delay <= age) {
-        if (Math.random() < nrn.p) fire(nrn.syn[sp.next].to);
+        if (Math.random() < sp.p) fire(nrn.syn[sp.next].to);
         sp.next++;
       }
-      if (sp.next < nrn.syn.length || age * SPEED < nrn.axonLen) keep.push(sp);
+      if (sp.next < nrn.syn.length) keep.push(sp);
     }
     spikes = keep;
   }
 
   function drawActivity() {
-    var pal = PALETTES[theme()], active = spikes.length > 0;
+    var pal = PALETTES[theme()], active = false;
     for (var a = 0; a < neurons.length && !active; a++) active = clock - lastFire[a] < LIT_LIFE;
     if (!active && !sparksDrawn) return;                // nothing lit, nothing to do
     prepareSprites(pal);
@@ -248,23 +279,11 @@
     g.setTransform(1, 0, 0, 1, 0, 0); g.clearRect(0, 0, sparkCanvas.width, sparkCanvas.height);
     sparksDrawn = active;
     for (var i = 0; i < neurons.length; i++) {          // neurons lighting up
-      var c = calcium(clock - lastFire[i]);
+      var c = calcium(clock - lastFire[i], neurons[i].decay);
       if (c < 0.01) continue;
       var n = neurons[i];
       g.globalAlpha = pal.litAlpha * n.gain * c;
       g.drawImage(n.sprite, n.sx * s, n.sy * s);
-    }
-    for (var k = 0; k < spikes.length; k++) {           // action potentials running down the axons
-      var sp = spikes[k], nn = neurons[sp.i], d = (clock - sp.t0) * SPEED;
-      if (d >= nn.axonLen) continue;
-      var pts = nn.axon.pts, acc = 0, x = pts[0], y = pts[1];
-      for (var q = 2; q < pts.length; q += 2) {
-        var l = Math.hypot(pts[q] - pts[q - 2], pts[q + 1] - pts[q - 1]);
-        if (acc + l >= d) { var f = (d - acc) / l; x = pts[q - 2] + f * (pts[q] - pts[q - 2]); y = pts[q - 1] + f * (pts[q + 1] - pts[q - 1]); break; }
-        acc += l;
-      }
-      g.globalAlpha = pal.spikeAlpha * (1 - 0.6 * d / nn.axonLen);
-      g.drawImage(spikeSprite, (x - 8) * s, (y - 8) * s, 16 * s, 16 * s);
     }
     g.globalAlpha = 1;
   }
@@ -275,16 +294,18 @@
       var fired = [];
       for (var i = 0; i < neurons.length; i++) if (clock - lastFire[i] < LIT_LIFE) fired.push([i, +(clock - lastFire[i]).toFixed(3)]);
       sessionStorage.setItem(KEY_STATE, JSON.stringify({ W: W, H: H, fired: fired,
-        spikes: spikes.map(function (sp) { return [sp.i, +(clock - sp.t0).toFixed(3), sp.next]; }) }));
+        res: Array.prototype.map.call(res, function (x) { return +x.toFixed(3); }),
+        spikes: spikes.map(function (sp) { return [sp.i, +(clock - sp.t0).toFixed(3), sp.next, +sp.p.toFixed(3)]; }) }));
     } catch (e) {}
   }
   function loadState() {
     try {
       var o = JSON.parse(sessionStorage.getItem(KEY_STATE) || 'null');
-      if (!o || o.W !== W || o.H !== H || !o.spikes) return false;
+      if (!o || o.W !== W || o.H !== H || !o.spikes || !o.res || o.res.length !== neurons.length) return false;
+      for (var r = 0; r < neurons.length; r++) res[r] = o.res[r];
       o.fired.forEach(function (f) { if (f[0] < neurons.length) { lastFire[f[0]] = clock - f[1]; refractUntil[f[0]] = lastFire[f[0]] + REFRACTORY; } });
       spikes = o.spikes.filter(function (p) { return p[0] < neurons.length; })
-        .map(function (p) { return { i: p[0], t0: clock - p[1], next: p[2] }; });
+        .map(function (p) { return { i: p[0], t0: clock - p[1], next: p[2], p: p[3] }; });
       return true;
     } catch (e) { return false; }
   }

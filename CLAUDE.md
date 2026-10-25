@@ -101,15 +101,21 @@ changing anything. A push to `master` is live after about a minute; check the li
   resets any non-number cell, and a handed-over state without a pattern is ignored.
 - Neuron animation (`assets/js/neurons.js`, two canvases in `.bg-neurons`): a faint neuron
   culture drawn like a calcium-imaging recording. One neuron per ~120 px (minimum spacing,
-  also just beyond the edges), each with its own morphology: irregular soma, 3–6 tapering
-  dendritic trees that fork as they grow, one long meandering axon with 1–3 collaterals.
-  Synapses: where an axon passes within 40 px of another soma, delay = distance / speed.
-  Random firing; a firing neuron lights up whole (fast rise, ~0.9 s calcium-like decay), a
-  spike runs down its axon, and each synapse reached fires its target with probability
-  0.9/out-degree (slightly subcritical branching): avalanches of all sizes. Green (pale green
-  in light mode). Per-visit seed; activity handed from page to page (sessionStorage
-  `bg-neurons-state`). 2D canvas: morphology drawn once, each neuron's lit image prepared
-  once at half resolution, a frame only blends a few images; ~30 frames/s, paused when hidden.
+  also just beyond the edges): 60% pyramidal (elongated soma, long apical dendrite with
+  oblique branches and a tuft, short basal dendrites), 40% multipolar; tapering dendrites
+  that fork as they grow, one long meandering axon with 1–3 collaterals; neurons deeper
+  than the focal plane are drawn softer and dimmer. Synapses: where an axon passes within
+  70 px of another soma (its dendritic field); spikes travel at 1500 px/s plus 15 ms at the
+  synapse, so cascades spread within a fraction of a second. A firing neuron lights up whole
+  (70 ms rise, ~0.85 s calcium-like decay varying per neuron, darker nucleus, dendrites
+  dimmer than the soma). Each target fires with probability 1.4 x R / out-degree, R being
+  the neuron's synaptic resources (half used per firing, recovering over 6 s): sparse
+  activity and avalanches with occasional network bursts. Spontaneous rate 1/120 s per
+  neuron. Very faint: resting fibers alpha 0.05 (0.065 light), lit neurons 0.38 (0.30
+  light). Green (pale green in light mode). Per-visit seed; activity and resources handed
+  from page to page (sessionStorage `bg-neurons-state`). 2D canvas: morphology drawn once,
+  each neuron's lit image prepared once at half resolution, a frame only blends a few
+  images; ~30 frames/s, paused when hidden.
 - The three round buttons (Turing, neurons, light/dark) sit at the right edge of the header,
   level with the name, on every screen size (slightly smaller below 23rem), so the page links
   keep one row.
