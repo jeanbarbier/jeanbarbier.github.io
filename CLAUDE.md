@@ -33,9 +33,9 @@ changing anything. A push to `master` is live after about a minute; check the li
   as papers (`pubs compact grouped` via `_includes/pub.html`, initials for given names, no Cite
   button; `link_label: Book` for a book). `funding: false`, like Misc. The text must match
   what the simulations actually do (parameters, rates): update both together.
-- Worth reading (`<ul class="reading scroll-list">`) looks like the Music list without the
-  date column: horizontal rules between items, five shown, then scroll. Each item is a link,
-  sometimes followed by a sentence or two. Links are in sentence case (capital on the first
+- Worth reading is a `notes compact grouped` list like the quotes: the link is the item title
+  (serif), the author or a sentence or two the grey description line; no scrolling. Titles
+  are in sentence case (capital on the first
   letter only; acronyms such as AI and proper names keep theirs), even when the original title
   is capitalized.
 - Research: Highlights, then For a wider audience (talk, perspective, press coverage; press
@@ -60,7 +60,8 @@ changing anything. A push to `master` is live after about a minute; check the li
   Section introduction: one plain sentence under the h2.
 
 ## Lists
-- Lists grouped by topic (papers, highlights, wider audience, teaching, quotes) use the
+- Lists grouped by topic (papers, highlights, wider audience, teaching, quotes, Worth reading,
+  the physics pages on Misc) use the
   `grouped` class: a 2px vertical rule on the left, starting below the section's
   description, thin separators between items, no line above the first or below the last.
 - Item titles everywhere: serif, 1.02rem, weight 520, line-height 1.35, text colour,
@@ -70,7 +71,7 @@ changing anything. A push to `master` is live after about a minute; check the li
   members are darker and bold in author lists. Each author name sits in a nowrap span and
   is never split across lines; author lists and paper titles use plain wrapping (full
   lines).
-- Dated lists (News, Events, Music; Worth reading has the same look without dates): small grey date column on the left with short
+- Dated lists (News, Events, Music): small grey date column on the left with short
   months ("Oct 2026"; event ranges like "Aug 31 – Sep 4, 2026" in a wider column), text
   on the right, horizontal rules, no vertical rule. On phones the date sits above the text.
 - Home News, past Events and Music show five items, then scroll; the Selected papers lists

@@ -29,11 +29,23 @@ The faint animations in the background of every page are live simulations of thr
 
 ## Worth reading
 
-<ul class="reading scroll-list" tabindex="0" aria-label="Worth reading">
-  <li><a href="https://www.linkedin.com/pulse/where-mathematics-headed-age-ai-marc-m%C3%A9zard-vhvce/">A highly relevant viewpoint on science in the age of AI</a>, by Marc Mézard.</li>
-  <li><a href="https://pierremarion23.github.io/thoughts/2026-10-01.html">The future of research in the age of AI</a>, by Pierre Marion.</li>
-  <li><a href="https://www.slow-science.com/index.html">The slow science movement</a>. It challenges the “publish or perish” culture: science needs time to read, think and check results, and should be judged on quality rather than on publication counts.</li>
-  <li><a href="https://www.change.org/p/a-manifesto-for-the-creation-of-a-european-center-for-ai">A manifesto for the creation of a European center for AI</a>, which grew out of a <a href="https://site.unibo.it/hard-sciences-for-ai/en/roundtable">round table in Bologna</a> chaired by Pierluigi Contucci and Giorgio Parisi in October 2025. It calls for an independent, non-profit research center built on the theoretical foundations of AI, its risks and its safety; anyone can sign it.</li>
+<ul class="notes compact grouped">
+  <li class="note">
+    <h3 class="note-title"><a href="https://www.linkedin.com/pulse/where-mathematics-headed-age-ai-marc-m%C3%A9zard-vhvce/">A highly relevant viewpoint on science in the age of AI</a></h3>
+    <p class="note-context">By Marc Mézard.</p>
+  </li>
+  <li class="note">
+    <h3 class="note-title"><a href="https://pierremarion23.github.io/thoughts/2026-10-01.html">The future of research in the age of AI</a></h3>
+    <p class="note-context">By Pierre Marion.</p>
+  </li>
+  <li class="note">
+    <h3 class="note-title"><a href="https://www.slow-science.com/index.html">The slow science movement</a></h3>
+    <p class="note-context">It challenges the “publish or perish” culture: science needs time to read, think and check results, and should be judged on quality rather than on publication counts.</p>
+  </li>
+  <li class="note">
+    <h3 class="note-title"><a href="https://www.change.org/p/a-manifesto-for-the-creation-of-a-european-center-for-ai">A manifesto for the creation of a European center for AI</a></h3>
+    <p class="note-context">It grew out of a <a href="https://site.unibo.it/hard-sciences-for-ai/en/roundtable">round table in Bologna</a> chaired by Pierluigi Contucci and Giorgio Parisi in October 2025, and calls for an independent, non-profit research center built on the theoretical foundations of AI, its risks and its safety; anyone can sign it.</p>
+  </li>
 </ul>
 
 ## Outside science

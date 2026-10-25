@@ -226,7 +226,7 @@ p, dd, li, figcaption, .news-text, .album-name { text-wrap: pretty; }
 
 main.wrap { max-width: var(--wide); padding-top: 2.75rem; padding-bottom: 4rem; }
 /* One left edge for header, content and footer; prose keeps a readable measure */
-main p, main .news, main .pubs, main .plain, main dl, main .notes, main .people, main .alumni, main .albums, main .reading { max-width: var(--measure); }
+main p, main .news, main .pubs, main .plain, main dl, main .notes, main .people, main .alumni, main .albums { max-width: var(--measure); }
 main .intro p { max-width: none; }
 .page-title { font-size: var(--step-3); margin-bottom: 0.6rem; }
 .title-emoji { font-size: 0.8em; margin-left: 0.15em; }   /* one emoji per page, after the title */
@@ -405,9 +405,6 @@ figcaption { color: var(--muted); font-size: var(--step--1); }
 .album-month { color: var(--muted); font-size: var(--step--1); font-variant-numeric: tabular-nums; padding-top: 0.15rem; }
 @media (max-width: 40rem) { .albums li { grid-template-columns: 1fr; gap: 0.1rem; } }
 .albums a.is-playing { color: var(--text); font-weight: 600; text-decoration-color: var(--accent); }
-/* Misc, Worth reading: same look as the Music list, without the date column */
-.reading li { padding-block: 0.55rem; border-top: 1px solid var(--rule); }
-.reading li:last-child { border-bottom: 1px solid var(--rule); }
 .player { margin-top: 1.25rem; max-width: var(--measure); }
 .player-frame { aspect-ratio: 16 / 9; border-radius: 6px; overflow: hidden; background: #000; margin-bottom: 0.6rem; }
 .player-frame iframe { display: block; width: 100%; height: 100%; border: 0; }
