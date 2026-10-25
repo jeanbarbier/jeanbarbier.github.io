@@ -20,8 +20,8 @@ changing anything. A push to `master` is live after about a minute; check the li
 - Navigation: Group, Research, Teaching, Events, Misc. The name in the header links home.
 - Home: bio without supervisors' names, ICTP/UNESCO mission sentence, text-only CHORAL
   panel linking to CORDIS, News, Selected papers, Trieste, then Quotes I like. No GitHub link.
-- Misc: intro "The rest: what I read, what I listen to, and the phase transitions you send
-  me.", then in order: Worth reading, Outside science (hobbies, Entropie Collectif player),
+- Misc: intro "The rest: what I read, what I listen to, and other random things I like
+  to share.", then in order: Worth reading, Outside science (hobbies, Entropie Collectif player),
   Music I've been listening to, Submit your phase transition.
 - Worth reading links are in sentence case (capital on the first letter only; acronyms such
   as AI and proper names keep theirs), even when the original title is capitalized.
