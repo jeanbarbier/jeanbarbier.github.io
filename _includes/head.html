@@ -1,13 +1,17 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="theme-color" content="#15181d">
 <script>
-  // Apply a saved light/dark choice before first paint; otherwise follow the system.
+  // Apply the visitor's saved light/dark choice before first paint; dark if none was saved.
   document.documentElement.classList.add('js');
   (function () {
+    var t = 'dark';
     try {
-      var t = localStorage.getItem('theme');
-      if (t === 'light' || t === 'dark') document.documentElement.setAttribute('data-theme', t);
+      var saved = localStorage.getItem('theme');
+      if (saved === 'light' || saved === 'dark') t = saved;
     } catch (e) {}
+    document.documentElement.setAttribute('data-theme', t);
+    if (t === 'light') document.querySelector('meta[name="theme-color"]').setAttribute('content', '#ffffff');
   })();
 </script>
 {% seo %}
@@ -15,5 +19,3 @@
 <link rel="preload" href="{{ '/assets/fonts/source-serif-4-latin-opsz-normal.woff2' | relative_url }}" as="font" type="font/woff2" crossorigin>
 <link rel="stylesheet" href="{{ '/assets/css/main.css' | relative_url }}?v={{ site.time | date: '%s' }}">
 <link rel="icon" href="{{ '/favicon.svg' | relative_url }}" type="image/svg+xml">
-<meta name="theme-color" content="#ffffff" media="(prefers-color-scheme: light)">
-<meta name="theme-color" content="#15181d" media="(prefers-color-scheme: dark)">

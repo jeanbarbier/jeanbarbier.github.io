@@ -33,7 +33,9 @@ changing anything. A push to `master` is live after about a minute; check the li
 
 ## Typography and layout
 - Self-hosted fonts: Source Serif 4 for headings and titles, Instrument Sans for text.
-  Accent deep blue (#2b4796, #93aeef in dark mode). Automatic dark mode plus a toggle.
+  Accent deep blue (#2b4796, #93aeef in dark mode). Dark mode by default for visitors who
+  have not chosen (set before first paint in `_includes/head.html`; without JavaScript the
+  system setting applies); the light/dark button switches and remembers the choice.
 - One text width (`--measure`, 42rem) for all text. `--wide` (52rem) only for images,
   the gallery and the home intro.
 - Home intro: portrait floated top-left, text wrapping around it; centred above on phones.
