@@ -8,6 +8,25 @@ permalink: /misc/
 intro: "The rest: what I read, what I listen to, and other random things I like to share."
 funding: false   # no ERC funding statement on this page: nothing here is ERC-funded
 ---
+## The physics behind the site's animations {#animations}
+
+The faint animations in the background of every page are live simulations of three classic models of statistical physics.
+
+<ul class="notes compact grouped">
+  <li class="note">
+    <h3 class="note-title"><a href="{{ '/misc/gray-scott/' | relative_url }}">The Gray-Scott model</a></h3>
+    <p class="note-context">Two chemicals that react and diffuse, and the spots, stripes and holes they draw.</p>
+  </li>
+  <li class="note">
+    <h3 class="note-title"><a href="{{ '/misc/ising/' | relative_url }}">The 2D Ising model</a></h3>
+    <p class="note-context">The simplest model of a magnet, and its phase transition between order and disorder.</p>
+  </li>
+  <li class="note">
+    <h3 class="note-title"><a href="{{ '/misc/spin-glass/' | relative_url }}">The 2D spin glass</a></h3>
+    <p class="note-context">Random couplings, frustration, and the strings that pair frustrated plaquettes.</p>
+  </li>
+</ul>
+
 ## Worth reading
 
 - [A highly relevant viewpoint on science in the age of AI](https://www.linkedin.com/pulse/where-mathematics-headed-age-ai-marc-m%C3%A9zard-vhvce/), by Marc Mézard.

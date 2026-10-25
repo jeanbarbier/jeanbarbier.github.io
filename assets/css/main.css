@@ -418,6 +418,13 @@ main .player-caption { color: var(--muted); font-size: var(--step--1); margin: 0
 .play-button:hover { color: var(--accent); border-color: var(--accent); }
 .play-button svg { width: 0.75rem; height: 0.75rem; color: var(--accent); }
 .play-button[hidden] { display: none; }
+button.play-button { font: inherit; font-size: 0.95rem; background: none; cursor: pointer; }
+/* Pages on the physics of the background animations (/misc/gray-scott/ ...): run-it button, display equations */
+.bg-run-row { margin: 0.25rem 0 1.5rem; }
+.bg-run svg { width: 1rem; height: 1rem; }
+.bg-run[aria-pressed="true"] { color: var(--accent); border-color: var(--accent); }
+.prose sub, .prose sup { line-height: 0; }   /* indices and exponents do not push lines apart */
+.prose .eq { text-align: center; font-family: var(--serif); font-size: 1.08rem; line-height: 1.8; margin: 1.1rem 0; }
 /* Misc: submit your phase transition */
 .transition-form { max-width: var(--measure); display: grid; gap: 0.5rem; margin-top: 1.25rem; }
 .transition-form label { font-size: var(--step--1); color: var(--muted); }
@@ -486,7 +493,7 @@ main .trieste p { max-width: none; }
 }
 @media (prefers-reduced-motion: reduce) { * { scroll-behavior: auto !important; } }
 @media print {
-  .site-nav, .curve-wrap, .theme-toggle, .anim-toggle, .bg-menu, .bg-turing, .bg-ising { display: none; }
+  .site-nav, .curve-wrap, .theme-toggle, .anim-toggle, .bg-menu, .bg-turing, .bg-ising, .bg-sg { display: none; }
   a { color: inherit; }
 }
 
@@ -507,6 +514,11 @@ main .trieste p { max-width: none; }
 }
 .bg-ising.is-ready { opacity: 1; transition-duration: 2.5s; }
 .bg-ising.instant { transition: none; }
+/* Fourth: the 2D spin glass (assets/js/spinglass.js), frustrated plaquettes as dots, unsatisfied bonds as strings */
+.bg-sg { position: fixed; inset: 0; z-index: -1; pointer-events: none; opacity: 0; transition: opacity 1.2s ease; }
+.bg-sg canvas { position: absolute; inset: 0; width: 100%; height: 100%; }
+.bg-sg.is-ready { opacity: 1; transition-duration: 2.5s; }
+.bg-sg.instant { transition: none; }
 
 /* ---------- Dated lists that show five items, then scroll (home News, past Events, Music) ---------- */
 /* site.js fits the height to the first five items and fades the bottom while more is below. */

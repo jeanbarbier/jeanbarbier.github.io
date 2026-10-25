@@ -8,8 +8,8 @@ changing anything. A push to `master` is live after about a minute; check the li
 - Ask before design decisions, and before fixing anything that looks inconsistent.
   When he asks for a proposal, propose the wording before pushing.
 - Simple and restrained: no animations, banners or decoration. One exception, chosen by Jean:
-  the faint background animations, the Gray-Scott model (on by default) or the 2D Ising model,
-  chosen, tuned or stopped from a header menu (see Small details).
+  the faint background animations, the Gray-Scott model (on by default), the 2D Ising model or
+  the 2D spin glass, chosen, tuned or stopped from a header menu (see Small details).
 - American spelling and US date style ("August 31 – September 4, 2026").
 - Uniformity first: the same kind of element looks the same on every page. After a
   change, check the whole site for consistency.
@@ -21,8 +21,18 @@ changing anything. A push to `master` is live after about a minute; check the li
 - Home: bio without supervisors' names, ICTP/UNESCO mission sentence, text-only CHORAL
   panel linking to CORDIS, News, Selected papers, Trieste, then Quotes I like. No GitHub link.
 - Misc: intro "The rest: what I read, what I listen to, and other random things I like
-  to share.", then in order: Worth reading, Outside science (hobbies, Entropie Collectif player),
-  Music I've been listening to, Submit your phase transition.
+  to share.", then in order: The physics behind the site's animations (`#animations`), Worth
+  reading, Outside science (hobbies, Entropie Collectif player), Music I've been listening to,
+  Submit your phase transition.
+- Physics pages (`physics/*.md`, layout `physics`): /misc/gray-scott/, /misc/ising/,
+  /misc/spin-glass/, one per background animation, linked from the first Misc section (a
+  `notes compact grouped` list). Each has a crumb back to Misc, the title, a grey `description`,
+  a "Run it in the background" button (`data-bg-run`, handled by bg-menu.js; "Stop the
+  animation" while it runs), medium-level text with display equations (`<p class="eq">`), a
+  "More" list with the Wikipedia link(s), then References from the `refs:` front matter, shown
+  as papers (`pubs compact grouped` via `_includes/pub.html`, initials for given names, no Cite
+  button; `link_label: Book` for a book). `funding: false`, like Misc. The text must match
+  what the simulations actually do (parameters, rates): update both together.
 - Worth reading links are in sentence case (capital on the first letter only; acronyms such
   as AI and proper names keep theirs), even when the original title is capitalized.
 - Research: Highlights, then Selected papers grouped by theme (full list on
@@ -52,7 +62,7 @@ changing anything. A push to `master` is live after about a minute; check the li
 - Item titles everywhere: serif, 1.02rem, weight 520, line-height 1.35, text colour,
   underlined on hover. Description line: 0.95rem, grey, starting with a bold label when
   useful ("Lecture notes.", "Video.").
-- Papers are always `pubs compact grouped` (home, Research, highlight pages). Group
+- Papers are always `pubs compact grouped` (home, Research, highlight pages, physics pages). Group
   members are darker and bold in author lists. Each author name sits in a nowrap span and
   is never split across lines; author lists and paper titles use plain wrapping (full
   lines).
@@ -87,11 +97,11 @@ changing anything. A push to `master` is live after about a minute; check the li
   an evolving Gray-Scott Turing pattern, very faint: deep blue-teal in dark mode (alpha
   0.12), pale version of the header-label orange in light mode (alpha 0.11); switching theme
   recolours it at once. On by default (off for visitors whose system asks for reduced
-  motion). The background mode, remembered in localStorage (`bg-anim`: `turing`, `ising` or
-  `off`; an old `neurons` value counts as the default), is chosen from the animation menu
+  motion). The background mode, remembered in localStorage (`bg-anim`: `turing`, `ising`,
+  `spinglass` or `off`; an old `neurons` value counts as the default), is chosen from the animation menu
   (`assets/js/bg-menu.js`): one round button left of the light/dark one, showing the current
   animation's icon (accent colour while one runs), opening a small card with Gray-Scott
-  model, 2D Ising model and No animation (current one ticked; closes on outside click or
+  model, 2D Ising model, 2D spin glass and No animation (current one ticked; closes on outside click or
   Escape, and on choosing No animation; choosing an animation keeps it open so its slider
   shows). Turing slider "Pattern": s from 0 to 1 along a path in the (F, k) plane checked by
   simulation, spots (F 0.026, k 0.0615) to stripes (F 0.046, k 0.0615) to holes (F 0.0415,
@@ -117,6 +127,18 @@ changing anything. A push to `master` is live after about a minute; check the li
   second, 600 sweeps of warm-up before fading in. Up spins in the site blue, down spins in
   the curve-label orange, alpha 0.10 (0.08 light). Spins handed from page to page (one bit
   each, sessionStorage `bg-ising-state`).
+- Spin-glass animation (`assets/js/spinglass.js`, two canvases in `.bg-sg`): the 2D ±J
+  Edwards-Anderson model (couplings ±1, periodic edges, one spin every 26 CSS px), drawn as its
+  frustration: frustrated plaquettes as fixed orange dots (curve-label orange, alpha 0.32 dark,
+  0.24 light), unsatisfied bonds as blue dual-lattice segments (site blue, alpha 0.24 dark, 0.17
+  light, line 1.3 px), which form strings pairing the dots. Metropolis flips at random sites,
+  1.5 attempts per spin per second, zero-energy flips accepted with probability 0.12 (calm;
+  detailed balance kept); 500 sweeps annealed from T = 2.5 before fading in. Segments fade over
+  about half a second in 6 opacity steps; only the cells that change step are redrawn (the whole
+  layer when more than 300 change in a frame). Temperature slider under the menu item, 0.2 to 2.5
+  (in units of J, shown as "0.80 J"), default 0.8, remembered (localStorage `bg-sg-T`, event
+  `bg-sg-temp`). Couplings from a per-visit seed (sessionStorage `bg-sg-seed`), spins handed
+  from page to page (sessionStorage `bg-sg-state`). 20 frames per second, paused when hidden.
 - The two round buttons (animation menu, light/dark) sit at the right edge of the header,
   level with the name, on every screen size, so the page links keep one row.
 - Link previews (Slack, email, social media): every page shares the site logo, the BBP curve

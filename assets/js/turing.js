@@ -301,14 +301,14 @@
   }
   function gpuHealthy() { try { return alive(engine.read()); } catch (e) { return false; } }
 
-  // The background mode is shared with neurons.js, ising.js and bg-menu.js: 'turing' (default,
-  // also the old 'on'), 'neurons', 'ising' or 'off'. A visitor's own choice (the header menu)
+  // The background mode is shared with ising.js, spinglass.js and bg-menu.js: 'turing' (default;
+  // also the old 'on' and the archived 'neurons'), 'ising', 'spinglass' or 'off'. A visitor's own choice (the header menu)
   // wins; visitors whose system asks for reduced motion start with 'off' and can still choose.
   var calmMq = window.matchMedia('(prefers-reduced-motion: reduce)');
   function mode() {
     var v = null;
     try { v = localStorage.getItem(KEY_ON); } catch (e) {}
-    if (v === 'ising' || v === 'off') return v;
+    if (v === 'ising' || v === 'spinglass' || v === 'off') return v;
     if (v === 'on' || v === 'turing' || v === 'neurons') return 'turing';   // neurons: archived, back to the default
     return calmMq.matches ? 'off' : 'turing';
   }

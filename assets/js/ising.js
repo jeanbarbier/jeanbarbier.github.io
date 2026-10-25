@@ -1,4 +1,4 @@
-// Background animation, third choice: the 2D Ising model, by default in its ordered phase
+// Background animation, second choice: the 2D Ising model, by default in its ordered phase
 // (T = 0.8 Tc, Tc = 2 / ln(1 + sqrt 2) in units J = k_B = 1; visitors can set T
 // from 0.5 to 2 Tc with the slider in the animation menu), seen as a faint lattice of up and
 // down spins. Metropolis dynamics on a checkerboard, periodic edges. Close to Tc the
@@ -30,12 +30,12 @@
   var darkMq = window.matchMedia('(prefers-color-scheme: dark)');
   var calmMq = window.matchMedia('(prefers-reduced-motion: reduce)');
 
-  // Shared with turing.js and neurons.js: 'turing' (default, also the old 'on'), 'neurons',
-  // 'ising' or 'off'.
+  // Shared with turing.js, spinglass.js and bg-menu.js: 'turing' (default; also the old 'on' and
+  // the archived 'neurons'), 'ising', 'spinglass' or 'off'.
   function mode() {
     var v = null;
     try { v = localStorage.getItem(KEY_MODE); } catch (e) {}
-    if (v === 'ising' || v === 'off') return v;
+    if (v === 'ising' || v === 'spinglass' || v === 'off') return v;
     if (v === 'on' || v === 'turing' || v === 'neurons') return 'turing';   // neurons: archived, back to the default
     return calmMq.matches ? 'off' : 'turing';
   }

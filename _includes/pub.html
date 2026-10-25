@@ -10,9 +10,10 @@
 {%- assign pub = include.pub -%}
 {%- if pub.doi -%}{%- assign main = "https://doi.org/" | append: pub.doi -%}
 {%- elsif pub.url -%}{%- assign main = pub.url -%}
-{%- else -%}{%- assign main = "https://arxiv.org/abs/" | append: pub.arxiv -%}{%- endif -%}
+{%- elsif pub.arxiv -%}{%- assign main = "https://arxiv.org/abs/" | append: pub.arxiv -%}
+{%- else -%}{%- assign main = nil -%}{%- endif -%}
 <li class="pub">
-  <p class="pub-title"><a href="{{ main }}">{{ pub.title }}</a></p>
+  <p class="pub-title">{% if main %}<a href="{{ main }}">{{ pub.title }}</a>{% else %}{{ pub.title }}{% endif %}</p>
   {%- unless include.compact or include.title_only %}
   <p class="pub-authors">
     {%- for a in pub.authors -%}
@@ -32,7 +33,7 @@
     <span class="pub-venue">{{ pub.venue }}{% unless pub.venue contains pub.year %}, {{ pub.year }}{% endunless %}</span>
     {%- if pub.highlight and include.hide_highlight != true %}<a href="{{ pub.highlight | relative_url }}">Highlight</a>{% endif %}
     {%- if pub.arxiv %}<a href="https://arxiv.org/abs/{{ pub.arxiv }}">arXiv</a>{% endif %}
-    {%- if pub.doi %}<a href="https://doi.org/{{ pub.doi }}">Journal</a>{% elsif pub.url %}<a href="{{ pub.url }}">Journal</a>{% endif %}
+    {%- if pub.doi %}<a href="https://doi.org/{{ pub.doi }}">{{ pub.link_label | default: "Journal" }}</a>{% elsif pub.url %}<a href="{{ pub.url }}">{{ pub.link_label | default: "Journal" }}</a>{% endif %}
     {%- unless include.compact %}{% for x in pub.extra %}<a href="{{ x.url }}">{{ x.label }}</a>{% endfor %}{% endunless %}
     {%- if pub.bibtex %}<button type="button" class="cite-btn" aria-expanded="false" hidden>Cite</button>{% endif %}
   </p>

@@ -1,0 +1,16 @@
+---
+layout: default
+---
+<article class="highlight physics">
+  <p class="crumb"><a href="{{ '/misc/#animations' | relative_url }}">Misc: the physics behind the site&rsquo;s animations</a></p>
+  <h1 class="page-title">{{ page.title }}</h1>
+  <p class="page-intro">{{ page.description }}</p>
+  <p class="bg-run-row"><button type="button" class="play-button bg-run" data-bg-run="{{ page.mode }}" aria-pressed="false" hidden><span class="bg-run-label">Run it in the background</span></button></p>
+  <div class="prose">
+{{ content }}
+  </div>
+  {%- if page.refs %}
+  <h2>References</h2>
+  <ul class="pubs compact grouped">{% for pub in page.refs %}{% include pub.html pub=pub %}{% endfor %}</ul>
+  {%- endif %}
+</article>

@@ -1,9 +1,9 @@
-// Header menu choosing the background animation: Gray-Scott model, 2D Ising model, or none.
-// The choice is stored in localStorage ('bg-anim') and announced with a 'bg-anim-change'
-// event, to which turing.js and ising.js react. The round button shows the current
+// Header menu choosing the background animation: Gray-Scott model, 2D Ising model, 2D spin glass,
+// or none. The choice is stored in localStorage ('bg-anim') and announced with a 'bg-anim-change'
+// event, to which turing.js, ising.js and spinglass.js react. The round button shows the current
 // animation's icon, in the accent colour while one is running. Under the running animation's
-// item, a slider sets its parameter: the Gray-Scott pattern (spots - stripes - holes) or the Ising
-// temperature; each value is stored and announced with its own event.
+// item, a slider sets its parameter: the Gray-Scott pattern (spots - stripes - holes), the Ising
+// temperature or the spin-glass temperature; each value is stored and announced with its own event.
 (function () {
   'use strict';
   var btn = document.querySelector('.anim-toggle'), menu = document.getElementById('bg-menu');
@@ -21,7 +21,10 @@
       spoken: function (v) { return v < 0.25 ? 'spots' : v < 0.4 ? 'spots and stripes' : v < 0.65 ? 'stripes' : v < 0.85 ? 'stripes and holes' : 'holes'; } },
     { id: 'ising-t', key: 'bg-ising-T', event: 'bg-ising-temp', def: 0.8, min: 0.5, max: 2,
       label: function (v) { return v.toFixed(2) + ' T<sub>c</sub>'; },
-      spoken: function (v) { return v.toFixed(2) + ' times the critical temperature'; } }
+      spoken: function (v) { return v.toFixed(2) + ' times the critical temperature'; } },
+    { id: 'sg-t', key: 'bg-sg-T', event: 'bg-sg-temp', def: 0.8, min: 0.2, max: 2.5,
+      label: function (v) { return v.toFixed(2) + ' J'; },
+      spoken: function (v) { return v.toFixed(2) + ' in units of the coupling J'; } }
   ];
   SLIDERS.forEach(function (c) {
     c.input = document.getElementById(c.id); c.out = document.getElementById(c.id + '-out');
@@ -47,13 +50,30 @@
   function mode() {
     var v = null;
     try { v = localStorage.getItem('bg-anim'); } catch (e) {}
-    if (v === 'ising' || v === 'off') return v;
+    if (v === 'ising' || v === 'spinglass' || v === 'off') return v;
     if (v === 'on' || v === 'turing' || v === 'neurons') return 'turing';   // neurons: archived, back to the default
     return calmMq.matches ? 'off' : 'turing';
   }
 
+  // "Run it in the background" buttons on the pages explaining each animation (/misc/gray-scott/ ...)
+  var runs = Array.prototype.slice.call(document.querySelectorAll('[data-bg-run]'));
+  runs.forEach(function (b) {
+    var m = b.getAttribute('data-bg-run'), src = menu.querySelector('[data-mode="' + m + '"] svg');
+    if (src) b.insertBefore(src.cloneNode(true), b.firstChild);
+    b.hidden = false;
+    b.addEventListener('click', function () {
+      try { localStorage.setItem('bg-anim', mode() === m ? 'off' : m); } catch (e) {}
+      document.dispatchEvent(new Event('bg-anim-change'));
+    });
+  });
+
   function show() {
     var m = mode();
+    runs.forEach(function (b) {
+      var on = b.getAttribute('data-bg-run') === m;
+      b.setAttribute('aria-pressed', on ? 'true' : 'false');
+      b.querySelector('.bg-run-label').textContent = on ? 'Stop the animation' : 'Run it in the background';
+    });
     items.forEach(function (it) { it.setAttribute('aria-checked', it.getAttribute('data-mode') === m ? 'true' : 'false'); });
     var src = menu.querySelector('[data-mode="' + (m === 'off' ? 'turing' : m) + '"] svg');
     if (src) btn.replaceChild(src.cloneNode(true), btn.querySelector('svg'));

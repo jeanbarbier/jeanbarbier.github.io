@@ -13,7 +13,8 @@ Personal and group website of Jean Barbier (ICTP), built with Jekyll and served 
 | Teaching material | `_data/teaching.yml` (PDFs in `docs/`) |
 | Page text | `index.html`, `research.html`, `group.html`, `about.md`, ... |
 | Styles | `assets/css/main.css` |
-| Background animations (header menu) | `assets/js/turing.js`, `ising.js`, `bg-menu.js` (archived neuron animation: `_archive/neurons/`) |
+| Background animations (header menu) | `assets/js/turing.js`, `ising.js`, `spinglass.js`, `bg-menu.js` (archived neuron animation: `_archive/neurons/`) |
+| Pages on the physics of the animations (linked from Misc) | `physics/*.md`, layout `_layouts/physics.html` (references in each page's `refs:` front matter) |
 | Photos | `assets/img/` (group members: `assets/img/people/`, square, about 400 px) |
 
 To add a paper, copy an entry in `_data/publications.yml`, including its `bibtex` block. Group members are highlighted automatically if their name (or one of their `aliases`) is in `_data/people.yml`.
