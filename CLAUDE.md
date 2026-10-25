@@ -108,7 +108,7 @@ changing anything. A push to `master` is live after about a minute; check the li
   70 px of another soma (its dendritic field); spikes travel at 1500 px/s plus 15 ms at the
   synapse, so cascades spread within a fraction of a second. A firing neuron lights up whole
   (70 ms rise, ~0.85 s calcium-like decay varying per neuron, darker nucleus, dendrites
-  dimmer than the soma). Each target fires with probability 1.4 x R / out-degree, R being
+  dimmer than the soma, thin strokes with only a slight halo). Each target fires with probability 1.4 x R / out-degree, R being
   the neuron's synaptic resources (half used per firing, recovering over 6 s): sparse
   activity and avalanches with occasional network bursts. Spontaneous rate 1/120 s per
   neuron. Very faint: resting fibers alpha 0.05 (0.065 light), lit neurons 0.38 (0.30

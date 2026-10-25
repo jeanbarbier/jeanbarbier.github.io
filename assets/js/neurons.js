@@ -230,11 +230,11 @@
       var blur = n.depth > 0.65 ? (n.depth - 0.65) / 0.35 : 0;
       procs.forEach(function (p, idx) {
         var axonPart = idx === procs.length - 1, k = axonPart ? 0.35 : 0.65;
-        g.strokeStyle = rgba(pal.lit, 0.3 * k); g.lineWidth = p.w * (3 + 3 * blur); strokeProcess(g, p);
-        g.strokeStyle = rgba(pal.lit, k * (1 - 0.4 * blur)); g.lineWidth = p.w * (1.1 + blur); strokeProcess(g, p);
+        g.strokeStyle = rgba(pal.lit, 0.16 * k); g.lineWidth = p.w * (2 + 1.5 * blur); strokeProcess(g, p);
+        g.strokeStyle = rgba(pal.lit, k * (1 - 0.4 * blur)); g.lineWidth = p.w * (0.85 + 0.5 * blur); strokeProcess(g, p);
       });
-      var gr = 10 + 8 * blur, glow = g.createRadialGradient(n.x, n.y, 0, n.x, n.y, gr);
-      glow.addColorStop(0, rgba(pal.lit, 0.8)); glow.addColorStop(1, rgba(pal.lit, 0));
+      var gr = 7 + 5 * blur, glow = g.createRadialGradient(n.x, n.y, 0, n.x, n.y, gr);
+      glow.addColorStop(0, rgba(pal.lit, 0.6)); glow.addColorStop(1, rgba(pal.lit, 0));
       g.fillStyle = glow; g.fillRect(n.x - gr, n.y - gr, 2 * gr, 2 * gr);
       g.fillStyle = rgba(pal.lit, 1); fillSoma(g, n);
       g.save(); g.globalCompositeOperation = 'destination-out'; g.fillStyle = 'rgba(0,0,0,0.5)';   // the nucleus stays darker
