@@ -22,6 +22,29 @@ curve: specialization
   </ul>
 </section>
 
+<section class="theme" id="wide-audience">
+  <h2>For a wider audience</h2>
+  <p>Introductions for non-specialists: a talk, a short perspective article, and press coverage of our work.</p>
+  <ul class="notes compact grouped">
+    <li class="note">
+      <h3 class="note-title"><a href="https://www.youtube.com/watch?v=q1VO5dmymFM">A talk on physics and information processing systems</a></h3>
+      <p class="note-context"><span class="note-kind">Video.</span> ICTP Mathematics.</p>
+    </li>
+    <li class="note">
+      <h3 class="note-title"><a href="https://arxiv.org/abs/2010.14863">High-dimensional inference: a statistical mechanics perspective</a></h3>
+      <p class="note-context"><span class="note-kind">Perspective article.</span> An introduction to the links between statistical physics and inference.</p>
+    </li>
+    <li class="note">
+      <h3 class="note-title"><a href="https://www.ictp.it/news/2026/7/how-ai-learns">How AI learns</a></h3>
+      <p class="note-context"><span class="note-kind">News article.</span> ICTP news on our Physical Review X paper.</p>
+    </li>
+    <li class="note">
+      <h3 class="note-title"><a href="{{ '/assets/img/press/il-piccolo-2026-09-13.jpg' | relative_url }}" lang="it">Dentro la “testa” dell’AI per capire come impara</a></h3>
+      <p class="note-context"><span class="note-kind">Newspaper article.</span> Il Piccolo, September 13, 2026, in Italian, on the same paper.</p>
+    </li>
+  </ul>
+</section>
+
 <section class="theme" id="papers">
   <h2>Selected papers</h2>
   <p>Selection of papers. The full list is on <a href="https://scholar.google.com/citations?user=yeE5qqIAAAAJ&hl=en">Scholar</a>. Group members are highlighted.</p>
@@ -61,23 +84,4 @@ curve: specialization
     <p>Statistical physics also describes hard combinatorial optimization problems on random instances, such as finding a maximum independent set in a random graph. Combining rigorous large-graph asymptotics with numerics, we find that algorithms do reach the limits predicted by asymptotic theory, but can converge to them very slowly: at the sizes met in practice, local algorithms do much better than these limits suggest.</p>
     <ul class="pubs compact grouped scroll-list" data-show="3" tabindex="0" aria-label="Selected papers: Combinatorial optimization">{% for pub in site.data.publications %}{% if pub.themes contains "optimization" %}{% include pub.html pub=pub %}{% endif %}{% endfor %}</ul>
   </div>
-</section>
-
-<section class="theme" id="wide-audience">
-  <h2>For a wider audience</h2>
-  <p>Introductions for non-specialists: a talk, a short perspective article, and press coverage of our work.</p>
-  <ul class="notes compact grouped">
-    <li class="note">
-      <h3 class="note-title"><a href="https://www.youtube.com/watch?v=q1VO5dmymFM">A talk on physics and information processing systems</a></h3>
-      <p class="note-context"><span class="note-kind">Video.</span> ICTP Mathematics.</p>
-    </li>
-    <li class="note">
-      <h3 class="note-title"><a href="https://arxiv.org/abs/2010.14863">High-dimensional inference: a statistical mechanics perspective</a></h3>
-      <p class="note-context"><span class="note-kind">Perspective article.</span> An introduction to the links between statistical physics and inference.</p>
-    </li>
-    <li class="note">
-      <h3 class="note-title"><a href="https://www.ictp.it/news/2026/7/how-ai-learns">How AI learns</a></h3>
-      <p class="note-context"><span class="note-kind">News article.</span> ICTP news on our Physical Review X paper.</p>
-    </li>
-  </ul>
 </section>

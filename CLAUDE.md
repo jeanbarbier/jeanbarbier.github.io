@@ -33,10 +33,14 @@ changing anything. A push to `master` is live after about a minute; check the li
   as papers (`pubs compact grouped` via `_includes/pub.html`, initials for given names, no Cite
   button; `link_label: Book` for a book). `funding: false`, like Misc. The text must match
   what the simulations actually do (parameters, rates): update both together.
-- Worth reading links are in sentence case (capital on the first letter only; acronyms such
-  as AI and proper names keep theirs), even when the original title is capitalized.
-- Research: Highlights, then Selected papers grouped by theme (full list on
-  Scholar), then For a wider audience. No separate chronological publication page.
+- Worth reading (`<ul class="reading scroll-list">`) looks like the Music list without the
+  date column: horizontal rules between items, five shown, then scroll. Each item is a link,
+  sometimes followed by a sentence or two. Links are in sentence case (capital on the first
+  letter only; acronyms such as AI and proper names keep theirs), even when the original title
+  is capitalized.
+- Research: Highlights, then For a wider audience (talk, perspective, press coverage; press
+  clippings cropped to our article and saved as JPEG in `assets/img/press/`), then Selected
+  papers grouped by theme (full list on Scholar). No separate chronological publication page.
 - The photo gallery is the last section of the Group page.
 - Misc has no ERC funding footer (`funding: false`): music and personal content are not
   ERC-funded.
@@ -66,7 +70,7 @@ changing anything. A push to `master` is live after about a minute; check the li
   members are darker and bold in author lists. Each author name sits in a nowrap span and
   is never split across lines; author lists and paper titles use plain wrapping (full
   lines).
-- Dated lists (News, Events, Music): small grey date column on the left with short
+- Dated lists (News, Events, Music; Worth reading has the same look without dates): small grey date column on the left with short
   months ("Oct 2026"; event ranges like "Aug 31 – Sep 4, 2026" in a wider column), text
   on the right, horizontal rules, no vertical rule. On phones the date sits above the text.
 - Home News, past Events and Music show five items, then scroll; the Selected papers lists
