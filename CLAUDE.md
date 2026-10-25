@@ -89,7 +89,9 @@ changing anything. A push to `master` is live after about a minute; check the li
   recolours it at once. On by default (off for visitors whose system asks for reduced
   motion); the round button left of the light/dark one (spotted icon, accent colour when on)
   stops or restarts it everywhere, remembered in localStorage (`bg-anim`). The pattern is handed from page to page (sessionStorage `bg-anim-state`,
-  ~0.2 MB, saved on pagehide), so moving around the site does not restart it. 300 simulation
+  ~0.2 MB, saved on pagehide), so moving around the site does not restart it. Random
+  perturbations keep it from settling: about once a second a disc of 8–19 cells somewhere
+  is cleared and reseeded with a few nuclei, and the pattern regrows into it. 300 simulation
   steps/s (10 per frame at ~30 frames/s); runs on the GPU (WebGL2 float textures) with a CPU
   fallback, ~7 px cells stretched by the browser, paused when the tab is hidden.
   Both round buttons (animation, light/dark) sit at the right edge of the header, level with

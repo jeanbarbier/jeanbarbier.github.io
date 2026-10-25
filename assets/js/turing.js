@@ -10,6 +10,9 @@
 
   var LOOP = 16000;             // steps for one loop of the slow parameter drift
   var STEPS_PER_FRAME = 10, FRAME_MS = 33, WARMUP = 2500;
+  // Random perturbations: every KICK_EVERY steps on average (~1 s), a disc of radius
+  // KICK_R cells (plus up to KICK_R_EXTRA) is cleared and reseeded at a random place.
+  var KICK_EVERY = 300, KICK_R = 8, KICK_R_EXTRA = 11, KICK_SEED_DENSITY = 0.05;
 
   // Feed f and kill k drift along a loop through the maze / spots / dividing-spots region,
   // with a gentle spread across the page, so the pattern never freezes.
@@ -82,8 +85,20 @@
     }
     setParams();
 
+    // Random perturbation: clear a disc and plant a few new nuclei in it. The pattern heals
+    // by regrowing into it, usually with a different orientation, so it never settles.
+    function kick(cx, cy, r, seed) {
+      var rr = r * r, h = seed;
+      for (var dy = -r; dy <= r; dy++) for (var dx = -r; dx <= r; dx++) {
+        if (dx * dx + dy * dy > rr) continue;
+        var j = ((cy + dy + rows) % rows) * cols + ((cx + dx + cols) % cols);
+        h = (h * 16807) % 2147483647;
+        if (h / 2147483647 < KICK_SEED_DENSITY) { u[j] = 0.5; v[j] = 0.25; } else { u[j] = 1; v[j] = 0; }
+      }
+    }
+
     return {
-      cols: cols, rows: rows, step: step,
+      cols: cols, rows: rows, step: step, kick: kick,
       resized: function (c2, r2) { return createSim(c2, r2, rand, resample({ u: u, v: v }, cols, rows, c2, r2), t); },
       read: function () { return { u: u, v: v }; },
       v: function () { return v; }, steps: function () { return t; }
@@ -105,12 +120,16 @@
 
   // ---- GPU simulation (WebGL2, float textures) ----
   var VERT = '#version 300 es\nvoid main(){vec2 p=vec2((gl_VertexID<<1)&2,gl_VertexID&2);gl_Position=vec4(p*2.0-1.0,0.0,1.0);}';
-  var SIM = '#version 300 es\nprecision highp float;uniform sampler2D s;uniform vec2 size;uniform float f0,k0,ph;out vec4 o;' +
+  var SIM = '#version 300 es\nprecision highp float;uniform sampler2D s;uniform vec2 size;uniform float f0,k0,ph;uniform vec4 kick;out vec4 o;' +
     'vec2 at(vec2 d){return texture(s,(gl_FragCoord.xy+d)/size).xy;}' +
     'void main(){vec2 c=at(vec2(0.0));' +
     'vec2 l=0.2*(at(vec2(1,0))+at(vec2(-1,0))+at(vec2(0,1))+at(vec2(0,-1)))+0.05*(at(vec2(1,1))+at(vec2(1,-1))+at(vec2(-1,1))+at(vec2(-1,-1)))-c;' +
     'float q=sin(6.2831853*(gl_FragCoord.x-0.5)/size.x+ph);float f=f0+0.0035*q,k=k0-0.0006*q;float uvv=c.x*c.y*c.y;' +
-    'o=vec4(c.x+l.x-uvv+f*(1.0-c.x),c.y+0.5*l.y+uvv-(k+f)*c.y,0.0,1.0);}';
+    'o=vec4(c.x+l.x-uvv+f*(1.0-c.x),c.y+0.5*l.y+uvv-(k+f)*c.y,0.0,1.0);' +
+    // random perturbation (kick.z > 0): clear a disc, with a few new nuclei in it
+    'if(kick.z>0.0){vec2 d=abs(gl_FragCoord.xy-0.5-kick.xy);d=min(d,size-d);' +
+    'if(dot(d,d)<=kick.z*kick.z){float h=fract(sin(dot(gl_FragCoord.xy,vec2(12.9898,78.233))+kick.w)*43758.5453);' +
+    'o=h<' + KICK_SEED_DENSITY.toFixed(3) + '?vec4(0.5,0.25,0.0,1.0):vec4(1.0,0.0,0.0,1.0);}}}';
   var SHOW = '#version 300 es\nprecision highp float;uniform sampler2D s;uniform vec2 size;uniform vec3 lo,hi;uniform float alpha;out vec4 o;' +
     'void main(){float v=texture(s,gl_FragCoord.xy/size).y;float t=smoothstep(0.07,0.33,v);float a=alpha*t;' +
     'o=vec4(mix(lo,hi,t)*a,a);}';
@@ -166,14 +185,18 @@
       gl.uniform1i(prog.u.s, 0); gl.uniform2f(prog.u.size, w, h);
     }
 
+    var pendingKick = null;
     var api = {
       cols: cols, rows: rows,
       steps: function () { return t; },
+      kick: function (cx, cy, r, seed) { pendingKick = [cx, cy, r, (seed % 1000) / 7.3]; },
       step: function (count) {
         for (var c = 0; c < count; c++) {
           var p = params(t);
           pass(sim, a, b, api.cols, api.rows);
           gl.uniform1f(sim.u.f0, p.f0); gl.uniform1f(sim.u.k0, p.k0); gl.uniform1f(sim.u.ph, p.ph);
+          var kk = pendingKick || [0, 0, 0, 0]; pendingKick = null;
+          gl.uniform4f(sim.u.kick, kk[0], kk[1], kk[2], kk[3]);
           gl.drawArrays(gl.TRIANGLES, 0, 3);
           var tmp = a; a = b; b = tmp; t++;
         }
@@ -244,6 +267,7 @@
   var CELL = 7, MAX_CELLS = 60000;
   var engine = null, gpu = false, ctx = null, img = null, lut = null, lutFor = null;
   var running = false, raf = 0, last = 0, warm = false;
+  var sinceKick = 0, nextKick = KICK_EVERY;
 
   // On by default; a visitor's own choice (the header button) wins. Visitors whose system asks
   // for reduced motion start with it off and can still turn it on.
@@ -316,7 +340,14 @@
       while (engine.steps() < WARMUP && performance.now() - t0 < 10) engine.step(gpu ? 250 : 25);
       if (engine.steps() >= WARMUP) { warm = true; draw(); canvas.classList.add('is-ready'); }
     } else if (now - last >= FRAME_MS) {
-      last = now; engine.step(STEPS_PER_FRAME); draw();
+      last = now;
+      sinceKick += STEPS_PER_FRAME;
+      if (sinceKick >= nextKick) {           // random perturbation, so the pattern never settles
+        engine.kick(Math.floor(Math.random() * engine.cols), Math.floor(Math.random() * engine.rows),
+          KICK_R + Math.floor(Math.random() * (KICK_R_EXTRA + 1)), 1 + Math.floor(Math.random() * 1e9));
+        sinceKick = 0; nextKick = KICK_EVERY * (0.5 + Math.random());
+      }
+      engine.step(STEPS_PER_FRAME); draw();
     }
     raf = requestAnimationFrame(frame);
   }
