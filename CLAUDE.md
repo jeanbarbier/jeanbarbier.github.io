@@ -8,8 +8,8 @@ changing anything. A push to `master` is live after about a minute; check the li
 - Ask before design decisions, and before fixing anything that looks inconsistent.
   When he asks for a proposal, propose the wording before pushing.
 - Simple and restrained: no animations, banners or decoration. One exception, chosen by Jean:
-  the faint background animations, a Turing pattern (on by default), a network of firing
-  neurons or the 2D Ising model, chosen or stopped from a header menu (see Small details).
+  the faint background animations, a Turing pattern (on by default) or the 2D Ising model,
+  chosen, tuned or stopped from a header menu (see Small details).
 - American spelling and US date style ("August 31 – September 4, 2026").
 - Uniformity first: the same kind of element looks the same on every page. After a
   change, check the whole site for consistency.
@@ -87,11 +87,17 @@ changing anything. A push to `master` is live after about a minute; check the li
   an evolving Gray-Scott Turing pattern, very faint: deep blue-teal in dark mode (alpha
   0.12), pale version of the header-label orange in light mode (alpha 0.11); switching theme
   recolours it at once. On by default (off for visitors whose system asks for reduced
-  motion). The background mode, remembered in localStorage (`bg-anim`: `turing`, `neurons`,
-  `ising` or `off`), is chosen from the animation menu (`assets/js/bg-menu.js`): one round
-  button left of the light/dark one, showing the current animation's icon (accent colour
-  while one runs), opening a small card with Turing patterns, Neurons, 2D Ising model and
-  No animation (current one ticked; closes on choice, outside click or Escape). The pattern is handed from page to page (sessionStorage `bg-anim-state`,
+  motion). The background mode, remembered in localStorage (`bg-anim`: `turing`, `ising` or
+  `off`; an old `neurons` value counts as the default), is chosen from the animation menu
+  (`assets/js/bg-menu.js`): one round button left of the light/dark one, showing the current
+  animation's icon (accent colour while one runs), opening a small card with Turing
+  patterns, 2D Ising model and No animation (current one ticked; closes on outside click or
+  Escape, and on choosing No animation; choosing an animation keeps it open so its slider
+  shows). Turing slider "Pattern": s from 0 to 1 along a path in the (F, k) plane checked by
+  simulation, spots (F 0.026, k 0.0615) to stripes (F 0.046, k 0.0615) to holes (F 0.0415,
+  k 0.0592); default 0.45; value shown as "F 0.044, k 0.0615", scale spots / stripes / holes;
+  remembered (localStorage `bg-turing-s`). A slow drift of ±0.0015 in F and ±0.0002 in k
+  around that point, and a small spread across the page, keep it moving. The pattern is handed from page to page (sessionStorage `bg-anim-state`,
   ~0.2 MB, saved on pagehide), so moving around the site does not restart it. Random
   perturbations keep it from settling: every 2 to 6 s (uniform) a disc of 8–19 cells somewhere
   is cleared and reseeded with a few nuclei, and the pattern regrows into it. 300 simulation
@@ -100,27 +106,12 @@ changing anything. A push to `master` is live after about a minute; check the li
   nets: the GPU result is checked after warm-up and every 10 s (one small read-back); if it
   holds no pattern the visit continues on the CPU (sessionStorage `bg-anim-cpu`). The shader
   resets any non-number cell, and a handed-over state without a pattern is ignored.
-- Neuron animation (`assets/js/neurons.js`, two canvases in `.bg-neurons`): a faint neuron
-  culture drawn like a calcium-imaging recording. One neuron per ~120 px (minimum spacing,
-  also just beyond the edges): 60% pyramidal (elongated soma, long apical dendrite with
-  oblique branches and a tuft, short basal dendrites), 40% multipolar; tapering dendrites
-  that fork as they grow, one long meandering axon with 1–3 collaterals; neurons deeper
-  than the focal plane are drawn softer and dimmer. Synapses: where an axon passes within
-  70 px of another soma (its dendritic field); spikes travel at 1500 px/s plus 15 ms at the
-  synapse, so cascades spread within a fraction of a second. A firing neuron lights up whole
-  (70 ms rise, ~0.85 s calcium-like decay varying per neuron, darker nucleus, dendrites
-  dimmer than the soma, thin strokes with only a slight halo). Each target fires with probability 1.4 x R / out-degree, R being
-  the neuron's synaptic resources (half used per firing, recovering over 6 s): sparse
-  activity and avalanches with occasional network bursts. Spontaneous rate 1/120 s per
-  neuron. Very faint: resting fibers alpha 0.05 (0.065 light), lit neurons 0.38 (0.30
-  light). Green (pale green in light mode). Per-visit seed; activity and resources handed
-  from page to page (sessionStorage `bg-neurons-state`). 2D canvas: morphology drawn once,
-  each neuron's lit image prepared once at half resolution, a frame only blends a few
-  images; ~30 frames/s, paused when hidden.
+- The neuron animation (a calcium-imaging-like neuron culture) was removed from the menu; its
+  code and restore steps are in `_archive/neurons/` (not published) and the whole site as it
+  was is on the branch `archive/neurons-animation`.
 - Ising animation (`assets/js/ising.js`, canvas `.bg-ising`): the 2D Ising model, by default
   at T = 1.02 Tc; a temperature slider (0.5 to 2 Tc, Tc marked, value shown as "1.02 Tc")
-  sits under the Ising item of the animation menu while Ising runs (choosing Ising keeps the
-  menu open so it shows), applies at once and is remembered (localStorage `bg-ising-T`).
+  sits under the Ising item of the animation menu while Ising runs, applies at once and is remembered (localStorage `bg-ising-T`).
   One pixel per spin (5 CSS px, kept crisp with `image-rendering: pixelated`),
   Metropolis dynamics on a checkerboard with periodic edges, ~20 sweeps/s drawn 10 times a
   second, 600 sweeps of warm-up before fading in. Up spins in the site blue, down spins in

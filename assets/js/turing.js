@@ -14,11 +14,18 @@
   // KICK_R cells (plus up to KICK_R_EXTRA) is cleared and reseeded at a random place.
   var KICK_MIN_MS = 2000, KICK_MAX_MS = 6000, KICK_R = 8, KICK_R_EXTRA = 11, KICK_SEED_DENSITY = 0.05;
 
-  // Feed f and kill k drift along a loop through the maze / spots / dividing-spots region,
-  // with a gentle spread across the page, so the pattern never freezes.
+  // The menu slider picks s in [0, 1] on a path through the Gray-Scott (F, k) plane, checked by
+  // simulation: spots (s ~ 0), stripes / labyrinths (s ~ 0.5), holes (s ~ 1). Default 0.45.
+  var PATTERN_DEFAULT = 0.45, pattern = PATTERN_DEFAULT;
+  function pathFk(s) {
+    if (s <= 0.5) return [0.026 + 0.04 * s, 0.0615];
+    var b = (s - 0.5) / 0.5;
+    return [0.046 - 0.0045 * b, 0.0615 - 0.0023 * b];
+  }
+  // A small slow drift around that point and the random perturbations keep it from freezing.
   function params(t) {
-    var a = (2 * Math.PI * t) / LOOP;
-    return { f0: 0.0455 + 0.0085 * Math.sin(a), k0: 0.0627 + 0.0012 * Math.sin(0.73 * a + 1.3), ph: 0.31 * a };
+    var a = (2 * Math.PI * t) / LOOP, b = pathFk(pattern);
+    return { f0: b[0] + 0.0015 * Math.sin(a), k0: b[1] + 0.0002 * Math.sin(0.73 * a + 1.3), ph: 0.31 * a };
   }
 
   function initialState(cols, rows, rand) {
@@ -57,7 +64,7 @@
       var p = params(t);
       for (var x = 0; x < cols; x++) {
         var q = Math.sin((2 * Math.PI * x) / cols + p.ph);
-        fcol[x] = p.f0 + 0.0035 * q; kcol[x] = p.k0 - 0.0006 * q;
+        fcol[x] = p.f0 + 0.0012 * q; kcol[x] = p.k0 - 0.0002 * q;
       }
     }
 
@@ -125,7 +132,7 @@
     'float hash(vec2 p){vec3 q=fract(vec3(p.xyx)*0.1031);q+=dot(q,q.yzx+33.33);return fract((q.x+q.y)*q.z);}' +
     'void main(){vec2 c=at(vec2(0.0));' +
     'vec2 l=0.2*(at(vec2(1,0))+at(vec2(-1,0))+at(vec2(0,1))+at(vec2(0,-1)))+0.05*(at(vec2(1,1))+at(vec2(1,-1))+at(vec2(-1,1))+at(vec2(-1,-1)))-c;' +
-    'float q=sin(6.2831853*(gl_FragCoord.x-0.5)/size.x+ph);float f=f0+0.0035*q,k=k0-0.0006*q;float uvv=c.x*c.y*c.y;' +
+    'float q=sin(6.2831853*(gl_FragCoord.x-0.5)/size.x+ph);float f=f0+0.0012*q,k=k0-0.0002*q;float uvv=c.x*c.y*c.y;' +
     'o=vec4(c.x+l.x-uvv+f*(1.0-c.x),c.y+0.5*l.y+uvv-(k+f)*c.y,0.0,1.0);' +
     // random perturbation (kick.z > 0): clear a disc, with a few new nuclei in it
     'if(kick.z>0.0){vec2 d=abs(gl_FragCoord.xy-0.5-kick.xy);d=min(d,size-d);' +
@@ -301,11 +308,18 @@
   function mode() {
     var v = null;
     try { v = localStorage.getItem(KEY_ON); } catch (e) {}
-    if (v === 'on' || v === 'turing') return 'turing';
-    if (v === 'neurons' || v === 'ising' || v === 'off') return v;
+    if (v === 'ising' || v === 'off') return v;
+    if (v === 'on' || v === 'turing' || v === 'neurons') return 'turing';   // neurons: archived, back to the default
     return calmMq.matches ? 'off' : 'turing';
   }
   function enabled() { return mode() === 'turing'; }
+  function storedPattern() {
+    var v = NaN;
+    try { v = parseFloat(localStorage.getItem('bg-turing-s')); } catch (e) {}
+    return v >= 0 && v <= 1 ? v : PATTERN_DEFAULT;
+  }
+  pattern = storedPattern();
+  document.addEventListener('bg-turing-param', function () { pattern = storedPattern(); });   // applies at once
 
   function theme() {
     var t = root.getAttribute('data-theme');

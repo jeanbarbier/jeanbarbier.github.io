@@ -35,8 +35,8 @@
   function mode() {
     var v = null;
     try { v = localStorage.getItem(KEY_MODE); } catch (e) {}
-    if (v === 'on' || v === 'turing') return 'turing';
-    if (v === 'neurons' || v === 'ising' || v === 'off') return v;
+    if (v === 'ising' || v === 'off') return v;
+    if (v === 'on' || v === 'turing' || v === 'neurons') return 'turing';   // neurons: archived, back to the default
     return calmMq.matches ? 'off' : 'turing';
   }
   function theme() { var t = root.getAttribute('data-theme'); return t ? t : (darkMq.matches ? 'dark' : 'light'); }
