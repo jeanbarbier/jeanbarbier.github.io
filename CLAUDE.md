@@ -99,13 +99,17 @@ changing anything. A push to `master` is live after about a minute; check the li
   nets: the GPU result is checked after warm-up and every 10 s (one small read-back); if it
   holds no pattern the visit continues on the CPU (sessionStorage `bg-anim-cpu`). The shader
   resets any non-number cell, and a handed-over state without a pattern is ignored.
-- Neuron animation (`assets/js/neurons.js`, two canvases in `.bg-neurons`): a faint network of
-  neurons (one per ~72 px, linked to their 3 nearest neighbours by curved fibers) firing at
-  random; a firing neuron flashes and sends pulses along its fibers, each firing setting off
-  0.85 others on average (slightly subcritical branching), hence avalanches of all sizes.
-  Calcium-imaging green (pale green in light mode). The network comes from a per-visit seed
-  and its activity is handed from page to page (sessionStorage `bg-neurons-state`). 2D canvas,
-  fibers drawn once, flashes and pulses at half resolution, ~30 frames/s, paused when hidden.
+- Neuron animation (`assets/js/neurons.js`, two canvases in `.bg-neurons`): a faint neuron
+  culture drawn like a calcium-imaging recording. One neuron per ~120 px (minimum spacing,
+  also just beyond the edges), each with its own morphology: irregular soma, 3–6 tapering
+  dendritic trees that fork as they grow, one long meandering axon with 1–3 collaterals.
+  Synapses: where an axon passes within 40 px of another soma, delay = distance / speed.
+  Random firing; a firing neuron lights up whole (fast rise, ~0.9 s calcium-like decay), a
+  spike runs down its axon, and each synapse reached fires its target with probability
+  0.9/out-degree (slightly subcritical branching): avalanches of all sizes. Green (pale green
+  in light mode). Per-visit seed; activity handed from page to page (sessionStorage
+  `bg-neurons-state`). 2D canvas: morphology drawn once, each neuron's lit image prepared
+  once at half resolution, a frame only blends a few images; ~30 frames/s, paused when hidden.
 - The three round buttons (Turing, neurons, light/dark) sit at the right edge of the header,
   level with the name, on every screen size (slightly smaller below 23rem), so the page links
   keep one row.
