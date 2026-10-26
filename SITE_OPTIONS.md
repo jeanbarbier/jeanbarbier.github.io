@@ -138,7 +138,7 @@ BBP transition, Specialization in deep networks, Denoising–factorization trans
 - No cookies. Visit statistics: GoatCounter, published site only.
 - The email address is never written in the page: the "Mail" link assembles and copies it.
 - YouTube (privacy-enhanced youtube-nocookie) and SoundCloud players load only when clicked; starting one stops the other.
-- "Submit your phase transition" (Misc) is sent through Web3Forms; anonymous unless the visitor adds a name or email.
+- "Submit your phase transition" (Misc) is a single text box sent through Web3Forms; anonymous unless the visitor writes a name or email in it.
 
 ## Content
 

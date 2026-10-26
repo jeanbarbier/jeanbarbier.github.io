@@ -392,8 +392,8 @@ w('- No cookies. Visit statistics: GoatCounter, published site only.')
 w('- The email address is never written in the page: the "Mail" link assembles and copies it.')
 w('- YouTube (privacy-enhanced youtube-nocookie) and SoundCloud players load only when clicked; '
   'starting one stops the other.')
-w('- "Submit your phase transition" (Misc) is sent through Web3Forms; anonymous unless the visitor '
-  'adds a name or email.')
+w('- "Submit your phase transition" (Misc) is a single text box sent through Web3Forms; anonymous '
+  'unless the visitor writes a name or email in it.')
 w('')
 w('## Content')
 w('')
