@@ -18,7 +18,7 @@
   var FRAME_MS = 100, SWEEPS_PER_FRAME = 2, WARMUP = 600;   // ~20 sweeps/s drawn 10 times a second; sweeps before showing
 
   var PALETTES = {
-    dark: { up: [90, 130, 230], down: [255, 149, 117], alpha: 0.13 },
+    dark: { up: [90, 130, 230], down: [255, 149, 117], alpha: 0.15 },
     light: { up: [43, 71, 150], down: [232, 106, 69], alpha: 0.1 }
   };
 

@@ -135,7 +135,7 @@ changing anything. A push to `master` is live after about a minute; check the li
   One pixel per spin (5 CSS px, kept crisp with `image-rendering: pixelated`),
   Metropolis dynamics on a checkerboard with periodic edges, ~20 sweeps/s drawn 10 times a
   second, 600 sweeps of warm-up before fading in. Up spins in the site blue, down spins in
-  the curve-label orange, alpha 0.13 (0.10 light). Spins handed from page to page (one bit
+  the curve-label orange, alpha 0.15 (0.10 light). Spins handed from page to page (one bit
   each, sessionStorage `bg-ising-state`).
 - Spin-glass animation (`assets/js/spinglass.js`, two canvases in `.bg-sg`): the 2D ±J
   Edwards-Anderson model (couplings ±1, periodic edges, one spin every 26 CSS px), drawn as its
