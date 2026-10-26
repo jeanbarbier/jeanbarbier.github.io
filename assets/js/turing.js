@@ -4,7 +4,9 @@
 // light mode. Its state is handed from page to page, so moving around the site does not
 // restart it. Runs on the GPU (WebGL2) when it can, where it costs almost nothing; otherwise
 // on the CPU. The grid is coarse (one cell per ~7 CSS px, stretched by the browser), it runs
-// at ~30 frames per second and pauses when the tab is hidden.
+// at ~30 frames per second and pauses when the tab is hidden. In view mode (eye button, bg-view.js)
+// it shows at full strength: a tap drops a disc of the autocatalyst V (it flashes, then collapses
+// into a ring of new spots), holding keeps it there, and dragging wipes a path clean.
 (function () {
   'use strict';
 
@@ -13,6 +15,10 @@
   // Random perturbations: every 2 to 6 seconds (uniformly at random), a disc of radius
   // KICK_R cells (plus up to KICK_R_EXTRA) is cleared and reseeded at a random place.
   var KICK_MIN_MS = 2000, KICK_MAX_MS = 6000, KICK_R = 8, KICK_R_EXTRA = 11, KICK_SEED_DENSITY = 0.05;
+  // View mode: a tap drops a disc of V (u = 1, v = 0.5) of radius DROP_R_PX (CSS px), renewed every
+  // HOLD_MS while held; moving more than DRAG_PX turns the gesture into an eraser of radius ERASE_R_PX.
+  var DROP_R_PX = 63, ERASE_R_PX = 35, DRAG_PX = 10, HOLD_MS = 150;
+  var KICK_RESEED = 0, KICK_DROP = 1, KICK_ERASE = 2;
 
   // The menu slider picks s in [0, 1] on a path through the Gray-Scott (F, k) plane, checked by
   // simulation: spots (s ~ 0), stripes / labyrinths (s ~ 0.5), holes (s ~ 1). Default 0.25, between spots and stripes.
@@ -94,13 +100,17 @@
 
     // Random perturbation: clear a disc and plant a few new nuclei in it. The pattern heals
     // by regrowing into it, usually with a different orientation, so it never settles.
-    function kick(cx, cy, r, seed) {
-      var rr = r * r, h = seed;
-      for (var dy = -r; dy <= r; dy++) for (var dx = -r; dx <= r; dx++) {
+    // kind: KICK_RESEED (clear and plant a few nuclei), KICK_DROP (fill with V), KICK_ERASE (clear).
+    function kick(cx, cy, r, seed, kind) {
+      var rr = r * r, h = seed, R = Math.ceil(r);
+      for (var dy = -R; dy <= R; dy++) for (var dx = -R; dx <= R; dx++) {
         if (dx * dx + dy * dy > rr) continue;
         var j = ((cy + dy + rows) % rows) * cols + ((cx + dx + cols) % cols);
         h = (h * 16807) % 2147483647;
-        if (h / 2147483647 < KICK_SEED_DENSITY) { u[j] = 0.5; v[j] = 0.25; } else { u[j] = 1; v[j] = 0; }
+        var x = h / 2147483647;
+        if (kind === KICK_DROP) { u[j] = 1; v[j] = 0.48 + 0.04 * x; }
+        else if (kind !== KICK_ERASE && x < KICK_SEED_DENSITY) { u[j] = 0.5; v[j] = 0.25; }
+        else { u[j] = 1; v[j] = 0; }
       }
     }
 
@@ -127,17 +137,17 @@
 
   // ---- GPU simulation (WebGL2, float textures) ----
   var VERT = '#version 300 es\nvoid main(){vec2 p=vec2((gl_VertexID<<1)&2,gl_VertexID&2);gl_Position=vec4(p*2.0-1.0,0.0,1.0);}';
-  var SIM = '#version 300 es\nprecision highp float;uniform sampler2D s;uniform vec2 size;uniform float f0,k0,ph;uniform vec4 kick;out vec4 o;' +
+  var SIM = '#version 300 es\nprecision highp float;uniform sampler2D s;uniform vec2 size;uniform float f0,k0,ph,kind;uniform vec4 kick;out vec4 o;' +
     'vec2 at(vec2 d){return texture(s,(gl_FragCoord.xy+d)/size).xy;}' +
     'float hash(vec2 p){vec3 q=fract(vec3(p.xyx)*0.1031);q+=dot(q,q.yzx+33.33);return fract((q.x+q.y)*q.z);}' +
     'void main(){vec2 c=at(vec2(0.0));' +
     'vec2 l=0.2*(at(vec2(1,0))+at(vec2(-1,0))+at(vec2(0,1))+at(vec2(0,-1)))+0.05*(at(vec2(1,1))+at(vec2(1,-1))+at(vec2(-1,1))+at(vec2(-1,-1)))-c;' +
     'float q=sin(6.2831853*(gl_FragCoord.x-0.5)/size.x+ph);float f=f0+0.0012*q,k=k0-0.0002*q;float uvv=c.x*c.y*c.y;' +
     'o=vec4(c.x+l.x-uvv+f*(1.0-c.x),c.y+0.5*l.y+uvv-(k+f)*c.y,0.0,1.0);' +
-    // random perturbation (kick.z > 0): clear a disc, with a few new nuclei in it
+    // perturbation of a disc (kick.z > 0): kind 0 clears it with a few new nuclei, 1 fills it with V, 2 clears it
     'if(kick.z>0.0){vec2 d=abs(gl_FragCoord.xy-0.5-kick.xy);d=min(d,size-d);' +
     'if(dot(d,d)<=kick.z*kick.z){float h=hash(gl_FragCoord.xy+vec2(kick.w,0.0));' +
-    'o=h<' + KICK_SEED_DENSITY.toFixed(3) + '?vec4(0.5,0.25,0.0,1.0):vec4(1.0,0.0,0.0,1.0);}}' +
+    'o=kind>0.5&&kind<1.5?vec4(1.0,0.48+0.04*h,0.0,1.0):(kind<0.5&&h<' + KICK_SEED_DENSITY.toFixed(3) + ')?vec4(0.5,0.25,0.0,1.0):vec4(1.0,0.0,0.0,1.0);}}' +
     // safety net: a cell that is not a number or out of range is reset (stops it spreading)
     'if(!(abs(o.x-0.5)<1.0&&abs(o.y-0.5)<1.0))o=vec4(1.0,0.0,0.0,1.0);}';
   var SHOW = '#version 300 es\nprecision highp float;uniform sampler2D s;uniform vec2 size;uniform vec3 lo,hi;uniform float alpha;out vec4 o;' +
@@ -195,18 +205,18 @@
       gl.uniform1i(prog.u.s, 0); gl.uniform2f(prog.u.size, w, h);
     }
 
-    var pendingKick = null;
+    var kicks = [];                     // queued perturbations, one applied per simulation step
     var api = {
       cols: cols, rows: rows,
       steps: function () { return t; },
-      kick: function (cx, cy, r, seed) { pendingKick = [cx, cy, r, (seed % 1000) / 7.3]; },
+      kick: function (cx, cy, r, seed, kind) { if (kicks.length < 60) kicks.push([cx, cy, r, (seed % 1000) / 7.3, kind || 0]); },
       step: function (count) {
         for (var c = 0; c < count; c++) {
           var p = params(t);
           pass(sim, a, b, api.cols, api.rows);
           gl.uniform1f(sim.u.f0, p.f0); gl.uniform1f(sim.u.k0, p.k0); gl.uniform1f(sim.u.ph, p.ph);
-          var kk = pendingKick || [0, 0, 0, 0]; pendingKick = null;
-          gl.uniform4f(sim.u.kick, kk[0], kk[1], kk[2], kk[3]);
+          var kk = kicks.length ? kicks.shift() : [0, 0, 0, 0, 0];
+          gl.uniform4f(sim.u.kick, kk[0], kk[1], kk[2], kk[3]); gl.uniform1f(sim.u.kind, kk[4]);
           gl.drawArrays(gl.TRIANGLES, 0, 3);
           var tmp = a; a = b; b = tmp; t++;
         }
@@ -357,10 +367,12 @@
   }
 
   function draw() {
-    var pal = PALETTES[theme()];
+    var base = PALETTES[theme()], mix = window.bgViewMix || 0;   // full strength in view mode
+    var pal = { lo: base.lo, hi: base.hi, alpha: base.alpha + (1 - base.alpha) * mix };
     if (gpu) { engine.draw(pal); return; }
-    if (lutFor !== pal) {
-      lut = new Uint8ClampedArray(256 * 4); lutFor = pal;
+    var key = theme() + pal.alpha.toFixed(3);
+    if (lutFor !== key) {
+      lut = new Uint8ClampedArray(256 * 4); lutFor = key;
       for (var i = 0; i < 256; i++) {
         var s = shade((i / 255) * 0.5);
         for (var c = 0; c < 3; c++) lut[4 * i + c] = pal.lo[c] + (pal.hi[c] - pal.lo[c]) * s;
@@ -374,6 +386,37 @@
     }
     ctx.putImageData(img, 0, 0);
   }
+
+  // ---- View mode: tap drops V, hold keeps dropping, drag erases ----
+  var gesture = null;                   // { x0, y0, x, y, drag, held, next }
+  function toCell(x, y) {               // CSS px to grid cell (on the GPU, row 0 is at the bottom)
+    var cx = Math.floor(x * engine.cols / window.innerWidth), cy = Math.floor(y * engine.rows / window.innerHeight);
+    return [cx, gpu ? engine.rows - 1 - cy : cy];
+  }
+  function perturb(x, y, rpx, kind) {
+    var c = toCell(x, y), r = rpx * engine.cols / window.innerWidth;
+    engine.kick(c[0], c[1], r, 1 + Math.floor(Math.random() * 1e9), kind);
+  }
+  function eraseLine(x0, y0, x1, y1) {  // discs every half radius along the segment
+    var len = Math.hypot(x1 - x0, y1 - y0), n = Math.max(1, Math.ceil(len / (ERASE_R_PX / 2)));
+    for (var k = 1; k <= n; k++) perturb(x0 + (x1 - x0) * k / n, y0 + (y1 - y0) * k / n, ERASE_R_PX, KICK_ERASE);
+  }
+  document.addEventListener('bg-poke', function (e) {
+    if (!enabled() || !engine || !warm) return;
+    var d = e.detail;
+    if (d.phase === 'start') {
+      gesture = { x0: d.x, y0: d.y, x: d.x, y: d.y, drag: false, held: true, next: performance.now() + HOLD_MS };
+      perturb(d.x, d.y, DROP_R_PX, KICK_DROP);
+      if (!gpu) draw();
+    } else if (gesture && d.phase === 'move') {
+      if (!gesture.drag && Math.hypot(d.x - gesture.x0, d.y - gesture.y0) > DRAG_PX) {
+        gesture.drag = true;            // a drag: wipe the drop too, then follow the pointer
+        perturb(gesture.x0, gesture.y0, DROP_R_PX, KICK_ERASE);
+      }
+      if (gesture.drag) eraseLine(gesture.x, gesture.y, d.x, d.y);
+      gesture.x = d.x; gesture.y = d.y;
+    } else if (gesture && d.phase === 'end') gesture = null;
+  });
 
   function frame(now) {
     raf = 0;
@@ -394,8 +437,11 @@
       if (!nextKickAt) nextKickAt = now + KICK_MIN_MS + Math.random() * (KICK_MAX_MS - KICK_MIN_MS);
       if (now >= nextKickAt) {               // random perturbation, so the pattern never settles
         engine.kick(Math.floor(Math.random() * engine.cols), Math.floor(Math.random() * engine.rows),
-          KICK_R + Math.floor(Math.random() * (KICK_R_EXTRA + 1)), 1 + Math.floor(Math.random() * 1e9));
+          KICK_R + Math.floor(Math.random() * (KICK_R_EXTRA + 1)), 1 + Math.floor(Math.random() * 1e9), KICK_RESEED);
         nextKickAt = now + KICK_MIN_MS + Math.random() * (KICK_MAX_MS - KICK_MIN_MS);
+      }
+      if (gesture && !gesture.drag && now >= gesture.next) {   // holding: keep the drop full
+        perturb(gesture.x0, gesture.y0, DROP_R_PX, KICK_DROP); gesture.next = now + HOLD_MS;
       }
       engine.step(STEPS_PER_FRAME); draw();
     }
@@ -442,6 +488,7 @@
   // Switching light/dark recolours the pattern at once.
   function recolour() { if (engine && warm) draw(); }
   new MutationObserver(recolour).observe(root, { attributes: true, attributeFilter: ['data-theme'] });
+  document.addEventListener('bg-view-mix', function () { if (enabled()) recolour(); });
   if (darkMq.addEventListener) darkMq.addEventListener('change', recolour);
   update();
 })();

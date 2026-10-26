@@ -6,8 +6,9 @@
 // Colours: up spins in the site's blue, down spins in the orange of the curve labels. Chosen
 // from the animation menu in the header; the spins are handed from page to page. Plain 2D
 // canvas at one pixel per spin, stretched by the browser; ~20 sweeps per second shown 10 times a
-// second, paused when
-// the tab is hidden; nothing runs unless it is chosen.
+// second, paused when the tab is hidden; nothing runs unless it is chosen. In view mode (eye
+// button, bg-view.js) it shows at full strength, and pressing applies a strong magnetic field to a
+// disc around the pointer, against the majority of the spins in it: it paints the other colour.
 (function () {
   'use strict';
 
@@ -16,6 +17,7 @@
   var TC = 2 / Math.log(1 + Math.SQRT2), T = T_DEFAULT * TC;
   var CELL = 5, MAX_SPINS = 80000;     // CSS px per spin; cap on the lattice size
   var FRAME_MS = 100, SWEEPS_PER_FRAME = 2, WARMUP = 600;   // ~20 sweeps/s drawn 10 times a second; sweeps before showing
+  var FIELD_R_PX = 50, FIELD_H = 20, FIELD_AFTER_MS = 400;  // view mode: field disc radius (CSS px), strength (J), time it stays after release
 
   var PALETTES = {
     dark: { up: [90, 130, 230], down: [255, 149, 117], alpha: 0.15 },
@@ -92,17 +94,55 @@
   }
 
   function draw() {
-    var pal = PALETTES[theme()];
-    if (colourFor !== pal) {
+    var pal = PALETTES[theme()], mix = window.bgViewMix || 0, alpha = pal.alpha + (1 - pal.alpha) * mix;   // full strength in view mode
+    var key = theme() + alpha.toFixed(3);
+    if (colourFor !== key) {
       // Uint32 pixel words (little-endian RGBA), non-premultiplied alpha
-      var a = Math.round(255 * pal.alpha), le = new Uint8Array(new Uint32Array([1]).buffer)[0] === 1;
+      var a = Math.round(255 * alpha), le = new Uint8Array(new Uint32Array([1]).buffer)[0] === 1;
       var pack = function (c) { return le ? ((a << 24) | (c[2] << 16) | (c[1] << 8) | c[0]) >>> 0 : ((c[0] << 24) | (c[1] << 16) | (c[2] << 8) | a) >>> 0; };
-      pal.upWord = pack(pal.up); pal.downWord = pack(pal.down); colourFor = pal;
+      pal.upWord = pack(pal.up); pal.downWord = pack(pal.down); colourFor = key;
     }
     var u = pal.upWord, d = pal.downWord;
     for (var i = 0; i < spin.length; i++) words[i] = spin[i] > 0 ? u : d;
     ctx.putImageData(img, 0, 0);
   }
+
+  // ---- View mode: a strong field h on a disc around the pointer ----
+  // Applied after every sweep while it is on, as Metropolis updates of the disc's spins with the
+  // energy E = -sum s s - h sum s: with h = 20 J every spin turns to the field within a sweep or two.
+  var field = null;                     // { x, y } in CSS px, sign, held, until
+  function disc(f, fn) {                // calls fn(i) for the sites of the field disc
+    var sx = cols / window.innerWidth, sy = rows / window.innerHeight;
+    var cx = f.x * sx, cy = f.y * sy, rx = FIELD_R_PX * sx, ry = FIELD_R_PX * sy;
+    for (var dy = Math.ceil(-ry); dy <= ry; dy++) for (var dx = Math.ceil(-rx); dx <= rx; dx++) {
+      if ((dx * dx) / (rx * rx) + (dy * dy) / (ry * ry) > 1) continue;
+      var x = ((Math.floor(cx) + dx) % cols + cols) % cols, y = ((Math.floor(cy) + dy) % rows + rows) % rows;
+      fn(y * cols + x, x, y);
+    }
+  }
+  function applyField() {
+    var h = FIELD_H * field.sign;
+    for (var parity = 0; parity < 2; parity++) disc(field, function (i, x, y) {
+      if (((x + y) & 1) !== parity) return;
+      var mid = y * cols, s = spin[i];
+      var nb = spin[(y === 0 ? rows - 1 : y - 1) * cols + x] + spin[(y === rows - 1 ? 0 : y + 1) * cols + x] +
+               spin[mid + (x === 0 ? cols - 1 : x - 1)] + spin[mid + (x === cols - 1 ? 0 : x + 1)];
+      var dE = 2 * s * (nb + h);
+      if (dE <= 0 || Math.random() < Math.exp(-dE / T)) spin[i] = -s;
+    });
+  }
+  document.addEventListener('bg-poke', function (e) {
+    if (mode() !== 'ising' || !spin || !warm) return;
+    var d = e.detail;
+    if (d.phase === 'start') {
+      var m = 0;
+      field = { x: d.x, y: d.y, sign: 1, held: true, until: 0 };
+      disc(field, function (i) { m += spin[i]; });
+      field.sign = m > 0 ? -1 : 1;      // against the majority: paints the other colour
+      applyField(); draw();
+    } else if (field && d.phase === 'move') { field.x = d.x; field.y = d.y; applyField(); }
+    else if (field && d.phase === 'end') { field.held = false; field.until = performance.now() + FIELD_AFTER_MS; }
+  });
 
   // ---- Handing the spins from page to page (one bit per spin) ----
   function saveState() {
@@ -135,7 +175,10 @@
       while (sweeps < WARMUP && performance.now() - t0 < 10) sweep();
       if (sweeps >= WARMUP) { warm = true; draw(); canvas.classList.add('is-ready'); }
     } else if (now - last >= FRAME_MS) {
-      last = now; for (var k = 0; k < SWEEPS_PER_FRAME; k++) sweep(); draw();
+      last = now;
+      if (field && !field.held && now > field.until) field = null;
+      for (var k = 0; k < SWEEPS_PER_FRAME; k++) { sweep(); if (field) applyField(); }
+      draw();
     }
     raf = requestAnimationFrame(frame);
   }
@@ -179,6 +222,7 @@
   });
   function recolour() { if (spin && warm) draw(); }
   new MutationObserver(recolour).observe(root, { attributes: true, attributeFilter: ['data-theme'] });
+  document.addEventListener('bg-view-mix', function () { if (mode() === 'ising') recolour(); });
   if (darkMq.addEventListener) darkMq.addEventListener('change', recolour);
   update();
 })();

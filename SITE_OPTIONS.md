@@ -38,6 +38,7 @@ Kept only while the tab is open (sessionStorage):
 - Nothing runs when No animation is chosen.
 - They pause when the tab is hidden (another tab, window minimized, phone locked or in another app), and after **6 minutes** without any interaction with the page (mouse, touch, keyboard, wheel, scroll). The picture stays frozen and starts again at the first interaction. Nothing runs while paused.
 - Each physics page on Misc has a "Run it in the background" button for its animation.
+- **View mode** (round eye button, between the animation button and the theme button): the page fades out, the three round buttons stay at the top right, and the animation shows at full strength (it gets there in 0.6 s). The page neither scrolls nor zooms. Clicks and taps on the animation perturb it (see each animation below). Leave with the same button or Escape. Entering with No animation starts the Gray-Scott model; choosing No animation leaves view mode. Not remembered from page to page.
 
 ### Gray-Scott model (`assets/js/turing.js`)
 
@@ -52,6 +53,7 @@ Kept only while the tab is open (sessionStorage):
 | Speed | 10 steps every 33 ms, about 300 steps per second |
 | Warm-up | 2500 steps off-screen, then it fades in |
 | Hardware | graphics card (WebGL2) when possible, checked after warm-up and every 10 s; otherwise the CPU |
+| Clicks in view mode | a tap drops a disc of V of radius 63 px (it flashes, then collapses into a ring of spots), renewed every 150 ms while held; moving more than 10 px erases a path of radius 35 px |
 
 ### 2D Ising model (`assets/js/ising.js`)
 
@@ -63,6 +65,7 @@ Kept only while the tab is open (sessionStorage):
 | Grid | one spin per 5 px (at most 80000 spins), kept crisp |
 | Speed | 2 sweeps every 100 ms, 20 sweeps per second |
 | Warm-up | 600 sweeps from random spins, then it fades in |
+| Clicks in view mode | a magnetic field h = 20 J on a disc of radius 50 px, against the majority of its spins (it paints the other color); it follows a drag and stays 0.4 s after release |
 
 ### 2D spin glass (`assets/js/spinglass.js`)
 
@@ -76,6 +79,7 @@ Kept only while the tab is open (sessionStorage):
 | Drawing | 20 frames per second; each segment fades in or out in 6 steps (easing 0.25 per frame); only changed cells are redrawn, the whole layer above 300 changes |
 | Warm-up | 500 sweeps, cooling from T = 2.5 J, then it fades in |
 | Disorder | new random couplings for each visit, kept from page to page |
+| Clicks in view mode | flips every spin within 120 px (a droplet): a ring of strings appears on its boundary and relaxes; a drag flips a new droplet every 120 px |
 
 ## Lists that scroll
 
@@ -112,7 +116,7 @@ Pages on the physics of the animations (linked from Misc):
 
 - [The Gray-Scott model](https://jeanbarbier.github.io/misc/gray-scott/) (animation `turing`): Wikipedia [Reaction–diffusion system](https://en.wikipedia.org/wiki/Reaction%E2%80%93diffusion_system), [Turing pattern](https://en.wikipedia.org/wiki/Turing_pattern); 4 references.
 - [The 2D Ising model](https://jeanbarbier.github.io/misc/ising/) (animation `ising`): Wikipedia [Ising model](https://en.wikipedia.org/wiki/Ising_model), [Square-lattice Ising model](https://en.wikipedia.org/wiki/Square-lattice_Ising_model); 5 references.
-- [The 2D spin glass](https://jeanbarbier.github.io/misc/spin-glass/) (animation `spinglass`): Wikipedia [Spin glass](https://en.wikipedia.org/wiki/Spin_glass), [Geometrical frustration](https://en.wikipedia.org/wiki/Geometrical_frustration); 7 references.
+- [The 2D spin glass](https://jeanbarbier.github.io/misc/spin-glass/) (animation `spinglass`): Wikipedia [Spin glass](https://en.wikipedia.org/wiki/Spin_glass), [Geometrical frustration](https://en.wikipedia.org/wiki/Geometrical_frustration); 8 references.
 
 Header curves, drawn at random on each page load (4 real ones, from papers and notes, and 11 invented for fun):
 

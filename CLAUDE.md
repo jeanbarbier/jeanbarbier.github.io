@@ -14,7 +14,8 @@ it after every push. When adding an option, add it to the script; if the script 
   When he asks for a proposal, propose the wording before pushing.
 - Simple and restrained: no animations, banners or decoration. One exception, chosen by Jean:
   the faint background animations, the Gray-Scott model (on by default), the 2D Ising model or
-  the 2D spin glass, chosen, tuned or stopped from a header menu (see Small details).
+  the 2D spin glass, chosen, tuned or stopped from a header menu, and a view mode that shows them
+  alone at full strength and lets visitors perturb them by clicking (see Small details).
 - American spelling and US date style ("August 31 – September 4, 2026").
 - Low cost for visitors' devices: nothing runs when no animation is chosen, and a running
   animation pauses when the tab is hidden or after 6 minutes without interaction (3 was too
@@ -167,8 +168,22 @@ it after every push. When adding an option, add it to the script; if the script 
   interaction with the page (mouse, touch, keyboard, wheel, scroll; `site.js` sets
   `window.bgIdle` and fires `bg-idle-change`). The picture stays frozen and resumes at the
   first interaction. Nothing runs on a timer while paused.
-- The two round buttons (animation menu, light/dark) sit at the right edge of the header,
-  level with the name, on every screen size, so the page links keep one row.
+- View mode (eye button, `assets/js/bg-view.js`, between the animation menu and light/dark):
+  the page fades out (0.5 s), the three round buttons stay fixed at the top right with an opaque
+  background, the animation goes to full strength (opacity 1, eased over 0.6 s: `window.bgViewMix`
+  and `bg-view-mix` events), and the page neither scrolls nor zooms. Leave with the same button or
+  Escape (Escape first closes the menu if open); entering with No animation starts the Gray-Scott
+  model; choosing No animation leaves view mode; not remembered between pages. Clicks and taps
+  (not on the buttons, not while the menu is open) are sent as `bg-poke` events: Gray-Scott, a tap
+  drops a disc of V (u = 1, v ≈ 0.5, radius 63 px), renewed every 150 ms while held, and moving
+  more than 10 px turns the gesture into an eraser (u = 1, v = 0, radius 35 px) along the path;
+  Ising, a field h = 20 J against the majority of a 50 px disc, following a drag and staying 0.4 s
+  after release; spin glass, a droplet of radius 120 px is flipped (its boundary ring shows at once,
+  then relaxes), and a drag flips a new one every 120 px. The physics pages describe this in their
+  "On this site" sections: keep both in step.
+- The three round buttons (animation menu, view mode, light/dark) sit at the right edge of the
+  header, level with the name, on every screen size (slightly smaller below 23rem), so the page
+  links keep one row.
 - Link previews (Slack, email, social media): every page shares the site logo, the BBP curve
   of `favicon.svg`, as `assets/img/og-image.png` (1200x1200, square corners) in a small
   square card (front-matter defaults in `_config.yml`, rendered by jekyll-seo-tag).

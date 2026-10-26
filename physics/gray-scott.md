@@ -51,6 +51,8 @@ With the default parameters, the only uniform state is the one without V (*u* = 
 
 The background shows *v*, computed on a coarse grid (one cell is about 7 pixels) with the discretization popularized by Karl Sims, in units where the time step and the grid spacing are 1, *D<sub>u</sub>* = 1 and *D<sub>v</sub>* = 0.5. It runs at 300 time steps per second, on your graphics card when possible. The Pattern slider of the animation menu moves (*F*, *k*) along a path from spots (*F* = 0.026, *k* = 0.0615) to stripes (*F* = 0.046, same *k*), then to holes (*F* = 0.0415, *k* = 0.0592). To keep the pattern alive, *F* and *k* drift slowly and vary a little across the page, and every few seconds a small disc is wiped and reseeded: watch the pattern grow back into it.
 
+The eye button in the header hides the text and shows the pattern at full strength. There, a tap drops a disc of V, 63 pixels in radius, with *u* = 1 and *v* ≈ 0.5: it flashes, then collapses into a dark hole ringed by new spots, which the pattern soon fills again. Holding keeps the disc full, and dragging wipes a path clean (*u* = 1, *v* = 0) that the pattern grows back into.
+
 ## More
 
 - [Reaction–diffusion system](https://en.wikipedia.org/wiki/Reaction%E2%80%93diffusion_system) and [Turing pattern](https://en.wikipedia.org/wiki/Turing_pattern), on Wikipedia.

@@ -165,16 +165,20 @@ p, dd, li, figcaption, .news-text, .album-name { text-wrap: pretty; }
   position: absolute; top: 0; right: 1.25rem; height: var(--step-3);
   display: flex; align-items: center; gap: 0.4rem;
 }
-.theme-toggle, .anim-toggle {
+.theme-toggle, .anim-toggle, .view-toggle {
   flex: 0 0 auto;
   width: 2rem; height: 2rem;
   display: inline-grid; place-items: center;
   border: 1px solid var(--rule); border-radius: 50%;
   background: transparent; color: var(--muted); cursor: pointer;
 }
-.theme-toggle:hover, .anim-toggle:hover { color: var(--text); border-color: var(--muted); }
-.theme-toggle svg, .anim-toggle svg { width: 1rem; height: 1rem; }
-.anim-toggle[aria-pressed="true"] { color: var(--accent); border-color: var(--accent); }
+.theme-toggle:hover, .anim-toggle:hover, .view-toggle:hover { color: var(--text); border-color: var(--muted); }
+.theme-toggle svg, .anim-toggle svg, .view-toggle svg { width: 1rem; height: 1rem; }
+.anim-toggle[aria-pressed="true"], .view-toggle[aria-pressed="true"] { color: var(--accent); border-color: var(--accent); }
+@media (max-width: 23rem) {   /* very small phones: three slightly smaller buttons keep clear of the name */
+  .theme-toggle, .anim-toggle, .view-toggle { width: 1.8rem; height: 1.8rem; }
+  .header-buttons { gap: 0.3rem; }
+}
 /* Animation menu: a small card under the round button */
 .bg-menu-wrap { position: relative; display: inline-flex; }
 .bg-menu {
@@ -494,7 +498,7 @@ main .trieste p { max-width: none; }
 }
 @media (prefers-reduced-motion: reduce) { * { scroll-behavior: auto !important; } }
 @media print {
-  .site-nav, .curve-wrap, .theme-toggle, .anim-toggle, .bg-menu, .bg-turing, .bg-ising, .bg-sg { display: none; }
+  .site-nav, .curve-wrap, .theme-toggle, .anim-toggle, .view-toggle, .bg-menu, .bg-turing, .bg-ising, .bg-sg { display: none; }
   a { color: inherit; }
 }
 
@@ -520,6 +524,21 @@ main .trieste p { max-width: none; }
 .bg-sg canvas { position: absolute; inset: 0; width: 100%; height: 100%; }
 .bg-sg.is-ready { opacity: 1; transition-duration: 2.5s; }
 .bg-sg.instant { transition: none; }
+
+/* View mode (eye button, assets/js/bg-view.js): the page fades out, the three round buttons stay at
+   the top right (fixed, where they are at the top of the page), the animation shows at full strength
+   and clicks or taps on it perturb it. The page neither scrolls nor zooms meanwhile. */
+.site-name, .site-tagline, .site-nav, .curve-wrap, main, .site-footer { transition: opacity 0.5s ease; }
+html.bg-view :is(.site-name, .site-tagline, .site-nav, .curve-wrap, main, .site-footer, .skip-link) {
+  opacity: 0; visibility: hidden; transition: opacity 0.5s ease, visibility 0s linear 0.5s;
+}
+html.bg-view, html.bg-view body { overflow: hidden; touch-action: none; }
+html.bg-view body { cursor: crosshair; -webkit-user-select: none; user-select: none; }
+html.bg-view .header-buttons {
+  position: fixed; z-index: 20; top: 2.25rem; right: calc(max(0px, (100vw - var(--wide)) / 2) + 1.25rem); cursor: auto;
+}
+@media (max-width: 40rem) { html.bg-view .header-buttons { top: 1.5rem; } }
+html.bg-view :is(.anim-toggle, .view-toggle, .theme-toggle) { background: var(--bg); }   /* stay visible over the animation */
 
 /* ---------- Dated lists that show five items, then scroll (home News, past Events, Music) ---------- */
 /* site.js fits the height to the first five items and fades the bottom while more is below. */

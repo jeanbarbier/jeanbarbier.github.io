@@ -60,6 +60,8 @@ The background is simulated with the Metropolis algorithm (1953): pick a spin, c
 
 One spin every 5 pixels, about 20 sweeps of the whole grid per second. By default the temperature is *T*<sub>c</sub> itself. The simulation starts from random spins, and the clusters keep growing for a long while: close to *T*<sub>c</sub> the dynamics becomes very slow (critical slowing down). The temperature slider of the animation menu goes from 0.5 to 2 *T*<sub>c</sub>. Below *T*<sub>c</sub>, domains of both colors grow as their boundaries straighten and shrink, and over minutes one color tends to take over; at 2 *T*<sub>c</sub> the clusters are small and flicker. The grid is finite, so clusters cannot outgrow the screen, which smooths the transition a little.
 
+The eye button in the header hides the text and shows the spins at full strength. There, pressing switches on a strong magnetic field, *h* = 20 *J*, on a disc of 50 pixels around the pointer, pointing against most of the spins in it: it adds −*h* ∑ *s<sub>i</sub>* over the disc to the energy, and within a sweep or two the disc turns the other color. Dragging moves the field, which stays on for 0.4 s after you let go. The painted domain then dissolves into the fluctuations at and above *T*<sub>c</sub>, or, below it, slowly shrinks as the curvature of its boundary pulls it in.
+
 ## More
 
 - [Ising model](https://en.wikipedia.org/wiki/Ising_model) and [Square-lattice Ising model](https://en.wikipedia.org/wiki/Square-lattice_Ising_model), on Wikipedia.

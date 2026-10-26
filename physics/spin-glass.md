@@ -30,6 +30,11 @@ refs:
     venue: "Journal of Physics A: Mathematical and General 15"
     year: 1982
     doi: "10.1088/0305-4470/15/10/028"
+  - title: "Equilibrium behavior of the spin-glass ordered phase"
+    authors: [D. S. Fisher, D. A. Huse]
+    venue: "Physical Review B 38"
+    year: 1988
+    doi: "10.1103/PhysRevB.38.386"
   - title: "Exact ground states of two-dimensional ±J Ising spin glasses"
     authors: [C. De Simone, M. Diehl, M. Jünger, P. Mutzel, G. Reinelt, G. Rinaldi]
     venue: "Journal of Statistical Physics 84"
@@ -73,6 +78,8 @@ An unsatisfied bond costs 2 more than a satisfied one, so up to a constant the e
 At low temperature the strings are short, mostly joining neighboring dots, and they keep rearranging: a spin with two satisfied and two unsatisfied bonds can flip at no cost, which moves strings from one optimal pairing to another. When the temperature rises (slider of the animation menu, in units of *J*, from 0.2 to 2.5, by default 0.8), thermal excitations lengthen the strings into a tangle. There is no sharp transition along the way: in two dimensions the spin-glass phase only exists at zero temperature, although relaxation becomes extremely slow at low temperature. In three dimensions the spin-glass phase survives up to a finite temperature.
 
 One spin every 26 pixels. The dynamics is Metropolis at random sites, about 1.5 attempts per spin per second; to keep the motion calm, zero-cost flips are accepted only 12% of the time, which does not change the equilibrium distribution. Before it appears, the system is slowly cooled from *T* = 2.5. The couplings are drawn once per visit and kept from page to page.
+
+The eye button in the header hides the text and shows the strings at full strength. There, a click flips every spin within 120 pixels of it, a droplet in the picture of Daniel Fisher and David Huse. The bonds inside the droplet keep their state, while those crossing its boundary are toggled: a ring of strings appears around it, then relaxes, not always back to the pairing it had before. Dragging flips a new droplet every 120 pixels.
 
 ## Why it matters
 

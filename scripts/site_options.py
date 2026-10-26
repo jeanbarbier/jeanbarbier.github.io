@@ -56,6 +56,7 @@ def count(path, pattern, flags=re.M):
 # ---------------------------------------------------------------------------------------------
 TUR, ISI, SG, SITE, MENU = ('assets/js/turing.js', 'assets/js/ising.js', 'assets/js/spinglass.js',
                             'assets/js/site.js', 'assets/js/bg-menu.js')
+VIEW = 'assets/js/bg-view.js'
 
 # Default theme (inline script in the head, before first paint)
 theme_default = find('_includes/head.html', r"var t = '(dark|light)';", 'the default theme')
@@ -100,11 +101,17 @@ tur_cell, tur_steps, tur_frame, tur_warm = (num(TUR, 'CELL'), num(TUR, 'STEPS_PE
 kick_min, kick_max, kick_r, kick_extra = (num(TUR, 'KICK_MIN_MS'), num(TUR, 'KICK_MAX_MS'), num(TUR, 'KICK_R'),
                                           num(TUR, 'KICK_R_EXTRA'))
 gpu_check_s = fmt(float(find(TUR, r'nextCheckAt = now \+ (\d+);', 'the GPU check interval')) / 1000)
+tur_drop_r, tur_erase_r, tur_drag, tur_hold = (num(TUR, 'DROP_R_PX'), num(TUR, 'ERASE_R_PX'), num(TUR, 'DRAG_PX'),
+                                               num(TUR, 'HOLD_MS'))
+
+# View mode
+view_fade = num(VIEW, 'FADE_MS')
 
 # Ising
 isi_def, isi_min, isi_max = num(ISI, 'T_DEFAULT'), num(ISI, 'T_MIN'), num(ISI, 'T_MAX')
 isi_cell, isi_max_spins = num(ISI, 'CELL'), num(ISI, 'MAX_SPINS')
 isi_frame, isi_sweeps, isi_warm = num(ISI, 'FRAME_MS'), num(ISI, 'SWEEPS_PER_FRAME'), num(ISI, 'WARMUP')
+isi_field_r, isi_field_h, isi_field_after = num(ISI, 'FIELD_R_PX'), num(ISI, 'FIELD_H'), num(ISI, 'FIELD_AFTER_MS')
 isi_pal = {m: re.search(m + r': \{ up: \[([^\]]+)\], down: \[([^\]]+)\], alpha: ([0-9.]+) \}', read(ISI)).groups()
            for m in ('dark', 'light')}
 
@@ -113,6 +120,7 @@ sg_def, sg_min, sg_max = num(SG, 'T_DEFAULT'), num(SG, 'T_MIN'), num(SG, 'T_MAX'
 sg_cell, sg_frame, sg_rate, sg_zero = num(SG, 'CELL'), num(SG, 'FRAME_MS'), num(SG, 'RATE'), num(SG, 'ZERO')
 sg_fade, sg_warm, sg_anneal = num(SG, 'FADE'), num(SG, 'WARMUP'), num(SG, 'T_ANNEAL')
 sg_levels, sg_full, sg_line = num(SG, 'LEVELS'), num(SG, 'FULL_LIMIT'), num(SG, 'LINE')
+sg_droplet = num(SG, 'DROPLET_R_PX')
 sg_pal = {m: re.search(m + r': \{ string: \[([^\]]+)\], stringAlpha: ([0-9.]+), dot: \[([^\]]+)\], dotAlpha: ([0-9.]+) \}',
                        read(SG)).groups() for m in ('dark', 'light')}
 
@@ -249,6 +257,12 @@ w('- They pause when the tab is hidden (another tab, window minimized, phone loc
   'scroll). The picture stays frozen and starts again at the first interaction. Nothing runs while '
   'paused.' % idle_min)
 w('- Each physics page on Misc has a "Run it in the background" button for its animation.')
+w('- **View mode** (round eye button, between the animation button and the theme button): the page '
+  'fades out, the three round buttons stay at the top right, and the animation shows at full strength '
+  '(it gets there in %s s). The page neither scrolls nor zooms. Clicks and taps on the animation perturb '
+  'it (see each animation below). Leave with the same button or Escape. Entering with No animation '
+  'starts %s; choosing No animation leaves view mode. Not remembered from page to page.'
+  % (fmt(float(view_fade) / 1000), NAMES['turing']))
 w('')
 w('### Gray-Scott model (`assets/js/turing.js`)')
 w('')
@@ -270,6 +284,9 @@ w('| Speed | %s steps every %s ms, about %d steps per second |'
 w('| Warm-up | %s steps off-screen, then it fades in |' % tur_warm)
 w('| Hardware | graphics card (WebGL2) when possible, checked after warm-up and every %s s; '
   'otherwise the CPU |' % gpu_check_s)
+w('| Clicks in view mode | a tap drops a disc of V of radius %s px (it flashes, then collapses into a ring of '
+  'spots), renewed every %s ms while held; moving more than %s px erases a path of radius %s px |'
+  % (tur_drop_r, tur_hold, tur_drag, tur_erase_r))
 w('')
 w('### 2D Ising model (`assets/js/ising.js`)')
 w('')
@@ -285,6 +302,9 @@ w('| Grid | one spin per %s px (at most %s spins), kept crisp |' % (isi_cell, is
 w('| Speed | %s sweeps every %s ms, %d sweeps per second |'
   % (isi_sweeps, isi_frame, round(float(isi_sweeps) * 1000 / float(isi_frame))))
 w('| Warm-up | %s sweeps from random spins, then it fades in |' % isi_warm)
+w('| Clicks in view mode | a magnetic field h = %s J on a disc of radius %s px, against the majority of its '
+  'spins (it paints the other color); it follows a drag and stays %s s after release |'
+  % (isi_field_h, isi_field_r, fmt(float(isi_field_after) / 1000)))
 w('')
 w('### 2D spin glass (`assets/js/spinglass.js`)')
 w('')
@@ -303,6 +323,8 @@ w('| Drawing | %d frames per second; each segment fades in or out in %s steps (e
   % (round(1000 / float(sg_frame)), sg_levels, sg_fade, sg_full))
 w('| Warm-up | %s sweeps, cooling from T = %s J, then it fades in |' % (sg_warm, fmt(sg_anneal)))
 w('| Disorder | new random couplings for each visit, kept from page to page |')
+w('| Clicks in view mode | flips every spin within %s px (a droplet): a ring of strings appears on its '
+  'boundary and relaxes; a drag flips a new droplet every %s px |' % (sg_droplet, sg_droplet))
 w('')
 w('## Lists that scroll')
 w('')

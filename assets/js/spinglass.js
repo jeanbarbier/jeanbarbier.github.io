@@ -13,7 +13,9 @@
 // keep rearranging through zero-energy flips; high T: the strings lengthen and tangle. Segments
 // fade in and out rather than blink. The couplings come from a per-visit seed and the spins are
 // handed from page to page. Plain 2D canvas, 20 frames per second, redrawing only the cells that
-// change; paused when the tab is hidden; nothing runs unless it is chosen.
+// change; paused when the tab is hidden; nothing runs unless it is chosen. In view mode (eye
+// button, bg-view.js) it shows at full strength, and a click flips every spin within DROPLET_R_PX
+// of it, a droplet: the bonds crossing its boundary toggle, so a ring of strings appears and relaxes.
 (function () {
   'use strict';
 
@@ -25,6 +27,7 @@
   var ZERO = 0.12;                     // acceptance of zero-energy flips (any value keeps detailed balance; small = calm)
   var FADE = 0.25;                     // per-frame easing of each segment's opacity (about half a second)
   var WARMUP = 500, T_ANNEAL = 2.5;    // sweeps of annealing from T_ANNEAL down to T before showing
+  var DROPLET_R_PX = 120;              // view mode: radius of the flipped droplet (CSS px); a drag flips a new one every radius
 
   var PALETTES = {
     dark: { string: [147, 174, 239], stringAlpha: 0.24, dot: [255, 149, 117], dotAlpha: 0.32 },
@@ -51,6 +54,7 @@
   }
   function theme() { var t = root.getAttribute('data-theme'); return t ? t : (darkMq.matches ? 'dark' : 'light'); }
   function rgba(c, a) { return 'rgba(' + c[0] + ',' + c[1] + ',' + c[2] + ',' + a.toFixed(3) + ')'; }
+  function strength(a) { var m = window.bgViewMix || 0; return a + (1 - a) * m; }   // full strength in view mode
 
   function rng(seed) {                   // mulberry32: the couplings are reproducible from the seed
     var a = seed >>> 0;
@@ -139,7 +143,7 @@
   function drawDots() {                  // frustrated plaquettes: fixed by the couplings, drawn once
     var pal = PALETTES[theme()], rad = 1.7;
     dctx.setTransform(dpr, 0, 0, dpr, 0, 0); dctx.clearRect(0, 0, W, H);
-    dctx.fillStyle = rgba(pal.dot, pal.dotAlpha); dctx.beginPath();
+    dctx.fillStyle = rgba(pal.dot, strength(pal.dotAlpha)); dctx.beginPath();
     for (var y = 0; y < rows; y++) for (var x = 0; x < cols; x++) {
       if (!frus[y * cols + x]) continue;
       var px = (x + 0.5) * CELL, py = (y + 0.5) * CELL;
@@ -189,7 +193,7 @@
     sctx.lineWidth = LINE; sctx.lineCap = 'round';
     for (var q = 1; q <= LEVELS; q++) {
       var p = bins[q]; if (!p.length) continue;
-      sctx.strokeStyle = rgba(pal.string, pal.stringAlpha * q / LEVELS);
+      sctx.strokeStyle = rgba(pal.string, strength(pal.stringAlpha) * q / LEVELS);
       sctx.beginPath();
       for (var k = 0; k < p.length; k += 4) { sctx.moveTo(p[k], p[k + 1]); sctx.lineTo(p[k + 2], p[k + 3]); }
       sctx.stroke(); p.length = 0;
@@ -225,6 +229,34 @@
     ease();
     if (dirty.length > FULL_LIMIT) drawAll(); else if (dirty.length) drawSquares(dirty);
   }
+
+  // ---- View mode: a click flips a droplet ----
+  var lastFlip = null;
+  function flipDroplet(px, py) {
+    var R = DROPLET_R_PX / CELL, x0 = Math.round(px / CELL), y0 = Math.round(py / CELL), touched = [];
+    for (var dy = Math.ceil(-R); dy <= R; dy++) for (var dx = Math.ceil(-R); dx <= R; dx++) {
+      var xx = x0 + dx, yy = y0 + dy;
+      if ((xx * CELL - px) * (xx * CELL - px) + (yy * CELL - py) * (yy * CELL - py) > DROPLET_R_PX * DROPLET_R_PX) continue;
+      xx = ((xx % cols) + cols) % cols; yy = ((yy % rows) + rows) % rows;
+      var i = yy * cols + xx, mid = yy * cols;
+      spin[i] = -spin[i];
+      touched.push(i, mid + (xx === 0 ? cols - 1 : xx - 1), (mid === 0 ? n : mid) - cols + xx);
+    }
+    // the ring of strings on the boundary shows at once (no fade-in), then relaxes as usual
+    for (var k = 0; k < touched.length; k++) {
+      var j = touched[k]; target(j);
+      aX[j] = tx; aY[j] = ty; lvX[j] = tx * LEVELS; lvY[j] = ty * LEVELS;
+    }
+    if (touched.length > FULL_LIMIT) drawAll(); else drawSquares(touched);
+    lastFlip = [px, py];
+  }
+  document.addEventListener('bg-poke', function (e) {
+    if (mode() !== 'spinglass' || !built || !warm) return;
+    var d = e.detail;
+    if (d.phase === 'start') flipDroplet(d.x, d.y);
+    else if (d.phase === 'move' && lastFlip && Math.hypot(d.x - lastFlip[0], d.y - lastFlip[1]) >= DROPLET_R_PX) flipDroplet(d.x, d.y);
+    else if (d.phase === 'end') lastFlip = null;
+  });
 
   // ---- Handing the spins from page to page (one bit per spin; the couplings come from the seed) ----
   function saveState() {
@@ -313,6 +345,7 @@
   });
   function recolour() { if (built) { drawDots(); if (warm) drawAll(); } }
   new MutationObserver(recolour).observe(root, { attributes: true, attributeFilter: ['data-theme'] });
+  document.addEventListener('bg-view-mix', function () { if (mode() === 'spinglass') recolour(); });
   if (darkMq.addEventListener) darkMq.addEventListener('change', recolour);
   update();
 })();
