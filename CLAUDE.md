@@ -135,7 +135,7 @@ changing anything. A push to `master` is live after about a minute; check the li
   One pixel per spin (5 CSS px, kept crisp with `image-rendering: pixelated`),
   Metropolis dynamics on a checkerboard with periodic edges, ~20 sweeps/s drawn 10 times a
   second, 600 sweeps of warm-up before fading in. Up spins in the site blue, down spins in
-  the curve-label orange, alpha 0.10 (0.08 light). Spins handed from page to page (one bit
+  the curve-label orange, alpha 0.13 (0.08 light). Spins handed from page to page (one bit
   each, sessionStorage `bg-ising-state`).
 - Spin-glass animation (`assets/js/spinglass.js`, two canvases in `.bg-sg`): the 2D ±J
   Edwards-Anderson model (couplings ±1, periodic edges, one spin every 26 CSS px), drawn as its
@@ -149,7 +149,7 @@ changing anything. A push to `master` is live after about a minute; check the li
   (in units of J, shown as "0.80 J"), default 0.8, remembered (localStorage `bg-sg-T`, event
   `bg-sg-temp`). Couplings from a per-visit seed (sessionStorage `bg-sg-seed`), spins handed
   from page to page (sessionStorage `bg-sg-state`). 20 frames per second, paused when hidden.
-- All background animations pause when the tab is hidden, and after 3 minutes without any
+- All background animations pause when the tab is hidden, and after 6 minutes without any
   interaction with the page (mouse, touch, keyboard, wheel, scroll; `site.js` sets
   `window.bgIdle` and fires `bg-idle-change`). The picture stays frozen and resumes at the
   first interaction. Nothing runs on a timer while paused.

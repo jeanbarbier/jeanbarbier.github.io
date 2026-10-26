@@ -1,10 +1,10 @@
-// Background animations pause after 3 minutes without any interaction with the page (mouse,
+// Background animations pause after 6 minutes without any interaction with the page (mouse,
 // touch, keyboard, wheel or scroll) and resume at the first one; the picture stays as it was.
 // They also pause whenever the tab is hidden (in turing.js, ising.js, spinglass.js). A page can
 // only see interactions with itself, not with other windows or apps. Sets window.bgIdle and
 // fires 'bg-idle-change'.
 (function () {
-  var IDLE_MS = 3 * 60 * 1000, last = Date.now(), timer = 0;
+  var IDLE_MS = 6 * 60 * 1000, last = Date.now(), timer = 0;
   window.bgIdle = false;
   function check() {
     var left = IDLE_MS - (Date.now() - last);
