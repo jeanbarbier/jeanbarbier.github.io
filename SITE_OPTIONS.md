@@ -12,7 +12,7 @@ Everything a visitor gets by default, what they can change, and every setting of
 | Ising temperature, when chosen | 1.00 T<sub>c</sub> |
 | Spin-glass temperature, when chosen | 0.80 J |
 | Header curve | one of 15 phase transitions at random, never the same twice in a row |
-| Cookies | none |
+| Cookies | (stale line, test) |
 | Visit statistics | GoatCounter (jeanbarbier.goatcounter.com), on the published site only |
 
 ## What visitors can change, and what is remembered

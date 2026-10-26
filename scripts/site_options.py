@@ -6,7 +6,7 @@ It runs by itself before every commit (git hook in .githooks/) and after every p
 (GitHub Action in .github/workflows/), so SITE_OPTIONS.md always describes the site as it is.
 If a value can no longer be found (the code was reorganized), the script stops with an error
 naming it: update the pattern below. To document a new option, add it to the text at the end.
-No dependencies beyond Python 3.
+No dependencies beyond Python 3 (standard library only).
 """
 import os
 import re
