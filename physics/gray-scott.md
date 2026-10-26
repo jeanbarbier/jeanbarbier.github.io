@@ -27,6 +27,12 @@ refs:
     year: 1994
     doi: "10.1038/369215a0"
 ---
+Picture a thin layer of liquid holding two chemicals. The first one is food, poured in steadily everywhere. The second one eats the food to make more copies of itself, and it also slowly breaks down. Both spread through the liquid, like a drop of ink in water, but the food spreads twice as fast.
+
+This small difference is enough to draw patterns. Where the second chemical is plentiful, it multiplies and eats up the food over a wide area around it, so that a little further away it cannot grow: the patches settle at regular distances from each other, as spots or stripes. In 1952 Alan Turing proposed that such a mechanism could explain how a uniform embryo develops structure, and it has since been used to explain patterns such as the spots and stripes of animal coats. The background shows where the second chemical is. The slider in the animation menu changes how fast the food comes in and how fast the second chemical breaks down, and with them the pattern.
+
+## In more detail
+
 The default background of the site is a reaction–diffusion system: two chemical species, U and V, spread over a surface and react with each other. Their concentrations *u* and *v* evolve as
 
 <p class="eq">∂<i>u</i>/∂<i>t</i> = <i>D<sub>u</sub></i> ∇²<i>u</i> − <i>uv</i>² + <i>F</i> (1 − <i>u</i>),<br>∂<i>v</i>/∂<i>t</i> = <i>D<sub>v</sub></i> ∇²<i>v</i> + <i>uv</i>² − (<i>F</i> + <i>k</i>) <i>v</i>.</p>

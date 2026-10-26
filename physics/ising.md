@@ -32,6 +32,12 @@ refs:
     year: 1953
     doi: "10.1063/1.1699114"
 ---
+Picture a piece of iron as a huge collection of tiny compass needles, the magnetic moments of its atoms. In this simplest model, each needle can only point up or down, and it would like to point the same way as its neighbors. When most needles agree, their small effects add up and the material is a magnet. Heat works against this: it shakes the needles and flips them at random.
+
+At low temperature, agreement wins and large regions point the same way. At high temperature, the shaking wins and the needles point every which way, so the magnetism disappears: this is why a magnet heated above a certain temperature, about 770 °C for iron, stops being one. In between, at a precise critical temperature, the two effects balance each other, and patches of all sizes, from a few needles to the whole screen, keep forming and dissolving. In the background, blue squares are needles pointing up and orange squares needles pointing down. By default it sits at the critical temperature, and the slider in the animation menu heats or cools it.
+
+## In more detail
+
 In this background, each small square is a tiny magnet, a spin *s* that points up (*s* = +1, blue) or down (*s* = −1, orange). The spins sit on a square grid and each one interacts with its four neighbors. The energy of a configuration is
 
 <p class="eq"><i>E</i> = −<i>J</i> ∑<sub>⟨<i>ij</i>⟩</sub> <i>s<sub>i</sub> s<sub>j</sub></i>,</p>
