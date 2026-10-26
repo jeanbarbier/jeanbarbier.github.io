@@ -3,6 +3,11 @@
 Jean Barbier's personal and Barbier-group website: Jekyll 3.10 on GitHub Pages, no theme
 (file map in README.md). Jean also edits the site himself: always `git pull` before
 changing anything. A push to `master` is live after about a minute; check the live page.
+`SITE_OPTIONS.md` lists every option and default of the site in plain words for Jean. It is
+written by `scripts/site_options.py` from the code and data, never by hand: the pre-commit
+hook runs it (`git config core.hooksPath .githooks` once per clone) and a GitHub Action runs
+it after every push. When adding an option, add it to the script; if the script stops with
+"could not find", update its pattern to the new code.
 
 ## Working with Jean
 - Ask before design decisions, and before fixing anything that looks inconsistent.

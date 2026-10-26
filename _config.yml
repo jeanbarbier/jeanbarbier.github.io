@@ -52,6 +52,7 @@ kramdown:
 exclude:
   - README.md
   - CLAUDE.md
+  - SITE_OPTIONS.md
   - Gemfile
   - Gemfile.lock
   - scripts/

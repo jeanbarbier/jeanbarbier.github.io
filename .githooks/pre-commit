@@ -1,0 +1,5 @@
+#!/bin/sh
+# Keep SITE_OPTIONS.md in step with the site: regenerate it and add it to every commit.
+# Enable once per clone: git config core.hooksPath .githooks
+python3 scripts/site_options.py >/dev/null || exit 1
+git add SITE_OPTIONS.md
