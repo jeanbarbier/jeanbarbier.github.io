@@ -270,7 +270,7 @@
   }
 
   function update() {
-    var on = mode() === 'spinglass', go = on && !document.hidden;
+    var on = mode() === 'spinglass', go = on && !document.hidden && !window.bgIdle;   // paused when hidden or idle (site.js)
     if (go && !running) {
       if (!built) {
         T = storedT();
@@ -293,6 +293,7 @@
   }
 
   document.addEventListener('bg-anim-change', update);
+  document.addEventListener('bg-idle-change', update);
   document.addEventListener('bg-sg-temp', setTemperature);   // the slider applies at once
   window.addEventListener('pagehide', function () { if (built && warm && mode() === 'spinglass') saveState(); });
   document.addEventListener('visibilitychange', function () { if (document.hidden && built && warm && mode() === 'spinglass') saveState(); update(); });

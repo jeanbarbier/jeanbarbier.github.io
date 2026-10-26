@@ -141,7 +141,7 @@
   }
 
   function update() {
-    var on = mode() === 'ising', go = on && !document.hidden;
+    var on = mode() === 'ising', go = on && !document.hidden && !window.bgIdle;   // paused when hidden or idle (site.js)
     if (go && !running) {
       if (!spin) {
         var saved = loadState();
@@ -163,6 +163,7 @@
   }
 
   document.addEventListener('bg-anim-change', update);
+  document.addEventListener('bg-idle-change', update);
   document.addEventListener('bg-ising-temp', setTemperature);   // the slider applies at once
   window.addEventListener('pagehide', function () { if (spin && warm && mode() === 'ising') saveState(); });
   document.addEventListener('visibilitychange', function () { if (document.hidden && spin && warm && mode() === 'ising') saveState(); update(); });

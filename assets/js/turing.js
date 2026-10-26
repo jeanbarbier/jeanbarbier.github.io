@@ -404,7 +404,7 @@
 
   function update() {
     var on = enabled();
-    var go = on && !document.hidden;
+    var go = on && !document.hidden && !window.bgIdle;   // paused when the tab is hidden or nobody interacts (site.js)
     if (go && !running) {
       if (!engine) { setup(); if (!engine) return; }
       if (warm) canvas.classList.add('is-ready');
@@ -418,6 +418,7 @@
   }
 
   document.addEventListener('bg-anim-change', update);
+  document.addEventListener('bg-idle-change', update);
 
   // Hand the current pattern to the next page (navigation) or to a later return to this tab.
   function handOver() { if (engine && warm && enabled()) saveState(engine); }

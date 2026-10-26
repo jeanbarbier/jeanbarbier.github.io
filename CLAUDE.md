@@ -149,6 +149,10 @@ changing anything. A push to `master` is live after about a minute; check the li
   (in units of J, shown as "0.80 J"), default 0.8, remembered (localStorage `bg-sg-T`, event
   `bg-sg-temp`). Couplings from a per-visit seed (sessionStorage `bg-sg-seed`), spins handed
   from page to page (sessionStorage `bg-sg-state`). 20 frames per second, paused when hidden.
+- All background animations pause when the tab is hidden, and after 3 minutes without any
+  interaction with the page (mouse, touch, keyboard, wheel, scroll; `site.js` sets
+  `window.bgIdle` and fires `bg-idle-change`). The picture stays frozen and resumes at the
+  first interaction. Nothing runs on a timer while paused.
 - The two round buttons (animation menu, light/dark) sit at the right edge of the header,
   level with the name, on every screen size, so the page links keep one row.
 - Link previews (Slack, email, social media): every page shares the site logo, the BBP curve

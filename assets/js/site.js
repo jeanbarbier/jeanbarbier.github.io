@@ -1,3 +1,29 @@
+// Background animations pause after 3 minutes without any interaction with the page (mouse,
+// touch, keyboard, wheel or scroll) and resume at the first one; the picture stays as it was.
+// They also pause whenever the tab is hidden (in turing.js, ising.js, spinglass.js). A page can
+// only see interactions with itself, not with other windows or apps. Sets window.bgIdle and
+// fires 'bg-idle-change'.
+(function () {
+  var IDLE_MS = 3 * 60 * 1000, last = Date.now(), timer = 0;
+  window.bgIdle = false;
+  function check() {
+    var left = IDLE_MS - (Date.now() - last);
+    if (left > 0) { timer = setTimeout(check, left + 50); return; }
+    timer = 0; window.bgIdle = true; document.dispatchEvent(new Event('bg-idle-change'));
+  }
+  function poke() {
+    last = Date.now();
+    if (window.bgIdle) { window.bgIdle = false; document.dispatchEvent(new Event('bg-idle-change')); }
+    if (!timer) timer = setTimeout(check, IDLE_MS);
+  }
+  ['pointermove', 'pointerdown', 'keydown', 'wheel', 'scroll', 'touchstart'].forEach(function (t) {
+    window.addEventListener(t, poke, { passive: true, capture: true });
+  });
+  window.addEventListener('focus', poke);
+  document.addEventListener('visibilitychange', function () { if (!document.hidden) poke(); });
+  timer = setTimeout(check, IDLE_MS);
+})();
+
 // Small details: a note for the curious in the console, click-to-copy email, BibTeX citations.
 (function () {
   try {
