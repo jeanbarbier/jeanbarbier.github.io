@@ -111,7 +111,9 @@ it after every push. When adding an option, add it to the script; if the script 
   (`invented: true`) are in the same pool, each with a playful hover text; they link to Misc
   or to the Trieste section of the home page. Each curve also has a short `label`
   written at its left, small and light red-orange (`--curve-note`), placed as close to the
-  vertical middle as the curve allows; the longer `title` stays on hover.
+  vertical middle as the curve allows; when the curve crosses it anyway, the plain text is
+  written over the curve, never on a background patch (the animation must show through); the
+  longer `title` stays on hover.
 - Home: a "Mail" link (styled like the others) copies the address on click; the address is
   never written in the page, only assembled in `assets/js/site.js`, against scraping.
 - `site.js` also prints a short note for the curious in the browser console (PhD openings).

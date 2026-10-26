@@ -77,7 +77,8 @@
       a.href = (cv.paper && location.pathname === href) ? cv.paper : href;
       a.title = cv.title; a.setAttribute('aria-label', cv.title);
       var lab = a.querySelector('.curve-label'); lab.textContent = cv.label;
-      // Short label at the left, vertically as close to the middle as the curve allows.
+      // Short label at the left, vertically as close to the middle as the curve allows; if the
+      // curve crosses every spot, the plain text sits over it (no background, the animation shows).
       var W = a.clientWidth, H = a.clientHeight, lw = lab.offsetWidth + 6, lh = lab.offsetHeight / 2 + 2, P = [];
       cv.d.split('M').forEach(function (seg) {
         var n = (seg.match(/-?\d+\.?\d*/g) || []).map(Number);
@@ -87,7 +88,6 @@
       var spots = [0.5, 0.33, 0.67, 0.18, 0.82].map(function (f) { return f * H; }), y = null;
       for (var s = 0; s < spots.length && y === null; s++)
         if (!P.some(function (p) { return p[0] < lw && Math.abs(p[1] - spots[s]) < lh; })) y = spots[s];
-      lab.classList.toggle('knockout', y === null);
       lab.style.top = (y === null ? H / 2 : y) + 'px';
     })();
   </script>

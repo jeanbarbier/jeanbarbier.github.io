@@ -213,7 +213,6 @@ p, dd, li, figcaption, .news-text, .album-name { text-wrap: pretty; }
   position: absolute; left: 0; top: 50%; transform: translateY(-50%);
   font-size: 0.72rem; line-height: 1.2; white-space: nowrap; color: var(--curve-note); pointer-events: none;
 }
-.curve-label.knockout { background: var(--bg); padding-right: 0.3rem; }   /* only if the curve crosses every spot */
 /* First-order transitions: open dot = limit not attained, filled dot = value at the transition */
 .jump-dot {
   position: absolute; width: 7px; height: 7px; box-sizing: border-box; border-radius: 50%;
