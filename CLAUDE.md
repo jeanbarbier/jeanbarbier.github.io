@@ -11,6 +11,9 @@ changing anything. A push to `master` is live after about a minute; check the li
   the faint background animations, the Gray-Scott model (on by default), the 2D Ising model or
   the 2D spin glass, chosen, tuned or stopped from a header menu (see Small details).
 - American spelling and US date style ("August 31 – September 4, 2026").
+- Low cost for visitors' devices: nothing runs when no animation is chosen, and a running
+  animation pauses when the tab is hidden or after 6 minutes without interaction (3 was too
+  short). Check CPU cost when changing an animation.
 - Uniformity first: the same kind of element looks the same on every page. After a
   change, check the whole site for consistency.
 
@@ -39,9 +42,13 @@ changing anything. A push to `master` is live after about a minute; check the li
   are in sentence case (capital on the first
   letter only; acronyms such as AI and proper names keep theirs), even when the original title
   is capitalized.
-- Research: Highlights, then For a wider audience (talk, perspective, press coverage; press
-  clippings cropped to our article and saved as JPEG in `assets/img/press/`), then Selected
-  papers grouped by theme (full list on Scholar). No separate chronological publication page.
+- Research: Highlights, then For a wider audience (talk, perspective, press coverage), then
+  Selected papers grouped by theme (full list on Scholar). No separate chronological
+  publication page. Press coverage of one paper is one item: the title links to the main
+  article (ICTP news), the grey line starts with "Press coverage." and links the paper and
+  the other outlets (language noted, e.g. "both in Italian"); the matching home News item lists
+  the same outlets. Newspaper clippings are cropped to our article only and saved as JPEG
+  (about 200 dpi) in `assets/img/press/`.
 - The photo gallery is the last section of the Group page.
 - Misc has no ERC funding footer (`funding: false`): music and personal content are not
   ERC-funded.
