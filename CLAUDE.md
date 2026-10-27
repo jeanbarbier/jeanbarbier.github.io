@@ -72,6 +72,9 @@ it after every push. When adding an option, add it to the script; if the script 
   shapes, so they are set 10% smaller (`emoji_scale: 0.9`) to look the same size as the others.
 - Page introduction: one grey sentence under the h1 (`intro:` front matter).
   Section introduction: one plain sentence under the h2.
+- Sections that are natural subsections of another are presented as such, everywhere on the
+  site: h3 under their h2 (serif, `--step-1`), like the themes under Selected papers on Research
+  and the subsections of "In more detail" on the physics pages (`.prose h3`).
 
 ## Lists
 - Lists grouped by topic (papers, highlights, wider audience, teaching, quotes, Worth reading,
@@ -150,7 +153,7 @@ it after every push. When adding an option, add it to the script; if the script 
   One pixel per spin (5 CSS px, kept crisp with `image-rendering: pixelated`),
   Metropolis dynamics on a checkerboard with periodic edges, ~20 sweeps/s drawn 10 times a
   second, 600 sweeps of warm-up before fading in. Up spins in the site blue, down spins in
-  the curve-label orange, alpha 0.15 (0.10 light). Spins handed from page to page (one bit
+  the curve-label orange, alpha 0.14 (0.09 light). Spins handed from page to page (one bit
   each, sessionStorage `bg-ising-state`).
 - Spin-glass animation (`assets/js/spinglass.js`, two canvases in `.bg-sg`): the 2D ±J
   Edwards-Anderson model (couplings ±1, periodic edges, one spin every 26 CSS px), drawn as its

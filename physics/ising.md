@@ -44,7 +44,7 @@ In this background, each small square is a tiny magnet, a spin *s* that points u
 
 where the sum runs over pairs of neighbors and *J* > 0, so that aligned neighbors lower the energy. At temperature *T*, a configuration appears with the Boltzmann probability, proportional to e<sup>−*E*/*T*</sup> (with Boltzmann's constant set to 1). Energy favors order, temperature favors disorder, and their competition produces a phase transition.
 
-## The phase transition
+### The phase transition
 
 Wilhelm Lenz proposed the model in 1920 and gave it to his student Ernst Ising, who solved it in one dimension in 1925. Finding no transition there, Ising wrongly concluded that there was none in any dimension. In 1936 Rudolf Peierls proved that in two dimensions the model orders at low temperature, and in 1944 Lars Onsager solved it exactly, a landmark of statistical physics. The transition takes place at the temperature
 
@@ -52,11 +52,11 @@ Wilhelm Lenz proposed the model in 1920 and gave it to his student Ernst Ising, 
 
 Below *T*<sub>c</sub>, most spins agree: the system has a spontaneous magnetization, which vanishes as *T* approaches *T*<sub>c</sub>, like (*T*<sub>c</sub> − *T*)<sup>1/8</sup>. Above *T*<sub>c</sub>, up and down spins mix in clusters that shrink as the temperature rises. At *T*<sub>c</sub> clusters of all sizes coexist, and the picture looks statistically the same at every scale: correlations between distant spins decay as a power of the distance instead of exponentially.
 
-## The dynamics
+### The dynamics
 
 The background is simulated with the Metropolis algorithm (1953): pick a spin, compute the energy change Δ*E* that flipping it would cause, and flip it if Δ*E* ≤ 0, or otherwise with probability e<sup>−Δ*E*/*T*</sup>. On the square grid, Δ*E* only takes the values 0, ±4*J* and ±8*J*. These rules satisfy detailed balance, so that after many steps the configurations are sampled from the Boltzmann distribution. To update many spins at once, the grid is colored like a checkerboard: the neighbors of a black square are all white, so all black spins can be updated together, then all white ones.
 
-## On this site
+### On this site
 
 One spin every 5 pixels, about 20 sweeps of the whole grid per second. By default the temperature is *T*<sub>c</sub> itself. The simulation starts from random spins, and the clusters keep growing for a long while: close to *T*<sub>c</sub> the dynamics becomes very slow (critical slowing down). The temperature slider of the animation menu goes from 0.5 to 2 *T*<sub>c</sub>. Below *T*<sub>c</sub>, domains of both colors grow as their boundaries straighten and shrink, and over minutes one color tends to take over; at 2 *T*<sub>c</sub> the clusters are small and flicker. The grid is finite, so clusters cannot outgrow the screen, which smooths the transition a little.
 

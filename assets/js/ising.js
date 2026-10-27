@@ -20,8 +20,8 @@
   var FIELD_R_PX = 50, FIELD_H = 20, FIELD_AFTER_MS = 400;  // view mode: field disc radius (CSS px), strength (J), time it stays after release
 
   var PALETTES = {
-    dark: { up: [90, 130, 230], down: [255, 149, 117], alpha: 0.15 },
-    light: { up: [43, 71, 150], down: [232, 106, 69], alpha: 0.1 }
+    dark: { up: [90, 130, 230], down: [255, 149, 117], alpha: 0.14 },
+    light: { up: [43, 71, 150], down: [232, 106, 69], alpha: 0.09 }
   };
 
   var canvas = document.querySelector('.bg-ising');
