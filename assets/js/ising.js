@@ -21,7 +21,7 @@
 
   var PALETTES = {
     dark: { up: [90, 130, 230], down: [255, 149, 117], alpha: 0.14 },
-    light: { up: [43, 71, 150], down: [232, 106, 69], alpha: 0.09 }
+    light: { up: [43, 71, 150], down: [232, 106, 69], alpha: 0.12 }
   };
 
   var canvas = document.querySelector('.bg-ising');

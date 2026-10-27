@@ -60,7 +60,7 @@ Kept only while the tab is open (sessionStorage):
 | Setting | Value |
 |---|---|
 | Colors, dark mode | up spins rgb(90, 130, 230), down spins rgb(255, 149, 117), opacity 0.14 |
-| Colors, light mode | up spins rgb(43, 71, 150), down spins rgb(232, 106, 69), opacity 0.09 |
+| Colors, light mode | up spins rgb(43, 71, 150), down spins rgb(232, 106, 69), opacity 0.12 |
 | Slider "Temperature" | 0.5 to 2 T<sub>c</sub> (T<sub>c</sub> marked), default 1 T<sub>c</sub> |
 | Grid | one spin per 5 px (at most 80000 spins), kept crisp |
 | Speed | 2 sweeps every 100 ms, 20 sweeps per second |
