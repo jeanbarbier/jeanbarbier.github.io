@@ -375,7 +375,7 @@ w('| Accent color | %s in light mode, %s in dark mode |' % (accent_light, accent
 w('| Text width | %s; images, gallery and home intro %s |' % (measure, wide))
 w('| Page-title emojis | %s |' % ', '.join('%s %s%s' % (t, e, ' (%d%% size)' % round(float(s) * 100) if s else '')
                                          for t, e, s in emojis))
-w('| Link previews (Slack, email, ...) | the site logo, the BBP curve (`assets/img/og-image.png`) |')
+w('| Link previews (Slack, email, ...) | the site logo, a first-order transition curve (`assets/img/og-image.png`) |')
 no_funding = []
 for dirpath, dirs, files in os.walk(ROOT):
     dirs[:] = [d for d in dirs if not d.startswith(('.', '_site', 'vendor', 'node_modules'))]

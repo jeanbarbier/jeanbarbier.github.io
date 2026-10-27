@@ -36,7 +36,7 @@ defaults:
   # Link previews (Slack, email, social media): the site logo, the BBP curve, as a small square card.
   - scope: { path: "" }
     values:
-      image: { path: /assets/img/og-image.png, width: 1200, height: 1200, alt: "Logo of the site: the BBP phase transition curve" }
+      image: { path: /assets/img/og-image.png, width: 1200, height: 1200, alt: "Logo of the site: a first-order phase transition, the overlap jumping from zero" }
       twitter: { card: summary }
   - scope: { path: "", type: highlights }
     values: { layout: highlight }

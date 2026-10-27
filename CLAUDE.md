@@ -184,9 +184,12 @@ it after every push. When adding an option, add it to the script; if the script 
 - The three round buttons (animation menu, view mode, light/dark) sit at the right edge of the
   header, level with the name, on every screen size (slightly smaller below 23rem), so the page
   links keep one row.
-- Link previews (Slack, email, social media): every page shares the site logo, the BBP curve
-  of `favicon.svg`, as `assets/img/og-image.png` (1200x1200, square corners) in a small
-  square card (front-matter defaults in `_config.yml`, rendered by jekyll-seo-tag).
+- Logo (`favicon.svg`, browser tab) and link previews (Slack, email, social media): a
+  first-order transition, the sparse spiked Wigner overlap of `_data/curves.yml` (flat at zero,
+  then a jump marked by an open dot at the limit and a filled dot at the value, as in the header
+  curves), white on #2e3b6f. Every page shares it as `assets/img/og-image.png` (1200x1200, square
+  corners) in a small square card (front-matter defaults in `_config.yml`, rendered by
+  jekyll-seo-tag).
 - The 404 page speaks the field's language ("Signal-to-noise ratio below threshold") and
   keeps the redirect for old `/jeanbarbier/...` links.
 

@@ -130,7 +130,7 @@ BBP transition, Specialization in deep networks, Denoising–factorization trans
 | Accent color | #2b4796 in light mode, #93aeef in dark mode |
 | Text width | 42rem; images, gallery and home intro 52rem |
 | Page-title emojis | Group 🤝, Research 🔬, Teaching 🎓, Events 📅 (90% size), Miscellaneous 🎲 (90% size) |
-| Link previews (Slack, email, ...) | the site logo, the BBP curve (`assets/img/og-image.png`) |
+| Link previews (Slack, email, ...) | the site logo, a first-order transition curve (`assets/img/og-image.png`) |
 | ERC funding statement | footer of every page except: Miscellaneous, The 2D Ising model, The 2D spin glass, The Gray-Scott model |
 
 ## Privacy and outside services
