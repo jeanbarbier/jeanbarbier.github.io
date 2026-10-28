@@ -101,6 +101,9 @@ it after every push. When adding an option, add it to the script; if the script 
   share one item.
 - The quotes (end of the home page) are a `notes compact grouped` list like the others: the
   quote is the item title (serif), the attribution the grey description line.
+- In running text (News, page text), a paper is never cited by an explicit link such as
+  "(arXiv:2605.10395)": its title or the phrase describing it is the link (to arXiv, or to the
+  journal when published).
 - Every paper in `_data/publications.yml` carries a `bibtex` block (from Crossref when it has
   a DOI, from arXiv otherwise), shown by its "Cite" button. Add one with each new paper.
 - Group members' names in author lists link to their entry on the Group page (anchors are
