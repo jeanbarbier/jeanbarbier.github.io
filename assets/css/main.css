@@ -433,7 +433,6 @@ button.play-button { font: inherit; font-size: 0.95rem; background: none; cursor
 .prose .eq { text-align: center; font-family: var(--serif); font-size: 1.08rem; line-height: 1.8; margin: 1.1rem 0; }
 /* Misc: submit your phase transition */
 .transition-form { max-width: var(--measure); display: grid; gap: 0.5rem; margin-top: 1.25rem; }
-.transition-form label { font-size: var(--step--1); color: var(--muted); }
 .transition-form textarea {
   width: 100%; font: inherit; font-size: 0.97rem; color: var(--text); background: var(--bg);
   border: 1px solid var(--rule); border-radius: 6px; padding: 0.55rem 0.7rem; margin-top: 0.25rem;
