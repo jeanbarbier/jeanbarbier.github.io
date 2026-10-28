@@ -47,7 +47,7 @@ refs:
     doi: "10.1142/0271"
     link_label: Book
 ---
-Picture a grid of tiny compass needles, each pointing up or down, that do not all want to agree. For each pair of neighbors, a coin toss decided once and for all whether they prefer to point the same way or opposite ways. Look at four needles around a small square: if an odd number of the four pairs want to disagree, no arrangement makes all four pairs happy, and at least one pair always ends up unhappy. Physicists call such a square frustrated.
+Picture a grid of tiny compass needles, each pointing up or down, that do not all want to agree. For each pair of neighbors, a coin toss decided once and for all whether they prefer to point the same way or opposite ways. Look at the four needles around one small square of the grid: if an odd number of the four pairs want to disagree, no arrangement makes all four pairs happy, and at least one pair always ends up unhappy. Physicists call such a square frustrated.
 
 With frustration everywhere, there is no perfect arrangement, only a huge number of compromises. Some metal alloys behave like this: when cooled, their needles freeze while pointing in random-looking directions, like the atoms of a window glass that froze before they could line up into a crystal. The mathematics invented to understand them now helps with hard optimization problems and with machine learning. The background draws the frustration rather than the needles: orange dots mark the frustrated squares, and blue segments mark the unhappy pairs, joining up into strings that connect the dots two by two.
 
