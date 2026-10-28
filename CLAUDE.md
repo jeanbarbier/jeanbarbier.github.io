@@ -216,5 +216,5 @@ it after every push. When adding an option, add it to the script; if the script 
 - Misc ends with "Submit your phase transition": a form sent through Web3Forms (access key
   `web3forms_key` in `_config.yml`, public by design). A single 3-line text box that grows
   with the text (no Name or Email fields: its placeholder ends "Optional: leave your mail and
-  name if you want to receive an answer."), then Send below it at the left. The note under
-  the form names the service (needed for transparency).
+  name if you want to receive an answer."), then Send below it at the left. No note under
+  the form (Jean removed the line naming Web3Forms, Oct 2026).

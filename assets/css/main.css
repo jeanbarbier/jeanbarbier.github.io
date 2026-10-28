@@ -449,7 +449,6 @@ button.play-button { font: inherit; font-size: 0.95rem; background: none; cursor
 .form-button[disabled] { opacity: 0.6; cursor: default; }
 main .tf-status { margin: 0; font-size: var(--step--1); color: var(--muted); }
 main .tf-status:empty { display: none; }
-main .tf-note { margin: 0.25rem 0 0; font-size: var(--step--1); color: var(--muted); }
 .transition-form .hp { display: none; }
 main h2 { margin-top: 2.75rem; }
 main section h2, main .block h2, main .theme h2 { margin-top: 0; }

@@ -83,5 +83,4 @@ Seen a phase transition in the wild or dreamt one up? Describe it to add it to t
   <textarea id="tf-message" name="message" rows="3" maxlength="3000" required placeholder="What changes, what drives it, and is it continuous or first order? Optional: leave your mail and name if you want to receive an answer."></textarea>
   <button type="submit" class="form-button">Send</button>
   <p class="tf-status" role="status" aria-live="polite"></p>
-  <p class="tf-note">Messages are delivered by Web3Forms.</p>
 </form>
