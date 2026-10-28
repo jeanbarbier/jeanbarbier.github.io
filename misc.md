@@ -64,9 +64,7 @@ I like rock climbing, skiing and freediving. With friends we make electronic mus
 {%- endfor %}
 </ul>
 
-<div class="player" id="player">
-  <p class="player-caption" aria-live="polite"></p>
-</div>
+<div class="player" id="player"></div>
 <script src="{{ '/assets/js/music-player.js' | relative_url }}" defer></script>
 
 ## Submit your phase transition

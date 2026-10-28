@@ -8,8 +8,6 @@
   var list = document.querySelector('.albums');
   var player = document.getElementById('player');
   if (list && player) {
-    var caption = player.querySelector('.player-caption');
-    var hint = caption.textContent;
     var box = null;
 
     var embedUrl = function (href) {
@@ -47,19 +45,15 @@
         frame.setAttribute('allowfullscreen', '');
         frame.setAttribute('referrerpolicy', 'strict-origin-when-cross-origin');
         box.appendChild(frame);
-        player.insertBefore(box, caption);
+        player.appendChild(box);
       }
       box.firstChild.src = src;
+      box.firstChild.title = 'YouTube player: ' + a.getAttribute('data-play');
 
       clearCurrent();
       a.classList.add('is-playing');
       a.setAttribute('aria-current', 'true');
 
-      caption.textContent = 'Now playing: ' + a.getAttribute('data-play') + '. ';
-      var out = document.createElement('a');
-      out.href = a.href;
-      out.textContent = 'Open on YouTube';
-      caption.appendChild(out);
 
       var r = player.getBoundingClientRect();
       if (r.top < 0 || r.bottom > window.innerHeight) {
@@ -72,7 +66,6 @@
       if (e.detail === 'youtube' || !box) return;
       box.remove(); box = null;
       clearCurrent();
-      caption.textContent = hint;
     });
   }
 
