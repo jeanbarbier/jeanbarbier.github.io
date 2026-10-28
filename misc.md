@@ -65,7 +65,7 @@ I like rock climbing, skiing and freediving. With friends we make electronic mus
 </ul>
 
 <div class="player" id="player">
-  <p class="player-caption" aria-live="polite">Click an album to play it here.</p>
+  <p class="player-caption" aria-live="polite"></p>
 </div>
 <script src="{{ '/assets/js/music-player.js' | relative_url }}" defer></script>
 
