@@ -71,7 +71,7 @@ I like rock climbing, skiing and freediving. With friends we make electronic mus
 
 ## Submit your phase transition
 
-Spotted a phase transition in the wild or your imagination? Describe it to add it to the site&nbsp;:)
+Seen a phase transition in the wild or dreamt one up? Describe it to add it to the site&nbsp;:)
 
 <form class="transition-form" id="submit" action="https://api.web3forms.com/submit" method="POST">
   <input type="hidden" name="access_key" value="{{ site.web3forms_key }}">
