@@ -54,6 +54,7 @@ curve: factorization
 
 <section class="block" id="gallery">
   <h2>Gallery</h2>
+  <div class="gallery-scroll scroll-list" data-rows="2" tabindex="0" aria-label="Gallery">
   <div class="gallery">
     {%- for g in site.data.gallery %}
     <figure>
@@ -61,5 +62,6 @@ curve: factorization
       {%- if g.caption != "" %}<figcaption>{{ g.caption }}</figcaption>{% endif %}
     </figure>
     {%- endfor %}
+  </div>
   </div>
 </section>

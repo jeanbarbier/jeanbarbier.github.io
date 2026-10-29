@@ -55,7 +55,8 @@ it after every push. When adding an option, add it to the script; if the script 
   the other outlets (language noted, e.g. "both in Italian"); the matching home News item lists
   the same outlets. Newspaper clippings are cropped to our article only and saved as JPEG
   (about 200 dpi) in `assets/img/press/`.
-- The photo gallery is the last section of the Group page.
+- The photo gallery is the last section of the Group page. It scrolls in a box (`scroll-list`
+  with `data-rows="2"`): the box is as tall as two rows of 4:3 photos at the current column width.
 - Misc has no ERC funding footer (`funding: false`): music and personal content are not
   ERC-funded.
 
