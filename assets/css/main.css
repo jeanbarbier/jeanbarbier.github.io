@@ -535,7 +535,7 @@ html.bg-view .header-buttons {
 @media (max-width: 40rem) { html.bg-view .header-buttons { top: 1.5rem; } }
 html.bg-view :is(.anim-toggle, .view-toggle, .theme-toggle) { background: var(--bg); }   /* stay visible over the animation */
 
-/* ---------- Lists that show a few items, then scroll (News, past Events, Music, papers, gallery) ---------- */
+/* ---------- Lists that show a few items, then scroll (News, past Events, Music, papers) ---------- */
 /* site.js fits the height to the first five items and fades the bottom while more is below. */
 .scroll-list {
   position: relative; overflow-y: auto; max-height: 15rem;

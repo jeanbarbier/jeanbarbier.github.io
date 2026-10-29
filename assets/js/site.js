@@ -93,8 +93,7 @@
 // Lists with class "scroll-list" show a few items, then scroll: five by default (home News,
 // past Events, Music), or the number in data-show (Selected papers: three). The height is
 // fitted to those first items and refitted when an item changes size (e.g. an opened
-// citation); the bottom fades while more is below. The Group gallery (photos in columns)
-// uses data-rows instead: the box is as tall as that many rows of 4:3 photos.
+// citation); the bottom fades while more is below.
 (function () {
   var lists = document.querySelectorAll('.scroll-list');
   if (!lists.length) return;
@@ -103,18 +102,6 @@
   }
   function fit() {
     Array.prototype.forEach.call(lists, function (ul) {
-      var rows = parseInt(ul.getAttribute('data-rows'), 10);
-      if (rows) {
-        // Height of that many rows of 4:3 photos at the current column width, whatever photos come first.
-        var fig = ul.querySelector('figure');
-        if (fig) {
-          var w = fig.getBoundingClientRect().width, gap = parseFloat(getComputedStyle(fig).marginBottom) || 0;
-          var h = Math.round(rows * (0.75 * w + gap));
-          ul.style.maxHeight = ul.scrollHeight > h + 4 ? h + 'px' : 'none';
-        }
-        edge(ul);
-        return;
-      }
       var n = parseInt(ul.getAttribute('data-show'), 10) || 5, items = ul.children;
       if (items.length > n) {
         var lastShown = items[n - 1];
