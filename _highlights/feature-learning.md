@@ -22,7 +22,7 @@ The paper develops a toolbox that blends the replica method with Harish-Chandraâ
 The theory predicts two qualitatively different regimes:
 
 - a **universal phase**, independent of the prior, where the network effectively performs a kernel-like polynomial approximation;
-- a **specialization phase**, where individual hidden units align with specific features of the teacher.
+- a **specialization phase**, where individual hidden units align with specific features of the teacher network.
 
 Specialization is inhomogeneous. It typically starts in the inner layers, close to the input, and propagates outwards, and it can occur unevenly across neurons of the same layer, which produces a rich sequence of learning transitions.
 

@@ -17,7 +17,7 @@ Plain PCA estimates *X* by the top eigenvector of *Y*: above a threshold in λ, 
 
 Using the replica method, we compute the Bayes-optimal limits of this problem: the mutual information between signal and data, and the minimum mean-square error. When the signal is itself rotationally invariant, for instance Gaussian, plain PCA turns out to be optimal. For other signals, such as vectors with ±1 entries, both PCA and the approximate message passing algorithms available so far fall short of these limits.
 
-We therefore propose a new message passing algorithm, inspired by the adaptive Thouless–Anderson–Palmer equations, which reaches the optimal error and comes with a rigorous analysis of its performance. Its key ingredient is an optimal pre-processing of the data: a polynomial in the matrix *Y* that pushes the bulk of noise eigenvalues to negative values, while sending the eigenvalue carrying the signal even further away.
+We therefore propose a new message passing algorithm, inspired by the adaptive Thouless–Anderson–Palmer equations, which reaches the optimal error and comes with a rigorous analysis of its performance. Its key ingredient is an optimal pre-processing of the data: a polynomial in the matrix *Y* that pushes the bulk of noise eigenvalues to negative values, while sending the eigenvalue carrying the signal further away from them.
 
 <figure class="figure">
   <img src="{{ '/assets/img/highlights/structured-pca-preprocessing.png' | relative_url }}" alt="Three panels: the eigenvalue histogram of the data with one isolated eigenvalue, the cubic pre-processing function, and the eigenvalue histogram after pre-processing with the bulk pushed to negative values" width="1600" height="333" loading="lazy">
