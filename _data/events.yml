@@ -33,6 +33,11 @@
   end: 2025-07-10
   place: "ICTP, Trieste"
   url: https://indico.ictp.it/event/10849
+- name: "Conference on Mixing Times between Probability, Computer Science and Statistical Physics"
+  dates: "May 5–9, 2025"
+  end: 2025-05-09
+  place: "ICTP, Trieste"
+  url: https://indico.ictp.it/event/10831
 - name: "ROC(K)IN' AI (1st edition)"
   dates: "September 2–7, 2024"
   end: 2024-09-07
@@ -43,8 +48,53 @@
   end: 2024-05-24
   place: "ICTP, Trieste"
   url: https://indico.ictp.it/event/10478
+- name: "Huddle on Learning and Inference from Structured Data: Universality, Correlations and Beyond"
+  dates: "July 10–21, 2023"
+  end: 2023-07-21
+  place: "ICTP, Trieste"
+  url: https://indico.ictp.it/event/10189
+- name: "Workshop on Learning and Inference from Structured Data: Universality, Correlations and Beyond"
+  dates: "July 3–7, 2023"
+  end: 2023-07-07
+  place: "ICTP, Trieste"
+  url: https://indico.ictp.it/event/10184
 - name: "Youth in High Dimensions (4th edition)"
   dates: "May 29 – June 2, 2023"
   end: 2023-06-02
   place: "ICTP, Trieste"
   url: https://indico.ictp.it/event/10175
+- name: "ICTP–Quantinuum Quantum Hackathon"
+  dates: "April 17–23, 2023"
+  end: 2023-04-23
+  place: "ICTP, Trieste"
+  url: https://indico.ictp.it/event/10163
+- name: "Youth in High Dimensions (3rd edition)"
+  dates: "June 27–30, 2022"
+  end: 2022-06-30
+  place: "ICTP, Trieste"
+  url: https://indico.ictp.it/event/9804
+- name: "Random Matrices, Random Graphs and Statistical Physics for Machine Learning and Inference (school)"
+  dates: "May 16–20, 2022"
+  end: 2022-05-20
+  place: "ICTP, Trieste"
+  url: https://indico.ictp.it/event/9797
+- name: "Youth in High Dimensions (2nd edition)"
+  dates: "June 15–18, 2021"
+  end: 2021-06-18
+  place: "online"
+  url: https://indico.ictp.it/event/9596
+- name: "CSRC-ICTP Joint Workshop on Big Data, Machine Learning and Complexity Research"
+  dates: "July 30–31, 2020"
+  end: 2020-07-31
+  place: "online"
+  url: https://csrc.ac.cn/en/event/workshop/2020-07-17/105.html
+- name: "Youth in High Dimensions (1st edition)"
+  dates: "June 29 – July 3, 2020"
+  end: 2020-07-03
+  place: "online"
+  url: https://indico.ictp.it/event/9409
+- name: "Mathematical Methods and Models in Machine Learning"
+  dates: "April 27–28, 2020"
+  end: 2020-04-28
+  place: "online"
+  url: https://magazine.unibo.it/calendario/2020/mathematical-methods-and-models-in-machine-learning
