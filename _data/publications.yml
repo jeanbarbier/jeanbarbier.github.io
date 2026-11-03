@@ -301,6 +301,7 @@
   doi: "10.1073/pnas.2302028120"
   highlight: /highlights/structured-pca/
   extra:
+    - { label: "ICTP news", url: "https://2022.ictp.it/news/2023/8/exploiting-structure-noise-big-data" }
     - { label: "Talk", url: "https://www.birs.ca/events/2024/5-day-workshops/24w5280/videos/watch/202403150909-Barbier.html" }
   themes: [matrix]
   selected: true

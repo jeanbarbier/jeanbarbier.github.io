@@ -105,6 +105,10 @@ it after every push. When adding an option, add it to the script; if the script 
 - In running text (News, page text), a paper is never cited by an explicit link such as
   "(arXiv:2605.10395)": its title or the phrase describing it is the link (to arXiv, or to the
   journal when published).
+- A paper with an ICTP news article shows it everywhere the paper appears: an "ICTP news"
+  link among the paper's links (`extra:`, first), a "Press coverage." item in For a wider
+  audience on Research, and, if the paper has a Highlight, a last line "More: [title](url), ICTP
+  news by <author>." at the end of the highlight.
 - Every paper in `_data/publications.yml` carries a `bibtex` block (from Crossref when it has
   a DOI, from arXiv otherwise), shown by its "Cite" button. Add one with each new paper.
 - Group members' names in author lists link to their entry on the Group page (anchors are

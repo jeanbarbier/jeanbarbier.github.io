@@ -36,3 +36,5 @@ The theory resolves feature learning almost at the level of individual weights. 
 </figure>
 
 This is only part of the results; the paper has the full analysis. Get in touch if you would like to know more.
+
+More: [How AI learns](https://www.ictp.it/news/2026/7/how-ai-learns), ICTP news by Giulia Foffano.
