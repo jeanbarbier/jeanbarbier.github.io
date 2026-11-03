@@ -28,7 +28,9 @@ it after every push. When adding an option, add it to the script; if the script 
 ## Identity and content
 - The group is the "Barbier group". ERC CHORAL (grant 101039794) is presented as a grant,
   not as the group's name; more grants are expected.
-- Navigation: Group, Research, Teaching, Events, Misc. The name in the header links home.
+- Navigation: Group, Research, Teaching, Events, Misc. The name in the header links home: on every
+  other page it has a faint underline (text colour, 22%) and the tooltip "Back to the home page",
+  turning blue on hover; on the home page itself it is plain (`aria-current="page"`, no hover).
 - Home: bio without supervisors' names, ICTP/UNESCO mission sentence, text-only CHORAL
   panel linking to CORDIS, News, Selected papers, Trieste, then Quotes I like. No GitHub link.
 - Misc: intro "The rest: what I read, what I listen to, and other random things I like

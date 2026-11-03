@@ -2,7 +2,7 @@
   <div class="wrap header-row">
     <div class="brand">
       <div class="name-row">
-        <a class="site-name" href="{{ '/' | relative_url }}">{{ site.title }}</a>
+        <a class="site-name" href="{{ '/' | relative_url }}"{% if page.url == "/" or page.url == "/index.html" %} aria-current="page"{% else %} title="Back to the home page"{% endif %}>{{ site.title }}</a>
         <span class="header-buttons">
           <span class="bg-menu-wrap">
             <button class="anim-toggle" type="button" aria-haspopup="true" aria-expanded="false" aria-controls="bg-menu" aria-pressed="false" aria-label="Background animation" title="Background animation">
