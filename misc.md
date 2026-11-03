@@ -56,7 +56,7 @@ I like rock climbing, skiing and freediving. With friends we make electronic mus
   <a class="play-button" href="https://soundcloud.com/entropiecollectif/sets/entropie-10-2026"><svg viewBox="0 0 16 16" aria-hidden="true" focusable="false"><path d="M4 2.5v11l9-5.5z" fill="currentColor"/></svg>Play Entropie 10</a>
 </div>
 
-## Music I've been listening to
+Here is some music I’ve been listening to.
 
 <ul class="albums scroll-list" tabindex="0" aria-label="Music I’ve been listening to">
 {%- for al in site.data.albums %}

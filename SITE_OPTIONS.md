@@ -110,7 +110,7 @@ Top bar: **Group, Research, Teaching, Events, Misc** (the name links home), tagl
 - **Teaching**: one item per subject, without sections; under each title, one line per document, starting with its kind as the link ("Lecture notes", "Slides", ...).
 - **Events**: Upcoming, Past.
   An event moves from Upcoming to Past by itself once its end date has passed.
-- **Misc**: The physics behind the site's animations, Worth reading, Outside science, Music I've been listening to, Submit your phase transition.
+- **Misc**: The physics behind the site's animations, Worth reading, Outside science, Submit your phase transition.
 
 Pages on the physics of the animations (linked from Misc):
 

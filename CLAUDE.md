@@ -33,8 +33,9 @@ it after every push. When adding an option, add it to the script; if the script 
   panel linking to CORDIS, News, Selected papers, Trieste, then Quotes I like. No GitHub link.
 - Misc: intro "The rest: what I read, what I listen to, and other random things I like
   to share.", then in order: The physics behind the site's animations (`#animations`), Worth
-  reading, Outside science (hobbies, Entropie Collectif player), Music I've been listening to,
-  Submit your phase transition.
+  reading, Outside science (hobbies, Entropie Collectif player, then the sentence "Here is some
+  music I’ve been listening to." and the music list, part of the same section), Submit your
+  phase transition.
 - Physics pages (`physics/*.md`, layout `physics`): /misc/gray-scott/, /misc/ising/,
   /misc/spin-glass/, one per background animation, linked from the first Misc section (a
   `notes compact grouped` list). Each has a crumb back to Misc, the title, a grey `description`,
@@ -118,12 +119,17 @@ it after every push. When adding an option, add it to the script; if the script 
   link among the paper's links (`extra:`, first), a "Press coverage." item in For a wider
   audience on Research, and, if the paper has a Highlight, a last line "More: [title](url), ICTP
   news by <author>." at the end of the highlight.
-- Paper venues (`venue:` in `_data/publications.yml` and in the physics pages' `refs:`): the
-  journal's full name only, never abbreviated ("Proceedings of the National Academy of
-  Sciences", "Journal of Statistical Mechanics: Theory and Experiment"), or the conference's
-  usual name ("NeurIPS", "COLT", "ISIT", "ITW"), or "Preprint"; no volume, issue or pages (the
-  Cite button has them). The year is added automatically. One venue per paper: the journal
-  when there is one.
+- Paper venues (`venue:` in `_data/publications.yml` and in the physics pages' `refs:`): full
+  names of journals and conferences, never acronyms ("Proceedings of the National Academy of
+  Sciences", "Journal of Statistical Mechanics: Theory and Experiment", "Conference on Neural
+  Information Processing Systems", "Conference on Learning Theory", "IEEE International
+  Symposium on Information Theory", "IEEE Information Theory Workshop"), or "Preprint"; no
+  volume, issue or pages (the Cite button has them). The year is added automatically. A paper
+  with both a journal and a conference version shows both, journal first, each with its year:
+  "Journal, 2019; Conference, 2018" (then the year is not added again). A name may be slightly
+  shortened only to avoid a line with just one or two words in the paper's venue-and-links row
+  ("Proc. of the National Academy of Sciences" for the structured PCA paper, "IEEE Trans. on
+  Information Theory" for the time-series paper), with a comment in the data file.
 - Every paper in `_data/publications.yml` carries a `bibtex` block (from Crossref when it has
   a DOI, from arXiv otherwise), shown by its "Cite" button. Add one with each new paper.
 - Group members' names in author lists link to their entry on the Group page (anchors are
