@@ -545,3 +545,12 @@ html.bg-view :is(.anim-toggle, .view-toggle, .theme-toggle) { background: var(--
   -webkit-mask-image: linear-gradient(to bottom, #000 calc(100% - 2.25rem), transparent);
   mask-image: linear-gradient(to bottom, #000 calc(100% - 2.25rem), transparent);
 }
+
+/* ---------- Press clipping with an English summary on its right (/press/...) ---------- */
+.press-page { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); gap: 2rem; align-items: start; max-width: var(--wide); }
+.press-clip { margin: 0; }
+.press-clip img { width: 100%; border-radius: 4px; background: #fff; }
+.press-summary h2 { margin: 0 0 0.75rem; }
+.press-page.reader-it { grid-template-columns: minmax(0, var(--measure)); }   /* Italian readers: the clipping alone */
+.press-page.reader-it .press-summary { display: none; }
+@media (max-width: 40rem) { .press-page { grid-template-columns: 1fr; gap: 1.5rem; } }

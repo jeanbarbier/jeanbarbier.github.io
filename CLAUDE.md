@@ -56,7 +56,11 @@ it after every push. When adding an option, add it to the script; if the script 
   article (ICTP news), the grey line starts with "Press coverage." and links the paper and
   the other outlets (no language notes such as "in Italian"); the matching home News item lists
   the same outlets. Newspaper clippings are cropped to our article only and saved as JPEG
-  (about 200 dpi) in `assets/img/press/`.
+  (about 200 dpi) in `assets/img/press/`. A clipping not in English gets its own page
+  (`press/*.html`, e.g. /press/il-piccolo-2026-09-13/): the clipping on the left (opens full size)
+  and a summary in English on its right, written in our own words (not a translation: the
+  newspaper's text is copyrighted). Visitors whose browser is set to that language see the
+  clipping alone. All links to the article point to this page.
 - The photo gallery is the last section of the Group page, shown in full (it does not scroll;
   Jean tried a scrolling box and preferred it without, Oct 2026).
 - Misc has no ERC funding footer (`funding: false`): music and personal content are not
