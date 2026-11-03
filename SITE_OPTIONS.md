@@ -6,7 +6,7 @@ Everything a visitor gets by default, what they can change, and every setting of
 
 | What | Default |
 |---|---|
-| Theme | Dark mode, whatever the system setting (without JavaScript: the system setting) |
+| Theme | The system setting (light or dark), followed if it changes, until the visitor chooses with the half-moon button |
 | Background animation | The Gray-Scott model; no animation if the system asks for reduced motion |
 | Gray-Scott pattern | 0.25 on the spots - stripes - holes slider (F 0.036, k 0.0615), between spots and stripes |
 | Ising temperature, when chosen | 1.00 T<sub>c</sub> |

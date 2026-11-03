@@ -59,7 +59,7 @@ TUR, ISI, SG, SITE, MENU = ('assets/js/turing.js', 'assets/js/ising.js', 'assets
 VIEW = 'assets/js/bg-view.js'
 
 # Default theme (inline script in the head, before first paint)
-theme_default = find('_includes/head.html', r"var t = '(dark|light)';", 'the default theme')
+theme_default = find('_includes/head.html', r"apply\(saved\(\) \|\| \((mq) && mq\.matches", 'the default theme (system setting)')
 
 # Default animation, and what reduced motion does (same logic in every animation script)
 default_mode = find(TUR, r"return calmMq\.matches \? '(\w+)' : '(\w+)';", 'the default animation', 2)
@@ -214,8 +214,7 @@ w('## A new visitor')
 w('')
 w('| What | Default |')
 w('|---|---|')
-w('| Theme | %s mode, whatever the system setting (without JavaScript: the system setting) |'
-  % theme_default.capitalize())
+w('| Theme | The system setting (light or dark), followed if it changes, until the visitor chooses with the half-moon button |')
 w('| Background animation | %s; %s if the system asks for reduced motion |'
   % (NAMES[default_mode][0].upper() + NAMES[default_mode][1:], NAMES[calm_mode]))
 w('| Gray-Scott pattern | %s on the spots - stripes - holes slider (F %.3f, k %.4f), between spots and stripes |'

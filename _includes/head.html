@@ -2,16 +2,24 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <meta name="theme-color" content="#15181d">
 <script>
-  // Apply the visitor's saved light/dark choice before first paint; dark if none was saved.
+  // Light or dark: the visitor's saved choice if any, otherwise the system setting, applied before
+  // first paint and followed live if the system switches (e.g. at sunset) while no choice is saved.
   document.documentElement.classList.add('js');
   (function () {
-    var t = 'dark';
-    try {
-      var saved = localStorage.getItem('theme');
-      if (saved === 'light' || saved === 'dark') t = saved;
-    } catch (e) {}
-    document.documentElement.setAttribute('data-theme', t);
-    if (t === 'light') document.querySelector('meta[name="theme-color"]').setAttribute('content', '#ffffff');
+    var mq = window.matchMedia ? window.matchMedia('(prefers-color-scheme: dark)') : null;
+    function saved() {
+      try { var s = localStorage.getItem('theme'); return (s === 'light' || s === 'dark') ? s : null; }
+      catch (e) { return null; }
+    }
+    function apply(t) {
+      document.documentElement.setAttribute('data-theme', t);
+      var m = document.querySelector('meta[name="theme-color"]');
+      if (m) m.setAttribute('content', t === 'dark' ? '#15181d' : '#ffffff');
+    }
+    apply(saved() || (mq && mq.matches ? 'dark' : 'light'));
+    if (mq && mq.addEventListener) mq.addEventListener('change', function (e) {
+      if (!saved()) apply(e.matches ? 'dark' : 'light');
+    });
   })();
 </script>
 {% seo %}
