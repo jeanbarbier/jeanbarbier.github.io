@@ -58,8 +58,10 @@ it after every push. When adding an option, add it to the script; if the script 
   the other outlets (no language notes such as "in Italian"); the matching home News item lists
   the same outlets. Newspaper clippings are cropped to our article only and saved as JPEG
   (about 200 dpi) in `assets/img/press/`. A clipping not in English gets its own page
-  (`press/*.html`, e.g. /press/il-piccolo-2026-09-13/): the clipping at the full site width (opens full size)
-  and a summary in English below it, written in our own words (not a translation: the
+  (`press/*.html`, e.g. /press/il-piccolo-2026-09-13/): the clipping at the full site width (not clickable:
+  opening it would only show it smaller) and a summary in English below it, spanning the same
+  width as the clipping (an exception to `--measure`: text under a full-width image looks odd
+  if narrower), written in our own words (not a translation: the
   newspaper's text is copyrighted). Visitors whose browser is set to that language see the
   clipping alone. All links to the article point to this page.
 - The photo gallery is the last section of the Group page, shown in full (it does not scroll;
@@ -130,9 +132,10 @@ it after every push. When adding an option, add it to the script; if the script 
   keeps each year with its name (",&nbsp;2019" in `_includes/pub.html`, U+00A0 in the data).
   In the venue-and-links row the links (Highlight, arXiv, Journal, extras, Cite) form one block
   (`.pub-links`, inline-flex): right after the venue if they all fit on its last line, else
-  together on the next line, so no link is left alone. A name may be slightly shortened (e.g.
-  "Proc. of the National Academy of Sciences") only if a line with just one or two words
-  remains despite this; none needs it at present.
+  together on the next line, so no link is left alone. A name is slightly shortened (Proc.,
+  Trans., Int., Conf.) if, and only if, this lets all the links fit on the same line right
+  after the venue, when they would otherwise drop to a line of their own: at present only the
+  structured PCA paper, "Proc. of the National Academy of Sciences" (commented in the data file).
 - Every paper in `_data/publications.yml` carries a `bibtex` block (from Crossref when it has
   a DOI, from arXiv otherwise), shown by its "Cite" button. Add one with each new paper.
 - Group members' names in author lists link to their entry on the Group page (anchors are

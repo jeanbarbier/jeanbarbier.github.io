@@ -297,7 +297,7 @@
 
 - title: "Fundamental limits in structured principal component analysis and how to reach them"
   authors: [Jean Barbier, Francesco Camilli, Marco Mondelli, Manuel Sáenz]
-  venue: "Proceedings of the National Academy of Sciences"
+  venue: "Proc. of the National Academy of Sciences"   # shortened: then the venue and all its links fit on one line (CLAUDE.md, Paper venues)
   year: 2023
   doi: "10.1073/pnas.2302028120"
   highlight: /highlights/structured-pca/

@@ -552,5 +552,7 @@ html.bg-view :is(.anim-toggle, .view-toggle, .theme-toggle) { background: var(--
 /* ---------- Press clipping at full width, English summary below it (/press/...) ---------- */
 .press-clip { margin: 0 0 2rem; max-width: var(--wide); }
 .press-clip img { width: 100%; border-radius: 4px; background: #fff; }
+.press-summary { max-width: var(--wide); }   /* the text spans the clipping's width (exception to --measure) */
+main .press-summary p { max-width: none; }
 .press-summary h2 { margin: 0 0 0.75rem; }
 .press-page.reader-it .press-summary { display: none; }   /* Italian readers: the clipping alone */
