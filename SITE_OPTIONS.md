@@ -148,7 +148,7 @@ BBP transition, Specialization in deep networks, Denoising–factorization trans
 | Publications | 29 |
 | of which on the home page (selected) | 6 |
 | Highlight articles | 4 |
-| Events | 20 |
+| Events | 16 |
 | Teaching items | 3 |
 | Albums in the music list | 9 |
 | Postdocs / PhD students / former members | 3 / 4 / 13 |
