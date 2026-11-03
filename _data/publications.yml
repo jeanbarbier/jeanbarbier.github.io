@@ -164,7 +164,7 @@
 
 - title: "Information-theoretic limits and approximate message-passing for high-dimensional time series"
   authors: [Daria Tieplova, Samriddha Lahiry, Jean Barbier]
-  venue: "IEEE Trans. on Information Theory, 2026; IEEE International Symposium on Information Theory, 2025"   # shortened so the venue fits on one line (see CLAUDE.md, Paper venues)
+  venue: "IEEE Transactions on Information Theory, 2026; IEEE International Symposium on Information Theory, 2025"
   year: 2026
   arxiv: "2501.13625"
   doi: "10.1109/TIT.2026.3665948"
@@ -297,7 +297,7 @@
 
 - title: "Fundamental limits in structured principal component analysis and how to reach them"
   authors: [Jean Barbier, Francesco Camilli, Marco Mondelli, Manuel Sáenz]
-  venue: "Proc. of the National Academy of Sciences"   # shortened so its links fit on one line (see CLAUDE.md, Paper venues)
+  venue: "Proceedings of the National Academy of Sciences"
   year: 2023
   doi: "10.1073/pnas.2302028120"
   highlight: /highlights/structured-pca/
@@ -431,7 +431,7 @@
 
 - title: "Optimal errors and phase transitions in high-dimensional generalized linear models"
   authors: [Jean Barbier, Florent Krzakala, Nicolas Macris, Léo Miolane, Lenka Zdeborová]
-  venue: "Proceedings of the National Academy of Sciences, 2019; Conference on Learning Theory, 2018"
+  venue: "Proceedings of the National Academy of Sciences, 2019; Conference on Learning Theory, 2018"
   year: 2019
   arxiv: "1708.03395"
   doi: "10.1073/pnas.1802705116"
@@ -500,7 +500,7 @@
 
 - title: "The committee machine: computational to statistical gaps in learning a two-layers neural network"
   authors: [Benjamin Aubin, Antoine Maillard, Jean Barbier, Florent Krzakala, Nicolas Macris, Lenka Zdeborová]
-  venue: "Journal of Statistical Mechanics: Theory and Experiment, 2019; Conference on Neural Information Processing Systems, 2018"
+  venue: "Journal of Statistical Mechanics: Theory and Experiment, 2019; Conference on Neural Information Processing Systems, 2018"
   year: 2019
   arxiv: "1806.05451"
   doi: "10.1088/1742-5468/ab43d2"

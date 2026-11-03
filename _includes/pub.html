@@ -30,12 +30,13 @@
   {%- endunless %}
   {%- unless include.title_only %}
   <p class="pub-meta">
-    <span class="pub-venue">{{ pub.venue }}{% unless pub.venue contains pub.year %}, {{ pub.year }}{% endunless %}</span>
+    <span class="pub-venue">{{ pub.venue }}{% unless pub.venue contains pub.year %},&nbsp;{{ pub.year }}{% endunless %}</span> <span class="pub-links">
     {%- if pub.highlight and include.hide_highlight != true %}<a href="{{ pub.highlight | relative_url }}">Highlight</a>{% endif %}
     {%- if pub.arxiv %}<a href="https://arxiv.org/abs/{{ pub.arxiv }}">arXiv</a>{% endif %}
     {%- if pub.doi %}<a href="https://doi.org/{{ pub.doi }}">{{ pub.link_label | default: "Journal" }}</a>{% elsif pub.url %}<a href="{{ pub.url }}">{{ pub.link_label | default: "Journal" }}</a>{% endif %}
     {%- unless include.compact %}{% for x in pub.extra %}<a href="{{ x.url }}">{{ x.label }}</a>{% endfor %}{% endunless %}
-    {%- if pub.bibtex %}<button type="button" class="cite-btn" aria-expanded="false" hidden>Cite</button>{% endif %}
+    {%- if pub.bibtex %}<button type="button" class="cite-btn" aria-expanded="false" hidden>Cite</button>{% endif -%}
+    </span>
   </p>
   {%- if pub.bibtex %}
   <div class="bibtex" hidden><pre>{{ pub.bibtex | strip | escape }}</pre><button type="button" class="bib-copy">Copy</button></div>

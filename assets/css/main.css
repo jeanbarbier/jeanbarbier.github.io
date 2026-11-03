@@ -288,8 +288,11 @@ main .grant p { margin: 0; max-width: none; font-size: 0.97rem; }
   background: var(--surface); border-radius: 4px;
 }
 .bib-copy { font-size: var(--step--1); }
-.pub-meta { display: flex; flex-wrap: wrap; gap: 0.2rem 1rem; font-size: var(--step--1); margin-top: 0.3rem !important; }
-.pub-venue { color: var(--muted); font-style: italic; }
+.pub-meta { font-size: var(--step--1); margin-top: 0.3rem !important; }
+.pub-venue { color: var(--muted); font-style: italic; padding-right: 1rem; }
+/* The links move as one block: right after the venue when they all fit on its last line, else
+   together on the next line (never one link left alone). */
+.pub-links { display: inline-flex; flex-wrap: wrap; gap: 0.2rem 1rem; vertical-align: baseline; }
 .year-block { margin-top: 2rem; }
 .section-intro { color: var(--muted); }
 .year-block:first-of-type { margin-top: 0; }
@@ -546,11 +549,8 @@ html.bg-view :is(.anim-toggle, .view-toggle, .theme-toggle) { background: var(--
   mask-image: linear-gradient(to bottom, #000 calc(100% - 2.25rem), transparent);
 }
 
-/* ---------- Press clipping with an English summary on its right (/press/...) ---------- */
-.press-page { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); gap: 2rem; align-items: start; max-width: var(--wide); }
-.press-clip { margin: 0; }
+/* ---------- Press clipping at full width, English summary below it (/press/...) ---------- */
+.press-clip { margin: 0 0 2rem; max-width: var(--wide); }
 .press-clip img { width: 100%; border-radius: 4px; background: #fff; }
 .press-summary h2 { margin: 0 0 0.75rem; }
-.press-page.reader-it { grid-template-columns: minmax(0, var(--measure)); }   /* Italian readers: the clipping alone */
-.press-page.reader-it .press-summary { display: none; }
-@media (max-width: 40rem) { .press-page { grid-template-columns: 1fr; gap: 1.5rem; } }
+.press-page.reader-it .press-summary { display: none; }   /* Italian readers: the clipping alone */
