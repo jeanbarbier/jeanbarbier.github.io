@@ -95,7 +95,7 @@ Kept only while the tab is open (sessionStorage):
 | Research | Selected papers: Coding and communication | 3 |
 | Research | Selected papers: Combinatorial optimization | 3 |
 | Misc | Worth reading | 3 |
-| Misc | Music I've been listening to | 5 |
+| Misc | Music I’ve been listening to | 5 |
 
 Other lists (highlights, teaching, quotes, the physics pages, events to come) show everything. While more is below, the bottom of a list fades.
 
@@ -120,7 +120,7 @@ Pages on the physics of the animations (linked from Misc):
 
 Header curves, drawn at random on each page load (4 real ones, from papers and notes, and 11 invented for fun):
 
-BBP transition, Specialization in deep networks, Denoising–factorization transition, Sparse spiked Wigner model, *Theorems vs. espressos*, *Double first-order transition*, *Re-entrant transition*, *Hysteresis loop*, *Devil's staircase*, *Infinite-order transition*, *ICTP in the sea vs. time of day*, *Hats flying in Trieste vs. Bora*, *Grokking*, *Productivity vs. time*, *Techno: the drop* (invented ones in italics).
+BBP transition, Specialization in deep networks, Denoising–factorization transition, Sparse spiked Wigner model, *Theorems vs. espressos*, *Double first-order transition*, *Re-entrant transition*, *Hysteresis loop*, *Devil’s staircase*, *Infinite-order transition*, *ICTP in the sea vs. time of day*, *Hats flying in Trieste vs. Bora*, *Grokking*, *Productivity vs. time*, *Techno: the drop* (invented ones in italics).
 
 ## Look
 

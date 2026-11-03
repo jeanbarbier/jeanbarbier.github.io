@@ -58,7 +58,7 @@
 
 - title: "Sharp feature-learning transitions and Bayes-optimal neural scaling laws in extensive-width networks"
   authors: [Minh-Toan Nguyen, Jean Barbier]
-  venue: "NeurIPS 2026"
+  venue: "NeurIPS"
   year: 2026
   arxiv: "2605.10395"
   themes: [deep]
@@ -93,15 +93,15 @@
 
 - title: "Statistical physics of deep learning: optimal learning of a multi-layer perceptron near interpolation"
   authors: [Jean Barbier, Francesco Camilli, Minh-Toan Nguyen, Mauro Pastore, Rudy Skerk]
-  venue: "Physical Review X 16"
+  venue: "Physical Review X"
   year: 2026
   arxiv: "2510.24616"
   doi: "10.1103/56sb-pdh6"
   highlight: /highlights/feature-learning/
   extra:
     - { label: "ICTP news", url: "https://www.ictp.it/news/2026/7/how-ai-learns" }
-    - { label: "ANSA (in Italian)", url: "https://www.ansa.it/sito/notizie/cronaca/2026/09/02/ansasvelato-come-lintelligenza-artificiale-impari-dai-dati_2a99f5a4-da6e-41c7-a414-f6c6431711ee.html" }
-    - { label: "Il Piccolo (in Italian)", url: "/assets/img/press/il-piccolo-2026-09-13.jpg" }
+    - { label: "ANSA", url: "https://www.ansa.it/sito/notizie/cronaca/2026/09/02/ansasvelato-come-lintelligenza-artificiale-impari-dai-dati_2a99f5a4-da6e-41c7-a414-f6c6431711ee.html" }
+    - { label: "Il Piccolo", url: "/assets/img/press/il-piccolo-2026-09-13.jpg" }
   themes: [deep]
   selected: true
   bibtex: |
@@ -164,7 +164,7 @@
 
 - title: "Information-theoretic limits and approximate message-passing for high-dimensional time series"
   authors: [Daria Tieplova, Samriddha Lahiry, Jean Barbier]
-  venue: "IEEE Transactions on Information Theory; ISIT 2025"
+  venue: "IEEE Transactions on Information Theory"
   year: 2026
   arxiv: "2501.13625"
   doi: "10.1109/TIT.2026.3665948"
@@ -186,7 +186,7 @@
 
 - title: "Generalization performance of narrow shallow neural networks in the teacher–student setting"
   authors: [Rodrigo Pérez Ortiz, Gibbs Nwemadji, Jean Barbier, Federica Gerace, Alessandro Ingrosso, Clarissa Lauditi, Enrico M. Malatesta]
-  venue: "J. Stat. Mech. (2026) 043405"
+  venue: "Journal of Statistical Mechanics: Theory and Experiment"
   year: 2026
   arxiv: "2507.00629"
   doi: "10.1088/1742-5468/ae5a23"
@@ -208,7 +208,7 @@
 
 - title: "Information-theoretic reduction of deep neural networks to linear models in the overparametrized proportional regime"
   authors: [Francesco Camilli, Daria Tieplova, Eleonora Bergamin, Jean Barbier]
-  venue: "COLT 2025, PMLR 291"
+  venue: "COLT"
   year: 2025
   arxiv: "2505.03577"
   url: "https://proceedings.mlr.press/v291/camilli25a.html"
@@ -228,7 +228,7 @@
 
 - title: "Phase diagram of extensive-rank symmetric matrix denoising beyond rotational invariance"
   authors: [Jean Barbier, Francesco Camilli, Justin Ko, Koki Okajima]
-  venue: "Physical Review X 15, 021085"
+  venue: "Physical Review X"
   year: 2025
   arxiv: "2411.01974"
   doi: "10.1103/PhysRevX.15.021085"
@@ -252,7 +252,7 @@
 
 - title: "Information limits and Thouless-Anderson-Palmer equations for spiked matrix models with structured noise"
   authors: [Jean Barbier, Francesco Camilli, Marco Mondelli, Yizhou Xu]
-  venue: "Physical Review Research 7, 013081"
+  venue: "Physical Review Research"
   year: 2025
   arxiv: "2405.20993"
   doi: "10.1103/PhysRevResearch.7.013081"
@@ -297,7 +297,7 @@
 
 - title: "Fundamental limits in structured principal component analysis and how to reach them"
   authors: [Jean Barbier, Francesco Camilli, Marco Mondelli, Manuel Sáenz]
-  venue: "PNAS 120 (30), e2302028120"
+  venue: "Proceedings of the National Academy of Sciences"
   year: 2023
   doi: "10.1073/pnas.2302028120"
   highlight: /highlights/structured-pca/
@@ -323,7 +323,7 @@
 
 - title: "Strong replica symmetry in high-dimensional optimal Bayesian inference"
   authors: [Jean Barbier, Dmitry Panchenko]
-  venue: "Communications in Mathematical Physics 393, 1199–1239"
+  venue: "Communications in Mathematical Physics"
   year: 2022
   arxiv: "2005.03115"
   doi: "10.1007/s00220-022-04387-w"
@@ -345,7 +345,7 @@
 
 - title: "Statistical limits of dictionary learning: random matrix theory and the spectral replica method"
   authors: [Jean Barbier, Nicolas Macris]
-  venue: "Physical Review E 106, 024136"
+  venue: "Physical Review E"
   year: 2022
   arxiv: "2109.06610"
   doi: "10.1103/PhysRevE.106.024136"
@@ -367,7 +367,7 @@
 
 - title: "Sparse superposition codes under VAMP decoding with generic rotational invariant coding matrices"
   authors: [TianQi Hou, YuHao Liu, Teng Fu, Jean Barbier]
-  venue: "ISIT 2022"
+  venue: "ISIT"
   year: 2022
   arxiv: "2202.04541"
   doi: "10.1109/ISIT50566.2022.9834843"
@@ -387,7 +387,7 @@
 
 - title: "Overlap matrix concentration in optimal Bayesian inference"
   authors: [Jean Barbier]
-  venue: "Information and Inference: A Journal of the IMA 10"
+  venue: "Information and Inference: A Journal of the IMA"
   year: 2021
   arxiv: "1904.02808"
   doi: "10.1093/imaiai/iaaa008"
@@ -409,7 +409,7 @@
 
 - title: "Mutual information and optimality of approximate message-passing in random linear estimation"
   authors: [Jean Barbier, Nicolas Macris, Mohamad Dia, Florent Krzakala]
-  venue: "IEEE Transactions on Information Theory 66 (7)"
+  venue: "IEEE Transactions on Information Theory"
   year: 2020
   arxiv: "1701.05823"
   doi: "10.1109/TIT.2020.2990880"
@@ -431,7 +431,7 @@
 
 - title: "Optimal errors and phase transitions in high-dimensional generalized linear models"
   authors: [Jean Barbier, Florent Krzakala, Nicolas Macris, Léo Miolane, Lenka Zdeborová]
-  venue: "PNAS 116 (12), 5451–5460"
+  venue: "Proceedings of the National Academy of Sciences"
   year: 2019
   arxiv: "1708.03395"
   doi: "10.1073/pnas.1802705116"
@@ -456,7 +456,7 @@
 
 - title: "The adaptive interpolation method: a simple scheme to prove replica formulas in Bayesian inference"
   authors: [Jean Barbier, Nicolas Macris]
-  venue: "Probability Theory and Related Fields 174, 1133–1185"
+  venue: "Probability Theory and Related Fields"
   year: 2019
   arxiv: "1705.02780"
   doi: "10.1007/s00440-018-0879-0"
@@ -478,7 +478,7 @@
 
 - title: "Universal sparse superposition codes with spatial coupling and GAMP decoding"
   authors: [Jean Barbier, Mohamad Dia, Nicolas Macris]
-  venue: "IEEE Transactions on Information Theory 65 (9), 5618–5642"
+  venue: "IEEE Transactions on Information Theory"
   year: 2019
   arxiv: "1707.04203"
   doi: "10.1109/TIT.2019.2919519"
@@ -500,8 +500,8 @@
 
 - title: "The committee machine: computational to statistical gaps in learning a two-layers neural network"
   authors: [Benjamin Aubin, Antoine Maillard, Jean Barbier, Florent Krzakala, Nicolas Macris, Lenka Zdeborová]
-  venue: "NeurIPS 2018; J. Stat. Mech. (2019) 124023"
-  year: 2018
+  venue: "Journal of Statistical Mechanics: Theory and Experiment"
+  year: 2019
   arxiv: "1806.05451"
   doi: "10.1088/1742-5468/ab43d2"
   themes: [deep]
@@ -522,7 +522,7 @@
 
 - title: "Approximate message-passing decoder and capacity-achieving sparse superposition codes"
   authors: [Jean Barbier, Florent Krzakala]
-  venue: "IEEE Transactions on Information Theory 63 (8)"
+  venue: "IEEE Transactions on Information Theory"
   year: 2017
   arxiv: "1503.08040"
   doi: "10.1109/TIT.2017.2713833"
@@ -544,7 +544,7 @@
 
 - title: "Mutual information for symmetric rank-one matrix estimation: a proof of the replica formula"
   authors: [Jean Barbier, Mohamad Dia, Nicolas Macris, Florent Krzakala, Thibault Lesieur, Lenka Zdeborová]
-  venue: "NeurIPS 2016"
+  venue: "NeurIPS"
   year: 2016
   arxiv: "1606.04142"
   url: "https://proceedings.neurips.cc/paper/2016/hash/621bf66ddb7c962aa0d22ac97d69b793-Abstract.html"
@@ -564,7 +564,7 @@
 
 - title: "Threshold saturation of spatially coupled sparse superposition codes for all memoryless channels"
   authors: [Jean Barbier, Mohamad Dia, Nicolas Macris]
-  venue: "ITW 2016, 76–80"
+  venue: "ITW"
   year: 2016
   arxiv: "1603.04591"
   doi: "10.1109/ITW.2016.7606799"
@@ -584,7 +584,7 @@
 
 - title: "Approximate message-passing with spatially coupled structured operators, with applications to compressed sensing and sparse superposition codes"
   authors: [Jean Barbier, Christophe Schülke, Florent Krzakala]
-  venue: "J. Stat. Mech. (2015) P05013"
+  venue: "Journal of Statistical Mechanics: Theory and Experiment"
   year: 2015
   arxiv: "1312.1740"
   doi: "10.1088/1742-5468/2015/05/P05013"
@@ -606,7 +606,7 @@
 
 - title: "The hard-core model on random graphs revisited"
   authors: [Jean Barbier, Florent Krzakala, Lenka Zdeborová, Pan Zhang]
-  venue: "J. Phys.: Conf. Ser. 473, 012021"
+  venue: "Journal of Physics: Conference Series"
   year: 2013
   arxiv: "1306.4121"
   doi: "10.1088/1742-6596/473/1/012021"

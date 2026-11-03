@@ -8,36 +8,36 @@ funding: false
 refs:
   - title: "Magnetic ordering in gold-iron alloys"
     authors: [V. Cannella, J. A. Mydosh]
-    venue: "Physical Review B 6"
+    venue: "Physical Review B"
     year: 1972
     doi: "10.1103/PhysRevB.6.4220"
   - title: "Theory of spin glasses"
     authors: [S. F. Edwards, P. W. Anderson]
-    venue: "Journal of Physics F: Metal Physics 5"
+    venue: "Journal of Physics F: Metal Physics"
     year: 1975
     doi: "10.1088/0305-4608/5/5/017"
   - title: "Theory of the frustration effect in spin glasses: I"
     authors: [G. Toulouse]
-    venue: "Communications on Physics 2"
+    venue: "Communications on Physics"
     year: 1977
   - title: "On the ground states of the frustration model of a spin glass by a matching method of graph theory"
     authors: [L. Bieche, J. P. Uhry, R. Maynard, R. Rammal]
-    venue: "Journal of Physics A: Mathematical and General 13"
+    venue: "Journal of Physics A: Mathematical and General"
     year: 1980
     doi: "10.1088/0305-4470/13/8/005"
   - title: "On the computational complexity of Ising spin glass models"
     authors: [F. Barahona]
-    venue: "Journal of Physics A: Mathematical and General 15"
+    venue: "Journal of Physics A: Mathematical and General"
     year: 1982
     doi: "10.1088/0305-4470/15/10/028"
   - title: "Equilibrium behavior of the spin-glass ordered phase"
     authors: [D. S. Fisher, D. A. Huse]
-    venue: "Physical Review B 38"
+    venue: "Physical Review B"
     year: 1988
     doi: "10.1103/PhysRevB.38.386"
   - title: "Exact ground states of two-dimensional ±J Ising spin glasses"
     authors: [C. De Simone, M. Diehl, M. Jünger, P. Mutzel, G. Reinelt, G. Rinaldi]
-    venue: "Journal of Statistical Physics 84"
+    venue: "Journal of Statistical Physics"
     year: 1996
     doi: "10.1007/BF02174135"
   - title: "Spin glass theory and beyond"

@@ -22,7 +22,7 @@ The paper develops a toolbox that blends the replica method with Harish-Chandraâ
 The theory predicts two qualitatively different regimes:
 
 - a **universal phase**, independent of the prior, where the network effectively performs a kernel-like polynomial approximation;
-- a **specialization phase**, where individual hidden units align with the teacher's features.
+- a **specialization phase**, where individual hidden units align with specific features of the teacher.
 
 Specialization is inhomogeneous. It typically starts in the inner layers, close to the input, and propagates outwards, and it can occur unevenly across neurons of the same layer, which produces a rich sequence of learning transitions.
 
@@ -34,7 +34,5 @@ The theory resolves feature learning almost at the level of individual weights. 
   <img src="{{ '/assets/img/highlights/feature-learning-heatmaps.png' | relative_url }}" alt="Heat maps of the overlap between student and teacher weights, theory on the left and experiments on the right, for sampling ratios 1.75, 2.75 and 3.75" width="1080" height="1476" loading="lazy">
   <figcaption>Theory (left) and experiments with <em>d</em> = 200 (right), for Î± = 1.75, 2.75 and 3.75 from top to bottom. Yellow: specialized weights; blue: not yet specialized.</figcaption>
 </figure>
-
-This is only part of the results; the paper has the full analysis. Get in touch if you would like to know more.
 
 More: [How AI learns](https://www.ictp.it/news/2026/7/how-ai-learns), ICTP news by Giulia Foffano.

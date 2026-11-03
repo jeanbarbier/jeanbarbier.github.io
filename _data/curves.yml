@@ -56,8 +56,8 @@ hysteresis:
   d: "M0.0 43.36 L330.0 42.5 L660.0 39.91 M340.0 6.18 L1000.0 2.88"
   jumps: [[660.0, 39.91, 4.37], [340.0, 6.18, 42.44]]
 devil:
-  title: "Devil's staircase: continuous, increasing, and flat almost everywhere. Ask a mathematician why this is not a contradiction."
-  label: "Devil's staircase"
+  title: "Devil’s staircase: continuous, increasing, and flat almost everywhere. Ask a mathematician why this is not a contradiction."
+  label: "Devil’s staircase"
   link: /misc/
   invented: true
   d: "M0.0 46.0 L4.1 44.64 L8.2 44.62 L12.3 43.27 L24.7 43.25 L28.8 41.92 L32.9 41.88 L37.0 40.54 L74.0 40.5 L78.1 39.21 L82.2 39.12 L87.0 37.75 L98.7 37.75 L102.8 36.46 L106.9 36.38 L111.7 35.0 L222.1 35.0 L226.9 33.62 L230.3 33.62 L235.1 32.25 L246.7 32.25 L251.5 30.88 L255.0 30.88 L259.8 29.5 L296.1 29.5 L300.9 28.12 L304.3 28.12 L309.1 26.75 L320.8 26.75 L325.6 25.38 L329.0 25.38 L333.8 24.0 L666.2 24.0 L671.0 22.62 L674.4 22.62 L679.2 21.25 L690.9 21.25 L695.7 19.88 L699.1 19.88 L703.9 18.5 L740.2 18.5 L745.0 17.12 L748.5 17.12 L753.3 15.75 L764.9 15.75 L769.7 14.38 L773.1 14.38 L777.9 13.0 L888.3 13.0 L893.1 11.62 L897.2 11.54 L901.3 10.25 L913.0 10.25 L917.8 8.88 L921.9 8.79 L926.0 7.5 L963.0 7.46 L967.1 6.12 L971.2 6.08 L975.3 4.75 L987.7 4.73 L991.8 3.38 L995.9 3.36 L1000.0 2.0"

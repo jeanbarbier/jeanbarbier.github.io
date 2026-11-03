@@ -16,7 +16,9 @@ it after every push. When adding an option, add it to the script; if the script 
   the faint background animations, the Gray-Scott model (on by default), the 2D Ising model or
   the 2D spin glass, chosen, tuned or stopped from a header menu, and a view mode that shows them
   alone at full strength and lets visitors perturb them by clicking (see Small details).
-- American spelling and US date style ("August 31 – September 4, 2026").
+- American spelling and US date style ("August 31 – September 4, 2026"). Curly apostrophes
+  (’) in all visible text, including data files and front matter (Markdown converts its own);
+  BibTeX keeps straight ones.
 - Low cost for visitors' devices: nothing runs when no animation is chosen, and a running
   animation pauses when the tab is hidden or after 6 minutes without interaction (3 was too
   short). Check CPU cost when changing an animation.
@@ -52,7 +54,7 @@ it after every push. When adding an option, add it to the script; if the script 
   Selected papers grouped by theme (full list on Scholar). No separate chronological
   publication page. Press coverage of one paper is one item: the title links to the main
   article (ICTP news), the grey line starts with "Press coverage." and links the paper and
-  the other outlets (language noted, e.g. "both in Italian"); the matching home News item lists
+  the other outlets (no language notes such as "in Italian"); the matching home News item lists
   the same outlets. Newspaper clippings are cropped to our article only and saved as JPEG
   (about 200 dpi) in `assets/img/press/`.
 - The photo gallery is the last section of the Group page, shown in full (it does not scroll;
@@ -89,6 +91,9 @@ it after every push. When adding an option, add it to the script; if the script 
   members are darker and bold in author lists. Each author name sits in a nowrap span and
   is never split across lines; author lists and paper titles use plain wrapping (full
   lines).
+- Events (`_data/events.yml`): names as "Youth in High Dimensions (7th edition)" or
+  "ROC(K)IN’ AI (3rd edition)", without subtitles; places "ICTP, Trieste", "Roccella Jonica,
+  Calabria" or "online".
 - Dated lists (News, Events, Music): small grey date column on the left with short
   months ("Oct 2026"; event ranges like "Aug 31 – Sep 4, 2026" in a wider column), text
   on the right, horizontal rules, no vertical rule. On phones the date sits above the text.
@@ -109,6 +114,12 @@ it after every push. When adding an option, add it to the script; if the script 
   link among the paper's links (`extra:`, first), a "Press coverage." item in For a wider
   audience on Research, and, if the paper has a Highlight, a last line "More: [title](url), ICTP
   news by <author>." at the end of the highlight.
+- Paper venues (`venue:` in `_data/publications.yml` and in the physics pages' `refs:`): the
+  journal's full name only, never abbreviated ("Proceedings of the National Academy of
+  Sciences", "Journal of Statistical Mechanics: Theory and Experiment"), or the conference's
+  usual name ("NeurIPS", "COLT", "ISIT", "ITW"), or "Preprint"; no volume, issue or pages (the
+  Cite button has them). The year is added automatically. One venue per paper: the journal
+  when there is one.
 - Every paper in `_data/publications.yml` carries a `bibtex` block (from Crossref when it has
   a DOI, from arXiv otherwise), shown by its "Cite" button. Add one with each new paper.
 - Group members' names in author lists link to their entry on the Group page (anchors are
@@ -208,7 +219,18 @@ it after every push. When adding an option, add it to the script; if the script 
 - At desktop width, no paragraph or text block may end with a last line of one or two
   words. Fix it by rewording (same meaning) and verify by measuring the rendered lines.
   CSS backs this up: `text-wrap: balance` on headings and item titles, `pretty` on text.
-- Exception: paper titles keep plain wrapping, even if one or two words carry over.
+- Exception: paper titles and author lists keep plain wrapping, even if one or two words (or
+  one author's name) carry over.
+
+## Highlights
+- Each highlight (`_highlights/*.md`) has the same shape: an opening paragraph, two or three
+  sections under h2 headings, at least one figure from the paper, and no closing invitation
+  ("get in touch", "the paper has more"). When the paper has an ICTP news article, the last
+  line is "More: [title](url), ICTP news by <author>."
+
+## Buttons
+- Pill-shaped buttons (Play Entropie 10, Run it in the background, Send) share one size and
+  shape: 0.95rem text, 1px border, padding 0.3rem 0.9rem.
 
 ## Footer and funding
 - EU/ERC logo (252px wide) with the funding statement beside it, vertically centred.

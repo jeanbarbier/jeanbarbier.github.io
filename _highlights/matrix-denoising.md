@@ -25,5 +25,3 @@ We also prove that this universality must break down at large enough signal-to-n
 ![Qualitative phase diagram with the denoising and factorization phases in the plane of signal-to-noise ratio and aspect ratio]({{ '/assets/img/highlights/matrix-denoising-phase-diagram.png' | relative_url }}){: width="1200" height="773" loading="lazy"}
 
 We then build a multiscale mean-field theory that combines the cavity and replica methods. It relies on decoupling assumptions typical of mean-field regimes, and it approximates the true minimum mean-square error very well in the factorization phase, where the model indeed behaves in a mean-field way.
-
-The paper contains much more on the nature of this denoising–factorization transition. Write to us if you are curious.

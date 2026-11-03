@@ -8,27 +8,27 @@ funding: false
 refs:
   - title: "Beitrag zur Theorie des Ferromagnetismus"
     authors: [E. Ising]
-    venue: "Zeitschrift für Physik 31"
+    venue: "Zeitschrift für Physik"
     year: 1925
     doi: "10.1007/BF02980577"
-  - title: "On Ising's model of ferromagnetism"
+  - title: "On Ising’s model of ferromagnetism"
     authors: [R. Peierls]
-    venue: "Proceedings of the Cambridge Philosophical Society 32"
+    venue: "Proceedings of the Cambridge Philosophical Society"
     year: 1936
     doi: "10.1017/S0305004100019174"
   - title: "Crystal statistics. I. A two-dimensional model with an order-disorder transition"
     authors: [L. Onsager]
-    venue: "Physical Review 65"
+    venue: "Physical Review"
     year: 1944
     doi: "10.1103/PhysRev.65.117"
   - title: "The spontaneous magnetization of a two-dimensional Ising model"
     authors: [C. N. Yang]
-    venue: "Physical Review 85"
+    venue: "Physical Review"
     year: 1952
     doi: "10.1103/PhysRev.85.808"
   - title: "Equation of state calculations by fast computing machines"
     authors: [N. Metropolis, A. W. Rosenbluth, M. N. Rosenbluth, A. H. Teller, E. Teller]
-    venue: "The Journal of Chemical Physics 21"
+    venue: "The Journal of Chemical Physics"
     year: 1953
     doi: "10.1063/1.1699114"
 ---

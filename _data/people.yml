@@ -21,7 +21,7 @@ postdocs:
     photo: people/minh-toan-nguyen.jpg
     summary: Information theory, random matrix theory and statistical physics, with applications to high-dimensional inference.
     bio: >-
-      Engineering degree from École Polytechnique and Master's in "Mathematics of
+      Engineering degree from École Polytechnique and Master’s in "Mathematics of
       Randomness" at Paris-Saclay (2020). PhD at Université Grenoble Alpes with
       Romain Couillet, with a thesis on the replica method and asymptotic equivalence.
     links:
@@ -53,7 +53,7 @@ phd:
     photo: people/rudy-skerk.jpg
     summary: Statistical mechanics, information theory and random matrices for optimization, inference and learning.
     bio: >-
-      Bachelor's in physics at the University of Trieste, then the International Master
+      Bachelor’s in physics at the University of Trieste, then the International Master
       in Physics of Complex Systems (Trieste, Turin, Paris). PhD student in Theoretical
       and Scientific Data Science at SISSA.
 
@@ -62,7 +62,7 @@ phd:
     photo: people/ali-hussaini-umar.jpg
     summary: Understanding deep learning through its representations and weights.
     bio: >-
-      Bachelor's in mathematics at Yobe State University, Master's at AIMS Ghana and the
+      Bachelor’s in mathematics at Yobe State University, Master’s at AIMS Ghana and the
       ICTP diploma in Quantitative Life Sciences. PhD student in Theoretical and
       Scientific Data Science at SISSA.
 
@@ -71,7 +71,7 @@ phd:
     photo: people/cristofer-erazo.jpg
     summary: Learning dynamics and representations in modern networks, in particular in-context learning in transformers.
     bio: >-
-      Bachelor's in physics at Escuela Politécnica Nacional (Ecuador) and the ICTP
+      Bachelor’s in physics at Escuela Politécnica Nacional (Ecuador) and the ICTP
       diploma in Quantitative Life Sciences, where he received the Qaisar and Monika
       Shafi Prize (2023–24). PhD student in Theoretical and Scientific Data Science at SISSA.
 

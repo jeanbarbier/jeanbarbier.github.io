@@ -8,22 +8,22 @@ funding: false
 refs:
   - title: "The chemical basis of morphogenesis"
     authors: [A. M. Turing]
-    venue: "Philosophical Transactions of the Royal Society of London B 237"
+    venue: "Philosophical Transactions of the Royal Society of London B"
     year: 1952
     doi: "10.1098/rstb.1952.0012"
   - title: "Autocatalytic reactions in the isothermal, continuous stirred tank reactor: oscillations and instabilities in the system A + 2B → 3B; B → C"
     authors: [P. Gray, S. K. Scott]
-    venue: "Chemical Engineering Science 39"
+    venue: "Chemical Engineering Science"
     year: 1984
     doi: "10.1016/0009-2509(84)87017-7"
   - title: "Complex patterns in a simple system"
     authors: [J. E. Pearson]
-    venue: "Science 261"
+    venue: "Science"
     year: 1993
     doi: "10.1126/science.261.5118.189"
   - title: "Experimental observation of self-replicating spots in a reaction–diffusion system"
     authors: [K.-J. Lee, W. D. McCormick, J. E. Pearson, H. L. Swinney]
-    venue: "Nature 369"
+    venue: "Nature"
     year: 1994
     doi: "10.1038/369215a0"
 ---

@@ -438,11 +438,11 @@ button.play-button { font: inherit; font-size: 0.95rem; background: none; cursor
 }
 .transition-form textarea { resize: vertical; min-height: 5rem; max-height: 24rem; line-height: 1.5; }   /* grows with the text (site.js) */
 .transition-form textarea:focus { outline: 2px solid var(--accent); outline-offset: 1px; border-color: transparent; }
-.form-button {
+.form-button {   /* same size and shape as the other pill buttons (.play-button, Run it in the background) */
   font: inherit; font-size: 0.95rem; cursor: pointer; color: var(--text); background: transparent;
-  border: 1px solid var(--rule); border-radius: 999px; padding: 0.55rem 1.3rem;
+  border: 1px solid var(--rule); border-radius: 999px; padding: 0.3rem 0.9rem;
 }
-.transition-form .form-button { justify-self: start; font-size: 0.97rem; }   /* under the box, at its left */
+.transition-form .form-button { justify-self: start; }   /* under the box, at its left */
 .form-button:hover { color: var(--accent); border-color: var(--accent); }
 .form-button[disabled] { opacity: 0.6; cursor: default; }
 main .tf-status { margin: 0; font-size: var(--step--1); color: var(--muted); }
