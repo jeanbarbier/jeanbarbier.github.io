@@ -33,9 +33,10 @@
   note: ""
 - month: 2026-04
   artist: Ezra Collective
-  title: Chapter 7
-  url: https://www.youtube.com/watch?v=VR05afk6FkY&list=OLAK5uy_mEXeNzJsN812eyaChdjHpex9H6TP7hnAw
+  title: Tiny Desk
+  url: https://www.youtube.com/watch?v=eAzClkn3zYw
   extra:
+    - { label: "Chapter 7", url: "https://www.youtube.com/watch?v=VR05afk6FkY&list=OLAK5uy_mEXeNzJsN812eyaChdjHpex9H6TP7hnAw" }
     - { label: "Beto’s Horns", url: "https://www.youtube.com/watch?v=BOtCBy_FSZE" }
   note: ""
 - month: 2026-03
