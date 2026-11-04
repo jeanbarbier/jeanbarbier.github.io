@@ -82,6 +82,14 @@ phd:
       International Master in Physics of Complex Systems (Trieste, Turin, Paris). PhD
       student in Theoretical and Scientific Data Science at SISSA.
 
+  - name: Leonardo Ferreira
+    photo: people/leonardo-ferreira.jpg
+    summary: Random matrix theory and statistical physics of disordered systems for inference in non-standard low-rank matrix models.
+    bio: >-
+      Master’s in physics at the Federal University of Rio Grande do Sul (UFRGS), Brazil.
+      PhD student in physics at UFRGS and in ICTP’s Quantitative Life Sciences section,
+      through the ICTP-IAEA Sandwich Training Educational Programme (STEP).
+
 alumni:
   - { name: Gibbs Nwemadji, role: PhD student, now: "Postdoc, Yale University" }
   - { name: Francesco Camilli, role: Postdoc, now: "Professor, University of Bologna" }

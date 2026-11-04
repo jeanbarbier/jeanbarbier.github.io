@@ -151,7 +151,7 @@ BBP transition, Specialization in deep networks, Denoising–factorization trans
 | Events | 16 |
 | Teaching items | 3 |
 | Albums in the music list | 9 |
-| Postdocs / PhD students / former members | 3 / 4 / 13 |
+| Postdocs / PhD students / former members | 3 / 5 / 13 |
 | Header curves (from papers + invented) | 4 + 11 |
 
 ## Where to change things
