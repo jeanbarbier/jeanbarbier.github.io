@@ -11,7 +11,7 @@ Personal and group website of Jean Barbier (ICTP), built with Jekyll and served 
 | News (home page shows five at a time, then scrolls) | `_data/news.yml` |
 | Events | `_data/events.yml` |
 | Teaching material | `_data/teaching.yml` (PDFs in `docs/`) |
-| Play order of "Play Entropie 10" (Misc) | `_data/entropie.yml` |
+| Mixes of the "Play Entropie" player (Misc), in order | `_data/entropie.yml` |
 | Page text | `index.html`, `research.html`, `group.html`, `about.md`, ... |
 | Styles | `assets/css/main.css` |
 | Background animations (header menu) | `assets/js/turing.js`, `ising.js`, `spinglass.js`, `bg-menu.js`, `bg-view.js` (view mode) (archived neuron animation: `_archive/neurons/`) |

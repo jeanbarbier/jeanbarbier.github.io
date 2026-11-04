@@ -52,9 +52,8 @@ The faint animations in the background of every page are live simulations of thr
 
 I like rock climbing, skiing and freediving. With friends we make electronic music (I am RSB, my wife is Ficus Tabasco): [Entropie Collectif](https://soundcloud.com/entropiecollectif). 
 
-{%- assign sc = site.data.entropie %}
-<div class="sc-player" data-label="Entropie 10" data-set="{{ sc.set }}" data-first="{{ sc.first | join: ' ' }}" data-last="{{ sc.last | join: ' ' }}">
-  <a class="play-button" href="{{ sc.first[0] }}?in={{ sc.set | remove_first: 'https://soundcloud.com/' }}"><svg viewBox="0 0 16 16" aria-hidden="true" focusable="false"><path d="M4 2.5v11l9-5.5z" fill="currentColor"/></svg>Play Entropie 10</a>
+<div class="sc-player" data-label="Entropie" data-mixes="{{ site.data.entropie.mixes | join: ' ' }}">
+  <a class="play-button" href="{{ site.data.entropie.mixes[0] }}"><svg viewBox="0 0 16 16" aria-hidden="true" focusable="false"><path d="M4 2.5v11l9-5.5z" fill="currentColor"/></svg>Play Entropie</a>
 </div>
 
 Here is some music I’ve been listening to.

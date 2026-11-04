@@ -1,16 +1,20 @@
-# The "Play Entropie 10" player on Misc. It shows the whole SoundCloud set but plays the
-# mixes in this order, whatever their order in the set on SoundCloud: first the "first"
-# list, then the mixes not listed here (in the set's order), then the "last" list. When
-# the order is done it goes back to the first mix and stops.
-# Use each mix's own SoundCloud link (without the "?..." part). The button opens the
-# first mix when JavaScript is off.
-set: https://soundcloud.com/entropiecollectif/sets/entropie-10-2026
-first:
-  - https://soundcloud.com/entropiecollectif/entropie-10-rsb-ficustabasco-1      # RSB+FicusTabasco
-  - https://soundcloud.com/entropiecollectif/rsb-b2b-thimthiery-entropie         # RSB b2b Thimthiery
-  - https://soundcloud.com/entropiecollectif/entropie-10-totalvariation-rsb      # TotalVariation+RSB
-  - https://soundcloud.com/entropiecollectif/thimthiery_entropie_2026            # Thimthiery ("mix @ entropie 2026")
-  - https://soundcloud.com/entropiecollectif/braided-cat-entropie-2026           # Braided Cat
-  - https://soundcloud.com/entropiecollectif/dark-poolside-entropie-2026         # Dark Poolside
-last:
-  - https://soundcloud.com/blackbrujo/entropie-festival-2026                     # Black Brujo
+# The "Play Entropie" player on Misc: one mix at a time, in this order, with Previous mix,
+# Next mix and Random mix buttons. When the last mix ends it goes back to the first and stops.
+# One SoundCloud link per line (the "?in=..." part SoundCloud adds is fine). The first link
+# is also where the button leads when JavaScript is off.
+mixes:
+  - https://soundcloud.com/entropiecollectif/entropie-10-rsb-ficustabasco-1?in=entropiecollectif/sets/entropie-10-2026   # Entropie 10: RSB+FicusTabasco
+  - https://soundcloud.com/entropiecollectif/rsb-b2b-thimthiery-entropie            # RSB b2b Thimthiery @ Entropie 2026
+  - https://soundcloud.com/entropiecollectif/entropie-10-totalvariation-rsb         # Entropie 10: TotalVariation+RSB
+  - https://soundcloud.com/entropiecollectif/thimthiery_entropie_2026               # Thimthiery, mix @ Entropie 2026
+  - https://soundcloud.com/entropiecollectif/braided-cat-entropie-2026              # Braided Cat @ Entropie 2026
+  - https://soundcloud.com/entropiecollectif/dark-poolside-entropie-2026            # Dark Poolside @ Entropie 2026
+  - https://soundcloud.com/gruenfunkel/gruenfunkel-entropie-10                      # gruenfunkel @ Entropie 10
+  - https://soundcloud.com/nidariae/seanrems-b2b-total-variation-entropie-2026-opening   # SeanRems b2b NIDARIA, Entropie 2026 opening
+  - https://soundcloud.com/entropiecollectif/entropie-2026                          # Azaa x Entropie 2026
+  - https://soundcloud.com/jean-barbier-409727380/evg-roms-bday-ines-april-2025-live-no-master?in=entropiecollectif/sets/peak-festival   # Peak Festival & EVG Rom & Cave Party Ines (2025)
+  - https://soundcloud.com/entropiecollectif/entropie-9-2025-ficustabasco           # Ficus Tabasco @ Entropie 2025
+  - https://soundcloud.com/entropiecollectif/mix-entropie-2024?in=entropiecollectif/sets/entropie-8-2024   # mix @ Entropie 2024
+  - https://soundcloud.com/jean-barbier-409727380/entropie-8-rsb?in=entropiecollectif/sets/entropie-8-2024   # Entropie #8 RSB
+  - https://soundcloud.com/entropiecollectif/rsb-peak-festival-28-01-24?in=entropiecollectif/sets/peak-festival   # RSB @ Peak Festival (28-01-24)
+  - https://soundcloud.com/tanng-1/david-tanguetta-entropie_2024?in=entropiecollectif/sets/entropie-8-2024   # David Tanguetta @ Entropie 2024

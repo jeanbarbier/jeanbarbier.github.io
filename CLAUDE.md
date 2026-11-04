@@ -250,7 +250,7 @@ it after every push. When adding an option, add it to the script; if the script 
   line is "More: [title](url), ICTP news by <author>."
 
 ## Buttons
-- Pill-shaped buttons (Play Entropie 10, Previous/Next mix, Run it in the background, Send) share one size and
+- Pill-shaped buttons (Play Entropie, Previous/Next/Random mix, Run it in the background, Send) share one size and
   shape: 0.95rem text, 1px border, padding 0.3rem 0.9rem.
 
 ## Footer and funding
@@ -261,17 +261,15 @@ it after every push. When adding an option, add it to the script; if the script 
 - No cookies. Visit statistics with GoatCounter (jeanbarbier.goatcounter.com), on the
   published site only.
 - Embeds load only when clicked: YouTube (youtube-nocookie) player under the music list,
-  SoundCloud player for "Play Entropie 10". Starting one stops the other.
-  The SoundCloud player is compact (166px, one mix at a time, no list), with "Previous mix"
-  and "Next mix" pill buttons and a grey counter ("3 / 10") under it; the buttons are greyed
-  out on the first and last mix. It plays the set in Jean's own order, whatever the set's
-  order on SoundCloud (`_data/entropie.yml`: the `first` list, then unlisted mixes in the
-  set's order, then the `last` list), then goes back to the first mix and stops (Nov 2026).
-  The player stays hidden (an empty grey box) until the first mix plays, so the set's own
-  first mix never flashes. Mixes are matched by track id, read from
-  SoundCloud's oEmbed on click, then driven with the widget API. Before anything has played,
-  the widget selects a mix beyond the first few of the set without playing it, so the code
-  nudges it with play(). The button's own link (no JavaScript) is the first mix in the set.
+  SoundCloud player for "Play Entropie". Starting one stops the other.
+  The SoundCloud player is compact (166px, one mix at a time, no list) and plays the mixes of
+  `_data/entropie.yml` (a plain list of SoundCloud links, from any set or account) in that
+  order; when the last ends it goes back to the first and stops (Nov 2026). Under it: "Previous
+  mix", "Next mix" and "Random mix" pill buttons (Previous/Next greyed out at the two ends;
+  Random picks any other mix, and the order continues from there) and a grey counter ("3 / 15").
+  Each mix gets a fresh iframe: the widget API's load() passes only on/off options and would
+  lose the blue `color`. The API (loaded on click) is only used to hear FINISH. The button's
+  own link (no JavaScript) is the first mix.
 - Music list (`_data/albums.yml`): newest first; new entries go at the bottom, one month
   further back.
 - Misc ends with "Submit your phase transition": a form sent through Web3Forms (access key
