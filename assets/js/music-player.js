@@ -70,12 +70,13 @@
   }
 
   // ---- SoundCloud: Entropie Collectif ----
-  // The button links either to a set, played in order, or to one mix inside a set
-  // (a track link ending "?in=<user>/sets/<set>", as SoundCloud gives when sharing a
-  // track from a set). Then the player shows the whole set but starts on that mix,
-  // wherever it sits in the set, wraps to the first mix after the last one, and stops
-  // when it comes back to the starting mix. The mix is found by its track id, read
-  // from SoundCloud's oEmbed service, so changing the link is all an update needs.
+  // The player shows the whole set (data-set) but plays its mixes in our own order,
+  // whatever their order on SoundCloud: the mixes of data-first, then the mixes not
+  // listed (in the set's order), then those of data-last (links separated by spaces,
+  // from _data/entropie.yml). When the order is done it goes back to the first mix and
+  // stops. A visitor who picks a mix in the list continues the order from there. Mixes
+  // are matched by track id, read from SoundCloud's oEmbed service when Play is clicked,
+  // so the data file only needs links. Without data-set, the link plays in its own order.
   var SC_PARAMS = '&visual=false&color=%232b4796&hide_related=true&show_comments=false&show_reposts=false&show_teaser=false';
   var widgetApi = null;
   var loadWidgetApi = function () {
@@ -95,28 +96,42 @@
       .then(function (j) { var m = /tracks%2F(\d+)/.exec(j.html || ''); return m ? m[1] : null; })
       .catch(function () { return null; });
   };
-  // Start on the mix with the given id; play the rest of the set in a loop back to it.
-  var startOn = function (Widget, w, id) {
+  var links = function (attr) { return (attr || '').split(/\s+/).filter(Boolean); };
+
+  // Play the set's sounds in the order given by the two lists of track ids.
+  var playInOrder = function (Widget, w, firstIds, lastIds) {
     w.getSounds(function (sounds) {
-      var start = 0;
-      for (var i = 0; i < sounds.length; i++) {
-        if (id && String(sounds[i].id) === id) { start = i; break; }
-      }
-      if (start > 0) {
-        var wrapped = false;
-        w.bind(Widget.Events.FINISH, function () {
-          w.getCurrentSoundIndex(function (k) {
-            if (k === sounds.length - 1 && !wrapped) { wrapped = true; w.skip(0); }
-          });
+      var ids = sounds.map(function (x) { return String(x.id); });
+      var pick = function (list) {
+        return list.map(function (id) { return ids.indexOf(id); }).filter(function (i) { return i >= 0; });
+      };
+      var head = pick(firstIds), tail = pick(lastIds);
+      var middle = ids.map(function (_, i) { return i; })
+        .filter(function (i) { return head.indexOf(i) < 0 && tail.indexOf(i) < 0; });
+      var order = head.concat(middle, tail);
+      var current = order[0];   // index of the sound playing, from the last PLAY event
+      var started = false;
+      var ending = false;       // order done: going back to the first mix, to stop there
+      w.bind(Widget.Events.PLAY, function () {
+        started = true;
+        w.getCurrentSoundIndex(function (k) {
+          current = k;
+          if (ending && k === order[0]) { ending = false; w.pause(); w.seekTo(0); }
         });
-        w.bind(Widget.Events.PLAY, function () {
-          if (!wrapped) return;
-          w.getCurrentSoundIndex(function (k) { if (k === start) { w.pause(); w.seekTo(0); wrapped = false; } });
-        });
-        w.skip(start);
-      } else {
-        w.play();
-      }
+      });
+      w.bind(Widget.Events.FINISH, function () {
+        var pos = order.indexOf(current);
+        if (pos >= 0 && pos + 1 < order.length) { w.skip(order[pos + 1]); return; }
+        ending = true;
+        w.skip(order[0]);
+        setTimeout(function () { if (ending) { ending = false; w.pause(); } }, 4000);
+      });
+      // Before anything has played, the widget selects a mix it has not loaded yet
+      // (beyond the first few of the set) without playing it: nudge it until it starts.
+      w.skip(order[0]);
+      [800, 2000, 4000].forEach(function (t) {
+        setTimeout(function () { if (!started) w.play(); }, t);
+      });
     });
   };
 
@@ -142,19 +157,21 @@
       announce('soundcloud');
       link.hidden = true;
       var mine = ++session;
-      var set = null;
-      try { set = new URL(link.href).searchParams.get('in'); } catch (err) {}
-      if (!set) { show(link.href, true); return; }
-      var setUrl = 'https://soundcloud.com/' + set;
-      var id = trackId(link.href);
+      var setUrl = holder.getAttribute('data-set');
+      if (!setUrl) { show(link.href, true); return; }
+      var first = links(holder.getAttribute('data-first')), last = links(holder.getAttribute('data-last'));
+      var ids = Promise.all(first.concat(last).map(trackId));
       loadWidgetApi().then(function (Widget) {
         if (mine !== session) return;
         var w = Widget(show(setUrl, false));
         w.bind(Widget.Events.READY, function () {
-          id.then(function (trackIdValue) { if (mine === session) startOn(Widget, w, trackIdValue); });
+          ids.then(function (all) {
+            if (mine !== session) return;
+            playInOrder(Widget, w, all.slice(0, first.length), all.slice(first.length));
+          });
         });
       }, function () {
-        if (mine === session) show(setUrl, true);   // no widget API: play the set in order
+        if (mine === session) show(setUrl, true);   // no widget API: play the set in its own order
       });
     });
 

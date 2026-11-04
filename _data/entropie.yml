@@ -1,0 +1,16 @@
+# The "Play Entropie 10" player on Misc. It shows the whole SoundCloud set but plays the
+# mixes in this order, whatever their order in the set on SoundCloud: first the "first"
+# list, then the mixes not listed here (in the set's order), then the "last" list. When
+# the order is done it goes back to the first mix and stops.
+# Use each mix's own SoundCloud link (without the "?..." part). The button opens the
+# first mix when JavaScript is off.
+set: https://soundcloud.com/entropiecollectif/sets/entropie-10-2026
+first:
+  - https://soundcloud.com/entropiecollectif/entropie-10-rsb-ficustabasco-1      # RSB+FicusTabasco
+  - https://soundcloud.com/entropiecollectif/rsb-b2b-thimthiery-entropie         # RSB b2b Thimthiery
+  - https://soundcloud.com/entropiecollectif/entropie-10-totalvariation-rsb      # TotalVariation+RSB
+  - https://soundcloud.com/entropiecollectif/thimthiery_entropie_2026            # Thimthiery ("mix @ entropie 2026")
+  - https://soundcloud.com/entropiecollectif/braided-cat-entropie-2026           # Braided Cat
+  - https://soundcloud.com/entropiecollectif/dark-poolside-entropie-2026         # Dark Poolside
+last:
+  - https://soundcloud.com/blackbrujo/entropie-festival-2026                     # Black Brujo

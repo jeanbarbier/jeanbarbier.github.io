@@ -1,6 +1,11 @@
 # Music of the month, newest first. "note" is optional (one short sentence).
 # Leave "title" empty to link the artist name itself; "extra" adds more links on the same line.
 # New entries are added at the bottom, one month further back each time.
+- month: 2026-11
+  artist: CVNSUMED
+  title: atöm.04
+  url: https://www.youtube.com/playlist?list=OLAK5uy_leZxbWB8pZf0WEafuE6H3xFZ4jcfbHOME
+  note: ""
 - month: 2026-10
   artist: Disguised
   title: Nightrun

@@ -262,10 +262,13 @@ it after every push. When adding an option, add it to the script; if the script 
   published site only.
 - Embeds load only when clicked: YouTube (youtube-nocookie) player under the music list,
   SoundCloud player (300px, shows the list of mixes) for "Play Entropie 10". Starting one stops the other.
-  The "Play Entropie 10" link is Jean's mix inside the set (a track link ending `?in=<set>`):
-  the player loads the whole set and starts on that mix wherever it sits (found by track id
-  through SoundCloud's oEmbed, then the widget API), plays on, goes round to the first mix
-  after the last, and stops back at his mix (Nov 2026). A plain set link plays it in order.
+  "Play Entropie 10" plays the set in Jean's own order, whatever the set's order on
+  SoundCloud (`_data/entropie.yml`: the `first` list, then unlisted mixes in the set's order,
+  then the `last` list), then goes back to the first mix and stops; a mix picked by hand
+  continues the order from there (Nov 2026). Mixes are matched by track id, read from
+  SoundCloud's oEmbed on click, then driven with the widget API. Before anything has played,
+  the widget selects a mix beyond the first few of the set without playing it, so the code
+  nudges it with play(). The button's own link (no JavaScript) is the first mix in the set.
 - Music list (`_data/albums.yml`): newest first; new entries go at the bottom, one month
   further back.
 - Misc ends with "Submit your phase transition": a form sent through Web3Forms (access key

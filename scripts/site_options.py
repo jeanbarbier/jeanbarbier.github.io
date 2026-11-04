@@ -391,15 +391,14 @@ w('- No cookies. Visit statistics: GoatCounter, published site only.')
 w('- The email address is never written in the page: the "Mail" link assembles and copies it.')
 w('- YouTube (privacy-enhanced youtube-nocookie) and SoundCloud players load only when clicked; '
   'starting one stops the other.')
-sc_link = find('misc.md', r'<a class="play-button" href="([^"]+)"', 'the "Play Entropie 10" link')
-sc_set = re.search(r'[?&]in=([^&"]+)', sc_link)
-if sc_set:
-    w('- "Play Entropie 10" (Misc) shows the whole set `%s` but starts on the mix `%s`, then plays '
-      'the others, going round to the start of the set, and stops when it comes back to that mix. '
-      'To start on another mix, put its SoundCloud link (shared from inside the set) in `misc.md`.'
-      % (sc_set.group(1), sc_link.split('?')[0].rstrip('/').rsplit('/', 1)[-1]))
-else:
-    w('- "Play Entropie 10" (Misc) plays `%s` in order.' % sc_link)
+sc_set = find('_data/entropie.yml', r'^set:\s*(\S+)', 'the SoundCloud set', flags=re.M)
+sc_first = re.findall(r'^\s+-\s*(https://\S+)', find('_data/entropie.yml', r'^first:\n((?:\s+-.*\n)*)', 'the "first" list', flags=re.M), re.M)
+sc_last = re.findall(r'^\s+-\s*(https://\S+)', find('_data/entropie.yml', r'^last:\n((?:\s+-.*\n?)*)', 'the "last" list', flags=re.M), re.M)
+mix = lambda u: '`' + u.rstrip('/').rsplit('/', 1)[-1] + '`'
+w('- "Play Entropie 10" (Misc) shows the whole set `%s` but plays its mixes in the order of '
+  '`_data/entropie.yml`, whatever their order on SoundCloud: %s; then the mixes not listed, in the '
+  "set's order; then %s. It then goes back to the first mix and stops."
+  % (sc_set.replace('https://soundcloud.com/', ''), ', '.join(map(mix, sc_first)), ', '.join(map(mix, sc_last)) or 'nothing'))
 w('- "Submit your phase transition" (Misc) is a single text box sent through Web3Forms; anonymous '
   'unless the visitor writes a name or email in it.')
 w('')
