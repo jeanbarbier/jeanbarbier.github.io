@@ -70,27 +70,98 @@
   }
 
   // ---- SoundCloud: Entropie Collectif ----
+  // The button links either to a set, played in order, or to one mix inside a set
+  // (a track link ending "?in=<user>/sets/<set>", as SoundCloud gives when sharing a
+  // track from a set). Then the player shows the whole set but starts on that mix,
+  // wherever it sits in the set, wraps to the first mix after the last one, and stops
+  // when it comes back to the starting mix. The mix is found by its track id, read
+  // from SoundCloud's oEmbed service, so changing the link is all an update needs.
+  var SC_PARAMS = '&visual=false&color=%232b4796&hide_related=true&show_comments=false&show_reposts=false&show_teaser=false';
+  var widgetApi = null;
+  var loadWidgetApi = function () {
+    if (!widgetApi) widgetApi = new Promise(function (resolve, reject) {
+      if (window.SC && window.SC.Widget) { resolve(window.SC.Widget); return; }
+      var s = document.createElement('script');
+      s.src = 'https://w.soundcloud.com/player/api.js';
+      s.onload = function () { if (window.SC && window.SC.Widget) resolve(window.SC.Widget); else reject(); };
+      s.onerror = function () { widgetApi = null; reject(); };
+      document.head.appendChild(s);
+    });
+    return widgetApi;
+  };
+  var trackId = function (href) {
+    return fetch('https://soundcloud.com/oembed?format=json&url=' + encodeURIComponent(href))
+      .then(function (r) { return r.json(); })
+      .then(function (j) { var m = /tracks%2F(\d+)/.exec(j.html || ''); return m ? m[1] : null; })
+      .catch(function () { return null; });
+  };
+  // Start on the mix with the given id; play the rest of the set in a loop back to it.
+  var startOn = function (Widget, w, id) {
+    w.getSounds(function (sounds) {
+      var start = 0;
+      for (var i = 0; i < sounds.length; i++) {
+        if (id && String(sounds[i].id) === id) { start = i; break; }
+      }
+      if (start > 0) {
+        var wrapped = false;
+        w.bind(Widget.Events.FINISH, function () {
+          w.getCurrentSoundIndex(function (k) {
+            if (k === sounds.length - 1 && !wrapped) { wrapped = true; w.skip(0); }
+          });
+        });
+        w.bind(Widget.Events.PLAY, function () {
+          if (!wrapped) return;
+          w.getCurrentSoundIndex(function (k) { if (k === start) { w.pause(); w.seekTo(0); wrapped = false; } });
+        });
+        w.skip(start);
+      } else {
+        w.play();
+      }
+    });
+  };
+
   document.querySelectorAll('.sc-player').forEach(function (holder) {
     var link = holder.querySelector('a.play-button');
     if (!link) return;
     var frame = null;
+    var session = 0;   // a click starts a session; stopping ends it, so late callbacks do nothing
+
+    var show = function (url, autoplay) {
+      frame = document.createElement('iframe');
+      frame.title = 'SoundCloud player: ' + (holder.getAttribute('data-label') || 'playlist');
+      frame.setAttribute('allow', 'autoplay');
+      frame.src = 'https://w.soundcloud.com/player/?url=' + encodeURIComponent(url) +
+        '&auto_play=' + (autoplay ? 'true' : 'false') + SC_PARAMS;
+      holder.appendChild(frame);
+      return frame;
+    };
 
     link.addEventListener('click', function (e) {
       if (!plainClick(e)) return;
       e.preventDefault();
       announce('soundcloud');
-      frame = document.createElement('iframe');
-      frame.title = 'SoundCloud player: ' + (holder.getAttribute('data-label') || 'playlist');
-      frame.setAttribute('allow', 'autoplay');
-      frame.src = 'https://w.soundcloud.com/player/?url=' + encodeURIComponent(link.href) +
-        '&auto_play=true&visual=false&color=%232b4796&hide_related=true&show_comments=false&show_reposts=false&show_teaser=false';
       link.hidden = true;
-      holder.appendChild(frame);
+      var mine = ++session;
+      var set = null;
+      try { set = new URL(link.href).searchParams.get('in'); } catch (err) {}
+      if (!set) { show(link.href, true); return; }
+      var setUrl = 'https://soundcloud.com/' + set;
+      var id = trackId(link.href);
+      loadWidgetApi().then(function (Widget) {
+        if (mine !== session) return;
+        var w = Widget(show(setUrl, false));
+        w.bind(Widget.Events.READY, function () {
+          id.then(function (trackIdValue) { if (mine === session) startOn(Widget, w, trackIdValue); });
+        });
+      }, function () {
+        if (mine === session) show(setUrl, true);   // no widget API: play the set in order
+      });
     });
 
     document.addEventListener('music:play', function (e) {
-      if (e.detail === 'soundcloud' || !frame) return;
-      frame.remove(); frame = null;
+      if (e.detail === 'soundcloud' || link.hidden === false) return;
+      session++;
+      if (frame) { frame.remove(); frame = null; }
       link.hidden = false;
     });
   });

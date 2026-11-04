@@ -138,6 +138,7 @@ BBP transition, Specialization in deep networks, Denoising–factorization trans
 - No cookies. Visit statistics: GoatCounter, published site only.
 - The email address is never written in the page: the "Mail" link assembles and copies it.
 - YouTube (privacy-enhanced youtube-nocookie) and SoundCloud players load only when clicked; starting one stops the other.
+- "Play Entropie 10" (Misc) shows the whole set `entropiecollectif/sets/entropie-10-2026` but starts on the mix `entropie-10-rsb-ficustabasco-1`, then plays the others, going round to the start of the set, and stops when it comes back to that mix. To start on another mix, put its SoundCloud link (shared from inside the set) in `misc.md`.
 - "Submit your phase transition" (Misc) is a single text box sent through Web3Forms; anonymous unless the visitor writes a name or email in it.
 
 ## Content

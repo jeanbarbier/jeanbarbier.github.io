@@ -391,6 +391,15 @@ w('- No cookies. Visit statistics: GoatCounter, published site only.')
 w('- The email address is never written in the page: the "Mail" link assembles and copies it.')
 w('- YouTube (privacy-enhanced youtube-nocookie) and SoundCloud players load only when clicked; '
   'starting one stops the other.')
+sc_link = find('misc.md', r'<a class="play-button" href="([^"]+)"', 'the "Play Entropie 10" link')
+sc_set = re.search(r'[?&]in=([^&"]+)', sc_link)
+if sc_set:
+    w('- "Play Entropie 10" (Misc) shows the whole set `%s` but starts on the mix `%s`, then plays '
+      'the others, going round to the start of the set, and stops when it comes back to that mix. '
+      'To start on another mix, put its SoundCloud link (shared from inside the set) in `misc.md`.'
+      % (sc_set.group(1), sc_link.split('?')[0].rstrip('/').rsplit('/', 1)[-1]))
+else:
+    w('- "Play Entropie 10" (Misc) plays `%s` in order.' % sc_link)
 w('- "Submit your phase transition" (Misc) is a single text box sent through Web3Forms; anonymous '
   'unless the visitor writes a name or email in it.')
 w('')
