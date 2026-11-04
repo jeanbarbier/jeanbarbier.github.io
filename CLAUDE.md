@@ -250,7 +250,7 @@ it after every push. When adding an option, add it to the script; if the script 
   line is "More: [title](url), ICTP news by <author>."
 
 ## Buttons
-- Pill-shaped buttons (Play Entropie 10, Run it in the background, Send) share one size and
+- Pill-shaped buttons (Play Entropie 10, Previous/Next mix, Run it in the background, Send) share one size and
   shape: 0.95rem text, 1px border, padding 0.3rem 0.9rem.
 
 ## Footer and funding
@@ -261,11 +261,14 @@ it after every push. When adding an option, add it to the script; if the script 
 - No cookies. Visit statistics with GoatCounter (jeanbarbier.goatcounter.com), on the
   published site only.
 - Embeds load only when clicked: YouTube (youtube-nocookie) player under the music list,
-  SoundCloud player (300px, shows the list of mixes) for "Play Entropie 10". Starting one stops the other.
-  "Play Entropie 10" plays the set in Jean's own order, whatever the set's order on
-  SoundCloud (`_data/entropie.yml`: the `first` list, then unlisted mixes in the set's order,
-  then the `last` list), then goes back to the first mix and stops; a mix picked by hand
-  continues the order from there (Nov 2026). Mixes are matched by track id, read from
+  SoundCloud player for "Play Entropie 10". Starting one stops the other.
+  The SoundCloud player is compact (166px, one mix at a time, no list), with "Previous mix"
+  and "Next mix" pill buttons and a grey counter ("3 / 10") under it; the buttons are greyed
+  out on the first and last mix. It plays the set in Jean's own order, whatever the set's
+  order on SoundCloud (`_data/entropie.yml`: the `first` list, then unlisted mixes in the
+  set's order, then the `last` list), then goes back to the first mix and stops (Nov 2026).
+  The player stays hidden (an empty grey box) until the first mix plays, so the set's own
+  first mix never flashes. Mixes are matched by track id, read from
   SoundCloud's oEmbed on click, then driven with the widget API. Before anything has played,
   the widget selects a mix beyond the first few of the set without playing it, so the code
   nudges it with play(). The button's own link (no JavaScript) is the first mix in the set.

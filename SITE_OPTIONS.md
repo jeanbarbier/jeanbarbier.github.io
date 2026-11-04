@@ -138,7 +138,7 @@ BBP transition, Specialization in deep networks, Denoising–factorization trans
 - No cookies. Visit statistics: GoatCounter, published site only.
 - The email address is never written in the page: the "Mail" link assembles and copies it.
 - YouTube (privacy-enhanced youtube-nocookie) and SoundCloud players load only when clicked; starting one stops the other.
-- "Play Entropie 10" (Misc) shows the whole set `entropiecollectif/sets/entropie-10-2026` but plays its mixes in the order of `_data/entropie.yml`, whatever their order on SoundCloud: `entropie-10-rsb-ficustabasco-1`, `rsb-b2b-thimthiery-entropie`, `entropie-10-totalvariation-rsb`, `thimthiery_entropie_2026`, `braided-cat-entropie-2026`, `dark-poolside-entropie-2026`; then the mixes not listed, in the set's order; then `entropie-festival-2026`. It then goes back to the first mix and stops.
+- "Play Entropie 10" (Misc) opens a compact player (one mix at a time) for the set `entropiecollectif/sets/entropie-10-2026`, with "Previous mix" / "Next mix" buttons and a counter; it plays the mixes in the order of `_data/entropie.yml`, whatever their order on SoundCloud: `entropie-10-rsb-ficustabasco-1`, `rsb-b2b-thimthiery-entropie`, `entropie-10-totalvariation-rsb`, `thimthiery_entropie_2026`, `braided-cat-entropie-2026`, `dark-poolside-entropie-2026`; then the mixes not listed, in the set's order; then `entropie-festival-2026`. It then goes back to the first mix and stops.
 - "Submit your phase transition" (Misc) is a single text box sent through Web3Forms; anonymous unless the visitor writes a name or email in it.
 
 ## Content

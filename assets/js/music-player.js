@@ -70,13 +70,15 @@
   }
 
   // ---- SoundCloud: Entropie Collectif ----
-  // The player shows the whole set (data-set) but plays its mixes in our own order,
-  // whatever their order on SoundCloud: the mixes of data-first, then the mixes not
-  // listed (in the set's order), then those of data-last (links separated by spaces,
-  // from _data/entropie.yml). When the order is done it goes back to the first mix and
-  // stops. A visitor who picks a mix in the list continues the order from there. Mixes
-  // are matched by track id, read from SoundCloud's oEmbed service when Play is clicked,
-  // so the data file only needs links. Without data-set, the link plays in its own order.
+  // A compact player (one mix at a time, no list) for the set in data-set, played in our
+  // own order whatever the set's order on SoundCloud: the mixes of data-first, then the
+  // mixes not listed (in the set's order), then those of data-last (links separated by
+  // spaces, from _data/entropie.yml). "Previous mix" / "Next mix" buttons and a counter
+  // ("3 / 10") under the player follow the same order; the buttons are greyed out at the
+  // two ends. When the last mix ends it goes back to the first mix and stops. Mixes are
+  // matched by track id, read from SoundCloud's oEmbed service when Play is clicked, so
+  // the data file only needs links. The player stays hidden until the first mix plays,
+  // so the set's own first mix never flashes. Without data-set, the link plays as is.
   var SC_PARAMS = '&visual=false&color=%232b4796&hide_related=true&show_comments=false&show_reposts=false&show_teaser=false';
   var widgetApi = null;
   var loadWidgetApi = function () {
@@ -98,8 +100,24 @@
   };
   var links = function (attr) { return (attr || '').split(/\s+/).filter(Boolean); };
 
-  // Play the set's sounds in the order given by the two lists of track ids.
-  var playInOrder = function (Widget, w, firstIds, lastIds) {
+  var ICON_PREV = '<svg viewBox="0 0 16 16" aria-hidden="true" focusable="false"><path d="M3 2.5h2v11H3zM13 2.5v11L5.5 8z" fill="currentColor"/></svg>';
+  var ICON_NEXT = '<svg viewBox="0 0 16 16" aria-hidden="true" focusable="false"><path d="M3 2.5v11L10.5 8zM11 2.5h2v11h-2z" fill="currentColor"/></svg>';
+
+  // Drive widget w through the set in the order given by the two lists of track ids.
+  // ui: { reveal(), update(pos, count) } and the nav buttons call the returned step().
+  var playInOrder = function (Widget, w, firstIds, lastIds, ui) {
+    var order = [], current = -1, ending = false, lastPlay = 0;
+    // Jump to the sound with set index i and make sure it plays: before anything has
+    // played, or while paused, the widget may select a mix it has not loaded yet
+    // (beyond the first few of the set) without playing it, so nudge it.
+    var go = function (i) {
+      var asked = Date.now();
+      w.skip(i);
+      [800, 2000, 4000].forEach(function (t) {
+        setTimeout(function () { if (lastPlay < asked && !ending) w.play(); }, t);
+      });
+    };
+    var show = function () { ui.update(order.indexOf(current), order.length); };
     w.getSounds(function (sounds) {
       var ids = sounds.map(function (x) { return String(x.id); });
       var pick = function (list) {
@@ -108,47 +126,59 @@
       var head = pick(firstIds), tail = pick(lastIds);
       var middle = ids.map(function (_, i) { return i; })
         .filter(function (i) { return head.indexOf(i) < 0 && tail.indexOf(i) < 0; });
-      var order = head.concat(middle, tail);
-      var current = order[0];   // index of the sound playing, from the last PLAY event
-      var started = false;
-      var ending = false;       // order done: going back to the first mix, to stop there
+      order = head.concat(middle, tail);
+      current = order[0];
       w.bind(Widget.Events.PLAY, function () {
-        started = true;
+        lastPlay = Date.now();
         w.getCurrentSoundIndex(function (k) {
           current = k;
+          ui.reveal();
+          show();
           if (ending && k === order[0]) { ending = false; w.pause(); w.seekTo(0); }
         });
       });
       w.bind(Widget.Events.FINISH, function () {
         var pos = order.indexOf(current);
-        if (pos >= 0 && pos + 1 < order.length) { w.skip(order[pos + 1]); return; }
+        if (pos >= 0 && pos + 1 < order.length) { go(order[pos + 1]); return; }
         ending = true;
         w.skip(order[0]);
-        setTimeout(function () { if (ending) { ending = false; w.pause(); } }, 4000);
+        setTimeout(function () { if (ending) { ending = false; w.pause(); ui.reveal(); show(); } }, 4000);
       });
-      // Before anything has played, the widget selects a mix it has not loaded yet
-      // (beyond the first few of the set) without playing it: nudge it until it starts.
-      w.skip(order[0]);
-      [800, 2000, 4000].forEach(function (t) {
-        setTimeout(function () { if (!started) w.play(); }, t);
-      });
+      show();
+      go(order[0]);
     });
+    // Previous (-1) or next (+1) mix in the order, from the one playing.
+    return function (d) {
+      var pos = order.indexOf(current) + d;
+      if (!order.length || pos < 0 || pos >= order.length) return;
+      ending = false;
+      current = order[pos];
+      show();
+      go(order[pos]);
+    };
   };
 
   document.querySelectorAll('.sc-player').forEach(function (holder) {
     var link = holder.querySelector('a.play-button');
     if (!link) return;
-    var frame = null;
-    var session = 0;   // a click starts a session; stopping ends it, so late callbacks do nothing
+    var box = null;     // the player and its buttons, while shown
+    var session = 0;    // a click starts a session; stopping ends it, so late callbacks do nothing
 
-    var show = function (url, autoplay) {
-      frame = document.createElement('iframe');
+    var makeFrame = function (url, autoplay) {
+      var frame = document.createElement('iframe');
       frame.title = 'SoundCloud player: ' + (holder.getAttribute('data-label') || 'playlist');
       frame.setAttribute('allow', 'autoplay');
       frame.src = 'https://w.soundcloud.com/player/?url=' + encodeURIComponent(url) +
         '&auto_play=' + (autoplay ? 'true' : 'false') + SC_PARAMS;
-      holder.appendChild(frame);
       return frame;
+    };
+    var makeButton = function (label, icon) {
+      var b = document.createElement('button');
+      b.type = 'button';
+      b.className = 'play-button';
+      b.disabled = true;
+      b.innerHTML = icon + label;
+      return b;
     };
 
     link.addEventListener('click', function (e) {
@@ -157,28 +187,63 @@
       announce('soundcloud');
       link.hidden = true;
       var mine = ++session;
+      box = document.createElement('div');
+      box.className = 'sc-box';
+      holder.appendChild(box);
       var setUrl = holder.getAttribute('data-set');
-      if (!setUrl) { show(link.href, true); return; }
+      if (!setUrl) { box.appendChild(makeFrame(link.href, true)); return; }
+
+      var frameBox = document.createElement('div');
+      frameBox.className = 'sc-frame is-loading';
+      box.appendChild(frameBox);
+      var nav = document.createElement('div');
+      nav.className = 'sc-nav';
+      var prev = makeButton('Previous mix', ICON_PREV);
+      var next = makeButton('Next mix', ICON_NEXT);
+      var count = document.createElement('span');
+      count.className = 'sc-count';
+      count.setAttribute('aria-live', 'polite');
+      nav.appendChild(prev); nav.appendChild(next); nav.appendChild(count);
+      box.appendChild(nav);
+      var reveal = function () { frameBox.classList.remove('is-loading'); };
+      var ui = {
+        reveal: reveal,
+        update: function (pos, n) {
+          if (pos < 0 || !n) return;
+          prev.disabled = pos === 0;
+          next.disabled = pos === n - 1;
+          count.textContent = (pos + 1) + ' / ' + n;
+        }
+      };
+
       var first = links(holder.getAttribute('data-first')), last = links(holder.getAttribute('data-last'));
       var ids = Promise.all(first.concat(last).map(trackId));
       loadWidgetApi().then(function (Widget) {
         if (mine !== session) return;
-        var w = Widget(show(setUrl, false));
+        var frame = makeFrame(setUrl, false);
+        frameBox.appendChild(frame);
+        setTimeout(reveal, 10000);   // never leave the player hidden if something is slow
+        var w = Widget(frame);
         w.bind(Widget.Events.READY, function () {
           ids.then(function (all) {
             if (mine !== session) return;
-            playInOrder(Widget, w, all.slice(0, first.length), all.slice(first.length));
+            var step = playInOrder(Widget, w, all.slice(0, first.length), all.slice(first.length), ui);
+            prev.addEventListener('click', function () { step(-1); });
+            next.addEventListener('click', function () { step(1); });
           });
         });
       }, function () {
-        if (mine === session) show(setUrl, true);   // no widget API: play the set in its own order
+        if (mine !== session) return;   // no widget API: plain player, the set in its own order
+        frameBox.appendChild(makeFrame(setUrl, true));
+        reveal();
+        nav.remove();
       });
     });
 
     document.addEventListener('music:play', function (e) {
       if (e.detail === 'soundcloud' || link.hidden === false) return;
       session++;
-      if (frame) { frame.remove(); frame = null; }
+      if (box) { box.remove(); box = null; }
       link.hidden = false;
     });
   });

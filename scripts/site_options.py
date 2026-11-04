@@ -395,7 +395,8 @@ sc_set = find('_data/entropie.yml', r'^set:\s*(\S+)', 'the SoundCloud set', flag
 sc_first = re.findall(r'^\s+-\s*(https://\S+)', find('_data/entropie.yml', r'^first:\n((?:\s+-.*\n)*)', 'the "first" list', flags=re.M), re.M)
 sc_last = re.findall(r'^\s+-\s*(https://\S+)', find('_data/entropie.yml', r'^last:\n((?:\s+-.*\n?)*)', 'the "last" list', flags=re.M), re.M)
 mix = lambda u: '`' + u.rstrip('/').rsplit('/', 1)[-1] + '`'
-w('- "Play Entropie 10" (Misc) shows the whole set `%s` but plays its mixes in the order of '
+w('- "Play Entropie 10" (Misc) opens a compact player (one mix at a time) for the set `%s`, with '
+  '"Previous mix" / "Next mix" buttons and a counter; it plays the mixes in the order of '
   '`_data/entropie.yml`, whatever their order on SoundCloud: %s; then the mixes not listed, in the '
   "set's order; then %s. It then goes back to the first mix and stops."
   % (sc_set.replace('https://soundcloud.com/', ''), ', '.join(map(mix, sc_first)), ', '.join(map(mix, sc_last)) or 'nothing'))
