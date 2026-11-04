@@ -16,7 +16,10 @@ it after every push. When adding an option, add it to the script; if the script 
   the faint background animations, the Gray-Scott model (on by default), the 2D Ising model or
   the 2D spin glass, chosen, tuned or stopped from a header menu, and a view mode that shows them
   alone at full strength and lets visitors perturb them by clicking (see Small details).
-- American spelling and US date style ("August 31 – September 4, 2026"). Curly apostrophes
+- American spelling (inquiries, toward, dreamed, math), except in proper names, which keep their
+  official spelling (Abdus Salam International Centre for Theoretical Physics, ICTP’s Postgraduate
+  Diploma Programme), and in paper titles and quotes. US date style ("August 31 – September 4,
+  2026"). Curly apostrophes
   (’) in all visible text, including data files and front matter (Markdown converts its own);
   BibTeX keeps straight ones.
 - Low cost for visitors' devices: nothing runs when no animation is chosen, and a running

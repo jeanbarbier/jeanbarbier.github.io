@@ -272,6 +272,28 @@
     }
 
 
+- title: "Performance of Bayesian linear regression in a model with mismatch"
+  authors: [Jean Barbier, Wei-Kuo Chen, Dmitry Panchenko, Manuel Sáenz]
+  venue: "Information and Inference: A Journal of the IMA"
+  year: 2025
+  arxiv: "2107.06936"
+  doi: "10.1093/imaiai/iaaf019"
+  themes: [foundations]
+  bibtex: |
+    @article{barbier2025performance,
+      author        = {Barbier, Jean and Chen, Wei-Kuo and Panchenko, Dmitry and Sáenz, Manuel},
+      title         = {Performance of Bayesian linear regression in a model with mismatch},
+      journal       = {Information and Inference: A Journal of the IMA},
+      volume        = {14},
+      number        = {3},
+      pages         = {iaaf019},
+      year          = {2025},
+      doi           = {10.1093/imaiai/iaaf019},
+      eprint        = {2107.06936},
+      archivePrefix = {arXiv}
+    }
+
+
 - title: "Matrix inference in growing rank regimes"
   authors: [Farzad Pourkamali, Jean Barbier, Nicolas Macris]
   venue: "IEEE Transactions on Information Theory"

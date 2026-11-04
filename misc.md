@@ -69,7 +69,7 @@ Here is some music I’ve been listening to.
 
 ## Submit your phase transition
 
-Seen a phase transition in the wild or dreamt one up? Describe it to add it to the site&nbsp;:)
+Seen a phase transition in the wild or dreamed one up? Describe it to add it to the site&nbsp;:)
 
 <form class="transition-form" id="submit" action="https://api.web3forms.com/submit" method="POST">
   <input type="hidden" name="access_key" value="{{ site.web3forms_key }}">

@@ -101,7 +101,7 @@ Other lists (highlights, teaching, quotes, the physics pages, events to come) sh
 
 ## Pages and sections
 
-Top bar: **Group, Research, Teaching, Events, Misc** (the name links home), tagline "Physics of learning + Maths of high dimensions".
+Top bar: **Group, Research, Teaching, Events, Misc** (the name links home), tagline "Physics of learning + Math of high dimensions".
 
 - **Home**: News, Selected papers, Trieste, Quotes I like.
 - **Group**: Principal investigator, Postdocs, PhD students, Former members, Join us, Gallery.
@@ -145,7 +145,7 @@ BBP transition, Specialization in deep networks, Denoising–factorization trans
 | What | Number |
 |---|---|
 | News items | 6 |
-| Publications | 29 |
+| Publications | 30 |
 | of which on the home page (selected) | 6 |
 | Highlight articles | 4 |
 | Events | 16 |
