@@ -90,8 +90,9 @@
   }
 })();
 
-// Lists with class "scroll-list" show a few items, then scroll: five by default (home News,
-// past Events, Music), or the number in data-show (Selected papers: three). The height is
+// Lists with class "scroll-list" show a few items, then scroll: five by default (past
+// Events, Music), or the number in data-show (home News and Selected papers: two; Worth
+// reading: three). The height is
 // fitted to those first items and refitted when an item changes size (e.g. an opened
 // citation); the bottom fades while more is below.
 (function () {

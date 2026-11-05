@@ -109,8 +109,9 @@ it after every push. When adding an option, add it to the script; if the script 
 - Dated lists (News, Events, Music): small grey date column on the left with short
   months ("Oct 2026"; event ranges like "Aug 31 – Sep 4, 2026" in a wider column), text
   on the right, horizontal rules, no vertical rule. On phones the date sits above the text.
-- Home News, past Events and Music show five items, then scroll; the Selected papers lists
-  (home, and each theme on Research) and Worth reading show three (`data-show="3"`). Class `scroll-list`:
+- Past Events and Music show five items, then scroll; Worth reading shows three
+  (`data-show="3"`); home News and the Selected papers lists (home, and each theme on
+  Research) show two (`data-show="2"`, Nov 2026). Class `scroll-list`:
   site.js fits the height to the first items and refits when one changes size (an opened
   citation); the bottom fades while more is below. Highlights and other lists do not scroll.
 - Teaching items (`_data/teaching.yml`): a title without link, then one grey line per document

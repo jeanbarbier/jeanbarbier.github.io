@@ -85,15 +85,15 @@ Kept only while the tab is open (sessionStorage):
 
 | Page | List | Items shown before scrolling |
 |---|---|---|
-| Home | News | 5 |
-| Home | Selected papers | 3 |
+| Home | News | 2 |
+| Home | Selected papers | 2 |
 | Events | Past events | 5 |
-| Research | Selected papers: Deep neural networks beyond the linear regime | 3 |
-| Research | Selected papers: Training, fine-tuning and representations | 3 |
-| Research | Selected papers: Matrix inference and random matrices | 3 |
-| Research | Selected papers: Rigorous foundations of high-dimensional inference | 3 |
-| Research | Selected papers: Coding and communication | 3 |
-| Research | Selected papers: Combinatorial optimization | 3 |
+| Research | Selected papers: Deep neural networks beyond the linear regime | 2 |
+| Research | Selected papers: Training, fine-tuning and representations | 2 |
+| Research | Selected papers: Matrix inference and random matrices | 2 |
+| Research | Selected papers: Rigorous foundations of high-dimensional inference | 2 |
+| Research | Selected papers: Coding and communication | 2 |
+| Research | Selected papers: Combinatorial optimization | 2 |
 | Misc | Worth reading | 3 |
 | Misc | Music I’ve been listening to | 5 |
 

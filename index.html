@@ -20,7 +20,7 @@ title: Jean Barbier
 
 <section class="block">
   <h2>News</h2>
-  <ul class="news scroll-list" tabindex="0" aria-label="News">
+  <ul class="news scroll-list" data-show="2" tabindex="0" aria-label="News">
     {%- for item in site.data.news %}
     <li><span class="news-date">{{ item.date | append: "-01" | date: "%b %Y" }}</span><span class="news-text">{{ item.text | markdownify | remove: "<p>" | remove: "</p>" | strip }}</span></li>
     {%- endfor %}
@@ -29,7 +29,7 @@ title: Jean Barbier
 
 <section class="block">
   <h2>Selected papers</h2>
-  <ul class="pubs compact grouped scroll-list" data-show="3" tabindex="0" aria-label="Selected papers">
+  <ul class="pubs compact grouped scroll-list" data-show="2" tabindex="0" aria-label="Selected papers">
     {%- for pub in site.data.publications %}{% if pub.selected %}{% include pub.html pub=pub %}{% endif %}{% endfor %}
   </ul>
   <p class="more"><a href="{{ '/research/#papers' | relative_url }}">More publications</a></p>
