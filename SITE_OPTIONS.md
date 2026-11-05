@@ -87,15 +87,15 @@ Kept only while the tab is open (sessionStorage):
 |---|---|---|
 | Home | News | 2 |
 | Home | Selected papers | 2 |
-| Events | Past events | 5 |
+| Events | Past events | 4 |
 | Research | Selected papers: Deep neural networks beyond the linear regime | 2 |
 | Research | Selected papers: Training, fine-tuning and representations | 2 |
 | Research | Selected papers: Matrix inference and random matrices | 2 |
 | Research | Selected papers: Rigorous foundations of high-dimensional inference | 2 |
 | Research | Selected papers: Coding and communication | 2 |
 | Research | Selected papers: Combinatorial optimization | 2 |
-| Misc | Worth reading | 3 |
-| Misc | Music I’ve been listening to | 5 |
+| Misc | Worth reading | 4 |
+| Misc | Music I’ve been listening to | 4 |
 
 Other lists (highlights, teaching, quotes, the physics pages, events to come) show everything. While more is below, the bottom of a list fades.
 
@@ -165,5 +165,5 @@ BBP transition, Specialization in deep networks, Denoising–factorization trans
 | Default theme | `_includes/head.html` |
 | Animations: colors, speed, defaults | constants at the top of `assets/js/turing.js`, `ising.js`, `spinglass.js` (slider ranges also in `_includes/header.html` and `assets/js/bg-menu.js`) |
 | Pause after inactivity | `IDLE_MS` in `assets/js/site.js` |
-| Items shown in a scrolling list | `data-show` on the list (default 5 in `assets/js/site.js`) |
+| Items shown in a scrolling list | `data-show` on the list (default 4 in `assets/js/site.js`) |
 | Colors, fonts, widths | `assets/css/main.css` |

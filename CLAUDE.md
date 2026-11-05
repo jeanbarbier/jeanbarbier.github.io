@@ -51,8 +51,8 @@ it after every push. When adding an option, add it to the script; if the script 
   button; `link_label: Book` for a book). `funding: false`, like Misc. The text must match
   what the simulations actually do (parameters, rates): update both together.
 - Worth reading is a `notes compact grouped` list like the quotes: the link is the item title
-  (serif), the author or a sentence or two the grey description line; three shown, then
-  scroll (`scroll-list`, `data-show="3"`). Titles
+  (serif), the author or a sentence or two the grey description line; four shown, then
+  scroll (`scroll-list`). Titles
   are in sentence case (capital on the first
   letter only; acronyms such as AI and proper names keep theirs), even when the original title
   is capitalized.
@@ -109,8 +109,8 @@ it after every push. When adding an option, add it to the script; if the script 
 - Dated lists (News, Events, Music): small grey date column on the left with short
   months ("Oct 2026"; event ranges like "Aug 31 – Sep 4, 2026" in a wider column), text
   on the right, horizontal rules, no vertical rule. On phones the date sits above the text.
-- Past Events and Music show five items, then scroll; Worth reading shows three
-  (`data-show="3"`); home News and the Selected papers lists (home, and each theme on
+- Past Events, Music and Worth reading show four items (the default in site.js), then
+  scroll (Nov 2026); home News and the Selected papers lists (home, and each theme on
   Research) show two (`data-show="2"`, Nov 2026). Class `scroll-list`:
   site.js fits the height to the first items and refits when one changes size (an opened
   citation); the bottom fades while more is below. Highlights and other lists do not scroll.
