@@ -267,7 +267,7 @@ it after every push. When adding an option, add it to the script; if the script 
   `_data/entropie.yml` (a plain list of SoundCloud links, from any set or account) in that
   order; when the last ends it goes back to the first and stops (Nov 2026). Under it: "Previous
   mix", "Next mix" and "Random mix" pill buttons (Previous/Next greyed out at the two ends;
-  Random picks any other mix, and the order continues from there) and a grey counter ("3 / 15").
+  Random picks any other mix, and the order continues from there) and a grey counter ("3 / 17").
   Each mix gets a fresh iframe: the widget API's load() passes only on/off options and would
   lose the blue `color`. The API (loaded on click) is only used to hear FINISH. The button's
   own link (no JavaScript) is the first mix.
